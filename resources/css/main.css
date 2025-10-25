@@ -1,0 +1,376 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:wght@400;700&display=swap);
+/*https://gist.github.com/robinrendle/1d20c566c5e5fbd67f25*/
+/*Box sizing (the nuclear option)*/
+html {
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -ms-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* Fix font rendering defaults */
+html, button {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, input, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+}
+
+/* IE fixes for HTML5 elements */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+strong, b, mark {
+  font-weight: bold;
+  font-style: inherit;
+}
+
+em, i, cite, q, address, dfn, var {
+  font-style: italic;
+  font-weight: inherit;
+}
+
+a, u, ins {
+  text-decoration: none;
+}
+
+pre, code, samp, kbd {
+  font-family: monospace;
+}
+
+iframe {
+  width: 100%;
+}
+
+img {
+  /*max-width: 100%;
+     height: auto;
+     -msinterpolation-mode: bicubic;*/
+  border: none;
+}
+
+input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-size: 100%;
+}
+
+ol, ul, dl {
+  list-style: none;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+section {
+  padding: 1rem 1rem 0;
+}
+section article ul {
+  list-style: disc;
+  padding: 1em;
+  line-height: 1.5;
+  margin: 0 0 0 3em;
+}
+section article h1,
+section article h2 {
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(25, 78, 39);
+  font-size: 2.5em;
+  line-height: 1;
+}
+section article h4 {
+  font-size: 1.2em;
+  margin: 1.5em 0;
+}
+section:nth-child(2) p:first-child {
+  color: rgb(25, 78, 39);
+  font-size: 1.3em;
+  margin: 0 0 1em;
+}
+section:nth-child(3) {
+  background-color: rgb(25, 78, 39);
+  text-align: center;
+}
+section:nth-child(3) h2 {
+  color: rgb(252, 246, 228);
+  font-size: 2em;
+}
+section:nth-child(3) article {
+  background-color: rgb(252, 246, 228);
+  margin: 1em 0;
+  padding: 1em;
+}
+section:nth-child(3) article h3 {
+  color: rgb(25, 78, 39);
+  margin: 0 0 1em;
+}
+section.testimonials {
+  color: rgb(25, 78, 39);
+  background-image: url("../assets/Speechmarks-green10.png");
+  background-color: rgb(252, 246, 228);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0 center;
+}
+section.testimonials p {
+  margin: 0 0 1em;
+}
+
+main > footer {
+  background-color: rgb(25, 78, 39);
+  padding: 1em;
+  color: white;
+}
+main > footer section:first-child {
+  background-color: rgb(25, 78, 39);
+  padding: 0;
+  font-size: 0.8em;
+}
+main > footer section:first-child p:before {
+  width: 25px;
+  overflow: hidden;
+  display: block;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 50%;
+  content: url("../assets/mail.svg");
+}
+main > footer section:first-child p:nth-child(2) {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+main > footer section:first-child p:nth-child(2):before {
+  content: url("../assets/mobile.svg");
+}
+main > footer section:first-child p:nth-child(3):before {
+  content: url("../assets/whatsapp.svg");
+}
+main > footer section:first-child p:nth-child(4) {
+  color: rgb(25, 78, 39);
+}
+main > footer section:first-child p:nth-child(4):before {
+  content: url("../assets/instagram.svg");
+  margin: 0 0.66em;
+}
+main > footer section:first-child p:nth-child(5) {
+  color: rgb(25, 78, 39);
+}
+main > footer section:first-child p:nth-child(5):before {
+  content: url("../assets/linkedin.svg");
+}
+
+header {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-justify-content: center;
+  justify-content: space-between;
+}
+header h1 {
+  text-indent: 100%;
+  font-size: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: white;
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+header > div {
+  width: 120px;
+  height: 126.7px;
+  border: solid 1px rgb(25, 78, 39);
+}
+
+section {
+  font-size: 0.9rem;
+  padding: 1rem;
+}
+section article button {
+  border-radius: 1px;
+  border-width: 0;
+  padding: 1em;
+  margin: 1em 0;
+  background-color: rgb(25, 78, 39);
+  color: white;
+}
+section:first-child {
+  background-color: rgb(252, 246, 228);
+}
+
+.eco {
+  background-color: rgb(25, 78, 39);
+  color: rgb(252, 246, 228);
+  padding: 1em;
+  text-align: center;
+}
+.eco ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+main > footer nav {
+  font-size: 0.6em;
+  color: beige;
+}
+main > footer nav ul li {
+  display: inline-block;
+  margin-right: 1em;
+}
+main > footer .payment {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 30%;
+  margin: 0;
+  padding: 0.5em 0;
+}
+main > footer .payment div {
+  width: 50px;
+  margin-right: 0.5em;
+  border-radius: 4px;
+  overflow: hidden;
+}
+main > footer .payment div:last-child {
+  margin: 0;
+}
+
+main > footer {
+  background-color: rgb(25, 78, 39);
+  padding: 1em;
+  color: white;
+}
+main > footer section:first-child {
+  background-color: rgb(25, 78, 39);
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+main > footer section:first-child p {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 0 0.66em;
+}
+main + footer {
+  background-color: black;
+  padding: 5em;
+  color: white;
+  font-size: 0.5em;
+}
+main + footer ul {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-justify-content: center;
+  justify-content: space-between;
+}
+
+article > aside {
+  margin: 0 0 2em;
+}
+article > aside > a {
+  display: block;
+}
+article > aside > a img {
+  width: 100%;
+  display: block;
+}
+
+@media only screen and (min-width: 769px) {
+  header nav ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: center;
+    justify-content: space-between;
+  }
+  .eco {
+    padding: 1em 15%;
+  }
+  .eco ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

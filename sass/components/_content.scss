@@ -1,0 +1,105 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+section {
+  padding: 1rem 1rem 0;
+  article {
+    ul {
+      list-style: disc;
+      padding: 1em;
+      line-height: 1.5;
+      margin: 0 0 0 3em;
+    }
+    h1,
+    h2 {
+      font-family: "Times New Roman", Times, serif;
+      color: $main;
+      font-size: 2.5em;
+      line-height: 1;
+    }
+    h4 {
+      font-size: 1.2em;
+      margin: 1.5em 0;
+    }
+  }
+  &:nth-child(2) p:first-child {
+    color: $main;
+    font-size: 1.3em;
+    margin: 0 0 1em;
+  }
+  &:nth-child(3) {
+    background-color: $main;
+    text-align: center;
+    h2 {
+      color: $bg;
+      font-size: 2em;
+    }
+    article {
+      background-color: $bg;
+      margin: 1em 0;
+      padding: 1em;
+      h3 {
+        color: $main;
+        margin: 0 0 1em;
+      }
+    }
+  }
+  &.testimonials {
+    color: $main;
+    background-image: url("../assets/Speechmarks-green10.png");
+    background-color: $bg;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0 center;
+    p {
+      margin: 0 0 1em;
+    }
+  }
+}
+
+main > footer {
+  background-color: $main;
+  padding: 1em;
+  color: white;
+  section:first-child {
+    background-color: $main;
+    padding: 0;
+    font-size: .8em;
+    p:before {
+      width: 25px;
+      overflow: hidden;
+      display: block;
+      margin-right: 5px;
+      background-color: white;
+      border-radius: 50%;
+      content: url("../assets/mail.svg");
+    }
+    p:nth-child(2) {
+      @include flex(1, 1, 100%);
+      &:before {
+        content: url("../assets/mobile.svg");
+      }
+    }
+    p:nth-child(3) {
+      &:before {
+        content: url("../assets/whatsapp.svg");
+      }
+    }
+    p:nth-child(4) {
+      color: $main;
+      &:before {
+        content: url("../assets/instagram.svg");
+        margin: 0 .66em;
+      }
+    }
+    p:nth-child(5) {
+      color: $main;
+      &:before {
+        content: url("../assets/linkedin.svg");
+      }
+    }
+  }
+}
