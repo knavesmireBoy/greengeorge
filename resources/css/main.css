@@ -148,6 +148,7 @@ section:first-child article aside figure:nth-child(4) {
 }
 section:first-child article aside figure:nth-child(5) {
   background-image: url("../images/IMG_0324.jpg");
+  background-position: center 55%;
 }
 section:first-child article aside figure:nth-child(6) {
   background-image: url("../images/IMG_0388.jpg");
@@ -160,9 +161,11 @@ section:first-child article aside figure:nth-child(8) {
 }
 section:first-child article aside figure:nth-child(9) {
   background-image: url("../images/IMG_1395.jpg");
+  background-position: center 80%;
 }
 section:first-child article aside figure:nth-child(10) {
   background-image: url("../images/IMG_1442.jpg");
+  background-position: center 70%;
 }
 section:first-child article aside figure:nth-child(11) {
   background-image: url("../images/IMG_1477.jpg");
@@ -172,18 +175,21 @@ section:first-child article aside figure:nth-child(12) {
 }
 section:first-child article aside figure:nth-child(13) {
   background-image: url("../images/IMG_1485.jpg");
+  background-position: center 60%;
 }
 section:first-child article aside figure:nth-child(14) {
   background-image: url("../images/IMG_1530.jpg");
 }
 section:first-child article aside figure:nth-child(15) {
   background-image: url("../images/IMG_1531.jpg");
+  background-position: center 30%;
 }
 section:first-child article aside figure:nth-child(16) {
   background-image: url("../images/IMG_0229.jpg");
 }
 section:first-child article aside figure:nth-child(17) {
   background-image: url("../images/hedge-1.jpeg");
+  background-position: center 60%;
 }
 section:nth-child(2) p:first-child {
   color: rgb(25, 78, 39);
@@ -476,7 +482,7 @@ article > aside > a img {
     transform: translateX(-500%);
   }
 }
-@keyframes main {
+@keyframes mainy {
   5% {
     transform: translateX(0%);
   }
@@ -496,78 +502,81 @@ article > aside > a img {
     transform: translateX(-300%);
   }
   23% {
-    transform: translateX(-400%);
+    transform: translateX(-300%);
   }
   24% {
     transform: translateX(-400%);
   }
   29% {
-    transform: translateX(-500%);
+    transform: translateX(-400%);
   }
   30% {
     transform: translateX(-500%);
   }
   35% {
-    transform: translateX(-600%);
+    transform: translateX(-500%);
   }
   36% {
     transform: translateX(-600%);
   }
-  31% {
-    transform: translateX(-700%);
+  41% {
+    transform: translateX(-600%);
   }
   42% {
     transform: translateX(-700%);
   }
   47% {
-    transform: translateX(-800%);
+    transform: translateX(-700%);
   }
   48% {
     transform: translateX(-800%);
   }
   53% {
-    transform: translateX(-900%);
+    transform: translateX(-800%);
   }
   54% {
     transform: translateX(-900%);
   }
   59% {
-    transform: translateX(-1000%);
+    transform: translateX(-900%);
   }
   60% {
     transform: translateX(-1000%);
   }
   65% {
-    transform: translateX(-1100%);
+    transform: translateX(-1000%);
   }
   66% {
     transform: translateX(-1100%);
   }
   71% {
-    transform: translateX(-1200%);
+    transform: translateX(-1100%);
   }
   72% {
     transform: translateX(-1200%);
   }
   77% {
-    transform: translateX(-1300%);
+    transform: translateX(-1200%);
   }
   78% {
     transform: translateX(-1300%);
   }
   83% {
-    transform: translateX(-1400%);
+    transform: translateX(-1300%);
   }
   84% {
     transform: translateX(-1400%);
   }
   89% {
-    transform: translateX(-1500%);
+    transform: translateX(-1400%);
   }
   90% {
     transform: translateX(-1500%);
   }
-  99% {
+  95% {
+    transform: translateX(-1500%);
+  }
+  96% {
     transform: translateX(-1600%);
   }
   100% {
@@ -666,7 +675,7 @@ section:first-child aside figure {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  animation: main 60s ease-in 1s 2 normal forwards;
+  animation: mainy 90s ease-in 1s infinite reverse backwards;
 }
 
 @media only screen and (min-width: 769px) {
