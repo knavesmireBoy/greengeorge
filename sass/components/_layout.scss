@@ -101,12 +101,23 @@ main {
 }
 
 article > aside {
-    margin: 0 0 2em;
+  margin: 0 0 2em;
   > a {
     display: block;
     img {
       width: 100%;
       display: block;
+    }
+  }
+}
+
+section:nth-child(3) div {
+  @include flexy();
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  article {
+    @include flex(0,0,100%);
+    &:first-child {
     }
   }
 }

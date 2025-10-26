@@ -376,6 +376,23 @@ article > aside > a img {
   display: block;
 }
 
+section:nth-child(3) div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+section:nth-child(3) div article {
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+}
 @media only screen and (min-width: 769px) {
   header nav ul {
     display: -webkit-box;
