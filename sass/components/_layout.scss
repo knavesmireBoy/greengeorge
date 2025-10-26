@@ -111,16 +111,104 @@ article > aside {
   }
 }
 
+@keyframes services {
+  17% {
+    transform: translateX(-0%);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  37% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  57% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  77% {
+    transform: translateX(-300%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  97% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(-500%);
+  }
+}
+
+@keyframes testimonials {
+  30% {
+    transform: translateX(-0%);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  63% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(-200%);
+  }
+  97% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
 section:nth-child(3) div {
   @include flexy();
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
   article {
-    @include flex(0,0,100%);
-    &:first-child {
+    @include flex(0, 0, 100%);
+    //transition: transform 1s 4s;
+    //transform: translateX(-100%);
+    animation: services 28s ease-in 1s 2 normal forwards;
+  }
+}
+
+.testimonials {
+  text-align: center;
+  div {
+    @include flexy();
+    overflow-x: hidden;
+    article {
+      @include flex(0, 0, 100%);
+      @include flexy();
+      flex-direction: column;
+      //transition: transform 1s 4s;
+      //transform: translateX(-100%);
+      animation: testimonials 28s ease-in 1s 2 normal forwards;
+      p {
+        margin: auto;
+      }
     }
   }
 }
+
+section:first-child {
+    aside {
+      @include flexy();
+      overflow-x: hidden;
+      figure {
+        @include flex(0, 0, 100%);
+        @include flexy();
+        flex-direction: column;
+        //transition: transform 1s 4s;
+        //transform: translateX(-100%);
+        animation: testimonials 28s ease-in 1s 2 normal forwards;
+      }
+    }
+  }
 
 @media only screen and (min-width: 769px) {
   header {

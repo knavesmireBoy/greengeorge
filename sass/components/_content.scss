@@ -4,6 +4,11 @@ body {
   line-height: 1.4;
 }
 
+h1,
+h2 {
+  font-family: "Times New Roman", Times, serif;
+}
+
 section {
   padding: 0;
   article {
@@ -15,7 +20,6 @@ section {
     }
     h1,
     h2 {
-      font-family: "Times New Roman", Times, serif;
       color: $main;
       font-size: 2.5em;
       line-height: 1;
@@ -25,20 +29,36 @@ section {
       margin: 1.5em 0;
     }
   }
+  &:first-child article aside {
+    figure {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      height: 12em;
+      &:first-child {
+        background-image: url("../images/10PLTMGGEh8.jpg");
+        background-position: center 60%;
+      }
+      &:nth-child(2){
+        background-image: url("../images/20241104_131502.jpg");
+      }
+    }
+  }
   &:nth-child(2) p:first-child {
     color: $main;
     font-size: 1.3em;
     margin: 0 0 1em;
   }
   &:nth-child(3) {
-    padding: .7em 2em 2em;
+    padding: 0.7em 2em 2em;
     background-color: $main;
     text-align: center;
     h2 {
       color: $bg;
       font-size: 2.3em;
-      font-family: 'Times New Roman', Times, serif;
-      margin: 0 0 .5em;
+      font-family: "Times New Roman", Times, serif;
+      margin: 0 0 0.5em;
     }
     article {
       background-color: $bg;
@@ -59,7 +79,7 @@ section {
         color: $main;
         margin: 0 0 1em;
       }
-      
+
       &:nth-of-type(1) > aside {
         background-image: url("../assets/lawn.jpeg");
         background-position: 0 top;
@@ -83,12 +103,16 @@ section {
     }
   }
   &.testimonials {
+    h2 {
+      font-size: 2em;
+      line-height: 1;
+    }
     color: $main;
     background-image: url("../assets/Speechmarks-green10.png");
     background-color: $bg;
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 0 center;
+    background-size: 60%;
+    background-position: 50% 70%;
     p {
       margin: 0 0 1em;
     }

@@ -101,6 +101,11 @@ body {
   line-height: 1.4;
 }
 
+h1,
+h2 {
+  font-family: "Times New Roman", Times, serif;
+}
+
 section {
   padding: 0;
 }
@@ -112,7 +117,6 @@ section article ul {
 }
 section article h1,
 section article h2 {
-  font-family: "Times New Roman", Times, serif;
   color: rgb(25, 78, 39);
   font-size: 2.5em;
   line-height: 1;
@@ -120,6 +124,20 @@ section article h2 {
 section article h4 {
   font-size: 1.2em;
   margin: 1.5em 0;
+}
+section:first-child article aside figure {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 12em;
+}
+section:first-child article aside figure:first-child {
+  background-image: url("../images/10PLTMGGEh8.jpg");
+  background-position: center 60%;
+}
+section:first-child article aside figure:nth-child(2) {
+  background-image: url("../images/20241104_131502.jpg");
 }
 section:nth-child(2) p:first-child {
   color: rgb(25, 78, 39);
@@ -181,8 +199,12 @@ section.testimonials {
   background-image: url("../assets/Speechmarks-green10.png");
   background-color: rgb(252, 246, 228);
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 0 center;
+  background-size: 60%;
+  background-position: 50% 70%;
+}
+section.testimonials h2 {
+  font-size: 2em;
+  line-height: 1;
 }
 section.testimonials p {
   margin: 0 0 1em;
@@ -376,6 +398,58 @@ article > aside > a img {
   display: block;
 }
 
+@keyframes services {
+  17% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  37% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  57% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  77% {
+    transform: translateX(-300%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  97% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(-500%);
+  }
+}
+@keyframes testimonials {
+  30% {
+    transform: translateX(0%);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  63% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(-200%);
+  }
+  97% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
 section:nth-child(3) div {
   display: -webkit-box;
   display: -moz-box;
@@ -383,8 +457,7 @@ section:nth-child(3) div {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 section:nth-child(3) div article {
   -webkit-box: 0;
@@ -392,7 +465,65 @@ section:nth-child(3) div article {
   -webkit-flex: 0 0 100%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
+  animation: services 28s ease-in 1s 2 normal forwards;
 }
+
+.testimonials {
+  text-align: center;
+}
+.testimonials div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+.testimonials div article {
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  animation: testimonials 28s ease-in 1s 2 normal forwards;
+}
+.testimonials div article p {
+  margin: auto;
+}
+
+section:first-child aside {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+section:first-child aside figure {
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  animation: testimonials 28s ease-in 1s 2 normal forwards;
+}
+
 @media only screen and (min-width: 769px) {
   header nav ul {
     display: -webkit-box;
