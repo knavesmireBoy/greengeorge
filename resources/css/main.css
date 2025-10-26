@@ -138,6 +138,52 @@ section:first-child article aside figure:first-child {
 }
 section:first-child article aside figure:nth-child(2) {
   background-image: url("../images/20241104_131502.jpg");
+  background-position: center 65%;
+}
+section:first-child article aside figure:nth-child(3) {
+  background-image: url("../images/20241114_094758.jpg");
+}
+section:first-child article aside figure:nth-child(4) {
+  background-image: url("../images/IMG_0311.jpg");
+}
+section:first-child article aside figure:nth-child(5) {
+  background-image: url("../images/IMG_0324.jpg");
+}
+section:first-child article aside figure:nth-child(6) {
+  background-image: url("../images/IMG_0388.jpg");
+}
+section:first-child article aside figure:nth-child(7) {
+  background-image: url("../images/IMG_0556.jpg");
+}
+section:first-child article aside figure:nth-child(8) {
+  background-image: url("../images/IMG_0558.jpg");
+}
+section:first-child article aside figure:nth-child(9) {
+  background-image: url("../images/IMG_1395.jpg");
+}
+section:first-child article aside figure:nth-child(10) {
+  background-image: url("../images/IMG_1442.jpg");
+}
+section:first-child article aside figure:nth-child(11) {
+  background-image: url("../images/IMG_1477.jpg");
+}
+section:first-child article aside figure:nth-child(12) {
+  background-image: url("../images/IMG_1478.jpg");
+}
+section:first-child article aside figure:nth-child(13) {
+  background-image: url("../images/IMG_1485.jpg");
+}
+section:first-child article aside figure:nth-child(14) {
+  background-image: url("../images/IMG_1530.jpg");
+}
+section:first-child article aside figure:nth-child(15) {
+  background-image: url("../images/IMG_1531.jpg");
+}
+section:first-child article aside figure:nth-child(16) {
+  background-image: url("../images/IMG_0229.jpg");
+}
+section:first-child article aside figure:nth-child(17) {
+  background-image: url("../images/hedge-1.jpeg");
 }
 section:nth-child(2) p:first-child {
   color: rgb(25, 78, 39);
@@ -430,6 +476,104 @@ article > aside > a img {
     transform: translateX(-500%);
   }
 }
+@keyframes main {
+  5% {
+    transform: translateX(0%);
+  }
+  6% {
+    transform: translateX(-100%);
+  }
+  11% {
+    transform: translateX(-100%);
+  }
+  12% {
+    transform: translateX(-200%);
+  }
+  17% {
+    transform: translateX(-200%);
+  }
+  18% {
+    transform: translateX(-300%);
+  }
+  23% {
+    transform: translateX(-400%);
+  }
+  24% {
+    transform: translateX(-400%);
+  }
+  29% {
+    transform: translateX(-500%);
+  }
+  30% {
+    transform: translateX(-500%);
+  }
+  35% {
+    transform: translateX(-600%);
+  }
+  36% {
+    transform: translateX(-600%);
+  }
+  31% {
+    transform: translateX(-700%);
+  }
+  42% {
+    transform: translateX(-700%);
+  }
+  47% {
+    transform: translateX(-800%);
+  }
+  48% {
+    transform: translateX(-800%);
+  }
+  53% {
+    transform: translateX(-900%);
+  }
+  54% {
+    transform: translateX(-900%);
+  }
+  59% {
+    transform: translateX(-1000%);
+  }
+  60% {
+    transform: translateX(-1000%);
+  }
+  65% {
+    transform: translateX(-1100%);
+  }
+  66% {
+    transform: translateX(-1100%);
+  }
+  71% {
+    transform: translateX(-1200%);
+  }
+  72% {
+    transform: translateX(-1200%);
+  }
+  77% {
+    transform: translateX(-1300%);
+  }
+  78% {
+    transform: translateX(-1300%);
+  }
+  83% {
+    transform: translateX(-1400%);
+  }
+  84% {
+    transform: translateX(-1400%);
+  }
+  89% {
+    transform: translateX(-1500%);
+  }
+  90% {
+    transform: translateX(-1500%);
+  }
+  99% {
+    transform: translateX(-1600%);
+  }
+  100% {
+    transform: translateX(-1600%);
+  }
+}
 @keyframes testimonials {
   30% {
     transform: translateX(0%);
@@ -507,6 +651,7 @@ section:first-child aside {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
+  border: solid 1px;
 }
 section:first-child aside figure {
   -webkit-box: 0;
@@ -521,7 +666,7 @@ section:first-child aside figure {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  animation: testimonials 28s ease-in 1s 2 normal forwards;
+  animation: main 60s ease-in 1s 2 normal forwards;
 }
 
 @media only screen and (min-width: 769px) {

@@ -144,6 +144,107 @@ article > aside {
   }
 }
 
+@keyframes main {
+    5% {
+      transform: translateX(-0%);
+    }
+    6% {
+      transform: translateX(-100%);
+    }
+    11% {
+      transform: translateX(-100%);
+    }
+    12% {
+      transform: translateX(-200%);
+    }
+    17% {
+      transform: translateX(-200%);
+    }
+    18% {
+      transform: translateX(-300%);
+    }
+    23% {
+      transform: translateX(-400%);
+    }
+    24% {
+      transform: translateX(-400%);
+    }
+    29% {
+        transform: translateX(-500%);
+      }
+    30% {
+      transform: translateX(-500%);
+    }
+    35% {
+        transform: translateX(-600%);
+      }
+    36% {
+      transform: translateX(-600%);
+    }
+    31% {
+        transform: translateX(-700%);
+      }
+    42% {
+      transform: translateX(-700%);
+    }
+    47% {
+        transform: translateX(-800%);
+      }
+    48% {
+      transform: translateX(-800%);
+    }
+    53% {
+        transform: translateX(-900%);
+      }
+    54% {
+      transform: translateX(-900%);
+    }
+    59% {
+        transform: translateX(-1000%);
+      }
+    60% {
+      transform: translateX(-1000%);
+    }
+    65% {
+        transform: translateX(-1100%);
+      }
+    66% {
+      transform: translateX(-1100%);
+    }
+    71% {
+        transform: translateX(-1200%);
+      }
+    72% {
+      transform: translateX(-1200%);
+    }
+    77% {
+        transform: translateX(-1300%);
+      }
+    78% {
+      transform: translateX(-1300%);
+    }
+    83% {
+        transform: translateX(-1400%);
+      }
+    84% {
+      transform: translateX(-1400%);
+    }
+    89% {
+        transform: translateX(-1500%);
+      }
+    90% {
+      transform: translateX(-1500%);
+    }
+    99% {
+        transform: translateX(-1600%);
+      }
+    100% {
+      transform: translateX(-1600%);
+    }
+  }
+
+
+
 @keyframes testimonials {
   30% {
     transform: translateX(-0%);
@@ -199,13 +300,14 @@ section:first-child {
     aside {
       @include flexy();
       overflow-x: hidden;
+      border: solid 1px;
       figure {
         @include flex(0, 0, 100%);
         @include flexy();
         flex-direction: column;
         //transition: transform 1s 4s;
         //transform: translateX(-100%);
-        animation: testimonials 28s ease-in 1s 2 normal forwards;
+        animation: main 60s ease-in 1s 2 normal forwards;
       }
     }
   }
