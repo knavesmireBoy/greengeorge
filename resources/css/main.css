@@ -133,62 +133,60 @@ section:first-child article aside figure {
   height: 12em;
 }
 section:first-child article aside figure:first-child {
-  background-image: url("../images/10PLTMGGEh8.jpg");
-  background-position: center 60%;
+  background-image: url("../images/IMG_1477.jpg");
 }
 section:first-child article aside figure:nth-child(2) {
-  background-image: url("../images/20241104_131502.jpg");
-  background-position: center 65%;
+  background-image: url("../images/IMG_0556.jpg");
 }
 section:first-child article aside figure:nth-child(3) {
-  background-image: url("../images/20241114_094758.jpg");
+  background-image: url("../images/IMG_1478.jpg");
 }
 section:first-child article aside figure:nth-child(4) {
-  background-image: url("../images/IMG_0311.jpg");
+  background-image: url("../images/IMG_0229.jpg");
 }
 section:first-child article aside figure:nth-child(5) {
-  background-image: url("../images/IMG_0324.jpg");
+  background-image: url("../images/IMG_1531.jpg");
   background-position: center 55%;
 }
 section:first-child article aside figure:nth-child(6) {
-  background-image: url("../images/IMG_0388.jpg");
+  background-image: url("../images/IMG_1530.jpg");
 }
 section:first-child article aside figure:nth-child(7) {
-  background-image: url("../images/IMG_0556.jpg");
+  background-image: url("../images/IMG_1485.jpg");
 }
 section:first-child article aside figure:nth-child(8) {
-  background-image: url("../images/IMG_0558.jpg");
+  background-image: url("../images/IMG_1478.jpg");
 }
 section:first-child article aside figure:nth-child(9) {
-  background-image: url("../images/IMG_1395.jpg");
-  background-position: center 80%;
-}
-section:first-child article aside figure:nth-child(10) {
   background-image: url("../images/IMG_1442.jpg");
   background-position: center 70%;
 }
+section:first-child article aside figure:nth-child(10) {
+  background-image: url("../images/IMG_1395.jpg");
+  background-position: center 80%;
+}
 section:first-child article aside figure:nth-child(11) {
-  background-image: url("../images/IMG_1477.jpg");
+  background-image: url("../images/IMG_0558.jpg");
 }
 section:first-child article aside figure:nth-child(12) {
-  background-image: url("../images/IMG_1478.jpg");
+  background-image: url("../images/IMG_0388.jpg");
 }
 section:first-child article aside figure:nth-child(13) {
-  background-image: url("../images/IMG_1485.jpg");
-  background-position: center 60%;
+  background-image: url("../images/IMG_0324.jpg");
+  background-position: center 55%;
 }
 section:first-child article aside figure:nth-child(14) {
-  background-image: url("../images/IMG_1530.jpg");
+  background-image: url("../images/IMG_0311.jpg");
 }
 section:first-child article aside figure:nth-child(15) {
-  background-image: url("../images/IMG_1531.jpg");
-  background-position: center 30%;
+  background-image: url("../images/20241114_094758.jpg");
 }
 section:first-child article aside figure:nth-child(16) {
-  background-image: url("../images/IMG_0229.jpg");
+  background-image: url("../images/20241104_131502.jpg");
+  background-position: center 65%;
 }
 section:first-child article aside figure:nth-child(17) {
-  background-image: url("../images/hedge-1.jpeg");
+  background-image: url("../images/10PLTMGGEh8.jpg");
   background-position: center 60%;
 }
 section:nth-child(2) p:first-child {
@@ -675,7 +673,7 @@ section:first-child aside figure {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  animation: mainy 90s ease-in 1s infinite reverse backwards;
+  animation: mainy 30s ease-in 1s infinite reverse backwards;
 }
 
 @media only screen and (min-width: 769px) {
