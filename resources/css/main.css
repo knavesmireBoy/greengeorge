@@ -153,6 +153,7 @@ section:first-child article aside figure:nth-child(6) {
 }
 section:first-child article aside figure:nth-child(7) {
   background-image: url("../images/IMG_1485.jpg");
+  background-position: center 60%;
 }
 section:first-child article aside figure:nth-child(8) {
   background-image: url("../images/IMG_1478.jpg");
@@ -180,6 +181,7 @@ section:first-child article aside figure:nth-child(14) {
 }
 section:first-child article aside figure:nth-child(15) {
   background-image: url("../images/20241114_094758.jpg");
+  background-position: center 60%;
 }
 section:first-child article aside figure:nth-child(16) {
   background-image: url("../images/20241104_131502.jpg");
@@ -334,7 +336,9 @@ header h1 {
 header > div {
   width: 120px;
   height: 126.7px;
-  border: solid 1px rgb(25, 78, 39);
+}
+header > div svg path {
+  fill: hsl(136deg, 51%, 20%) !important;
 }
 
 section {
@@ -480,7 +484,7 @@ article > aside > a img {
     transform: translateX(-500%);
   }
 }
-@keyframes mainy {
+@keyframes main {
   5% {
     transform: translateX(0%);
   }
@@ -673,7 +677,7 @@ section:first-child aside figure {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  animation: mainy 30s ease-in 1s infinite reverse backwards;
+  animation: main 30s ease-in-out 1s infinite reverse backwards;
 }
 
 @media only screen and (min-width: 769px) {
