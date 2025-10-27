@@ -240,3 +240,16 @@ main > footer {
     }
   }
 }
+body > div > footer {
+  ul {
+    font-size: 0.7em;
+    a:link,
+    a:visited {
+      color: $bg;
+    }
+    a:hover,
+    a:active {
+      color: white;
+    }
+  }
+}

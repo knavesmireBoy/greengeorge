@@ -348,6 +348,18 @@ main > footer nav a:active {
   color: white;
 }
 
+body > div > footer ul {
+  font-size: 0.7em;
+}
+body > div > footer ul a:link,
+body > div > footer ul a:visited {
+  color: rgb(252, 246, 228);
+}
+body > div > footer ul a:hover,
+body > div > footer ul a:active {
+  color: white;
+}
+
 header {
   padding: 1rem;
   display: -webkit-box;
@@ -873,6 +885,22 @@ section:first-child aside figure {
 #about .testimonials h2 {
   font-size: 3.6em;
   margin: 0;
+}
+
+#privacy main section article h3 {
+  color: rgb(25, 78, 39);
+}
+#privacy main section article p a:link,
+#privacy main section article p a:visited {
+  color: rgb(204, 51, 102);
+}
+#privacy main section article ul a:hover, #privacy main section article a:active {
+  color: rgb(204, 51, 102);
+}
+#privacy main > h1 {
+  margin: 0 0 0 0.5em;
+  font-size: 2em;
+  color: rgb(25, 78, 39);
 }
 
 /*# sourceMappingURL=main.css.map */
