@@ -28,3 +28,42 @@
     -ms-flex: $fg $fs $fb;
     flex: $fg $fs $fb;
   }
+
+  @mixin hide($top: auto) {
+    position: absolute;
+    left: -9999px;
+    top: $top;
+  }
+  
+  @mixin show($pos: relative, $top: 0) {
+    position: $pos;
+    left: 0;
+    top: $top;
+  }
+
+  /* Mixin to prefix a property
+/// @author Kitty Giraudel
+/// @param {String} $property - Property name
+/// @param {*} $value - Property value
+/// @param {List} $prefixes (()) - List of prefixes to print
+/// */
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+//EXAMPLE USAGE
+/*.selector {
+  @include prefix(transform, rotate(45deg), webkit ms);
+}
+  */
+/*
+https://www.sitepoint.com/building-linear-gradient-mixin-sass/#buildingthemixin
+Test if `$value` is a valid direction
+@param {*} $value - Value to test
+@return {Bool}
+*/
+  

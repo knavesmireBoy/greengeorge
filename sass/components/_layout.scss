@@ -13,23 +13,78 @@ header {
   > div {
     width: 120px;
     height: 126.7px;
-    svg path{
-        fill: hsl(136, 51%, 20%) !important;
+    svg path {
+      fill: hsl(136, 51%, 20%) !important;
     }
+  }
+  input {
+    display: none;
+  }
+  nav {
+    ul {
+      @include hide;
+      margin: 2em 0 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease-out;
+      li a {
+        padding: 0.8em 0.4em;
+        display: block;
+        color: hsl(0, 0%, 33%);
+        &:hover {
+          color: white;
+          background-color: hsl(104, 96%, 9%) !important;
+        }
+      }
+    }
+  }
+  label {
+    position: absolute;
+    top: 1em;
+    right: 2.2em;
+    width: 2em;
+    height: 2em;
+    text-indent: -10em;
+    overflow: hidden;
+    background-image: url("../assets/menu.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  input:checked ~ nav ul {
+    position: absolute;
+    z-index: 1;
+    left: calc(100% - 5.5em);
+    background-color: rgba(255,255,255, .8);
+    box-shadow: 1px 1px 4px $main;
+    max-height: 11.9em;
+  }
+}
+
+@for $i from 1 through length($navlist) {
+  $l: nth($navlist, $i);
+  #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
+  #{$l} header > nav > ul > li:nth-child(#{$i}) > a:visited {
+    color: white;
+    background-color: hsl(0, 0%, 33%);
   }
 }
 
 section {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   padding: 1rem;
   article {
     button {
-      border-radius: 1px;
+      border-radius: 4px;
       border-width: 0;
-      padding: 1em;
+      padding: .7em 1.2em;
       margin: 1em 0;
       background-color: $main;
       color: white;
+      a {
+      text-transform:uppercase;
+      font-weight: bold;
+      }
     }
   }
   &:first-child {
@@ -306,7 +361,7 @@ section:first-child {
       @include flex(0, 0, 100%);
       @include flexy();
       flex-direction: column;
-      animation: main 30s ease-in-out 1s infinite reverse backwards;
+      animation: main 90s ease-in-out 1s infinite reverse backwards;
     }
   }
 }

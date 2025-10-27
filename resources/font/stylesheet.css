@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Crimson';
+    src: url('Crimson-Bold.woff2') format('woff2'),
+        url('Crimson-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+331.653 148.82 178.584 297.641
+
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="178.584px" height="297.641px" viewBox="331.653 148.82 178.584 297.641"
+	 enable-background="new 331.653 148.82 178.584 297.641" xml:space="preserve">
+<rect x="361.417" y="178.584" display="none" fill="#FF0026" width="119.056" height="223.23"/>
+<g>
+	<g>
+		<path fill="#FFFFFF" d="M495.355,148.82h-148.82c-8.929,0-14.882,5.953-14.882,14.882v267.877c0,8.929,5.953,14.882,14.882,14.882
+			h148.82c8.929,0,14.882-5.953,14.882-14.882V163.702C510.237,154.773,504.283,148.82,495.355,148.82z M435.826,431.579h-29.764
+			v-14.883h29.764V431.579z M480.473,401.814H361.417v-223.23h119.056V401.814z"/>
+	</g>
+</g>
+</svg>
+

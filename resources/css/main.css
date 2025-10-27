@@ -96,14 +96,40 @@ ol, ul, dl {
   list-style: none;
 }
 
+/* Mixin to prefix a property
+/// @author Kitty Giraudel
+/// @param {String} $property - Property name
+/// @param {*} $value - Property value
+/// @param {List} $prefixes (()) - List of prefixes to print
+/// */
+/*.selector {
+  @include prefix(transform, rotate(45deg), webkit ms);
+}
+  */
+/*
+https://www.sitepoint.com/building-linear-gradient-mixin-sass/#buildingthemixin
+Test if `$value` is a valid direction
+@param {*} $value - Value to test
+@return {Bool}
+*/
+@font-face {
+  font-family: "Crimson";
+  src: url("../font/Crimson-Bold.woff2") format("woff2"), url("../font/Crimson-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   line-height: 1.4;
 }
 
 h1,
 h2 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Crimson", "Times New Roman", Times, serif;
 }
 
 section {
@@ -122,8 +148,8 @@ section article h2 {
   line-height: 1;
 }
 section article h4 {
-  font-size: 1.2em;
-  margin: 1.5em 0;
+  font-size: 1.25em;
+  margin: 1em 0;
 }
 section:first-child article aside figure {
   background-position: center;
@@ -204,7 +230,6 @@ section:nth-child(3) {
 section:nth-child(3) h2 {
   color: rgb(252, 246, 228);
   font-size: 2.3em;
-  font-family: "Times New Roman", Times, serif;
   margin: 0 0 0.5em;
 }
 section:nth-child(3) article {
@@ -273,7 +298,8 @@ main > footer section:first-child {
   font-size: 0.8em;
 }
 main > footer section:first-child p:before {
-  width: 25px;
+  width: 1.8em;
+  height: 1.8em;
   overflow: hidden;
   display: block;
   margin-right: 5px;
@@ -289,7 +315,8 @@ main > footer section:first-child p:nth-child(2) {
   flex: 1 1 100%;
 }
 main > footer section:first-child p:nth-child(2):before {
-  content: url("../assets/mobile.svg");
+  content: url("../font/mobile.svg");
+  background-color: green;
 }
 main > footer section:first-child p:nth-child(3):before {
   content: url("../assets/whatsapp.svg");
@@ -340,18 +367,88 @@ header > div {
 header > div svg path {
   fill: hsl(136deg, 51%, 20%) !important;
 }
+header input {
+  display: none;
+}
+header nav ul {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  margin: 2em 0 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+header nav ul li a {
+  padding: 0.8em 0.4em;
+  display: block;
+  color: hsl(0deg, 0%, 33%);
+}
+header nav ul li a:hover {
+  color: white;
+  background-color: hsl(104deg, 96%, 9%) !important;
+}
+header label {
+  position: absolute;
+  top: 1em;
+  right: 2.2em;
+  width: 2em;
+  height: 2em;
+  text-indent: -10em;
+  overflow: hidden;
+  background-image: url("../assets/menu.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+header input:checked ~ nav ul {
+  position: absolute;
+  z-index: 1;
+  left: calc(100% - 5.5em);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 1px 1px 4px rgb(25, 78, 39);
+  max-height: 11.9em;
+}
+
+#home header > nav > ul > li:nth-child(1) > a:link,
+#home header > nav > ul > li:nth-child(1) > a:visited {
+  color: white;
+  background-color: hsl(0deg, 0%, 33%);
+}
+
+#about header > nav > ul > li:nth-child(2) > a:link,
+#about header > nav > ul > li:nth-child(2) > a:visited {
+  color: white;
+  background-color: hsl(0deg, 0%, 33%);
+}
+
+#gallery header > nav > ul > li:nth-child(3) > a:link,
+#gallery header > nav > ul > li:nth-child(3) > a:visited {
+  color: white;
+  background-color: hsl(0deg, 0%, 33%);
+}
+
+#contact header > nav > ul > li:nth-child(4) > a:link,
+#contact header > nav > ul > li:nth-child(4) > a:visited {
+  color: white;
+  background-color: hsl(0deg, 0%, 33%);
+}
 
 section {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   padding: 1rem;
 }
 section article button {
-  border-radius: 1px;
+  border-radius: 4px;
   border-width: 0;
-  padding: 1em;
+  padding: 0.7em 1.2em;
   margin: 1em 0;
   background-color: rgb(25, 78, 39);
   color: white;
+}
+section article button a {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 section:first-child {
   background-color: rgb(252, 246, 228);
@@ -677,7 +774,7 @@ section:first-child aside figure {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  animation: main 30s ease-in-out 1s infinite reverse backwards;
+  animation: main 90s ease-in-out 1s infinite reverse backwards;
 }
 
 @media only screen and (min-width: 769px) {

@@ -1,12 +1,25 @@
+@font-face {
+  font-family: "Crimson";
+  src: url("../font/Crimson-Bold.woff2") format("woff2"),
+    url("../font/Crimson-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+
+}
+
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   line-height: 1.4;
 }
 
 h1,
 h2 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Crimson", "Times New Roman", Times, serif;
 }
 
 section {
@@ -25,8 +38,8 @@ section {
       line-height: 1;
     }
     h4 {
-      font-size: 1.2em;
-      margin: 1.5em 0;
+      font-size: 1.25em;
+      margin: 1em 0;
     }
   }
   &:first-child article aside {
@@ -39,59 +52,59 @@ section {
       &:first-child {
         background-image: url("../images/IMG_1477.jpg");
       }
-      &:nth-child(2){
+      &:nth-child(2) {
         background-image: url("../images/IMG_0556.jpg");
       }
-      &:nth-child(3){
+      &:nth-child(3) {
         background-image: url("../images/IMG_1478.jpg");
       }
-      &:nth-child(4){
+      &:nth-child(4) {
         background-image: url("../images/IMG_0229.jpg");
       }
-      &:nth-child(5){
+      &:nth-child(5) {
         background-image: url("../images/IMG_1531.jpg");
         background-position: center 55%;
       }
-      &:nth-child(6){
+      &:nth-child(6) {
         background-image: url("../images/IMG_1530.jpg");
       }
-      &:nth-child(7){
+      &:nth-child(7) {
         background-image: url("../images/IMG_1485.jpg");
         background-position: center 60%;
       }
-      &:nth-child(8){
+      &:nth-child(8) {
         background-image: url("../images/IMG_1478.jpg");
       }
-      &:nth-child(9){
+      &:nth-child(9) {
         background-image: url("../images/IMG_1442.jpg");
         background-position: center 70%;
       }
-      &:nth-child(10){
+      &:nth-child(10) {
         background-image: url("../images/IMG_1395.jpg");
         background-position: center 80%;
       }
-      &:nth-child(11){
+      &:nth-child(11) {
         background-image: url("../images/IMG_0558.jpg");
       }
-      &:nth-child(12){
+      &:nth-child(12) {
         background-image: url("../images/IMG_0388.jpg");
       }
-      &:nth-child(13){
+      &:nth-child(13) {
         background-image: url("../images/IMG_0324.jpg");
         background-position: center 55%;
       }
-      &:nth-child(14){
+      &:nth-child(14) {
         background-image: url("../images/IMG_0311.jpg");
       }
-      &:nth-child(15){
+      &:nth-child(15) {
         background-image: url("../images/20241114_094758.jpg");
         background-position: center 60%;
       }
-      &:nth-child(16){
+      &:nth-child(16) {
         background-image: url("../images/20241104_131502.jpg");
         background-position: center 65%;
       }
-      &:nth-child(17){
+      &:nth-child(17) {
         background-image: url("../images/10PLTMGGEh8.jpg");
         background-position: center 60%;
       }
@@ -109,7 +122,6 @@ section {
     h2 {
       color: $bg;
       font-size: 2.3em;
-      font-family: "Times New Roman", Times, serif;
       margin: 0 0 0.5em;
     }
     article {
@@ -180,7 +192,8 @@ main > footer {
     padding: 0;
     font-size: 0.8em;
     p:before {
-      width: 25px;
+      width: 1.8em;
+      height: 1.8em;
       overflow: hidden;
       display: block;
       margin-right: 5px;
@@ -191,12 +204,14 @@ main > footer {
     p:nth-child(2) {
       @include flex(1, 1, 100%);
       &:before {
-        content: url("../assets/mobile.svg");
+        content: url("../font/mobile.svg");
+        background-color: green;
       }
     }
     p:nth-child(3) {
       &:before {
         content: url("../assets/whatsapp.svg");
+       
       }
     }
     p:nth-child(4) {
