@@ -1,0 +1,42 @@
+#about {
+    nav.eco {
+        ul {
+            li {
+                position: relative;
+                &:nth-child(1){
+                    text-align: right;
+                    left: 28%;
+                }
+                &:nth-child(2){
+                }
+                &:nth-child(3){
+                    right: 30%;
+                }
+            }
+        }
+    }
+  section:first-of-type {
+    font-size: 1.125em;
+    aside {
+      @include hide;
+    }
+    article {
+      h2 {
+        font-size: 4em;
+      }
+      p:first-of-type {
+        color: $main;
+        font-size: 1.33em;
+        margin: 0 0 1em;
+      }
+    }
+  }
+  .testimonials {
+    font-size: 1.05em;
+
+    h2 {
+      font-size: 3.6em;
+      margin: 0;
+    }
+  }
+}

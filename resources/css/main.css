@@ -222,25 +222,25 @@ section:nth-child(2) p:first-child {
   font-size: 1.3em;
   margin: 0 0 1em;
 }
-section:nth-child(3) {
+section.services {
   padding: 0.7em 2em 2em;
   background-color: rgb(25, 78, 39);
   text-align: center;
 }
-section:nth-child(3) h2 {
+section.services h2 {
   color: rgb(252, 246, 228);
   font-size: 2.3em;
   margin: 0 0 0.5em;
 }
-section:nth-child(3) article {
+section.services article {
   background-color: rgb(252, 246, 228);
   margin: 0;
   padding: 0 0 4em;
 }
-section:nth-child(3) article p {
+section.services article p {
   padding: 0 4em;
 }
-section:nth-child(3) article > aside {
+section.services article > aside {
   width: 100%;
   height: 12em;
   background-color: pink;
@@ -248,27 +248,27 @@ section:nth-child(3) article > aside {
   background-size: cover;
   background-position: center;
 }
-section:nth-child(3) article h3 {
+section.services article h3 {
   color: rgb(25, 78, 39);
   margin: 0 0 1em;
 }
-section:nth-child(3) article:nth-of-type(1) > aside {
+section.services article:nth-of-type(1) > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: 0 top;
 }
-section:nth-child(3) article:nth-of-type(2) > aside {
+section.services article:nth-of-type(2) > aside {
   background-image: url("../images/IMG_1478.jpg");
 }
-section:nth-child(3) article:nth-of-type(3) > aside {
+section.services article:nth-of-type(3) > aside {
   background-image: url("../assets/weeding.jpeg");
 }
-section:nth-child(3) article:nth-of-type(4) > aside {
+section.services article:nth-of-type(4) > aside {
   background-image: url("../assets/pruning.jpeg");
 }
-section:nth-child(3) article:nth-of-type(5) > aside {
+section.services article:nth-of-type(5) > aside {
   background-image: url("../assets/hedge.jpeg");
 }
-section:nth-child(3) article:nth-of-type(6) > aside {
+section.services article:nth-of-type(6) > aside {
   background-image: url("../assets/tidy.jpeg");
 }
 section.testimonials {
@@ -824,6 +824,39 @@ section:first-child aside figure {
     -webkit-justify-content: center;
     justify-content: center;
   }
+}
+#about nav.eco ul li {
+  position: relative;
+}
+#about nav.eco ul li:nth-child(1) {
+  text-align: right;
+  left: 28%;
+}
+#about nav.eco ul li:nth-child(3) {
+  right: 30%;
+}
+#about section:first-of-type {
+  font-size: 1.125em;
+}
+#about section:first-of-type aside {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+#about section:first-of-type article h2 {
+  font-size: 4em;
+}
+#about section:first-of-type article p:first-of-type {
+  color: rgb(25, 78, 39);
+  font-size: 1.33em;
+  margin: 0 0 1em;
+}
+#about .testimonials {
+  font-size: 1.05em;
+}
+#about .testimonials h2 {
+  font-size: 3.6em;
+  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
