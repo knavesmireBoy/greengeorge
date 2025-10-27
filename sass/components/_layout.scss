@@ -105,7 +105,8 @@ section {
     line-height: 2;
     li {
       display: inline;
-        padding: 0 1.75em;
+      padding: .15em 1.9em;
+      background-color: aquamarine;
       &:first-child {
         background: url("../assets/smiley.jpg") no-repeat 0 0/contain;
       }
@@ -124,8 +125,6 @@ section {
 }
 main > footer {
   nav {
-    font-size: 0.6em;
-    color: beige;
     ul li {
       display: inline-block;
       margin-right: 1em;
@@ -137,7 +136,8 @@ main > footer {
     margin: 0;
     padding: 0.5em 0;
     div {
-      width: 50px;
+      @include flex(1,1,5em);
+      height: 2em;
       margin-right: 0.5em;
       border-radius: 4px;
       overflow: hidden;
@@ -206,7 +206,7 @@ article > aside {
     transform: translateX(-300%);
   }
   77% {
-    transform: translateX(-300%);
+    transform: translateX(-301%);
   }
   80% {
     transform: translateX(-400%);
@@ -349,7 +349,7 @@ section:nth-child(3) div {
     @include flex(0, 0, 100%);
     //transition: transform 1s 4s;
     //transform: translateX(-100%);
-    animation: services 28s ease-in 1s 2 normal forwards;
+    animation: services 28s ease-in 1s infinite normal forwards;
   }
 }
 
@@ -358,11 +358,12 @@ section:nth-child(3) div {
   div {
     @include flexy();
     overflow-x: hidden;
+    position: relative;
     article {
       @include flex(0, 0, 100%);
       @include flexy();
       flex-direction: column;
-      animation: testimonials 28s ease-in 1s 2 normal forwards;
+      animation: testimonials 28s ease-in 1s infinite normal forwards;
       p {
         margin: auto;
       }

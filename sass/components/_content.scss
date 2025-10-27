@@ -5,7 +5,6 @@
   font-weight: bold;
   font-style: normal;
   font-display: swap;
-
 }
 
 body {
@@ -192,6 +191,8 @@ main > footer {
     padding: 0;
     font-size: 0.8em;
     p:before {
+      width: 4vw;
+      height: 4vw;
       width: 1.8em;
       height: 1.8em;
       overflow: hidden;
@@ -204,14 +205,13 @@ main > footer {
     p:nth-child(2) {
       @include flex(1, 1, 100%);
       &:before {
-        content: url("../font/mobile.svg");
-        background-color: green;
+        content: url("../assets/mobile_tran.svg");
+        background-color: $main;
       }
     }
     p:nth-child(3) {
       &:before {
         content: url("../assets/whatsapp.svg");
-       
       }
     }
     p:nth-child(4) {
@@ -226,6 +226,17 @@ main > footer {
       &:before {
         content: url("../assets/linkedin.svg");
       }
+    }
+  }
+  nav {
+    font-size: 0.7em;
+    a:link,
+    a:visited {
+      color: $bg;
+    }
+    a:hover,
+    a:active {
+      color: white;
     }
   }
 }

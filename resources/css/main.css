@@ -298,6 +298,8 @@ main > footer section:first-child {
   font-size: 0.8em;
 }
 main > footer section:first-child p:before {
+  width: 4vw;
+  height: 4vw;
   width: 1.8em;
   height: 1.8em;
   overflow: hidden;
@@ -315,8 +317,8 @@ main > footer section:first-child p:nth-child(2) {
   flex: 1 1 100%;
 }
 main > footer section:first-child p:nth-child(2):before {
-  content: url("../font/mobile.svg");
-  background-color: green;
+  content: url("../assets/mobile_tran.svg");
+  background-color: rgb(25, 78, 39);
 }
 main > footer section:first-child p:nth-child(3):before {
   content: url("../assets/whatsapp.svg");
@@ -333,6 +335,17 @@ main > footer section:first-child p:nth-child(5) {
 }
 main > footer section:first-child p:nth-child(5):before {
   content: url("../assets/linkedin.svg");
+}
+main > footer nav {
+  font-size: 0.7em;
+}
+main > footer nav a:link,
+main > footer nav a:visited {
+  color: rgb(252, 246, 228);
+}
+main > footer nav a:hover,
+main > footer nav a:active {
+  color: white;
 }
 
 header {
@@ -469,7 +482,8 @@ section:first-child {
 }
 .eco ul li {
   display: inline;
-  padding: 0 1.75em;
+  padding: 0.15em 1.9em;
+  background-color: aquamarine;
 }
 .eco ul li:first-child {
   background: url("../assets/smiley.jpg") no-repeat 0 0/contain;
@@ -485,10 +499,6 @@ section:first-child {
   background: url("../assets/eco.jpg") no-repeat 0 0/contain;
 }
 
-main > footer nav {
-  font-size: 0.6em;
-  color: beige;
-}
 main > footer nav ul li {
   display: inline-block;
   margin-right: 1em;
@@ -505,7 +515,12 @@ main > footer .payment {
   padding: 0.5em 0;
 }
 main > footer .payment div {
-  width: 50px;
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 5em;
+  -ms-flex: 1 1 5em;
+  flex: 1 1 5em;
+  height: 2em;
   margin-right: 0.5em;
   border-radius: 4px;
   overflow: hidden;
@@ -588,7 +603,7 @@ article > aside > a img {
     transform: translateX(-300%);
   }
   77% {
-    transform: translateX(-300%);
+    transform: translateX(-301%);
   }
   80% {
     transform: translateX(-400%);
@@ -736,7 +751,7 @@ section:nth-child(3) div article {
   -webkit-flex: 0 0 100%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  animation: services 28s ease-in 1s 2 normal forwards;
+  animation: services 28s ease-in 1s infinite normal forwards;
 }
 
 .testimonials {
@@ -750,6 +765,7 @@ section:nth-child(3) div article {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
+  position: relative;
 }
 .testimonials div article {
   -webkit-box: 0;
@@ -764,7 +780,7 @@ section:nth-child(3) div article {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  animation: testimonials 28s ease-in 1s 2 normal forwards;
+  animation: testimonials 28s ease-in 1s infinite normal forwards;
 }
 .testimonials div article p {
   margin: auto;
