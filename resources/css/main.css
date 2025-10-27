@@ -144,7 +144,7 @@ section article ul {
 section article h1,
 section article h2 {
   color: rgb(25, 78, 39);
-  font-size: 2.5em;
+  font-size: 2.6em;
   line-height: 1;
 }
 section article h4 {
@@ -156,7 +156,7 @@ section:first-child article aside figure {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 12em;
+  height: 10.5em;
 }
 section:first-child article aside figure:first-child {
   background-image: url("../images/IMG_1477.jpg");
@@ -380,7 +380,7 @@ header nav ul {
   transition: max-height 0.5s ease-out;
 }
 header nav ul li a {
-  padding: 0.8em 0.4em;
+  padding: 0.8em 0.5em 0.8em 1em;
   display: block;
   color: hsl(0deg, 0%, 33%);
 }
@@ -404,7 +404,7 @@ header label {
 header input:checked ~ nav ul {
   position: absolute;
   z-index: 1;
-  left: calc(100% - 5.5em);
+  left: calc(100% - 6em);
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 1px 1px 4px rgb(25, 78, 39);
   max-height: 11.9em;
@@ -464,6 +464,25 @@ section:first-child {
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow: hidden;
+  line-height: 2;
+}
+.eco ul li {
+  display: inline;
+  padding: 0 1.75em;
+}
+.eco ul li:first-child {
+  background: url("../assets/smiley.jpg") no-repeat 0 0/contain;
+}
+.eco ul li:nth-child(2) {
+  overflow: hidden;
+  height: 0;
+  padding: 1.35em 0 0 0;
+  display: block;
+  background: url("../assets/rhs.svg") no-repeat center/contain;
+}
+.eco ul li:last-child {
+  background: url("../assets/eco.jpg") no-repeat 0 0/contain;
 }
 
 main > footer nav {
@@ -539,7 +558,7 @@ main + footer ul {
 }
 
 article > aside {
-  margin: 0 0 2em;
+  margin: 0 0 1.2em;
 }
 article > aside > a {
   display: block;
