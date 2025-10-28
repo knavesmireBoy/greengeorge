@@ -166,6 +166,8 @@ section {
     }
   }
   &.testimonials {
+    font-size: .875em;
+    line-height: 1.6;
     h2 {
       font-size: 2em;
       line-height: 1;
@@ -174,10 +176,11 @@ section {
     background-image: url("../assets/Speechmarks-green10.png");
     background-color: $bg;
     background-repeat: no-repeat;
-    background-size: 60%;
-    background-position: 50% 70%;
+    background-size: 90%;
+    background-position: center;
     p {
       margin: 0 0 1em;
+      font-style: italic;
     }
   }
 }

@@ -1,0 +1,30 @@
+#gallery {
+  section:first-of-type > div {
+    @include flexy(wrap);
+    gap: 0.75em;
+    a {
+      @include flex(1, 1, 30%);
+      margin: auto;
+      display: block;
+      border: solid 1px;
+      filter: brightness(1);
+      transition: filter 0.6s ease-in 0.1s;
+      // padding: 4em;
+      @include prefix(
+        animation,
+        gallery 0.6s ease-in 0.1s 1 normal forwards,
+        o moz webkit
+      );
+      img {
+        display: block;
+        width: 100%;
+      }
+      &:hover {
+        filter: brightness(0.3);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+}

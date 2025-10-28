@@ -1,0 +1,176 @@
+@keyframes services {
+  17% {
+    transform: translateX(-0%);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  37% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  57% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  77% {
+    transform: translateX(-301%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  97% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(-500%);
+  }
+}
+
+@keyframes main {
+  5% {
+    transform: translateX(-0%);
+  }
+  6% {
+    transform: translateX(-100%);
+  }
+  11% {
+    transform: translateX(-100%);
+  }
+  12% {
+    transform: translateX(-200%);
+  }
+  17% {
+    transform: translateX(-200%);
+  }
+  18% {
+    transform: translateX(-300%);
+  }
+  23% {
+    transform: translateX(-300%);
+  }
+  24% {
+    transform: translateX(-400%);
+  }
+  29% {
+    transform: translateX(-400%);
+  }
+  30% {
+    transform: translateX(-500%);
+  }
+  35% {
+    transform: translateX(-500%);
+  }
+  36% {
+    transform: translateX(-600%);
+  }
+  41% {
+    transform: translateX(-600%);
+  }
+  42% {
+    transform: translateX(-700%);
+  }
+  47% {
+    transform: translateX(-700%);
+  }
+  48% {
+    transform: translateX(-800%);
+  }
+  53% {
+    transform: translateX(-800%);
+  }
+  54% {
+    transform: translateX(-900%);
+  }
+  59% {
+    transform: translateX(-900%);
+  }
+  60% {
+    transform: translateX(-1000%);
+  }
+  65% {
+    transform: translateX(-1000%);
+  }
+  66% {
+    transform: translateX(-1100%);
+  }
+  71% {
+    transform: translateX(-1100%);
+  }
+  72% {
+    transform: translateX(-1200%);
+  }
+  77% {
+    transform: translateX(-1200%);
+  }
+  78% {
+    transform: translateX(-1300%);
+  }
+  83% {
+    transform: translateX(-1300%);
+  }
+  84% {
+    transform: translateX(-1400%);
+  }
+  89% {
+    transform: translateX(-1400%);
+  }
+  90% {
+    transform: translateX(-1500%);
+  }
+  95% {
+    transform: translateX(-1500%);
+  }
+  96% {
+    transform: translateX(-1600%);
+  }
+  100% {
+    transform: translateX(-1600%);
+  }
+}
+
+@keyframes testimonials {
+  30% {
+    transform: translateX(-0%);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  63% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(-200%);
+  }
+  97% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+@keyframes gallery {
+  0% {
+    transform: scale(80%);
+  }
+
+  100% {
+    transform: scale(100%);
+  }
+}
+/*
+@keyframes hover {
+    0% {
+      filter: brightness(1);
+    }
+  
+    100% {
+        filter: brightness(.5);
+    }
+  }
+    */
