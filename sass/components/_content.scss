@@ -186,21 +186,22 @@ main > footer {
   background-color: $main;
   padding: 1em;
   color: white;
+  font-size: .875rem;
   section:first-child {
     background-color: $main;
     padding: 0;
-    font-size: 0.8em;
     p:before {
       width: 4vw;
       height: 4vw;
-      width: 1.8em;
-      height: 1.8em;
+      width: 1.5em;
+      height: 1.5em;
       overflow: hidden;
       display: block;
       margin-right: 5px;
       background-color: white;
       border-radius: 50%;
-      content: url("../assets/mail.svg");
+      content: url("../assets/mail_trans.svg");
+      background-color: $main;
     }
     p:nth-child(2) {
       @include flex(1, 1, 100%);
@@ -211,25 +212,28 @@ main > footer {
     }
     p:nth-child(3) {
       &:before {
-        content: url("../assets/whatsapp.svg");
+        content: url("../assets/whatsapp_trans.svg");
+        background-color: $main;
       }
     }
     p:nth-child(4) {
       color: $main;
       &:before {
-        content: url("../assets/instagram.svg");
+        content: url("../assets/instagram_trans.svg");
         margin: 0 0.66em;
+        background-color: $main;
       }
     }
     p:nth-child(5) {
       color: $main;
       &:before {
-        content: url("../assets/linkedin.svg");
+        content: url("../assets/linkedin_trans.svg");
+        background-color: $main;
       }
     }
   }
   nav {
-    font-size: 0.7em;
+    font-size: 0.625rem;
     a:link,
     a:visited {
       color: $bg;
@@ -242,7 +246,7 @@ main > footer {
 }
 body > div > footer {
   ul {
-    font-size: 0.7em;
+    font-size: 0.625rem;
     a:link,
     a:visited {
       color: $bg;
