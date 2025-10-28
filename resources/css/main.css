@@ -925,6 +925,8 @@ section:first-child aside figure {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  align-content: start;
+  justify-content: space-between;
   gap: 0.75em;
 }
 #gallery section:first-of-type > div a {
@@ -933,15 +935,30 @@ section:first-child aside figure {
   -webkit-flex: 1 1 30%;
   -ms-flex: 1 1 30%;
   flex: 1 1 30%;
-  margin: auto;
   display: block;
-  border: solid 1px;
   filter: brightness(1);
   transition: filter 0.6s ease-in 0.1s;
   -o-animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
   -moz-animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
   -webkit-animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
   animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
+}
+#gallery section:first-of-type > div a:nth-child(10), #gallery section:first-of-type > div a:nth-child(12) {
+  margin-top: -24.2em;
+}
+#gallery section:first-of-type > div a:nth-child(13) {
+  margin-top: -10.2em;
+}
+#gallery section:first-of-type > div a:nth-child(15) {
+  margin-top: -24.2em;
+}
+#gallery section:first-of-type > div a:nth-child(16) {
+  max-width: 23.66em;
+  margin-top: -10.2em;
+}
+#gallery section:first-of-type > div a:nth-child(17) {
+  max-width: 23.66em;
+  margin-top: -10.2em;
 }
 #gallery section:first-of-type > div a img {
   display: block;
