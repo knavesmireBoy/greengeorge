@@ -944,21 +944,21 @@ section:first-child aside figure {
   animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
 }
 #gallery section:first-of-type > div a:nth-child(10), #gallery section:first-of-type > div a:nth-child(12) {
-  margin-top: -24.2em;
+  margin-top: -32.5vw;
 }
 #gallery section:first-of-type > div a:nth-child(13) {
-  margin-top: -10.2em;
+  margin-top: -13.8vw;
 }
 #gallery section:first-of-type > div a:nth-child(15) {
-  margin-top: -24.2em;
+  margin-top: -32.5vw;
 }
 #gallery section:first-of-type > div a:nth-child(16) {
-  max-width: 23.66em;
-  margin-top: -10.2em;
+  max-width: 31.8vw;
+  margin-top: -13.8vw;
 }
 #gallery section:first-of-type > div a:nth-child(17) {
-  max-width: 23.66em;
-  margin-top: -10.2em;
+  max-width: 31.8vw;
+  margin-top: -13.8vw;
 }
 #gallery section:first-of-type > div a img {
   display: block;
