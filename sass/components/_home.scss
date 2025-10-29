@@ -1,0 +1,17 @@
+#home {
+  section:first-child {
+    aside {
+      @include flexy();
+      overflow-x: hidden;
+      figure {
+        @include flex(0, 0, 100%);
+        @include flexy();
+        @include prefix(
+          animation,
+          main 90s ease-in-out 1s infinite reverse backwards,
+          o moz webkit
+        );
+      }
+    }
+  }
+}

@@ -77,7 +77,7 @@ section {
       border-radius: 4px;
       border-width: 0;
       padding: 0.7em 1.2em;
-      margin: 1em 0;
+      margin: 1.5em 0 .5em;
       background-color: $main;
       color: white;
       a {
@@ -96,13 +96,13 @@ section {
   color: $bg;
   padding: 1em;
   text-align: center;
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
     overflow: hidden;
     line-height: 2;
-    font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
     li {
       display: inline;
       padding: 0.15em 1.9em;
@@ -192,7 +192,7 @@ section > aside {
 
 .testimonials {
   text-align: center;
-  padding: 3em 4em 1em;
+  padding: 1em 3.7em 1em;
   div {
     @include flexy();
     overflow-x: hidden;
@@ -208,33 +208,14 @@ section > aside {
       );
       p {
         margin: auto;
+        font-size: .875rem;
       }
     }
   }
 }
 
-section:first-child {
-  aside {
-    @include flexy();
-    overflow-x: hidden;
-    border: solid 1px;
-    figure {
-      @include flex(0, 0, 100%);
-      @include flexy();
-      flex-direction: column;
-      color: khaki;
-      @include prefix(
-        animation,
-        main 90s ease-in-out 1s infinite reverse backwards,
-        o moz webkit
-      );
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
   section.services {
-    div {
+    > div {
       @include flexy();
       overflow-x: hidden;
       article {
@@ -258,7 +239,8 @@ section:first-child {
       text-align: center;
       @include flexy();
       @include justify(space-around);
-      padding: 0.2em 5em;
+      padding: 0.2em 4.5em;
+      margin-top: -1px;
       span {
         display: block;
         width: 8px;
@@ -268,49 +250,49 @@ section:first-child {
         &:first-child {
           @include prefix(
             animation,
-            span1 28s linear 0s infinite normal forwards,
+            span1 29s linear 0s infinite normal forwards,
             o moz webkit
           );
         }
         &:nth-child(2) {
           @include prefix(
             animation,
-            span2 28s linear 0s infinite normal forwards,
+            span2 29s linear 0s infinite normal forwards,
             o moz webkit
           );
         }
         &:nth-child(3) {
           @include prefix(
             animation,
-            span3 28s linear 0s infinite normal forwards,
+            span3 29s linear 0s infinite normal forwards,
             o moz webkit
           );
         }
         &:nth-child(4) {
           @include prefix(
             animation,
-            span4 28s linear 0s infinite normal forwards,
+            span4 29s linear 0s infinite normal forwards,
             o moz webkit
           );
         }
         &:nth-child(5) {
           @include prefix(
             animation,
-            span5 28s linear 0s infinite normal forwards,
+            span5 29s linear 0s infinite normal forwards,
             o moz webkit
           );
         }
         &:nth-child(6) {
           @include prefix(
             animation,
-            span6 28s linear 0s infinite normal forwards,
+            span6 29s linear 0s infinite normal forwards,
             o moz webkit
           );
         }
       }
     }
   }
-}
+
 
 @media only screen and (min-width: 769px) {
   section:first-child {
@@ -371,6 +353,7 @@ section:first-child {
   }
   .eco {
     padding: 1em 15%;
+    font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
     ul {
       @include flexy();
       @include justify(space-between);

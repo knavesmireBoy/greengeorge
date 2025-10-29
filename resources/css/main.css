@@ -197,16 +197,16 @@ Test if `$value` is a valid direction
   0% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  18% {
+  17% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  19% {
+  18% {
+    background-color: white;
+  }
+  34% {
     background-color: white;
   }
   35% {
-    background-color: white;
-  }
-  36% {
     background-color: rgba(255, 255, 255, 0.2);
   }
 }
@@ -214,16 +214,16 @@ Test if `$value` is a valid direction
   0% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  36% {
+  34% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  37% {
+  35% {
     background-color: white;
   }
-  53% {
+  51% {
     background-color: white;
   }
-  54% {
+  52% {
     background-color: rgba(255, 255, 255, 0.2);
   }
 }
@@ -231,16 +231,16 @@ Test if `$value` is a valid direction
   0% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  54% {
+  51% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  55% {
+  52% {
+    background-color: white;
+  }
+  68% {
     background-color: white;
   }
   71% {
-    background-color: white;
-  }
-  72% {
     background-color: rgba(255, 255, 255, 0.2);
   }
 }
@@ -248,16 +248,16 @@ Test if `$value` is a valid direction
   0% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  72% {
+  70% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  73% {
+  71% {
+    background-color: white;
+  }
+  87% {
     background-color: white;
   }
   88% {
-    background-color: white;
-  }
-  89% {
     background-color: rgba(255, 255, 255, 0.2);
   }
 }
@@ -265,10 +265,10 @@ Test if `$value` is a valid direction
   0% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  88% {
+  86% {
     background-color: rgba(255, 255, 255, 0.2);
   }
-  89% {
+  87% {
     background-color: white;
   }
   100% {
@@ -487,6 +487,7 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   line-height: 1.4;
+  font-size: 0.875rem;
 }
 
 h1,
@@ -510,7 +511,7 @@ section article h2 {
   line-height: 1;
 }
 section article h4 {
-  font-size: 1.25em;
+  font-size: 1.3em;
   margin: 1em 0;
 }
 section:first-child aside figure {
@@ -612,7 +613,7 @@ section.services article > aside {
 }
 section.services article h3 {
   color: rgb(25, 78, 39);
-  margin: 0 0 1em;
+  margin: 1em 0;
 }
 section.services article:nth-of-type(1) > aside {
   background-image: url("../assets/lawn.jpeg");
@@ -640,12 +641,12 @@ section.testimonials {
   background-image: url("../assets/Speechmarks-green10.png");
   background-color: rgb(252, 246, 228);
   background-repeat: no-repeat;
-  background-size: 66%;
-  background-position: center;
+  background-size: 75%;
+  background-position: 50% 70%;
 }
 section.testimonials h2 {
-  font-size: 2em;
-  line-height: 1;
+  font-size: 2.5em;
+  margin: 0 0 0.5em;
 }
 section.testimonials p {
   margin: 0 0 1em;
@@ -655,10 +656,8 @@ section.testimonials p {
 .mission article p:first-child {
   font-family: "Handwritten", cursive;
   text-align: center;
-  /*
-    font-size: 2em;
-  font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
-  */
+  color: rgb(25, 78, 39);
+  font-size: 1.3em;
 }
 
 main > footer {
@@ -849,7 +848,7 @@ section article button {
   border-radius: 4px;
   border-width: 0;
   padding: 0.7em 1.2em;
-  margin: 1em 0;
+  margin: 1.5em 0 0.5em;
   background-color: rgb(25, 78, 39);
   color: white;
 }
@@ -873,7 +872,6 @@ section:first-child {
   margin: 0;
   overflow: hidden;
   line-height: 2;
-  font-size: calc(16px + 2 * (100vw - 1025px) / 255);
 }
 .eco ul li {
   display: inline;
@@ -979,7 +977,7 @@ section > aside > a img {
 
 .testimonials {
   text-align: center;
-  padding: 3em 4em 1em;
+  padding: 1em 3.7em 1em;
 }
 .testimonials div {
   display: -webkit-box;
@@ -1011,9 +1009,10 @@ section > aside > a img {
 }
 .testimonials div article p {
   margin: auto;
+  font-size: 0.875rem;
 }
 
-section:first-child aside {
+section.services > div {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1021,112 +1020,82 @@ section:first-child aside {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
-  border: solid 1px;
 }
-section:first-child aside figure {
+section.services > div article {
   -webkit-box: 0;
   -moz-box: 0;
   -webkit-flex: 0 0 100%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
+}
+section.services > div article:first-child {
+  -o-animation: services 28s ease-in 1s infinite normal forwards;
+  -moz-animation: services 28s ease-in 1s infinite normal forwards;
+  -webkit-animation: services 28s ease-in 1s infinite normal forwards;
+  animation: services 28s ease-in 1s infinite normal forwards;
+}
+section.services + div {
+  font-size: 4em;
+  color: white;
+  background-color: rgb(25, 78, 39);
+  text-align: center;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: column;
-  color: khaki;
-  -o-animation: main 90s ease-in-out 1s infinite reverse backwards;
-  -moz-animation: main 90s ease-in-out 1s infinite reverse backwards;
-  -webkit-animation: main 90s ease-in-out 1s infinite reverse backwards;
-  animation: main 90s ease-in-out 1s infinite reverse backwards;
+  -webkit-box-pack: space-around;
+  -ms-flex-pack: space-around;
+  -webkit-justify-content: center;
+  justify-content: space-around;
+  padding: 0.2em 4.5em;
+  margin-top: -1px;
+}
+section.services + div span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+section.services + div span:first-child {
+  -o-animation: span1 29s linear 0s infinite normal forwards;
+  -moz-animation: span1 29s linear 0s infinite normal forwards;
+  -webkit-animation: span1 29s linear 0s infinite normal forwards;
+  animation: span1 29s linear 0s infinite normal forwards;
+}
+section.services + div span:nth-child(2) {
+  -o-animation: span2 29s linear 0s infinite normal forwards;
+  -moz-animation: span2 29s linear 0s infinite normal forwards;
+  -webkit-animation: span2 29s linear 0s infinite normal forwards;
+  animation: span2 29s linear 0s infinite normal forwards;
+}
+section.services + div span:nth-child(3) {
+  -o-animation: span3 29s linear 0s infinite normal forwards;
+  -moz-animation: span3 29s linear 0s infinite normal forwards;
+  -webkit-animation: span3 29s linear 0s infinite normal forwards;
+  animation: span3 29s linear 0s infinite normal forwards;
+}
+section.services + div span:nth-child(4) {
+  -o-animation: span4 29s linear 0s infinite normal forwards;
+  -moz-animation: span4 29s linear 0s infinite normal forwards;
+  -webkit-animation: span4 29s linear 0s infinite normal forwards;
+  animation: span4 29s linear 0s infinite normal forwards;
+}
+section.services + div span:nth-child(5) {
+  -o-animation: span5 29s linear 0s infinite normal forwards;
+  -moz-animation: span5 29s linear 0s infinite normal forwards;
+  -webkit-animation: span5 29s linear 0s infinite normal forwards;
+  animation: span5 29s linear 0s infinite normal forwards;
+}
+section.services + div span:nth-child(6) {
+  -o-animation: span6 29s linear 0s infinite normal forwards;
+  -moz-animation: span6 29s linear 0s infinite normal forwards;
+  -webkit-animation: span6 29s linear 0s infinite normal forwards;
+  animation: span6 29s linear 0s infinite normal forwards;
 }
 
-@media only screen and (max-width: 768px) {
-  section.services div {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: hidden;
-  }
-  section.services div article {
-    -webkit-box: 0;
-    -moz-box: 0;
-    -webkit-flex: 0 0 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-  }
-  section.services div article:first-child {
-    -o-animation: services 28s ease-in 1s infinite normal forwards;
-    -moz-animation: services 28s ease-in 1s infinite normal forwards;
-    -webkit-animation: services 28s ease-in 1s infinite normal forwards;
-    animation: services 28s ease-in 1s infinite normal forwards;
-  }
-  section.services + div {
-    font-size: 4em;
-    color: white;
-    background-color: rgb(25, 78, 39);
-    text-align: center;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: nowrap;
-    -webkit-box-pack: space-around;
-    -ms-flex-pack: space-around;
-    -webkit-justify-content: center;
-    justify-content: space-around;
-    padding: 0.2em 5em;
-  }
-  section.services + div span {
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  section.services + div span:first-child {
-    -o-animation: span1 28s linear 0s infinite normal forwards;
-    -moz-animation: span1 28s linear 0s infinite normal forwards;
-    -webkit-animation: span1 28s linear 0s infinite normal forwards;
-    animation: span1 28s linear 0s infinite normal forwards;
-  }
-  section.services + div span:nth-child(2) {
-    -o-animation: span2 28s linear 0s infinite normal forwards;
-    -moz-animation: span2 28s linear 0s infinite normal forwards;
-    -webkit-animation: span2 28s linear 0s infinite normal forwards;
-    animation: span2 28s linear 0s infinite normal forwards;
-  }
-  section.services + div span:nth-child(3) {
-    -o-animation: span3 28s linear 0s infinite normal forwards;
-    -moz-animation: span3 28s linear 0s infinite normal forwards;
-    -webkit-animation: span3 28s linear 0s infinite normal forwards;
-    animation: span3 28s linear 0s infinite normal forwards;
-  }
-  section.services + div span:nth-child(4) {
-    -o-animation: span4 28s linear 0s infinite normal forwards;
-    -moz-animation: span4 28s linear 0s infinite normal forwards;
-    -webkit-animation: span4 28s linear 0s infinite normal forwards;
-    animation: span4 28s linear 0s infinite normal forwards;
-  }
-  section.services + div span:nth-child(5) {
-    -o-animation: span5 28s linear 0s infinite normal forwards;
-    -moz-animation: span5 28s linear 0s infinite normal forwards;
-    -webkit-animation: span5 28s linear 0s infinite normal forwards;
-    animation: span5 28s linear 0s infinite normal forwards;
-  }
-  section.services + div span:nth-child(6) {
-    -o-animation: span6 28s linear 0s infinite normal forwards;
-    -moz-animation: span6 28s linear 0s infinite normal forwards;
-    -webkit-animation: span6 28s linear 0s infinite normal forwards;
-    animation: span6 28s linear 0s infinite normal forwards;
-  }
-}
 @media only screen and (min-width: 769px) {
   section:first-child {
     display: -webkit-box;
@@ -1213,6 +1182,7 @@ section:first-child aside figure {
   }
   .eco {
     padding: 1em 15%;
+    font-size: calc(16px + 2 * (100vw - 1025px) / 255);
   }
   .eco ul {
     display: -webkit-box;
@@ -1264,6 +1234,33 @@ section:first-child aside figure {
     padding: 0;
   }
 }
+#home section:first-child aside {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+#home section:first-child aside figure {
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  -o-animation: main 90s ease-in-out 1s infinite reverse backwards;
+  -moz-animation: main 90s ease-in-out 1s infinite reverse backwards;
+  -webkit-animation: main 90s ease-in-out 1s infinite reverse backwards;
+  animation: main 90s ease-in-out 1s infinite reverse backwards;
+}
+
 #about nav.eco ul li {
   position: relative;
 }
