@@ -7,6 +7,11 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Handwritten";
+  src: url("../fonts/AlexBrush-Regular.ttf") format("truetype");
+}
+
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -41,7 +46,7 @@ section {
       margin: 1em 0;
     }
   }
-  &:first-child article aside {
+  &:first-child aside {
     figure {
       background-position: center;
       background-repeat: no-repeat;
@@ -166,7 +171,7 @@ section {
     }
   }
   &.testimonials {
-    font-size: .875em;
+    font-size: 0.875em;
     line-height: 1.6;
     h2 {
       font-size: 2em;
@@ -176,7 +181,7 @@ section {
     background-image: url("../assets/Speechmarks-green10.png");
     background-color: $bg;
     background-repeat: no-repeat;
-    background-size: 90%;
+    background-size: 66%;
     background-position: center;
     p {
       margin: 0 0 1em;
@@ -184,12 +189,20 @@ section {
     }
   }
 }
+.mission article p:first-child {
+  font-family: "Handwritten", cursive;
+  text-align: center;
+  /*
+    font-size: 2em;
+  font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
+  */
+}
 
 main > footer {
   background-color: $main;
   padding: 1em;
   color: white;
-  font-size: .875rem;
+  font-size: 0.875rem;
   section:first-child {
     background-color: $main;
     padding: 0;
@@ -258,5 +271,10 @@ body > div > footer {
     a:active {
       color: white;
     }
+  }
+}
+@media only screen and (min-width: 1025px) {
+  .mission article p:first-child {
+    font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
   }
 }

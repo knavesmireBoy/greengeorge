@@ -102,12 +102,12 @@ section {
     margin: 0;
     overflow: hidden;
     line-height: 2;
+    font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
     li {
       display: inline;
-      padding: .15em 1.9em;
-      background-color: aquamarine;
+      padding: 0.15em 1.9em;
       &:first-child {
-        background: url("../assets/smiley.jpg") no-repeat 0 0/contain;
+        background: url("../assets/smiley.png") no-repeat 0 0 / contain;
       }
       &:nth-child(2) {
         overflow: hidden;
@@ -117,7 +117,7 @@ section {
         background: url("../assets/rhs.svg") no-repeat center/contain;
       }
       &:last-child {
-        background: url("../assets/eco.jpg") no-repeat 0 0/contain;
+        background: url("../assets/eco.png") no-repeat 0 0 / contain;
       }
     }
   }
@@ -173,13 +173,13 @@ main {
       @include flexy(wrap);
       @include justify(center);
       li {
-        margin: 0 .4em;
+        margin: 0 0.4em;
       }
     }
   }
 }
 
-article > aside {
+section > aside {
   margin: 0 0 1.2em;
   > a {
     display: block;
@@ -190,19 +190,9 @@ article > aside {
   }
 }
 
-section:nth-child(3) div {
-  @include flexy();
-  overflow-x: hidden;
-  article {
-    @include flex(0, 0, 100%);
-    //transition: transform 1s 4s;
-    //transform: translateX(-100%);
-    @include prefix(animation, services 28s ease-in 1s infinite normal forwards, o moz webkit);
-  }
-}
-
 .testimonials {
   text-align: center;
+  padding: 3em 4em 1em;
   div {
     @include flexy();
     overflow-x: hidden;
@@ -211,7 +201,11 @@ section:nth-child(3) div {
       @include flex(0, 0, 100%);
       @include flexy();
       flex-direction: column;
-      @include prefix(animation, testimonials 28s ease-in 1s infinite normal forwards, o moz webkit);
+      @include prefix(
+        animation,
+        testimonials 28s ease-in 1s infinite normal forwards,
+        o moz webkit
+      );
       p {
         margin: auto;
       }
@@ -229,7 +223,139 @@ section:first-child {
       @include flexy();
       flex-direction: column;
       color: khaki;
-      @include prefix(animation, main 90s ease-in-out 1s infinite reverse backwards, o moz webkit);
+      @include prefix(
+        animation,
+        main 90s ease-in-out 1s infinite reverse backwards,
+        o moz webkit
+      );
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.services {
+    div {
+      @include flexy();
+      overflow-x: hidden;
+      article {
+        @include flex(0, 0, 100%);
+        //transition: transform 1s 4s;
+        //transform: translateX(-100%);
+        &:first-child {
+          @include prefix(
+            animation,
+            services 28s ease-in 1s infinite normal forwards,
+            o moz webkit
+          );
+        }
+      }
+    }
+
+    & + div {
+      font-size: 4em;
+      color: white;
+      background-color: $main;
+      text-align: center;
+      @include flexy();
+      @include justify(space-around);
+      padding: 0.2em 5em;
+      span {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        &:first-child {
+          @include prefix(
+            animation,
+            span1 28s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(2) {
+          @include prefix(
+            animation,
+            span2 28s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(3) {
+          @include prefix(
+            animation,
+            span3 28s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(4) {
+          @include prefix(
+            animation,
+            span4 28s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(5) {
+          @include prefix(
+            animation,
+            span5 28s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(6) {
+          @include prefix(
+            animation,
+            span6 28s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  section:first-child {
+    @include flexy(wrap);
+    column-gap: 1em;
+    padding-top: calc(30px + 30 * ((100vw - 769px) / (1280 - 769)));
+    padding-bottom: calc(30px + 20 * ((100vw - 769px) / (1280 - 769)));
+    article {
+      font-size: 1.15em;
+      @include flex(7, 1, 10em);
+      margin-top: calc(40px + 100 * ((100vw - 769px) / (1280 - 769)));
+      margin-bottom: calc(40px + 100 * ((100vw - 769px) / (1280 - 769)));
+      h1 {
+        font-size: 4em;
+      }
+    }
+    aside {
+      @include flex(3, 1, 10em);
+      order: 2;
+      figure {
+        height: 100%;
+      }
+    }
+    footer {
+      @include flex(0, 0, 100%);
+      order: 3;
+    }
+  }
+
+  section.services div {
+    @include flexy();
+    column-gap: 4%;
+    overflow: hidden;
+    article {
+      &:first-child {
+        @include prefix(
+          animation,
+          services_mid 28s ease-in 1s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      @include flex(1, 0, 48%);
+      p {
+        padding: 0;
+      }
     }
   }
 }
@@ -247,7 +373,33 @@ section:first-child {
     padding: 1em 15%;
     ul {
       @include flexy();
-      @include justify(center);
+      @include justify(space-between);
+      align-items: center;
+      li {
+        padding: 0.15em 0 0.15em 2.5em;
+        &:nth-child(2) {
+          @include flex(3, 1, 1em);
+        }
+      }
+    }
+  }
+
+  section.services div {
+    @include flexy();
+    column-gap: 3%;
+    overflow: hidden;
+    article {
+      &:first-child {
+        @include prefix(
+          animation,
+          services_max 28s ease-in 1s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      @include flex(1, 0, 31.333%);
+      p {
+        padding: 0;
+      }
     }
   }
 }

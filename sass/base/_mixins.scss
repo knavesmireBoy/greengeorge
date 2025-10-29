@@ -66,4 +66,7 @@ Test if `$value` is a valid direction
 @param {*} $value - Value to test
 @return {Bool}
 */
-  
+@mixin gridish() {
+  display: ms-grid;
+  display: grid;
+}
