@@ -1,20 +1,34 @@
 let service = document.querySelector(".services"),
-  log = console.log,
-  articles = service.getElementsByTagName("article"),
+  articles = (service && service.getElementsByTagName("article")) || [],
   i = articles.length,
-  alpha = ["a", "b", "c", "d", "e", "f"];
+  alpha = ["a", "b", "c", "d", "e", "f"],
+  //margins = [85.8325, 130, 250],
+  margins = [34.333, 53, 100],
+  margins2 = [];
 
 while (i--) {
   articles[i].className = alpha[i];
+}
+//desired percentage offset but divided by 40 (which gives about the right transition)
+function resize(margins, i = 2.5) {
+  let width = window.innerWidth > 0 ? window.innerWidth : screen.width,
+    int = 0;
+    margins = margins.map(n => n * i);
+  if (width > 768) {
+    int = 1;
+  }
+  if (width > 1024) {
+    int = 2;
+  }
+  return [margins[int], i];
 }
 
 let element = articles[0],
   next = element,
   start,
-  pc = 34333,
   inc = 0,
-  int = 0.1,
-  t = 1000;
+  t = 500,
+  [margin, j] = resize(margins, 1);
 
 function flip(element) {
   element.parentNode.appendChild(element);
@@ -24,23 +38,23 @@ function flip(element) {
 
 function step(timestamp) {
   if (!start && inc) {
-    t = inc / 100;
-    int = 0.5;
+    t = inc;
+  } else {
+    t = 500;
   }
   if (start === undefined) {
     start = timestamp;
   }
   const elapsed = timestamp - start,
-    shift = Math.min(int * elapsed, t);
+    shift = Math.min(0.1 * elapsed, t);
 
   if (inc) {
-    if (shift < inc / 100) {
-      let px = `-${shift / 10}%`;
+    if (shift < inc) {
+      let px = `-${shift / j}%`;
       element.style.marginLeft = px;
       requestAnimationFrame(step);
     } else {
       inc = 0;
-      t = 1000;
       start = undefined;
       element = flip(element);
       if (element !== next) {
@@ -51,10 +65,12 @@ function step(timestamp) {
     if (shift < t) {
       requestAnimationFrame(step);
     } else {
-      inc = pc;
+      inc = margin;
       start = undefined;
       requestAnimationFrame(step);
     }
   }
 }
-requestAnimationFrame(step);
+if (element) {
+  requestAnimationFrame(step);
+}
