@@ -776,25 +776,6 @@ section.services article h3 {
   margin: 1em 0;
   font-size: 1.3em;
 }
-section.services article:nth-of-type(1) > aside {
-  background-image: url("../assets/lawn.jpeg");
-  background-position: 0 top;
-}
-section.services article:nth-of-type(2) > aside {
-  background-image: url("../images/IMG_1478.jpg");
-}
-section.services article:nth-of-type(3) > aside {
-  background-image: url("../assets/weeding.jpeg");
-}
-section.services article:nth-of-type(4) > aside {
-  background-image: url("../assets/pruning.jpeg");
-}
-section.services article:nth-of-type(5) > aside {
-  background-image: url("../assets/hedge.jpeg");
-}
-section.services article:nth-of-type(6) > aside {
-  background-image: url("../assets/tidy.jpeg");
-}
 section.testimonials {
   font-size: 0.875em;
   line-height: 1.6;
@@ -1379,6 +1360,44 @@ html.no-js #home section.services > div article:first-child {
   -moz-animation: services 28s ease-in 1s infinite normal forwards;
   -webkit-animation: services 28s ease-in 1s infinite normal forwards;
   animation: services 28s ease-in 1s infinite normal forwards;
+}
+html.no-js #home section.services > div article:nth-of-type(1) > aside {
+  background-image: url("../assets/lawn.jpeg");
+  background-position: 0 top;
+}
+html.no-js #home section.services > div article:nth-of-type(2) > aside {
+  background-image: url("../images/IMG_1478.jpg");
+}
+html.no-js #home section.services > div article:nth-of-type(3) > aside {
+  background-image: url("../assets/weeding.jpeg");
+}
+html.no-js #home section.services > div article:nth-of-type(4) > aside {
+  background-image: url("../assets/pruning.jpeg");
+}
+html.no-js #home section.services > div article:nth-of-type(5) > aside {
+  background-image: url("../assets/hedge.jpeg");
+}
+html.no-js #home section.services > div article:nth-of-type(6) > aside {
+  background-image: url("../assets/tidy.jpeg");
+}
+html.js #home section.services article.a > aside {
+  background-image: url("../assets/lawn.jpeg");
+  background-position: 0 top;
+}
+html.js #home section.services article.b > aside {
+  background-image: url("../images/IMG_1478.jpg");
+}
+html.js #home section.services article.c > aside {
+  background-image: url("../assets/weeding.jpeg");
+}
+html.js #home section.services article.d > aside {
+  background-image: url("../assets/pruning.jpeg");
+}
+html.js #home section.services article.e > aside {
+  background-image: url("../assets/hedge.jpeg");
+}
+html.js #home section.services article.f > aside {
+  background-image: url("../assets/tidy.jpeg");
 }
 
 @media only screen and (max-width: 768px) {

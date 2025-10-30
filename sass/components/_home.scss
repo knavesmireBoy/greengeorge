@@ -35,9 +35,49 @@ html {
                 o moz webkit
               );
             }
+            &:nth-of-type(1) > aside {
+              background-image: url("../assets/lawn.jpeg");
+              background-position: 0 top;
+            }
+            &:nth-of-type(2) > aside {
+              background-image: url("../images/IMG_1478.jpg");
+            }
+            &:nth-of-type(3) > aside {
+              background-image: url("../assets/weeding.jpeg");
+            }
+            &:nth-of-type(4) > aside {
+              background-image: url("../assets/pruning.jpeg");
+            }
+            &:nth-of-type(5) > aside {
+              background-image: url("../assets/hedge.jpeg");
+            }
+            &:nth-of-type(6) > aside {
+              background-image: url("../assets/tidy.jpeg");
+            }
           }
         }
       }
+    }
+  }
+  &.js #home section.services article {
+    &.a > aside {
+      background-image: url("../assets/lawn.jpeg");
+      background-position: 0 top;
+    }
+    &.b > aside {
+      background-image: url("../images/IMG_1478.jpg");
+    }
+    &.c > aside {
+      background-image: url("../assets/weeding.jpeg");
+    }
+    &.d > aside {
+      background-image: url("../assets/pruning.jpeg");
+    }
+    &.e > aside {
+      background-image: url("../assets/hedge.jpeg");
+    }
+    &.f > aside {
+      background-image: url("../assets/tidy.jpeg");
     }
   }
 }
