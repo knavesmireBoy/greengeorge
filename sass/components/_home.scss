@@ -1,17 +1,180 @@
-#home {
-  section:first-child {
-    aside {
-      @include flexy();
-      overflow-x: hidden;
-      figure {
-        @include flex(0, 0, 100%);
+html {
+  #home {
+    section:first-child {
+      aside {
         @include flexy();
+        overflow-x: hidden;
+        figure {
+          @include flex(0, 0, 100%);
+          @include flexy();
+        }
+      }
+    }
+  }
+  &.no-js {
+    #home {
+      section:first-child {
+        aside {
+          figure {
+            @include prefix(
+              animation,
+              main 90s ease-in-out 1s infinite reverse backwards,
+              o moz webkit
+            );
+          }
+        }
+      }
+      background-color: lavender;
+      section.services {
+        > div {
+          article {
+            &:first-child {
+              @include prefix(
+                animation,
+                services 28s ease-in 1s infinite normal forwards,
+                o moz webkit
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  html.no-js {
+    #control span {
+      &:first-child {
         @include prefix(
           animation,
-          main 90s ease-in-out 1s infinite reverse backwards,
+          span1 29s linear 0s infinite normal forwards,
           o moz webkit
         );
       }
+      &:nth-child(2) {
+        @include prefix(
+          animation,
+          span2 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(3) {
+        @include prefix(
+          animation,
+          span3 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(4) {
+        @include prefix(
+          animation,
+          span4 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(5) {
+        @include prefix(
+          animation,
+          span5 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(6) {
+        @include prefix(
+          animation,
+          span6 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+    }
+  }
+}
+@media only screen and (min-width: 769px) {
+  html.no-js {
+    section.services div {
+      article {
+        &:first-child {
+          @include prefix(
+            animation,
+            services_mid 28s ease-in 1s infinite normal forwards,
+            o moz webkit
+          );
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  html.no-js #control span {
+    &:first-child {
+      @include prefix(
+        animation,
+        span11 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(2) {
+      @include prefix(
+        animation,
+        span12 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(3) {
+      @include prefix(
+        animation,
+        span13 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(4) {
+      @include prefix(
+        animation,
+        span14 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(5) {
+      @include prefix(
+        animation,
+        span15 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+  }
+}
+@media only screen and (min-width: 1025px) {
+  html.no-js #control span {
+    &:first-child {
+      @include prefix(
+        animation,
+        span21 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(2) {
+      @include prefix(
+        animation,
+        span22 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(3) {
+      @include prefix(
+        animation,
+        span23 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+
+    &:nth-child(4) {
+      @include prefix(
+        animation,
+        span24 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
     }
   }
 }
