@@ -80,7 +80,7 @@ let start,
   next = element,
   inc = 0,
   t = 500,
-  margins = [34.333, 52, 100],
+  margins = [100, 52, 34.333, 52],
   //[margin, j] = resize(margins, 2),
   validate = () => true,
   validator = (a) => (b) => a !== b,
@@ -110,7 +110,6 @@ let start,
           start = undefined;
           element = loop(element);
           cycle(cb(element));
-          //cycle(j);
           if (validator(element)) {
             requestAnimationFrame(step);
           }
@@ -129,6 +128,7 @@ let start,
 step = stepper(start, 500, 0, margins, validator(next));
 
 if (element) {
+  cycle(cb(element));
   setServicesBgImage(myarticles, ["a", "b", "c", "d", "e", "f"]);
   requestAnimationFrame(step);
 }
