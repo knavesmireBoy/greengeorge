@@ -1,17 +1,3 @@
-function resize(margins, i = 2.5) {
-  let width = window.innerWidth > 0 ? window.innerWidth : screen.width,
-    int = 0;
-  margins = margins.map((n) => n * i);
-
-  if (width > 768) {
-    int = 1;
-  }
-  if (width > 1024) {
-    int = 2;
-  }
-  return [margins[int], i];
-}
-
 function loop(element) {
   element.parentNode.appendChild(element);
   element.style.marginLeft = 0;
@@ -31,23 +17,16 @@ function paint(node, val) {
   node.style.backgroundColor = val;
 }
 
-function dotty(nodes, values, painter) {
-  return function (j) {
-    let i = nodes.length;
-    while (i--) {
-      if (i === j) {
-        painter(nodes[i], values[1]);
-      } else {
-        painter(nodes[i], values[0]);
-      }
-    }
-  };
-}
-
-function finder(nodes) {  
-  return function (node) {
+let compose = (...fns) =>
+    fns.reduce(
+      (f, g) =>
+        (...vs) =>
+          f(g(...vs))
+    ),
+  start,
+  finder = (nodes) => (node) => {
     let i = 0,
-    l = nodes.length;
+      l = nodes.length;
     while (i < l) {
       if (nodes[i] === node) {
         break;
@@ -55,45 +34,57 @@ function finder(nodes) {
       i++;
     }
     return i;
-  };
-}
-
-function finder2(nodes) {  
-  return function (node) {
-    let i = nodes.length;
+  },
+  spotify = (nodes, values, cb) => (j) => {
+    let i = nodes.length,
+      [dflt, current] = values;
     while (i--) {
-      if (nodes[i] === node) {
-        break;
+      if (i === j) {
+        cb(nodes[i], current);
+      } else {
+        cb(nodes[i], dflt);
       }
     }
-    return i;
-  };
-}
+  },
+  resize = (margins, factor = 2.5) => {
+    let width = window.innerWidth > 0 ? window.innerWidth : screen.width,
+      int = 0;
+    margins = margins.map((n) => n * factor);
 
-let start,
+    if (width > 768) {
+      int = 1;
+    }
+    if (width > 1024) {
+      int = 2;
+    }
+    return [margins[int], factor];
+  },
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
-  myarticles = (service && service.getElementsByTagName("article")) || [],
+  liveArticles = (service && service.getElementsByTagName("article")) || [],
   articles = (service && service.querySelectorAll("article")) || [],
   i = articles.length,
   element = articles[0],
   next = element,
   inc = 0,
   t = 500,
-  margins = [100, 52, 34.333, 52],
-  //[margin, j] = resize(margins, 2),
+  margins = [100, 52, 34.333],
   validate = () => true,
   validator = (a) => (b) => a !== b,
   move = (node, val) => (node.style.marginLeft = val),
-  cycle = dotty(control.getElementsByTagName("span"), ["rgba(255,255,255, .2)", "white"], paint),
-  cb = finder(articles),
-  stepper = (start, t, inc, data, validator) => {
+  cycle = spotify(
+    control.getElementsByTagName("span"),
+    ["rgba(255,255,255, .2)", "white"],
+    paint
+  ),
+  cb = compose(cycle, finder(articles)),
+  request,
+  stepper = (start, t, inc, data, validator, callback) => {
     let [x, i] = resize(data, 1);
-
     return (timestamp) => {
       if (!start && inc) {
         t = inc;
-      } else {
+      } else if (!inc) {
         t = 500;
       }
       start = start === undefined ? timestamp : start;
@@ -104,31 +95,53 @@ let start,
       if (inc) {
         if (shift < inc) {
           move(element, `-${shift / i}%`);
-          requestAnimationFrame(step);
+          request = requestAnimationFrame(step);
         } else {
           inc = 0;
           start = undefined;
           element = loop(element);
-          cycle(cb(element));
+          callback(element);
           if (validator(element)) {
-            requestAnimationFrame(step);
+            request = requestAnimationFrame(step);
           }
         }
       } else {
         if (shift < t) {
-          requestAnimationFrame(step);
+          request = requestAnimationFrame(step);
         } else {
           inc = x;
           start = undefined;
-          requestAnimationFrame(step);
+          request = requestAnimationFrame(step);
         }
       }
     };
   };
-step = stepper(start, 500, 0, margins, validator(next));
+step = stepper(start, 500, 0, margins, validator(next), cb);
+
+function controller(e) {
+  let a = Array.prototype.slice.call(this.childNodes),
+    live = Array.prototype.slice.call(liveArticles),
+    parent = liveArticles[0].parentNode,
+    f = finder(a),
+    i = f(e.target),
+    j = 0,
+    article;
+  if (e.target !== this) {
+    cycle(i);
+    cancelAnimationFrame(request);
+    article = articles[i];
+    j = live.indexOf(article);
+    i = 0;
+    while (i < j) {
+      parent.appendChild(live[i]);
+      i++;
+    }
+  }
+}
 
 if (element) {
-  cycle(cb(element));
-  setServicesBgImage(myarticles, ["a", "b", "c", "d", "e", "f"]);
-  requestAnimationFrame(step);
+  request = requestAnimationFrame(step);
+  control.addEventListener("click", controller);
+  cb(element);
+  setServicesBgImage(liveArticles, ["a", "b", "c", "d", "e", "f"]);
 }
