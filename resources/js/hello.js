@@ -17,13 +17,17 @@ function paint(node, val) {
   node.style.backgroundColor = val;
 }
 
-let compose = (...fns) =>
+let inc = 0,
+  t = 500,
+  margins = [100, 52, 34.333],
+  request,
+  start,
+  compose = (...fns) =>
     fns.reduce(
       (f, g) =>
         (...vs) =>
           f(g(...vs))
     ),
-  start,
   finder = (nodes) => (node) => {
     let i = 0,
       l = nodes.length;
@@ -66,9 +70,6 @@ let compose = (...fns) =>
   i = articles.length,
   element = articles[0],
   next = element,
-  inc = 0,
-  t = 500,
-  margins = [100, 52, 34.333],
   validate = () => true,
   validator = (a) => (b) => a !== b,
   move = (node, val) => (node.style.marginLeft = val),
@@ -78,23 +79,23 @@ let compose = (...fns) =>
     paint
   ),
   cb = compose(cycle, finder(articles)),
-  request,
-  stepper = (start, t, inc, data, validator, callback) => {
-    let [x, i] = resize(data, 1);
+  stepper = (data, validator, callback, dur = 500, inc = 0, start = undefined) => {
+    let [travel, factor] = resize(data, 1),
+    duration;
     return (timestamp) => {
       if (!start && inc) {
-        t = inc;
+        duration = travel;
       } else if (!inc) {
-        t = 500;
+        duration = dur;
       }
       start = start === undefined ? timestamp : start;
 
       const elapsed = timestamp - start,
-        shift = Math.min(0.1 * elapsed, t);
+        shift = Math.min(0.1 * elapsed, duration);
 
       if (inc) {
         if (shift < inc) {
-          move(element, `-${shift / i}%`);
+          move(element, `-${shift / factor}%`);
           request = requestAnimationFrame(step);
         } else {
           inc = 0;
@@ -106,17 +107,17 @@ let compose = (...fns) =>
           }
         }
       } else {
-        if (shift < t) {
+        if (shift < duration) {
           request = requestAnimationFrame(step);
         } else {
-          inc = x;
+          inc = travel;
           start = undefined;
           request = requestAnimationFrame(step);
         }
       }
     };
   };
-step = stepper(start, 500, 0, margins, validator(next), cb);
+step = stepper(margins, validator(next), cb);
 
 function controller(e) {
   let a = Array.prototype.slice.call(this.childNodes),
