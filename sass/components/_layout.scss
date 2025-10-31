@@ -20,24 +20,7 @@ header {
   input {
     display: none;
   }
-  nav {
-    ul {
-      @include hide;
-      margin: 2em 0 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease-out;
-      li a {
-        padding: 0.8em 0.5em 0.8em 1em;
-        display: block;
-        color: hsl(0, 0%, 33%);
-        &:hover {
-          color: white;
-          background-color: hsl(104, 96%, 9%) !important;
-        }
-      }
-    }
-  }
+
   label {
     position: absolute;
     top: 1em;
@@ -58,15 +41,6 @@ header {
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 1px 1px 4px $main;
     max-height: 11.9em;
-  }
-}
-
-@for $i from 1 through length($navlist) {
-  $l: nth($navlist, $i);
-  #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
-  #{$l} header > nav > ul > li:nth-child(#{$i}) > a:visited {
-    color: white;
-    background-color: hsl(0, 0%, 33%);
   }
 }
 
@@ -153,28 +127,29 @@ main {
     background-color: $main;
     padding: 1.3em 1.3em 2.5em;
     color: white;
-    section:first-child {
-      background-color: $main;
-      padding: 0;
-      @include flexy(wrap);
-      p {
-        @include flexy();
-        margin: 0 0 0.66em;
-      }
+  }
+  section.contact {
+    background-color: $main;
+     padding: 1.3em 1.3em 2.5em;
+
+    @include flexy(wrap);
+    p {
+      @include flexy();
+      margin: 0 0 0.66em;
     }
   }
-  + footer {
-    background-color: black;
-    padding: 5em;
-    color: white;
-    font-size: 0.5em;
-    text-align: center;
-    ul {
-      @include flexy(wrap);
-      @include justify(center);
-      li {
-        margin: 0 0.4em;
-      }
+}
++ footer {
+  background-color: black;
+  padding: 5em;
+  color: white;
+  font-size: 0.5em;
+  text-align: center;
+  ul {
+    @include flexy(wrap);
+    @include justify(center);
+    li {
+      margin: 0 0.4em;
     }
   }
 }
@@ -249,6 +224,11 @@ section.services {
 }
 
 @media only screen and (min-width: 769px) {
+  header > div {
+    width: 158px;
+    height: 167px;
+  }
+
   section.services div {
     @include flexy();
     column-gap: 4%;
@@ -292,10 +272,16 @@ section.services {
 
 @media only screen and (min-width: 1025px) {
   header {
+    align-items: end;
+    label {
+      @include hide;
+    }
     nav {
       ul {
         @include flexy();
         @include justify();
+        @include show();
+        max-height: 100%;
       }
     }
   }

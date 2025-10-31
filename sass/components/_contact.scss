@@ -1,0 +1,15 @@
+#contact main {
+  section:first-child {
+    color: $bg;
+    background-color: $main;
+    font-size: 1.125rem;
+
+    h4 {
+      font-size: 1.33em;
+      font-family: "Crimson", "Times New Roman", Times, serif;
+    }
+    h2 {
+        font-size: 4em;
+    }
+  }
+}

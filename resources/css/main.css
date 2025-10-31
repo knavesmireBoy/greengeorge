@@ -656,6 +656,25 @@ h2 {
   font-family: "Crimson", "Times New Roman", Times, serif;
 }
 
+header nav ul {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  margin: 2em 0 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+header nav ul li a {
+  padding: 0.8em 0.5em 0.8em 1em;
+  display: block;
+  color: hsl(0deg, 0%, 33%);
+}
+header nav ul li a:hover {
+  color: white;
+  background-color: hsl(104deg, 96%, 9%) !important;
+}
+
 section {
   padding: 0;
 }
@@ -808,11 +827,19 @@ main > footer {
   color: white;
   font-size: 0.875rem;
 }
-main > footer section:first-child {
+
+main section.contact {
   background-color: rgb(25, 78, 39);
-  padding: 0;
 }
-main > footer section:first-child p:before {
+main section.contact h2,
+main section.contact h4 {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+main section.contact p:before {
   width: 4vw;
   height: 4vw;
   width: 1.5em;
@@ -822,48 +849,60 @@ main > footer section:first-child p:before {
   margin-right: 5px;
   background-color: white;
   border-radius: 50%;
+  background-color: rgb(25, 78, 39);
+}
+main section.contact p:nth-of-type(1) {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 1%;
+  -ms-flex: 1 1 1%;
+  flex: 1 1 1%;
+}
+main section.contact p:nth-of-type(1):before {
   content: url("../assets/mail_trans.svg");
   background-color: rgb(25, 78, 39);
 }
-main > footer section:first-child p:nth-child(2) {
+main section.contact p:nth-of-type(2) {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
 }
-main > footer section:first-child p:nth-child(2):before {
+main section.contact p:nth-of-type(2):before {
   content: url("../assets/mobile_tran.svg");
   background-color: rgb(25, 78, 39);
 }
-main > footer section:first-child p:nth-child(3):before {
+main section.contact p:nth-of-type(3):before {
   content: url("../assets/whatsapp_trans.svg");
   background-color: rgb(25, 78, 39);
 }
-main > footer section:first-child p:nth-child(4) {
+main section.contact p:nth-of-type(4) {
   color: rgb(25, 78, 39);
 }
-main > footer section:first-child p:nth-child(4):before {
+main section.contact p:nth-of-type(4):before {
   content: url("../assets/instagram_trans.svg");
   margin: 0 0.66em;
   background-color: rgb(25, 78, 39);
 }
-main > footer section:first-child p:nth-child(5) {
+main section.contact p:nth-of-type(5) {
   color: rgb(25, 78, 39);
 }
-main > footer section:first-child p:nth-child(5):before {
+main section.contact p:nth-of-type(5):before {
   content: url("../assets/linkedin_trans.svg");
   background-color: rgb(25, 78, 39);
 }
-main > footer nav {
+main section.contact nav {
   font-size: 0.625rem;
+  padding: 0.25em 0;
+  border-top: solid 1px white;
 }
-main > footer nav a:link,
-main > footer nav a:visited {
+main section.contact nav a:link,
+main section.contact nav a:visited {
   color: rgb(252, 246, 228);
 }
-main > footer nav a:hover,
-main > footer nav a:active {
+main section.contact nav a:hover,
+main section.contact nav a:active {
   color: white;
 }
 
@@ -882,6 +921,39 @@ body > div > footer ul a:active {
 @media only screen and (min-width: 1025px) {
   .mission article p:first-child {
     font-size: calc(24px + 2 * (100vw - 1025px) / 255);
+  }
+  header nav ul li a {
+    padding: 0 2em;
+    font-size: 1.125rem;
+    color: rgb(25, 78, 39);
+    transition: transform 0.2s ease-out;
+  }
+  header nav ul li a:hover {
+    color: rgb(25, 78, 39);
+    background-color: transparent !important;
+    transform: scale(125%);
+  }
+}
+@media only screen and (max-width: 1024px) {
+  #home header > nav > ul > li:nth-child(1) > a:link,
+#home header > nav > ul > li:nth-child(1) > a:visited {
+    color: white;
+    background-color: hsl(0deg, 0%, 33%);
+  }
+  #about header > nav > ul > li:nth-child(2) > a:link,
+#about header > nav > ul > li:nth-child(2) > a:visited {
+    color: white;
+    background-color: hsl(0deg, 0%, 33%);
+  }
+  #gallery header > nav > ul > li:nth-child(3) > a:link,
+#gallery header > nav > ul > li:nth-child(3) > a:visited {
+    color: white;
+    background-color: hsl(0deg, 0%, 33%);
+  }
+  #contact header > nav > ul > li:nth-child(4) > a:link,
+#contact header > nav > ul > li:nth-child(4) > a:visited {
+    color: white;
+    background-color: hsl(0deg, 0%, 33%);
   }
 }
 header {
@@ -919,24 +991,6 @@ header > div svg path {
 header input {
   display: none;
 }
-header nav ul {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  margin: 2em 0 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-out;
-}
-header nav ul li a {
-  padding: 0.8em 0.5em 0.8em 1em;
-  display: block;
-  color: hsl(0deg, 0%, 33%);
-}
-header nav ul li a:hover {
-  color: white;
-  background-color: hsl(104deg, 96%, 9%) !important;
-}
 header label {
   position: absolute;
   top: 1em;
@@ -957,30 +1011,6 @@ header input:checked ~ nav ul {
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 1px 1px 4px rgb(25, 78, 39);
   max-height: 11.9em;
-}
-
-#home header > nav > ul > li:nth-child(1) > a:link,
-#home header > nav > ul > li:nth-child(1) > a:visited {
-  color: white;
-  background-color: hsl(0deg, 0%, 33%);
-}
-
-#about header > nav > ul > li:nth-child(2) > a:link,
-#about header > nav > ul > li:nth-child(2) > a:visited {
-  color: white;
-  background-color: hsl(0deg, 0%, 33%);
-}
-
-#gallery header > nav > ul > li:nth-child(3) > a:link,
-#gallery header > nav > ul > li:nth-child(3) > a:visited {
-  color: white;
-  background-color: hsl(0deg, 0%, 33%);
-}
-
-#contact header > nav > ul > li:nth-child(4) > a:link,
-#contact header > nav > ul > li:nth-child(4) > a:visited {
-  color: white;
-  background-color: hsl(0deg, 0%, 33%);
 }
 
 section {
@@ -1064,9 +1094,9 @@ main > footer {
   padding: 1.3em 1.3em 2.5em;
   color: white;
 }
-main > footer section:first-child {
+main section.contact {
   background-color: rgb(25, 78, 39);
-  padding: 0;
+  padding: 1.3em 1.3em 2.5em;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1074,7 +1104,7 @@ main > footer section:first-child {
   display: flex;
   flex-wrap: wrap;
 }
-main > footer section:first-child p {
+main section.contact p {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1083,14 +1113,15 @@ main > footer section:first-child p {
   flex-wrap: nowrap;
   margin: 0 0 0.66em;
 }
-main + footer {
+
++ footer {
   background-color: black;
   padding: 5em;
   color: white;
   font-size: 0.5em;
   text-align: center;
 }
-main + footer ul {
++ footer ul {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1102,7 +1133,7 @@ main + footer ul {
   -webkit-justify-content: center;
   justify-content: center;
 }
-main + footer ul li {
++ footer ul li {
   margin: 0 0.4em;
 }
 
@@ -1201,6 +1232,10 @@ section.services + div span {
 }
 
 @media only screen and (min-width: 769px) {
+  header > div {
+    width: 158px;
+    height: 167px;
+  }
   section.services div {
     display: -webkit-box;
     display: -moz-box;
@@ -1267,6 +1302,14 @@ section.services + div span {
   }
 }
 @media only screen and (min-width: 1025px) {
+  header {
+    align-items: end;
+  }
+  header label {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+  }
   header nav ul {
     display: -webkit-box;
     display: -moz-box;
@@ -1278,6 +1321,10 @@ section.services + div span {
     -ms-flex-pack: space-between;
     -webkit-justify-content: center;
     justify-content: space-between;
+    position: relative;
+    left: 0;
+    top: 0;
+    max-height: 100%;
   }
   .eco {
     padding: 1em 15%;
@@ -1504,36 +1551,118 @@ html.js #home section.services article.f > aside {
     animation: span24 29s linear 0s infinite normal forwards;
   }
 }
+#about nav.eco ul {
+  font-size: 1.25em;
+}
 #about nav.eco ul li {
   position: relative;
 }
-#about nav.eco ul li:nth-child(1) {
-  text-align: right;
+#about main > section:first-of-type {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 2em;
+  font-size: 1.125rem;
 }
-#about section:first-of-type {
-  font-size: 1.125em;
-}
-#about section:first-of-type aside {
+#about main > section:first-of-type aside {
+  border: solid 1px;
+  -webkit-box: 7;
+  -moz-box: 7;
+  -webkit-flex: 7 1 1em;
+  -ms-flex: 7 1 1em;
+  flex: 7 1 1em;
+  background: url("../images/IMG_0556.jpg") no-repeat center/cover;
   position: absolute;
   left: -9999px;
   top: auto;
 }
-#about section:first-of-type article h2 {
-  font-size: 4em;
+#about main > section:first-of-type article {
+  -webkit-box: 5;
+  -moz-box: 5;
+  -webkit-flex: 5 1 1em;
+  -ms-flex: 5 1 1em;
+  flex: 5 1 1em;
 }
-#about section:first-of-type article p:first-of-type {
+#about main > section:first-of-type article h2 {
+  font-size: 4em;
+  line-height: 1;
+}
+#about main > section:first-of-type article p {
+  font-size: 1em;
+}
+#about main > section:first-of-type article p:first-of-type {
   color: rgb(25, 78, 39);
   font-size: 1.33em;
   margin: 0 0 1em;
 }
+#about main > section:first-of-type article ul {
+  font-size: 1em;
+}
 #about .testimonials {
-  font-size: 1.05em;
+  font-size: 1.125rem;
 }
 #about .testimonials h2 {
-  font-size: 3.2em;
+  font-size: 3.3em;
   margin: 0;
 }
+#about .testimonials p {
+  font-size: 1em;
+}
 
+@media only screen and (min-width: 769px) {
+  #about main > section:first-of-type {
+    padding: 3.5rem 2rem;
+  }
+  #about main > section:first-of-type article h2 {
+    font-size: calc(66px + 6 * (100vw - 769px) / 511);
+  }
+  #about main > section:first-of-type aside {
+    position: relative;
+    left: 0;
+    top: 0;
+    max-height: 100%;
+    margin: 0;
+  }
+  #about main .eco {
+    padding: 0.5em 1em;
+    padding-left: calc(16px + 140 * (100vw - 769px) / 520);
+    padding-right: calc(16px + 140 * (100vw - 769px) / 520);
+    font-size: 1em;
+  }
+  #about main .eco ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #about main .eco ul li {
+    padding: 0.15em 0 0.15em 2.5em;
+  }
+  #about main .eco ul li:nth-child(2) {
+    font-size: 6rem;
+    -webkit-box: 1;
+    -moz-box: 1;
+    -webkit-flex: 1 1 1em;
+    -ms-flex: 1 1 1em;
+    flex: 1 1 1em;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  #about main .testimonials {
+    background-size: 50%;
+    padding: 1em 8em;
+  }
+}
 #gallery section:first-of-type > div {
   display: -webkit-box;
   display: -moz-box;
@@ -1582,6 +1711,19 @@ html.js #home section.services article.f > aside {
 }
 #gallery section:first-of-type > div a:hover {
   filter: brightness(0.3);
+}
+
+#contact main section:first-child {
+  color: rgb(252, 246, 228);
+  background-color: rgb(25, 78, 39);
+  font-size: 1.125rem;
+}
+#contact main section:first-child h4 {
+  font-size: 1.33em;
+  font-family: "Crimson", "Times New Roman", Times, serif;
+}
+#contact main section:first-child h2 {
+  font-size: 4em;
 }
 
 #privacy main section article h3 {

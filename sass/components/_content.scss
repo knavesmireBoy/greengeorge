@@ -26,6 +26,26 @@ h1,
 h2 {
   font-family: "Crimson", "Times New Roman", Times, serif;
 }
+header {
+  nav {
+    ul {
+      @include hide;
+      margin: 2em 0 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      li a {
+        padding: 0.8em 0.5em 0.8em 1em;
+        display: block;
+        color: hsl(0, 0%, 33%);
+        &:hover {
+          color: white;
+          background-color: hsl(104, 96%, 9%) !important;
+        }
+      }
+    }
+  }
+}
 
 section {
   padding: 0;
@@ -182,53 +202,67 @@ main > footer {
   padding: 1em;
   color: white;
   font-size: 0.875rem;
-  section:first-child {
+}
+
+main section.contact {
+  background-color: $main;
+  h2,
+  h4 {
+    @include flex(1, 1, 100%);
+  }
+  p:before {
+    width: 4vw;
+    height: 4vw;
+    width: 1.5em;
+    height: 1.5em;
+    overflow: hidden;
+    display: block;
+    margin-right: 5px;
+    background-color: white;
+    border-radius: 50%;
     background-color: $main;
-    padding: 0;
-    p:before {
-      width: 4vw;
-      height: 4vw;
-      width: 1.5em;
-      height: 1.5em;
-      overflow: hidden;
-      display: block;
-      margin-right: 5px;
-      background-color: white;
-      border-radius: 50%;
+  }
+
+  p:nth-of-type(1) {
+    @include flex(1, 1, 1%);
+    &:before {
       content: url("../assets/mail_trans.svg");
       background-color: $main;
     }
-    p:nth-child(2) {
-      @include flex(1, 1, 100%);
-      &:before {
-        content: url("../assets/mobile_tran.svg");
-        background-color: $main;
-      }
-    }
-    p:nth-child(3) {
-      &:before {
-        content: url("../assets/whatsapp_trans.svg");
-        background-color: $main;
-      }
-    }
-    p:nth-child(4) {
-      color: $main;
-      &:before {
-        content: url("../assets/instagram_trans.svg");
-        margin: 0 0.66em;
-        background-color: $main;
-      }
-    }
-    p:nth-child(5) {
-      color: $main;
-      &:before {
-        content: url("../assets/linkedin_trans.svg");
-        background-color: $main;
-      }
+  }
+  p:nth-of-type(2) {
+    @include flex(1, 1, 100%);
+    &:before {
+      content: url("../assets/mobile_tran.svg");
+      background-color: $main;
     }
   }
+  p:nth-of-type(3) {
+    &:before {
+      content: url("../assets/whatsapp_trans.svg");
+      background-color: $main;
+    }
+  }
+  p:nth-of-type(4) {
+    color: $main;
+    &:before {
+      content: url("../assets/instagram_trans.svg");
+      margin: 0 0.66em;
+      background-color: $main;
+    }
+  }
+  p:nth-of-type(5) {
+    color: $main;
+    &:before {
+      content: url("../assets/linkedin_trans.svg");
+      background-color: $main;
+    }
+  }
+
   nav {
     font-size: 0.625rem;
+    padding: 0.25em 0;
+    border-top: solid 1px white;
     a:link,
     a:visited {
       color: $bg;
@@ -255,5 +289,27 @@ body > div > footer {
 @media only screen and (min-width: 1025px) {
   .mission article p:first-child {
     font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
+  }
+  header nav ul li a {
+    padding: 0 2em;
+    font-size: 1.125rem;
+    color: $main;
+    transition: transform 0.2s ease-out;
+    &:hover {
+      color: $main;
+      background-color: transparent !important;
+      transform: scale(125%);
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  @for $i from 1 through length($navlist) {
+    $l: nth($navlist, $i);
+    #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
+    #{$l} header > nav > ul > li:nth-child(#{$i}) > a:visited {
+      color: white;
+      background-color: hsl(0, 0%, 33%);
+    }
   }
 }

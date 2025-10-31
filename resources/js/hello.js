@@ -68,8 +68,8 @@ let inc = 0,
   liveArticles = (service && service.getElementsByTagName("article")) || [],
   articles = (service && service.querySelectorAll("article")) || [],
   i = articles.length,
-  element = articles[0],
-  next = element,
+  el = articles[0],
+  next = el,
   validate = () => true,
   validator = (a) => (b) => a !== b,
   move = (node, val) => (node.style.marginLeft = val),
@@ -79,9 +79,10 @@ let inc = 0,
     paint
   ),
   cb = compose(cycle, finder(articles)),
-  stepper = (data, validator, callback, dur = 500, inc = 0, start = undefined) => {
+  stepper = (element, data, validator, callback, dur = 500, inc = 0, start = undefined) => {
     let [travel, factor] = resize(data, 1),
     duration;
+
     return (timestamp) => {
       if (!start && inc) {
         duration = travel;
@@ -105,6 +106,9 @@ let inc = 0,
           if (validator(element)) {
             request = requestAnimationFrame(step);
           }
+          else {
+            cancelAnimationFrame(request);
+          }
         }
       } else {
         if (shift < duration) {
@@ -117,7 +121,7 @@ let inc = 0,
       }
     };
   };
-step = stepper(margins, validator(next), cb);
+step = stepper(articles[0], margins, validator(next), cb);
 
 function controller(e) {
   let a = Array.prototype.slice.call(this.childNodes),
@@ -126,6 +130,8 @@ function controller(e) {
     f = finder(a),
     i = f(e.target),
     j = 0,
+    cb,
+    r,
     article;
   if (e.target !== this) {
     cycle(i);
@@ -133,6 +139,8 @@ function controller(e) {
     article = articles[i];
     j = live.indexOf(article);
     i = 0;
+    //cb = stepper(live[0], margins, validator(live[j]), () => 0, 10);
+    //r = requestAnimationFrame(cb);
     while (i < j) {
       parent.appendChild(live[i]);
       i++;
@@ -140,9 +148,9 @@ function controller(e) {
   }
 }
 
-if (element) {
+if (el) {
   request = requestAnimationFrame(step);
   control.addEventListener("click", controller);
-  cb(element);
+  cb(el);
   setServicesBgImage(liveArticles, ["a", "b", "c", "d", "e", "f"]);
 }
