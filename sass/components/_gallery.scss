@@ -1,44 +1,50 @@
 #gallery {
-  section:first-of-type > div {
-    @include flexy(wrap);
-    align-content: start;
-    justify-content: space-between;
-    gap: 0.75em;
-    a {
-      @include flex(1, 1, 30%);
-      //margin: auto;
-      display: block;
-      filter: brightness(1);
-      transition: filter 0.6s ease-in 0.1s;
-      // padding: 4em;
-      @include prefix(
-        animation,
-        gallery 0.6s ease-in 0.1s 1 normal forwards,
-        o moz webkit
-      );
-      &:nth-child(10), &:nth-child(12){
-        margin-top: -32.5vw;
-      }
-      &:nth-child(13){
-        margin-top: -13.8vw;
-      }
-      &:nth-child(15){
-        margin-top: -32.5vw;
-      }
-      &:nth-child(16){
-        max-width: 31.8vw;
-        margin-top: -13.8vw;
-      }
-      &:nth-child(17){
-        max-width: 31.8vw;
-        margin-top: -13.8vw;
-      }
-      img {
+  h1 {
+    font-size: 4rem;
+    color: $main;
+    text-align: center;
+  }
+  main > section:first-of-type {
+    background-color: $bg;
+    > div {
+      @include flexy(wrap);
+      align-content: start;
+      justify-content: space-between;
+      gap: 0.75em;
+      a {
+        @include flex(1, 1, 30%);
+        //margin: auto;
         display: block;
-        width: 100%;
-      }
-      &:hover {
-        filter: brightness(0.3);
+        filter: brightness(1);
+        transition: filter 0.6s ease-in 0.1s;
+        // padding: 4em;
+        @include prefix(
+          animation,
+          gallery 0.6s ease-in 0.1s 1 normal forwards,
+          o moz webkit
+        );
+        &:nth-child(12), &:nth-child(13) {
+          margin-top: -31.5vw;
+        }
+
+        &:nth-child(15) {
+          margin-top: -31.5vw;
+        }
+        &:nth-child(16) {
+          max-width: 30.5vw;
+          margin-top: -13.8vw;
+        }
+        &:nth-child(17) {
+          max-width: 30.5vw;
+          margin-top: -13.8vw;
+        }
+        img {
+          display: block;
+          width: 100%;
+        }
+        &:hover {
+          filter: brightness(0.3);
+        }
       }
     }
   }

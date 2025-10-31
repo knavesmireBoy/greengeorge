@@ -1,15 +1,23 @@
-#contact main {
+#contact main > {
   section:first-child {
     color: $bg;
     background-color: $main;
     font-size: 1.125rem;
-
     h4 {
       font-size: 1.33em;
       font-family: "Crimson", "Times New Roman", Times, serif;
     }
     h2 {
-        font-size: 4em;
+      font-size: 4em;
+    }
+
+    p {
+      line-height: 2;
+      &:before {
+        width: 2em;
+        height: 2em;
+        margin: 0 .7em 0 0;
+      }
     }
   }
 }

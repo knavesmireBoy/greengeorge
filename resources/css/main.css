@@ -892,17 +892,18 @@ main section.contact p:nth-of-type(5):before {
   content: url("../assets/linkedin_trans.svg");
   background-color: rgb(25, 78, 39);
 }
-main section.contact nav {
+
+main > footer nav {
   font-size: 0.625rem;
   padding: 0.25em 0;
   border-top: solid 1px white;
 }
-main section.contact nav a:link,
-main section.contact nav a:visited {
+main > footer nav ul li a:link,
+main > footer nav ul li a:visited {
   color: rgb(252, 246, 228);
 }
-main section.contact nav a:hover,
-main section.contact nav a:active {
+main > footer nav ul li a:hover,
+main > footer nav ul li a:active {
   color: white;
 }
 
@@ -956,6 +957,31 @@ body > div > footer ul a:active {
     background-color: hsl(0deg, 0%, 33%);
   }
 }
+body > div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  flex-direction: column;
+}
+body > div main {
+  -webkit-box: 5;
+  -moz-box: 5;
+  -webkit-flex: 5 0 auto;
+  -ms-flex: 5 0 auto;
+  flex: 5 0 auto;
+}
+body > div footer {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 0 1em;
+  -ms-flex: 1 0 1em;
+  flex: 1 0 1em;
+}
+
 header {
   padding: 1rem;
   display: -webkit-box;
@@ -1094,6 +1120,9 @@ main > footer {
   padding: 1.3em 1.3em 2.5em;
   color: white;
 }
+main > footer section.contact {
+  padding: 0;
+}
 main section.contact {
   background-color: rgb(25, 78, 39);
   padding: 1.3em 1.3em 2.5em;
@@ -1113,15 +1142,14 @@ main section.contact p {
   flex-wrap: nowrap;
   margin: 0 0 0.66em;
 }
-
-+ footer {
+main + footer {
   background-color: black;
   padding: 5em;
   color: white;
   font-size: 0.5em;
   text-align: center;
 }
-+ footer ul {
+main + footer ul {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1133,7 +1161,7 @@ main section.contact p {
   -webkit-justify-content: center;
   justify-content: center;
 }
-+ footer ul li {
+main + footer ul li {
   margin: 0 0.4em;
 }
 
@@ -1663,7 +1691,15 @@ html.js #home section.services article.f > aside {
     padding: 1em 8em;
   }
 }
-#gallery section:first-of-type > div {
+#gallery h1 {
+  font-size: 4rem;
+  color: rgb(25, 78, 39);
+  text-align: center;
+}
+#gallery main > section:first-of-type {
+  background-color: rgb(252, 246, 228);
+}
+#gallery main > section:first-of-type > div {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1674,7 +1710,7 @@ html.js #home section.services article.f > aside {
   justify-content: space-between;
   gap: 0.75em;
 }
-#gallery section:first-of-type > div a {
+#gallery main > section:first-of-type > div a {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 30%;
@@ -1688,42 +1724,47 @@ html.js #home section.services article.f > aside {
   -webkit-animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
   animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
 }
-#gallery section:first-of-type > div a:nth-child(10), #gallery section:first-of-type > div a:nth-child(12) {
-  margin-top: -32.5vw;
+#gallery main > section:first-of-type > div a:nth-child(12), #gallery main > section:first-of-type > div a:nth-child(13) {
+  margin-top: -31.5vw;
 }
-#gallery section:first-of-type > div a:nth-child(13) {
+#gallery main > section:first-of-type > div a:nth-child(15) {
+  margin-top: -31.5vw;
+}
+#gallery main > section:first-of-type > div a:nth-child(16) {
+  max-width: 30.5vw;
   margin-top: -13.8vw;
 }
-#gallery section:first-of-type > div a:nth-child(15) {
-  margin-top: -32.5vw;
-}
-#gallery section:first-of-type > div a:nth-child(16) {
-  max-width: 31.8vw;
+#gallery main > section:first-of-type > div a:nth-child(17) {
+  max-width: 30.5vw;
   margin-top: -13.8vw;
 }
-#gallery section:first-of-type > div a:nth-child(17) {
-  max-width: 31.8vw;
-  margin-top: -13.8vw;
-}
-#gallery section:first-of-type > div a img {
+#gallery main > section:first-of-type > div a img {
   display: block;
   width: 100%;
 }
-#gallery section:first-of-type > div a:hover {
+#gallery main > section:first-of-type > div a:hover {
   filter: brightness(0.3);
 }
 
-#contact main section:first-child {
+#contact main > section:first-child {
   color: rgb(252, 246, 228);
   background-color: rgb(25, 78, 39);
   font-size: 1.125rem;
 }
-#contact main section:first-child h4 {
+#contact main > section:first-child h4 {
   font-size: 1.33em;
   font-family: "Crimson", "Times New Roman", Times, serif;
 }
-#contact main section:first-child h2 {
+#contact main > section:first-child h2 {
   font-size: 4em;
+}
+#contact main > section:first-child p {
+  line-height: 2;
+}
+#contact main > section:first-child p:before {
+  width: 2em;
+  height: 2em;
+  margin: 0 0.7em 0 0;
 }
 
 #privacy main section article h3 {

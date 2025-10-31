@@ -258,11 +258,13 @@ main section.contact {
       background-color: $main;
     }
   }
+}
 
-  nav {
-    font-size: 0.625rem;
-    padding: 0.25em 0;
-    border-top: solid 1px white;
+main > footer nav {
+  font-size: 0.625rem;
+  padding: 0.25em 0;
+  border-top: solid 1px white;
+  ul li {
     a:link,
     a:visited {
       color: $bg;
@@ -273,6 +275,7 @@ main section.contact {
     }
   }
 }
+
 body > div > footer {
   ul {
     font-size: 0.625rem;

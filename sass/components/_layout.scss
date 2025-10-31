@@ -1,3 +1,15 @@
+body > div {
+  @include flexy;
+  min-height: 100vh;
+  flex-direction: column;
+  main {
+    @include flex(5, 0, auto);
+  }
+  footer {
+    @include flex(1, 0, 1em);
+  }
+}
+
 header {
   padding: 1rem;
   @include flexy(wrap);
@@ -127,10 +139,13 @@ main {
     background-color: $main;
     padding: 1.3em 1.3em 2.5em;
     color: white;
+    section.contact {
+      padding: 0;
+    }
   }
   section.contact {
     background-color: $main;
-     padding: 1.3em 1.3em 2.5em;
+    padding: 1.3em 1.3em 2.5em;
 
     @include flexy(wrap);
     p {
@@ -138,18 +153,19 @@ main {
       margin: 0 0 0.66em;
     }
   }
-}
-+ footer {
-  background-color: black;
-  padding: 5em;
-  color: white;
-  font-size: 0.5em;
-  text-align: center;
-  ul {
-    @include flexy(wrap);
-    @include justify(center);
-    li {
-      margin: 0 0.4em;
+
+  & + footer {
+    background-color: black;
+    padding: 5em;
+    color: white;
+    font-size: 0.5em;
+    text-align: center;
+    ul {
+      @include flexy(wrap);
+      @include justify(center);
+      li {
+        margin: 0 0.4em;
+      }
     }
   }
 }
