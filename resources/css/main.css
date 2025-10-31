@@ -1711,11 +1711,6 @@ html.js #home section.services article.f > aside {
   gap: 0.75em;
 }
 #gallery main > section:first-of-type > div a {
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 1 30%;
-  -ms-flex: 1 1 30%;
-  flex: 1 1 30%;
   display: block;
   filter: brightness(1);
   transition: filter 0.6s ease-in 0.1s;
@@ -1724,28 +1719,84 @@ html.js #home section.services article.f > aside {
   -webkit-animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
   animation: gallery 0.6s ease-in 0.1s 1 normal forwards;
 }
-#gallery main > section:first-of-type > div a:nth-child(12), #gallery main > section:first-of-type > div a:nth-child(13) {
-  margin-top: -31.5vw;
-}
-#gallery main > section:first-of-type > div a:nth-child(15) {
-  margin-top: -31.5vw;
-}
-#gallery main > section:first-of-type > div a:nth-child(16) {
-  max-width: 30.5vw;
-  margin-top: -13.8vw;
-}
-#gallery main > section:first-of-type > div a:nth-child(17) {
-  max-width: 30.5vw;
-  margin-top: -13.8vw;
+#gallery main > section:first-of-type > div a:hover {
+  filter: brightness(0.3);
 }
 #gallery main > section:first-of-type > div a img {
   display: block;
   width: 100%;
 }
-#gallery main > section:first-of-type > div a:hover {
-  filter: brightness(0.3);
-}
 
+@media only screen and (min-width: 769px) {
+  #gallery main > section:first-of-type > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #gallery main > section:first-of-type > div a {
+    border: solid 1px red;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+  #gallery main > section:first-of-type > div a:nth-child(odd) {
+    grid-column: 1/2;
+  }
+  #gallery main > section:first-of-type > div a:nth-child(even) {
+    grid-column: 2/3;
+  }
+  #gallery main > section:first-of-type > div a:last-child {
+    grid-column: 1/3;
+  }
+  #gallery main > section:first-of-type > div a:nth-child(16) {
+    border-color: darkviolet;
+    align-self: end;
+  }
+  #gallery main > section:first-of-type > div a:nth-last-child(-n+3) {
+    border-color: orange;
+  }
+  #gallery main > section:first-of-type > div > div {
+    grid-column: 1/3;
+    grid-template-rows: 4em 4em 4em 4em;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1em;
+    display: grid;
+  }
+  #gallery main > section:first-of-type > div > div a:first-child {
+    grid-row: 1/8;
+    grid-column: 1/2;
+  }
+  #gallery main > section:first-of-type > div > div a:last-child {
+    grid-row: 1/6;
+    grid-column: 2/3;
+  }
+  #gallery main > section:first-of-type > div > div a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+/*
+@media only screen and (min-width: 1025px) {
+  main > section:first-of-type a {
+    @include flex(1, 1, 30%);
+    &:nth-child(10),
+    &:nth-child(12),
+    &:nth-child(13) {
+      margin-top: -31.5vw;
+    }
+    &:nth-last-child(-n + 3) {
+      margin-top: -31.5vw;
+    }
+
+    &:nth-child(16) {
+      max-width: 30.5vw;
+    }
+    &:nth-child(17) {
+      max-width: 30.5vw;
+    }
+  }
+}
+*/
 #contact main > section:first-child {
   color: rgb(252, 246, 228);
   background-color: rgb(25, 78, 39);
