@@ -32,7 +32,7 @@
       }
       div {
         @include flexy(wrap);
-        gap: .75em;
+        gap: 0.75em;
         a {
           display: block;
           @include flex(1, 1, 100%);
@@ -154,15 +154,19 @@
         grid-column: 2 / 6;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 6em 6em 6em 6em 6em 2em;
+        grid-template-rows: repeat(4, 100px) 1fr;
         column-gap: 1em;
         display: grid;
-        a:first-child {
-          grid-row: 1 / 7;
-          grid-column: 1/2;
-        }
-        a:last-child {
-          grid-row: 1 / 7;
-          grid-column: 2/3;
+        a {
+          border: solid 1px;
+          &:first-child {
+            grid-row: 1 / 5;
+            grid-column: 1/2;
+          }
+          &:last-child {
+            grid-row: 1 / 5;
+            grid-column: 2/3;
+          }
         }
       }
     }
