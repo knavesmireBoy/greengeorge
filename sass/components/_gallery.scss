@@ -166,10 +166,10 @@
     column-gap: 2em;
     p {
       margin: auto;
-      @include flex(2, 1, 1em);
+      @include flex(1, 1, 1em);
     }
     figure {
-      @include flex(3, 1, 1em);
+      @include flex(1, 1, 1em);
       border-radius: 2px;
       border: solid 1px white;
       overflow: hidden;
@@ -182,6 +182,7 @@
     @include justify(space-between);
     div {
       @include flexy();
+      position: relative;
     }
   }
   figure img {
@@ -189,4 +190,14 @@
     display: block;
   }
   background-color: rgba(0, 0, 0, 0.8);
+  #fullscreen {
+    cursor: pointer;
+  }
+}
+
+#esc {
+  color:pink;
+  position: static;
+  transform: translate(0, -10px);
+  transition: transform .5s ease-out .2s;
 }
