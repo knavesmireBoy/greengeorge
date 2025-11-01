@@ -80,7 +80,6 @@
           &:first-child {
             grid-row: 1 / 4;
             grid-column: 1/4;
-           
           }
           &:last-child {
             grid-row: 1 / 4;
@@ -149,4 +148,45 @@
       grid-row: 5 / 6;
     }
   }
+}
+#gallery #lightbox {
+  @include flexy(wrap);
+  color: white;
+  text-align: center;
+  padding: 2em;
+  p {
+    color: white;
+    margin: 0;
+  }
+  > * {
+    @include flex(1, 1, 100%);
+  }
+  & main {
+    @include flexy();
+    column-gap: 2em;
+    p {
+      margin: auto;
+      @include flex(2, 1, 1em);
+    }
+    figure {
+      @include flex(3, 1, 1em);
+      border-radius: 2px;
+      border: solid 1px white;
+      overflow: hidden;
+      box-shadow:  0 0 30px rgba(0, 0, 0, .3), 0 0 8px -5px rgba(0, 0, 0, .3);
+    }
+  }
+  header {
+    padding: 0 2em;
+    @include flexy();
+    @include justify(space-between);
+    div {
+      @include flexy();
+    }
+  }
+  figure img {
+    width: 100%;
+    display: block;
+  }
+  background-color: rgba(0, 0, 0, 0.8);
 }

@@ -967,22 +967,14 @@ body > div {
   min-height: 100vh;
   flex-direction: column;
 }
-body > div main {
+body > div > main {
   -webkit-box: 5;
   -moz-box: 5;
   -webkit-flex: 5 0 auto;
   -ms-flex: 5 0 auto;
   flex: 5 0 auto;
 }
-body > div footer {
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 0 1em;
-  -ms-flex: 1 0 1em;
-  flex: 1 0 1em;
-}
-
-header {
+body > div > header {
   padding: 1rem;
   display: -webkit-box;
   display: -moz-box;
@@ -995,7 +987,7 @@ header {
   -webkit-justify-content: center;
   justify-content: space-between;
 }
-header h1 {
+body > div > header h1 {
   text-indent: 100%;
   font-size: 1px;
   overflow: hidden;
@@ -1007,17 +999,17 @@ header h1 {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
 }
-header > div {
+body > div > header > div {
   width: 120px;
   height: 126.7px;
 }
-header > div svg path {
+body > div > header > div svg path {
   fill: hsl(136deg, 51%, 20%) !important;
 }
-header input {
+body > div > header input {
   display: none;
 }
-header label {
+body > div > header label {
   position: absolute;
   top: 1em;
   right: 2.2em;
@@ -1030,13 +1022,20 @@ header label {
   background-position: center;
   background-size: contain;
 }
-header input:checked ~ nav ul {
+body > div > header input:checked ~ nav ul {
   position: absolute;
   z-index: 1;
   left: calc(100% - 6em);
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 1px 1px 4px rgb(25, 78, 39);
   max-height: 11.9em;
+}
+body > div > footer {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 0 1em;
+  -ms-flex: 1 0 1em;
+  flex: 1 0 1em;
 }
 
 section {
@@ -1115,15 +1114,15 @@ main > footer .payment div:last-child {
   margin: 0;
 }
 
-main > footer {
+body > div > main > footer {
   background-color: rgb(25, 78, 39);
   padding: 1.3em 1.3em 2.5em;
   color: white;
 }
-main > footer section.contact {
+body > div > main > footer section.contact {
   padding: 0;
 }
-main section.contact {
+body > div > main section.contact {
   background-color: rgb(25, 78, 39);
   padding: 1.3em 1.3em 2.5em;
   display: -webkit-box;
@@ -1133,7 +1132,7 @@ main section.contact {
   display: flex;
   flex-wrap: wrap;
 }
-main section.contact p {
+body > div > main section.contact p {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1142,14 +1141,14 @@ main section.contact p {
   flex-wrap: nowrap;
   margin: 0 0 0.66em;
 }
-main + footer {
+body > div > main + footer {
   background-color: black;
   padding: 5em;
   color: white;
   font-size: 0.5em;
   text-align: center;
 }
-main + footer ul {
+body > div > main + footer ul {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1161,7 +1160,7 @@ main + footer ul {
   -webkit-justify-content: center;
   justify-content: center;
 }
-main + footer ul li {
+body > div > main + footer ul li {
   margin: 0 0.4em;
 }
 
@@ -1260,7 +1259,7 @@ section.services + div span {
 }
 
 @media only screen and (min-width: 769px) {
-  header > div {
+  body > div > header > div {
     width: 158px;
     height: 167px;
   }
@@ -1330,15 +1329,15 @@ section.services + div span {
   }
 }
 @media only screen and (min-width: 1025px) {
-  header {
+  body > div > header {
     align-items: end;
   }
-  header label {
+  body > div > header label {
     position: absolute;
     left: -9999px;
     top: auto;
   }
-  header nav ul {
+  body > div > header nav ul {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -1842,6 +1841,83 @@ html.js #home section.services article.f > aside {
     grid-row: 5/6;
   }
 }
+#gallery #lightbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  text-align: center;
+  padding: 2em;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#gallery #lightbox p {
+  color: white;
+  margin: 0;
+}
+#gallery #lightbox > * {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+#gallery #lightbox main {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 2em;
+}
+#gallery #lightbox main p {
+  margin: auto;
+  -webkit-box: 2;
+  -moz-box: 2;
+  -webkit-flex: 2 1 1em;
+  -ms-flex: 2 1 1em;
+  flex: 2 1 1em;
+}
+#gallery #lightbox main figure {
+  -webkit-box: 3;
+  -moz-box: 3;
+  -webkit-flex: 3 1 1em;
+  -ms-flex: 3 1 1em;
+  flex: 3 1 1em;
+  border-radius: 2px;
+  border: solid 1px white;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
+}
+#gallery #lightbox header {
+  padding: 0 2em;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-justify-content: center;
+  justify-content: space-between;
+}
+#gallery #lightbox header div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+}
+#gallery #lightbox figure img {
+  width: 100%;
+  display: block;
+}
+
 #contact main > section:first-child {
   color: rgb(252, 246, 228);
   background-color: rgb(25, 78, 39);
