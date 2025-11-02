@@ -31,31 +31,39 @@ const box = document.getElementById("lightbox"),
   clika = document.getElementById("fullscreen"),
   xit = document.getElementById("exit"),
   esc = document.getElementById("esc"),
-  el = document.createElement("p"),
+  img = document.querySelector("#lightbox figure img"),
   exit = function () {
     let elem = document.getElementById("esc");
     if (elem) elem.parentNode.removeChild(elem);
-  },
-  defer = (f, i) => () => f(i);
+  };
 
-clika.addEventListener("click", function () {
+img.addEventListener("click", (e) => {
+  let el = e.target,
+    fig = el.parentNode,
+    l = fig.previousElementSibling,
+    r = fig.nextElementSibling,
+    store = [],
+    main = fig.parentNode;
+  main.appendChild(el);
+  store.push(main.removeChild(fig));
+  store.push(main.removeChild(l));
+  store.push(main.removeChild(r));
+});
+
+clika.addEventListener("click", (e) => {
   if (box.requestFullscreen) {
     box.requestFullscreen();
   }
   if (!esc) {
-    el.innerHTML = "to exit fullscreen press <kbd>ESC</kbd";
+    let el = document.createElement("p");
+    el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
     el.id = "esc";
     box.insertBefore(el, box.firstElementChild);
-    el.style.position = "absloute";
-    el.style.top = 0;
-    el.style.left = "50%";
-    el.style.color = "lightgreen";
-    fade(100);
+    fade(200);
   }
 });
 
 xit.addEventListener("click", (e) => {
-  console.log(e);
   let box = document.getElementById("lightbox");
   box.parentNode.removeChild(box);
 });

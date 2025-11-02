@@ -1850,8 +1850,15 @@ html.js #home section.services article.f > aside {
   flex-wrap: wrap;
   color: white;
   text-align: center;
-  padding: 2em;
+  padding: 0;
+  font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
+}
+#gallery #lightbox img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
 }
 #gallery #lightbox p {
   color: white;
@@ -1872,6 +1879,7 @@ html.js #home section.services article.f > aside {
   display: flex;
   flex-wrap: nowrap;
   column-gap: 2em;
+  font-size: 2rem;
 }
 #gallery #lightbox main p {
   margin: auto;
@@ -1890,10 +1898,26 @@ html.js #home section.services article.f > aside {
   border-radius: 2px;
   border: solid 1px white;
   overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
 }
+#gallery #lightbox main figure img {
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
+  /*
+  transition-duration: 300ms; transform: translate3d(0px, 0px, 0px) scale(3);
+  */
+}
 #gallery #lightbox header {
-  padding: 0 2em;
+  padding: 1.4em;
+  position: relative;
+  z-index: 1;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1904,6 +1928,7 @@ html.js #home section.services article.f > aside {
   -ms-flex-pack: space-between;
   -webkit-justify-content: center;
   justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 #gallery #lightbox header div {
   display: -webkit-box;
@@ -1914,19 +1939,30 @@ html.js #home section.services article.f > aside {
   flex-wrap: nowrap;
   position: relative;
 }
-#gallery #lightbox figure img {
-  width: 100%;
-  display: block;
-}
 #gallery #lightbox #fullscreen {
   cursor: pointer;
 }
-
-#esc {
-  color: pink;
-  position: static;
-  transform: translate(0, -10px);
-  transition: transform 0.5s ease-out 0.2s;
+#gallery #lightbox footer {
+  padding: 1.4em;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+}
+#gallery #lightbox #esc {
+  border: solid 1px white;
+  color: hsl(70deg, 71%, 40%);
+  padding: 1em 2em;
+  border-radius: 8px;
+  position: absolute;
+  top: 1em;
+  width: 50%;
+  margin-left: 25%;
+  z-index: 2;
+}
+#gallery #lightbox #esc kbd {
+  padding: 0.2em;
+  border: solid 1px white;
+  border-radius: 4px;
 }
 
 #contact main > section:first-child {
