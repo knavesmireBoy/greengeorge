@@ -35,7 +35,8 @@ const box = document.getElementById("lightbox"),
   exit = function () {
     let elem = document.getElementById("esc");
     if (elem) elem.parentNode.removeChild(elem);
-  };
+  },
+  defer = (f, i) => () => f(i);
 
 img.addEventListener("click", (e) => {
   let el = e.target,
@@ -44,10 +45,11 @@ img.addEventListener("click", (e) => {
     r = fig.nextElementSibling,
     store = [],
     main = fig.parentNode;
-  main.appendChild(el);
-  store.push(main.removeChild(fig));
+  //main.appendChild(el);
+  //store.push(main.removeChild(fig));
   store.push(main.removeChild(l));
   store.push(main.removeChild(r));
+  fig.style.width = '100vh';
 });
 
 clika.addEventListener("click", (e) => {
