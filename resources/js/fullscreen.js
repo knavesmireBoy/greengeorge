@@ -35,21 +35,34 @@ const box = document.getElementById("lightbox"),
   exit = function () {
     let elem = document.getElementById("esc");
     if (elem) elem.parentNode.removeChild(elem);
+    xit.className = "fader";
   },
   defer = (f, i) => () => f(i);
 
 img.addEventListener("click", (e) => {
-  let el = e.target,
+  let l,
+    r,
+    el = e.target,
     fig = el.parentNode,
-    l = fig.previousElementSibling,
-    r = fig.nextElementSibling,
-    store = [],
     main = fig.parentNode;
-  //main.appendChild(el);
-  //store.push(main.removeChild(fig));
-  store.push(main.removeChild(l));
-  store.push(main.removeChild(r));
-  fig.style.width = '100vh';
+  if (fig.previousElementSibling) {
+    l = fig.previousElementSibling;
+    r = fig.nextElementSibling;
+    main = fig.parentNode;
+    main.removeChild(l);
+    main.removeChild(r);
+    fig.style.margin = 0;
+    fig.style.borderWidth = 0;
+  } else {
+    l = document.createElement("p");
+    r = document.createElement("p");
+    l.innerHTML = "&lt";
+    r.innerHTML = "&gt;";
+    main.appendChild(r);
+    main.insertBefore(l, fig);
+    fig.style.margin = '.75em';
+    fig.style.borderWidth = '1px';
+  }
 });
 
 clika.addEventListener("click", (e) => {
@@ -61,11 +74,26 @@ clika.addEventListener("click", (e) => {
     el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
     el.id = "esc";
     box.insertBefore(el, box.firstElementChild);
-    fade(200);
+    fade(150);
   }
 });
 
 xit.addEventListener("click", (e) => {
   let box = document.getElementById("lightbox");
   box.parentNode.removeChild(box);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  let el = document.querySelector("#lightbox");
+  setTimeout(() => {
+    el.classList.add("fader");
+  }, 4000);
+});
+
+box.addEventListener("mousemove", (e) => {
+  let el = document.querySelector("#lightbox");
+  el.classList.remove("fader");
+  setTimeout(() => {
+    el.classList.add("fader");
+  }, 10000);
 });
