@@ -91,19 +91,28 @@ const defer = (f, arg) => () => f(arg),
     if (box.requestFullscreen) {
       box.requestFullscreen();
     }
+
     if (!esc) {
       el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
       el.id = "esc";
       box.insertBefore(el, box.firstElementChild);
       cb(n);
     }
+    else {
+      if (document.fullscreenElement && document.fullscreenElement.exitFullScreen) {
+        document.fullscreenElement
+          .exitFullscreen()
+          .then(() => console.log("Document Exited from Full screen mode"))
+          .catch((err) => console.error(`${err}!`));
+      }
+    }
+
   },
   direct = (e) => {
     const el = e.target,
       esc = document.getElementById("esc"),
       box = document.getElementById("lightbox");
     if (el.previousElementSibling && el.nextElementSibling) {
-      console.log('mag');
       return toggle(document.querySelector("#lightbox figure img"));
     }
     if (el.previousElementSibling && !el.nextElementSibling) {
@@ -116,7 +125,6 @@ const defer = (f, arg) => () => f(arg),
   };
 
 controls.addEventListener("click", direct);
-
 
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(exec(document.querySelector("#lightbox")), 4000);
