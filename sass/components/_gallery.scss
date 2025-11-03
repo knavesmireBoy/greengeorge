@@ -132,18 +132,18 @@
           grid-column: 9/13;
         }
 
-        &:nth-child(n + 12) {
+        &:nth-child(12) {
           grid-row: 11/13;
+        }
+       
+        &:nth-child(13) {
+          grid-row: 10/12;
         }
         &:nth-child(14) {
           grid-row: 9/13;
         }
-        &:nth-child(13) {
-          grid-row: 10/12;
-        }
 
-
-        &:nth-child(n + 15) {
+        &:nth-child(17) {
           grid-row: 13/15;
         }
 
@@ -152,7 +152,6 @@
         }
 
         &:nth-child(15) {
-         // grid-column: 9/13;
           grid-row: 13/16;
         }
       }
