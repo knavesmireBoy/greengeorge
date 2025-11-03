@@ -17,6 +17,29 @@ function maxWindow() {
 }
 */
 
+function isFullScreen() {
+  return (
+    (document.fullscreenElement && document.fullscreenElement !== null) ||
+    (document.webkitFullscreenElement &&
+      document.webkitFullscreenElement !== null) ||
+    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+    (document.msFullscreenElement && document.msFullscreenElement !== null)
+  );
+}
+
+function doRequestFullScreen(el) {
+  if (el.requestFullscreen) {
+    el.requestFullscreen();
+  } else if (el.mozRequestFullScreen) {
+    el.mozRequestFullScreen();
+  } else if (el.webkitRequestFullScreen) {
+    el.webkitRequestFullScreen();
+  } else if (el.msRequestFullscreen) {
+    el.msRequestFullscreen();
+  }
+}
+
+function fullscreen() {}
 let throttlePause;
 
 function throttle(callback, time) {
@@ -98,15 +121,10 @@ const defer = (f, arg) => () => f(arg),
       box.insertBefore(el, box.firstElementChild);
       cb(n);
     }
-    else {
-      if (document.fullscreenElement && document.fullscreenElement.exitFullScreen) {
-        document.fullscreenElement
-          .exitFullscreen()
-          .then(() => console.log("Document Exited from Full screen mode"))
-          .catch((err) => console.error(`${err}!`));
-      }
+    if (isFullScreen()) {
+      document.exitFullscreen?.().then(() => console.log("Document Exited from Full screen mode"))
+      .catch((err) => console.error(`${err}!`));
     }
-
   },
   direct = (e) => {
     const el = e.target,
@@ -135,16 +153,3 @@ box.addEventListener("mousemove", (e) => {
   undo(el);
   throttle(exec(el), 10000);
 });
-
-/*
-document.addEventListener("click", (event) => {
-  if (document.fullscreenElement) {
-    document
-      .exitFullscreen()
-      .then(() => console.log("Document Exited from Full screen mode"))
-      .catch((err) => console.error(err));
-  } else {
-    document.documentElement.requestFullscreen();
-  }
-});
-*/
