@@ -1799,14 +1799,12 @@ html.js #home section.services article.f > aside {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, auto);
-    grid-template-rows: repeat(4, 16em) repeat(2, 9em) repeat(3, 8.8em) repeat(4, 9em) 1fr;
-    border: solid 1px khaki;
+    grid-template-rows: repeat(4, 16em) repeat(2, 9em) repeat(3, 8.8em) 100px repeat(4, 9em) 1fr;
   }
   #gallery main > section:first-of-type > div a {
     display: block;
     overflow: hidden;
     grid-column: span 4;
-    border: solid 1px red;
   }
   #gallery main > section:first-of-type > div a:nth-child(n+1) {
     grid-row: 1/3;
@@ -1819,13 +1817,12 @@ html.js #home section.services article.f > aside {
   }
   #gallery main > section:first-of-type > div a:nth-child(8) {
     grid-row: 5/10;
-    opacity: 0.5;
   }
   #gallery main > section:first-of-type > div a:nth-child(9) {
     grid-row: 5/7;
   }
   #gallery main > section:first-of-type > div a:nth-child(10) {
-    grid-row: 7/10;
+    grid-row: 7/11;
     grid-column: 1/5;
   }
   #gallery main > section:first-of-type > div a:nth-child(11) {
@@ -1833,20 +1830,22 @@ html.js #home section.services article.f > aside {
     grid-column: 9/13;
   }
   #gallery main > section:first-of-type > div a:nth-child(n+12) {
-    grid-row: 10/12;
+    grid-row: 11/13;
   }
   #gallery main > section:first-of-type > div a:nth-child(14) {
-    grid-row: 9/12;
+    grid-row: 9/13;
+  }
+  #gallery main > section:first-of-type > div a:nth-child(13) {
+    grid-row: 10/12;
   }
   #gallery main > section:first-of-type > div a:nth-child(n+15) {
-    grid-row: 12/14;
+    grid-row: 13/15;
   }
   #gallery main > section:first-of-type > div a:nth-child(16) {
     grid-row: 12/14;
   }
-  #gallery main > section:first-of-type > div a:nth-child(17) {
-    grid-column: 9/13;
-    grid-row: 12/15;
+  #gallery main > section:first-of-type > div a:nth-child(15) {
+    grid-row: 13/16;
   }
   #gallery main > section:first-of-type > div img {
     width: 100%;
