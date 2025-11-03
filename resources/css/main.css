@@ -1838,10 +1838,14 @@ html.js #home section.services article.f > aside {
     grid-column: 9/13;
   }
   #gallery main > section:first-of-type > div a:nth-child(15) {
-    grid-row: 11/13;
+    grid-row: 9/11;
+    opacity: 0.5;
   }
   #gallery main > section:first-of-type > div a:nth-child(13) {
     grid-row: 7/8;
+  }
+  #gallery main > section:first-of-type > div a:nth-child(16) {
+    grid-row: 8/9;
   }
   #gallery main > section:first-of-type > div a:nth-child(17) {
     grid-row: 10/12;
