@@ -1745,109 +1745,104 @@ html.js #home section.services article.f > aside {
   width: 100%;
 }
 
-/*
 @media only screen and (min-width: 769px) {
-  #gallery main > section:first-of-type {
-    > div {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-
-      a {
-        display: block;
-        overflow: hidden;
-        &:nth-child(odd) {
-          grid-column: 1 / 2;
-        }
-        &:nth-child(even) {
-          grid-column: 2 / 3;
-        }
-        &:last-child {
-          grid-column: 1 / 3;
-        }
-      }
-      > div {
-        grid-column: 1 / 3;
-        grid-template-columns: repeat(4, 16.65vw) 1fr;
-        grid-template-rows: 200px 200px 1fr;
-        column-gap: 1em;
-        display: grid;
-        a {
-          overflow: hidden;
-          display: block;
-          width: 100%;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-          &:first-child {
-            grid-row: 1 / 4;
-            grid-column: 1/4;
-          }
-          &:last-child {
-            grid-row: 1 / 4;
-            grid-column: 4/6;
-          }
-        }
-      }
-    }
-  }
-}
-*/
-@media only screen and (min-width: 1025px) {
   #gallery main > section:first-of-type > div {
     display: grid;
     padding: 1.5%;
     row-gap: 0.6%;
     column-gap: 1.5%;
     border: solid 1px blue;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, auto);
-    grid-template-rows: repeat(4, 9.2%) repeat(4, 5.1%) 3% 4% repeat(4, 5.1%) 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 3fr) 1fr 3fr 1fr 3fr 2fr 1fr 3fr 1fr;
+    grid-template-rows: repeat(3, 36em) 20em 20em 5em 20em 8em 20em 4em 12em 4em 20em 1fr;
   }
   #gallery main > section:first-of-type > div a {
     display: block;
     overflow: hidden;
-    max-width: 100%;
-    max-width: 100%;
-    grid-column: span 4;
-    grid-row: span 2;
     border: solid 1px red;
   }
-  #gallery main > section:first-of-type > div a:nth-child(8) {
-    grid-row: 5/10;
-  }
-  #gallery main > section:first-of-type > div a:nth-child(10) {
-    grid-row: 7/11;
-    grid-column: 1/5;
-  }
-  #gallery main > section:first-of-type > div a:nth-child(11) {
-    grid-row: 7/9;
-    grid-column: 9/13;
-  }
-  #gallery main > section:first-of-type > div a:nth-child(12) {
-    grid-row: 11/13;
-  }
-  #gallery main > section:first-of-type > div a:nth-child(13) {
-    grid-row: 10/12;
+  #gallery main > section:first-of-type > div a:nth-child(8), #gallery main > section:first-of-type > div a:nth-child(10), #gallery main > section:first-of-type > div a:nth-child(15) {
+    grid-row: span 3;
   }
   #gallery main > section:first-of-type > div a:nth-child(14) {
-    grid-row: span 4;
+    grid-column: 2/3;
+    grid-row: 8/13;
   }
-  #gallery main > section:first-of-type > div a:nth-child(15) {
-    grid-row: span 3;
-    align-self: stretch;
+  #gallery main > section:first-of-type > div a:nth-child(13) {
+    grid-row: span 2;
   }
   #gallery main > section:first-of-type > div a:nth-child(16) {
-    grid-row: 12/14;
+    opacity: 0.6;
+    grid-row: 11/13;
+    grid-column: 2/3;
   }
-  #gallery main > section:first-of-type > div a img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
+  #gallery main > section:first-of-type > div a:nth-child(17) {
+    opacity: 0.6;
+    grid-row: span 2;
   }
 }
+/*
+
+@media only screen and (min-width: 1025px) {
+  #gallery main > section:first-of-type {
+    > div {
+      display: grid;
+
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(12, auto);
+      grid-template-rows: repeat(4, 9.2%) repeat(4, 5.1%) 2.9% 4% repeat(
+          4,
+          5.1%
+        ) 1fr;
+      //grid-template-rows: repeat(4, 34vh) repeat(4, 18vh) 10vh 17vh repeat(4, 18vh) 1fr;
+      a {
+        display: block;
+        overflow: hidden;
+        max-width: 100%;
+        max-width: 100%;
+        grid-column: span 4;
+        grid-row: span 2;
+        border: solid 1px red;
+        &:nth-child(8) {
+          grid-row: 5/10;
+        }
+        &:nth-child(10) {
+          grid-row: 7/11;
+          grid-column: 1/5;
+        }
+        &:nth-child(11) {
+          grid-row: 7/9;
+          grid-column: 9/13;
+        }
+        &:nth-child(12) {
+          grid-row: 11/13;
+        }
+        &:nth-child(13) {
+          grid-row: 10/12;
+        }
+        &:nth-child(14) {
+          grid-row: span 4;
+        }
+        &:nth-child(15) {
+          grid-row: span 3;
+          align-self: stretch;
+        }
+
+        &:nth-child(16) {
+          grid-row: 12/14;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          display: block;
+        }
+      }
+    }
+  }
+}
+  */
 #gallery section > div > figure > img {
   display: block;
   width: 100%;
