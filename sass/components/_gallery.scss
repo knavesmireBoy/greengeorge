@@ -98,6 +98,7 @@
       display: grid;
       gap: 0;
       grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(7, auto);
       border: solid 1px khaki;
       a {
         display: block;
@@ -113,22 +114,31 @@
           grid-row: 3/4;
         }
         &:nth-child(8) {
-          grid-row: 3/5;
-          outline: solid 1px red;
+          grid-row: 3/6;
         }
-        &:nth-child(10),&:nth-child(11) {
+        
+        &:nth-child(10) {
+          grid-row: 4/6;
+        }
+        &:nth-child(11) {
           grid-row: 4/5;
-          outline: solid 1px blue;
         }
 
-        &:nth-child(n + 12) {
+        &:nth-child(n+12) {
+          grid-row: 6/7;
+        }
+
+        &:nth-child(14) {
           grid-row: 5/7;
-          outline: solid 1px greenyellow;
+          opacity: .7;
+
         }
 
-        &:nth-child(n + 15) {
+        &:nth-child(n+15) {
           grid-row: 7/8;
         }
+
+
        
     
 
