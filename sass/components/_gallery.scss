@@ -113,7 +113,7 @@
           grid-row: 3/4;
         }
         &:nth-child(8) {
-          grid-row: 3/6;
+          grid-row: 3/5;
           outline: solid 1px red;
         }
         &:nth-child(10),&:nth-child(11) {
@@ -121,19 +121,16 @@
           outline: solid 1px blue;
         }
 
-        &:nth-child(12), &:nth-child(13) {
-          grid-row: 6/7;
+        &:nth-child(n + 12) {
+          grid-row: 5/7;
           outline: solid 1px greenyellow;
         }
 
         &:nth-child(n + 15) {
-          grid-row: 8/9;
+          grid-row: 7/8;
         }
        
-        &:nth-child(14) {
-          grid-row: 5/7;
-          outline: solid 1px greenyellow;
-        }
+    
 
        
 

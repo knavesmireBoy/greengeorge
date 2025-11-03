@@ -1816,23 +1816,19 @@ html.js #home section.services article.f > aside {
     grid-row: 3/4;
   }
   #gallery main > section:first-of-type > div a:nth-child(8) {
-    grid-row: 3/6;
+    grid-row: 3/5;
     outline: solid 1px red;
   }
   #gallery main > section:first-of-type > div a:nth-child(10), #gallery main > section:first-of-type > div a:nth-child(11) {
     grid-row: 4/5;
     outline: solid 1px blue;
   }
-  #gallery main > section:first-of-type > div a:nth-child(12), #gallery main > section:first-of-type > div a:nth-child(13) {
-    grid-row: 6/7;
+  #gallery main > section:first-of-type > div a:nth-child(n+12) {
+    grid-row: 5/7;
     outline: solid 1px greenyellow;
   }
   #gallery main > section:first-of-type > div a:nth-child(n+15) {
-    grid-row: 8/9;
-  }
-  #gallery main > section:first-of-type > div a:nth-child(14) {
-    grid-row: 5/7;
-    outline: solid 1px greenyellow;
+    grid-row: 7/8;
   }
   #gallery main > section:first-of-type > div img {
     width: 100%;
