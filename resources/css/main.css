@@ -1841,9 +1841,18 @@ html.js #home section.services article.f > aside {
     grid-row: 5/6;
   }
 }
-#gallery #lightbox {
+#gallery section > div > figure > img {
+  display: block;
+  width: 100%;
+  border: solid 1px;
+}
+#gallery section #lightbox {
   overflow: scroll;
   gap: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1856,26 +1865,26 @@ html.js #home section.services article.f > aside {
   font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
 }
-#gallery #lightbox img {
+#gallery section #lightbox img {
   width: 100%;
   display: block;
   cursor: grab;
 }
-#gallery #lightbox img:hover {
+#gallery section #lightbox img:hover {
   filter: brightness(0.9);
 }
-#gallery #lightbox p {
+#gallery section #lightbox p {
   color: white;
   margin: 0;
 }
-#gallery #lightbox > * {
+#gallery section #lightbox > * {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
 }
-#gallery #lightbox main {
+#gallery section #lightbox main {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1885,7 +1894,7 @@ html.js #home section.services article.f > aside {
   column-gap: 2em;
   font-size: 2rem;
 }
-#gallery #lightbox main p {
+#gallery section #lightbox main p {
   margin: auto;
   -webkit-box: 1;
   -moz-box: 1;
@@ -1894,7 +1903,7 @@ html.js #home section.services article.f > aside {
   flex: 1 1 1em;
   cursor: pointer;
 }
-#gallery #lightbox main figure {
+#gallery section #lightbox main figure {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 1em;
@@ -1905,7 +1914,7 @@ html.js #home section.services article.f > aside {
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
 }
-#gallery #lightbox header {
+#gallery section #lightbox header {
   padding: 1.4em;
   position: relative;
   z-index: 1;
@@ -1921,7 +1930,7 @@ html.js #home section.services article.f > aside {
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.8);
 }
-#gallery #lightbox header div {
+#gallery section #lightbox header div {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1930,31 +1939,31 @@ html.js #home section.services article.f > aside {
   flex-wrap: nowrap;
   position: relative;
 }
-#gallery #lightbox header p {
+#gallery section #lightbox header p {
   transition: opacity 1s ease-in;
   opacity: 1;
 }
-#gallery #lightbox header.fader p {
+#gallery section #lightbox header.fader p {
   opacity: 0;
 }
-#gallery #lightbox header a#exit {
+#gallery section #lightbox header a#exit {
   opacity: 1;
   cursor: pointer;
 }
-#gallery #lightbox #fullscreen {
+#gallery section #lightbox #fullscreen {
   cursor: pointer;
 }
-#gallery #lightbox footer {
+#gallery section #lightbox footer {
   padding: 1.4em;
   background-color: rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 1;
 }
-#gallery #lightbox footer p {
+#gallery section #lightbox footer p {
   opacity: 1;
   transition: opacity 1s ease-in;
 }
-#gallery #lightbox #esc {
+#gallery section #lightbox #esc {
   border: solid 1px white;
   color: hsl(70deg, 71%, 40%);
   padding: 1em 2em;
@@ -1965,12 +1974,13 @@ html.js #home section.services article.f > aside {
   margin-left: 25%;
   z-index: 2;
 }
-#gallery #lightbox #esc kbd {
+#gallery section #lightbox #esc kbd {
   padding: 0.2em;
   border: solid 1px white;
   border-radius: 4px;
 }
-#gallery #lightbox.fader header p, #gallery #lightbox.fader footer p {
+#gallery section #lightbox.fader header p,
+#gallery section #lightbox.fader footer p {
   opacity: 0;
 }
 

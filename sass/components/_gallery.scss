@@ -149,102 +149,118 @@
     }
   }
 }
-#gallery #lightbox {
-  overflow: scroll;
-  gap: 0;
-  img {
-    width: 100%;
+#gallery section {
+
+
+  > div > figure > img {
     display: block;
-    cursor: grab;
-    &:hover {
-      filter: brightness(0.9);
-    }
+    width: 100%;
+    border: solid 1px;
   }
-  @include flexy(wrap);
-  color: white;
-  text-align: center;
-  padding: 0;
-  font-size: 1rem;
-  p {
+
+  #lightbox {
+    overflow: scroll;
+    gap: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      display: block;
+      cursor: grab;
+      &:hover {
+        filter: brightness(0.9);
+      }
+    }
+    @include flexy(wrap);
     color: white;
-    margin: 0;
-  }
-  > * {
-    @include flex(1, 1, 100%);
-  }
-  & main {
-    @include flexy();
-    column-gap: 2em;
-    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+    font-size: 1rem;
     p {
-      margin: auto;
-      @include flex(1, 1, 1em);
-      cursor: pointer;
+      color: white;
+      margin: 0;
     }
-    figure {
-      @include flex(1, 1, 1em);
-      border-radius: 2px;
-      border: solid 1px white;
-      margin: 0.75em 0;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
+    > * {
+      @include flex(1, 1, 100%);
     }
-  }
-  header {
-    padding: 1.4em;
-    position: relative;
-    z-index: 1;
-    @include flexy();
-    @include justify(space-between);
-    div {
+    & main {
       @include flexy();
-      position: relative;
+      column-gap: 2em;
+      font-size: 2rem;
+      p {
+        margin: auto;
+        @include flex(1, 1, 1em);
+        cursor: pointer;
+      }
+      figure {
+        @include flex(1, 1, 1em);
+        border-radius: 2px;
+        border: solid 1px white;
+        margin: 0.75em 0;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
+      }
     }
-    p {
-      transition: opacity 1s ease-in;
-      opacity: 1;
+    header {
+      padding: 1.4em;
+      position: relative;
+      z-index: 1;
+      @include flexy();
+      @include justify(space-between);
+      div {
+        @include flexy();
+        position: relative;
+      }
+      p {
+        transition: opacity 1s ease-in;
+        opacity: 1;
+      }
+      background-color: rgba(0, 0, 0, 0.8);
+      &.fader p {
+        opacity: 0;
+      }
+      a#exit {
+        opacity: 1;
+        cursor: pointer;
+      }
     }
     background-color: rgba(0, 0, 0, 0.8);
-    &.fader p{
-      opacity: 0;
-    }
-    a#exit {
-      opacity: 1;
+    #fullscreen {
       cursor: pointer;
     }
-  }
-  background-color: rgba(0, 0, 0, 0.8);
-  #fullscreen {
-    cursor: pointer;
-  }
-  footer {
-    padding: 1.4em;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 1;
-    p {
-    opacity: 1;
-    transition: opacity 1s ease-in;
+    footer {
+      padding: 1.4em;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: relative;
+      z-index: 1;
+      p {
+        opacity: 1;
+        transition: opacity 1s ease-in;
+      }
     }
-  }
-  #esc {
-    border: solid 1px white;
-    color: hsl(70, 71%, 40%);
-    padding: 1em 2em;
-    border-radius: 8px;
-    position: absolute;
-    top: 1em;
-    width: 50%;
-    margin-left: 25%;
-    z-index: 2;
-    kbd {
-      padding: 0.2em;
+    #esc {
       border: solid 1px white;
-      border-radius: 4px;
+      color: hsl(70, 71%, 40%);
+      padding: 1em 2em;
+      border-radius: 8px;
+      position: absolute;
+      top: 1em;
+      width: 50%;
+      margin-left: 25%;
+      z-index: 2;
+      kbd {
+        padding: 0.2em;
+        border: solid 1px white;
+        border-radius: 4px;
+      }
     }
-  }
-  &.fader {
-    header p, footer p {
-      opacity: 0;
+    &.fader {
+      header p,
+      footer p {
+        opacity: 0;
+      }
     }
   }
 }

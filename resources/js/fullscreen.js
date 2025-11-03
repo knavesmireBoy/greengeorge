@@ -17,6 +17,19 @@ function maxWindow() {
 }
 */
 
+let throttlePause;
+
+function throttle(callback, time) {
+  if (throttlePause) {
+    return;
+  }
+  throttlePause = true;
+  setTimeout(() => {
+    callback();
+    throttlePause = false;
+  }, time);
+}
+
 function fade(i) {
   let elem = document.getElementById("esc");
   if (i > 0) {
@@ -27,73 +40,103 @@ function fade(i) {
   }
 }
 
-const box = document.getElementById("lightbox"),
+const defer = (f, arg) => () => f(arg),
+  box = document.getElementById("lightbox"),
   clika = document.getElementById("fullscreen"),
+  controls = document.getElementById("controls"),
   xit = document.getElementById("exit"),
   esc = document.getElementById("esc"),
   img = document.querySelector("#lightbox figure img"),
-  exit = function () {
-    let elem = document.getElementById("esc");
+  subMethod = (o, p, m, v) => o[p][m](v),
+  curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
+  curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
+  exec = curry44(subMethod)("fader")("add")("classList"),
+  undo = curry4(subMethod)("fader")("remove")("classList"),
+  exit = function (elem) {
     if (elem) elem.parentNode.removeChild(elem);
     xit.className = "fader";
   },
-  defer = (f, i) => () => f(i);
+  quit = (el) => {
+    el.parentNode.removeChild(el);
+  },
+  toggle = (el) => {
+    let l,
+      r,
+      fig = el.parentNode,
+      main = fig.parentNode;
+    if (fig.previousElementSibling) {
+      l = fig.previousElementSibling;
+      r = fig.nextElementSibling;
+      main = fig.parentNode;
+      main.removeChild(l);
+      main.removeChild(r);
+      fig.style.margin = 0;
+      fig.style.borderWidth = 0;
+    } else {
+      l = document.createElement("p");
+      r = document.createElement("p");
+      l.innerHTML = "&lt";
+      r.innerHTML = "&gt;";
+      main.appendChild(r);
+      main.insertBefore(l, fig);
+      fig.style.margin = ".75em";
+      fig.style.borderWidth = "1px";
+    }
+  },
+  zoom = (cb, n = 150) => {
+    const el = document.createElement("p"),
+      esc = document.getElementById("esc"),
+      box = document.getElementById("lightbox");
 
-img.addEventListener("click", (e) => {
-  let l,
-    r,
-    el = e.target,
-    fig = el.parentNode,
-    main = fig.parentNode;
-  if (fig.previousElementSibling) {
-    l = fig.previousElementSibling;
-    r = fig.nextElementSibling;
-    main = fig.parentNode;
-    main.removeChild(l);
-    main.removeChild(r);
-    fig.style.margin = 0;
-    fig.style.borderWidth = 0;
-  } else {
-    l = document.createElement("p");
-    r = document.createElement("p");
-    l.innerHTML = "&lt";
-    r.innerHTML = "&gt;";
-    main.appendChild(r);
-    main.insertBefore(l, fig);
-    fig.style.margin = '.75em';
-    fig.style.borderWidth = '1px';
-  }
-});
+    if (box.requestFullscreen) {
+      box.requestFullscreen();
+    }
+    if (!esc) {
+      el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
+      el.id = "esc";
+      box.insertBefore(el, box.firstElementChild);
+      cb(n);
+    }
+  },
+  direct = (e) => {
+    const el = e.target,
+      esc = document.getElementById("esc"),
+      box = document.getElementById("lightbox");
+    if (el.previousElementSibling && el.nextElementSibling) {
+      console.log('mag');
+      return toggle(document.querySelector("#lightbox figure img"));
+    }
+    if (el.previousElementSibling && !el.nextElementSibling) {
+      //return exit(esc);
+      return quit(box);
+    }
+    if (el.nextElementSibling && !el.previousElementSibling) {
+      return zoom(fade);
+    }
+  };
 
-clika.addEventListener("click", (e) => {
-  if (box.requestFullscreen) {
-    box.requestFullscreen();
-  }
-  if (!esc) {
-    let el = document.createElement("p");
-    el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
-    el.id = "esc";
-    box.insertBefore(el, box.firstElementChild);
-    fade(150);
-  }
-});
+controls.addEventListener("click", direct);
 
-xit.addEventListener("click", (e) => {
-  let box = document.getElementById("lightbox");
-  box.parentNode.removeChild(box);
-});
 
 document.addEventListener("DOMContentLoaded", () => {
-  let el = document.querySelector("#lightbox");
-  setTimeout(() => {
-    el.classList.add("fader");
-  }, 4000);
+  setTimeout(exec(document.querySelector("#lightbox")), 4000);
 });
 
 box.addEventListener("mousemove", (e) => {
   let el = document.querySelector("#lightbox");
-  el.classList.remove("fader");
-  setTimeout(() => {
-    el.classList.add("fader");
-  }, 10000);
+  undo(el);
+  throttle(exec(el), 10000);
 });
+
+/*
+document.addEventListener("click", (event) => {
+  if (document.fullscreenElement) {
+    document
+      .exitFullscreen()
+      .then(() => console.log("Document Exited from Full screen mode"))
+      .catch((err) => console.error(err));
+  } else {
+    document.documentElement.requestFullscreen();
+  }
+});
+*/
