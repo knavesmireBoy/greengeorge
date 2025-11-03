@@ -1810,9 +1810,6 @@ html.js #home section.services article.f > aside {
   #gallery main > section:first-of-type > div a:nth-child(8) {
     grid-row: 5/10;
   }
-  #gallery main > section:first-of-type > div a:nth-child(9) {
-    grid-row: 5/7;
-  }
   #gallery main > section:first-of-type > div a:nth-child(10) {
     grid-row: 7/11;
     grid-column: 1/5;
