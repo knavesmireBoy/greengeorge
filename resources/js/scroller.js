@@ -10,7 +10,6 @@ let tagTester = (name) => {
   isNumber = tagTester("Number"),
   isString = tagTester("String"),
   getResult = (o) => (isFunction(o) ? o() : o),
-  
   throttlePause;
 
 function throttle(callback, time) {
@@ -108,6 +107,7 @@ let doWhen = (pred, action, arg) => {
   },
   subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
+  curry22 = (f) => (a) => (b) => () => f(b, a),
   curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
   exec = curry4(subMethod)("active")("add")("classList"),
   lastKnownScrollPosition = 0,
@@ -116,7 +116,7 @@ let doWhen = (pred, action, arg) => {
   i = 0,
   log = console.log,
   el = els[0],
-  handler = (el, els, i, cb) => (e) => {
+  handler1 = (el, els, i, cb) => (e) => {
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1.1);
     if (!ticking) {
@@ -130,8 +130,18 @@ let doWhen = (pred, action, arg) => {
       ticking = true;
     }
   },
-  cb = handler(el, els, 0, exec);
+  scroller = (el, els, i, cb) => (e) => {
+    lastKnownScrollPosition = window.scrollY;
+    let j = getScrollThreshold(el, 1.1),
+      n = window.innerWidth,
+      inc = 1;
+    if (n > 1025) inc = 3;
+    if (n > 768 && n <= 1024) inc = 2;
+    if (lastKnownScrollPosition > j) {
+      doWhen(els[i++], cb, el);
+    }
+  },
+  handler = curry22(throttle)(22)(scroller(el, els, 0, exec));
 exec(el);
-document.addEventListener("scroll", cb);
-
-log(foo());
+document.addEventListener("scroll", handler);
+//document.addEventListener("scroll", handler);
