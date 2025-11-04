@@ -1749,12 +1749,13 @@ html.js #home section.services article.f > aside {
   #gallery main > section:first-of-type > div {
     display: grid;
     padding: 1.5%;
-    row-gap: 0.6%;
+    row-gap: 0.4%;
     column-gap: 1.5%;
     border: solid 1px blue;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 3fr) 1fr 3fr 1fr 3fr 2fr 1fr 3fr 1fr;
     grid-template-rows: repeat(3, 52em) 29em 29em 7em 29em 7em 29em 11em 16em 11em 29em 1fr;
+    grid-template-rows: repeat(3, 13.5%) 7.2% 7.2% 3% 7.2% 2.8% 7.2% 2.8% 4% 2.8% 7.2% 1fr;
   }
   #gallery main > section:first-of-type > div a {
     display: block;
@@ -1774,10 +1775,6 @@ html.js #home section.services article.f > aside {
   #gallery main > section:first-of-type > div a:nth-child(16) {
     grid-row: 11/13;
     grid-column: 2/3;
-  }
-  #gallery main > section:first-of-type > div a:nth-child(17) {
-    opacity: 0.6;
-    grid-row: span 2;
   }
 }
 /*
