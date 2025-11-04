@@ -136,7 +136,7 @@ let doWhen = (pred, action) => {
   el = els[0],
   query = (n, flag = false) => {
     if (flag) {
-      if (n < 768) return 768;
+      if (n <= 768) return 768;
       if (n > 768) return 1024;
     }
     if (n > 1025) return 3;
@@ -144,20 +144,22 @@ let doWhen = (pred, action) => {
     return 1;
   },
   predicate = gtThan(query(window.innerWidth, true)),
-  scroller = (el, els, i, cb, e) => (e) => {
+  scroller = (el, els, i, cb, e) => (ev) => {
     //el is the NEXT element primed for receiving the active class
     //not we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1),
       k = 0,
       inc = query(window.innerWidth);
+      log(e);
     if (e === "resize") {
+      log(predicate(window.innerWidth))
+
       if (predicate(window.innerWidth)) {
-       // i++;
+       i++;
         //if we've moved to a BIGGER window size expecting another active element
         //apply a class of active to the previous element - els[i - 1] - not the primed one (to stay in sync)
         el = els[i - 1];
-        log(el);
         doWhen(el, cb);
         predicate = gtThan(query(window.innerWidth, true));
       }
