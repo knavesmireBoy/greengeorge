@@ -1771,11 +1771,11 @@ html.js #home section.services article.f > aside {
   #gallery main > section:first-of-type > div a:nth-child(13) {
     grid-row: span 2;
   }
-  #gallery main > section:first-of-type > div a:nth-child(16) {
+  #gallery main > section:first-of-type > div a:nth-child(15) {
     grid-row: 11/13;
     grid-column: 2/3;
   }
-  #gallery main > section:first-of-type > div a:nth-child(15) {
+  #gallery main > section:first-of-type > div a:nth-child(16) {
     grid-row: 12/15;
     grid-column: 1/2;
     opacity: 1;
@@ -1823,10 +1823,10 @@ html.js #home section.services article.f > aside {
     grid-row: 9/13;
     grid-column: 3/4;
   }
-  #gallery main > section:first-of-type > div a:nth-child(15) {
+  #gallery main > section:first-of-type > div a:nth-child(16) {
     grid-row: span 3;
   }
-  #gallery main > section:first-of-type > div a:nth-child(16) {
+  #gallery main > section:first-of-type > div a:nth-child(15) {
     grid-row: 11/13;
     grid-column: 1/2;
   }
