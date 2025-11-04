@@ -151,13 +151,13 @@ let doWhen = (pred, action) => {
     let j = getScrollThreshold(el, 1),
       k = 0,
       inc = query(window.innerWidth);
-
     if (e === "resize") {
       if (predicate(window.innerWidth)) {
-        i++;
-        //if we've moved to a window size expecting another active element
-        //apply a class of active to the previous element not the primed one (to stay in sync) 
+       // i++;
+        //if we've moved to a BIGGER window size expecting another active element
+        //apply a class of active to the previous element - els[i - 1] - not the primed one (to stay in sync)
         el = els[i - 1];
+        log(el);
         doWhen(el, cb);
         predicate = gtThan(query(window.innerWidth, true));
       }
