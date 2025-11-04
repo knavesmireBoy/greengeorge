@@ -1,5 +1,3 @@
-
-
 let tagTester = (name) => {
     const tag = "[object " + name + "]";
     return function (obj) {
@@ -11,42 +9,49 @@ let tagTester = (name) => {
   isFunction = tagTester("Function"),
   isNumber = tagTester("Number"),
   isString = tagTester("String"),
-  getResult = (o) => (isFunction(o) ? o() : o);
+  getResult = (o) => (isFunction(o) ? o() : o),
+  
+  throttlePause;
+
+function throttle(callback, time) {
+  if (throttlePause) {
+    return;
+  }
+  throttlePause = true;
+  setTimeout(() => {
+    callback();
+    throttlePause = false;
+  }, time);
+}
 
 function getComputedStyle(element, property) {
-    const toCamelCase = function (variable) {
-      return variable.replace(/-([a-z])/g, function (str, letter) {
-        return letter.toUpperCase();
-      });
-    };
-    element = getResult(element);
-    if (!element || !property) {
-      return null;
-    }
-    let computedStyle = null,
-      def = document.defaultView || window;
-    if (typeof element.currentStyle !== "undefined") {
-      computedStyle = element.currentStyle;
-    } else if (
-      def &&
-      def.getComputedStyle &&
-      isFunction(def.getComputedStyle)
-    ) {
-      computedStyle = def.getComputedStyle(element, null);
-    }
-    if (computedStyle) {
-      try {
-        return (
-          computedStyle.getPropertyValue(property) ||
-          computedStyle.getPropertyValue(toCamelCase(property))
-        );
-      } catch (e) {
-        return (
-          computedStyle[property] || computedStyle[toCamelCase(property)]
-        );
-      }
+  const toCamelCase = function (variable) {
+    return variable.replace(/-([a-z])/g, function (str, letter) {
+      return letter.toUpperCase();
+    });
+  };
+  element = getResult(element);
+  if (!element || !property) {
+    return null;
+  }
+  let computedStyle = null,
+    def = document.defaultView || window;
+  if (typeof element.currentStyle !== "undefined") {
+    computedStyle = element.currentStyle;
+  } else if (def && def.getComputedStyle && isFunction(def.getComputedStyle)) {
+    computedStyle = def.getComputedStyle(element, null);
+  }
+  if (computedStyle) {
+    try {
+      return (
+        computedStyle.getPropertyValue(property) ||
+        computedStyle.getPropertyValue(toCamelCase(property))
+      );
+    } catch (e) {
+      return computedStyle[property] || computedStyle[toCamelCase(property)];
     }
   }
+}
 
 function getGreater(a, b) {
   return getResult(a) > getResult(b);
@@ -79,42 +84,54 @@ function getElementOffset(el) {
 }
 
 function getScrollThreshold(el, percent) {
-
-    if(!el){
-        return Infinity;
-    }
+  if (!el) {
+    return Infinity;
+  }
   var top,
     elementHeight = el.offsetHeight || el.getBoundingClientRect().height;
   ({ top } = getElementOffset(el));
 
-  return (top * percent + elementHeight) - window.innerHeight;
+  return top * percent + elementHeight - window.innerHeight;
 }
 
-let lastKnownScrollPosition = 0,
+function inc() {
+  let n = window.innerWidth;
+  if (n > 1025) return 3;
+  if (n > 768 && n <= 1024) return 2;
+  return 1;
+}
+
+let doWhen = (pred, action, arg) => {
+    if (getResult(pred)) {
+      return action(arg);
+    }
+  },
+  subMethod = (o, p, m, v) => o[p][m](v),
+  curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
+  curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
+  exec = curry4(subMethod)("active")("add")("classList"),
+  lastKnownScrollPosition = 0,
   ticking = false,
   els = document.querySelectorAll("#gal a"),
   i = 0,
   log = console.log,
   el = els[0],
-
-handler = (el, els, i) => e => {
+  handler = (el, els, i, cb) => (e) => {
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1.1);
-
     if (!ticking) {
       setTimeout(() => {
         if (lastKnownScrollPosition > j) {
           el = els[i++];
-          if (el) {
-            el.classList.add("active");
-          }
+          doWhen(el, cb, el);
         }
         ticking = false;
       }, 20);
       ticking = true;
     }
-}
-
-cb = handler(el, els, 0);
-el.classList.add('active');
+  },
+  cb = handler(el, els, 0, exec);
+exec(el);
 document.addEventListener("scroll", cb);
+
+log(foo());
