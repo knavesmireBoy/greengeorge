@@ -90,7 +90,7 @@ function getScrollThreshold(el, percent) {
     elementHeight = el.offsetHeight || el.getBoundingClientRect().height;
   ({ top } = getElementOffset(el));
 
-  return top * percent + elementHeight - window.innerHeight;
+  return (top * percent + elementHeight) - window.innerHeight;
 }
 
 function inc() {
@@ -141,16 +141,17 @@ let doWhen = (pred, action) => {
   scroller = (el, els, i, cb) => (e) => {
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1),
+      x = getScrollThreshold(els[i + 1], 1),
       k = 0,
       inc = query();
-
-      if (lastKnownScrollPosition > j) {
+    if (lastKnownScrollPosition > j) {
       while (k < inc) {
         el = els[i + k];
         doWhen(el, cb);
         k++;
       }
       i += k;
+      el = els[i-1];
     }
   },
   incr = query();
