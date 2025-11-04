@@ -23,35 +23,6 @@ function throttle(callback, time) {
   }, time);
 }
 
-function getComputedStyle(element, property) {
-  const toCamelCase = function (variable) {
-    return variable.replace(/-([a-z])/g, function (str, letter) {
-      return letter.toUpperCase();
-    });
-  };
-  element = getResult(element);
-  if (!element || !property) {
-    return null;
-  }
-  let computedStyle = null,
-    def = document.defaultView || window;
-  if (typeof element.currentStyle !== "undefined") {
-    computedStyle = element.currentStyle;
-  } else if (def && def.getComputedStyle && isFunction(def.getComputedStyle)) {
-    computedStyle = def.getComputedStyle(element, null);
-  }
-  if (computedStyle) {
-    try {
-      return (
-        computedStyle.getPropertyValue(property) ||
-        computedStyle.getPropertyValue(toCamelCase(property))
-      );
-    } catch (e) {
-      return computedStyle[property] || computedStyle[toCamelCase(property)];
-    }
-  }
-}
-
 function getGreater(a, b) {
   return getResult(a) > getResult(b);
 }
