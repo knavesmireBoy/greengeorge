@@ -100,9 +100,9 @@ function inc() {
   return 1;
 }
 
-let doWhen = (pred, action, arg) => {
+let doWhen = (pred, action) => {
     if (getResult(pred)) {
-      return action(arg);
+      return action(pred);
     }
   },
   subMethod = (o, p, m, v) => o[p][m](v),
@@ -110,6 +110,7 @@ let doWhen = (pred, action, arg) => {
   curry22 = (f) => (a) => (b) => () => f(b, a),
   curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
   exec = curry4(subMethod)("active")("add")("classList"),
+  execDefer = curry44(subMethod)("active")("add")("classList"),
   lastKnownScrollPosition = 0,
   ticking = false,
   els = document.querySelectorAll("#gal a"),
@@ -139,14 +140,14 @@ let doWhen = (pred, action, arg) => {
   },
   scroller = (el, els, i, cb) => (e) => {
     lastKnownScrollPosition = window.scrollY;
-    let j = getScrollThreshold(el, 1.1),
+    let j = getScrollThreshold(el, 1),
       k = 0,
       inc = query();
 
-    if (lastKnownScrollPosition > j) {
+      if (lastKnownScrollPosition > j) {
       while (k < inc) {
         el = els[i + k];
-        doWhen(el, cb, el);
+        doWhen(el, cb);
         k++;
       }
       i += k;
@@ -156,12 +157,12 @@ let doWhen = (pred, action, arg) => {
 
 while (j < incr) {
   el = els[i + j];
-  exec(el);
+  setTimeout(execDefer(el), 66);
   j++;
 }
-i = j;
 
+i = j;
 document.addEventListener(
   "scroll",
-  curry22(throttle)(22)(scroller(el, els, 0, exec))
+  curry22(throttle)(22)(scroller(el, els, i, exec))
 );
