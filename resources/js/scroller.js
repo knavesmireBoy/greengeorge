@@ -95,29 +95,26 @@ let lastKnownScrollPosition = 0,
   els = document.querySelectorAll("#gal a"),
   i = 0,
   log = console.log,
-  el = els[0];
-el.classList.add("active");
+  el = els[0],
 
-  log(getComputedStyle(els[0], 'opacity'));
+handler = (el, els, i) => e => {
+    lastKnownScrollPosition = window.scrollY;
+    let j = getScrollThreshold(el, 1.1);
 
-document.addEventListener("scroll", (event) => {
-  lastKnownScrollPosition = window.scrollY;
-
-  let j = getScrollThreshold(el, 1.1);
-
-  log(j, )
-  if (!ticking) {
-    setTimeout(() => {
-      if (lastKnownScrollPosition > j) {
-        i++;
-        log(i);
-        el = els[i];
-        if (el) {
-          el.classList.add("active");
+    if (!ticking) {
+      setTimeout(() => {
+        if (lastKnownScrollPosition > j) {
+          el = els[i++];
+          if (el) {
+            el.classList.add("active");
+          }
         }
-      }
-      ticking = false;
-    }, 20);
-    ticking = true;
-  }
-});
+        ticking = false;
+      }, 20);
+      ticking = true;
+    }
+}
+
+cb = handler(el, els, 0);
+el.classList.add('active');
+document.addEventListener("scroll", cb);
