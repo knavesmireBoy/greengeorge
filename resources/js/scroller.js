@@ -23,6 +23,35 @@ function throttle(callback, time) {
   }, time);
 }
 
+function getComputedStyle(element, property) {
+  const toCamelCase = function (variable) {
+    return variable.replace(/-([a-z])/g, function (str, letter) {
+      return letter.toUpperCase();
+    });
+  };
+  element = getResult(element);
+  if (!element || !property) {
+    return null;
+  }
+  let computedStyle = null,
+    def = document.defaultView || window;
+  if (typeof element.currentStyle !== "undefined") {
+    computedStyle = element.currentStyle;
+  } else if (def && def.getComputedStyle && isFunction(def.getComputedStyle)) {
+    computedStyle = def.getComputedStyle(element, null);
+  }
+  if (computedStyle) {
+    try {
+      return (
+        computedStyle.getPropertyValue(property) ||
+        computedStyle.getPropertyValue(toCamelCase(property))
+      );
+    } catch (e) {
+      return computedStyle[property] || computedStyle[toCamelCase(property)];
+    }
+  }
+}
+
 function getGreater(a, b) {
   return getResult(a) > getResult(b);
 }
@@ -85,9 +114,10 @@ let doWhen = (pred, action, arg) => {
   ticking = false,
   els = document.querySelectorAll("#gal a"),
   i = 0,
+  j = 0,
   log = console.log,
   el = els[0],
-  handler1 = (el, els, i, cb) => (e) => {
+  handler = (el, els, i, cb) => (e) => {
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1.1);
     if (!ticking) {
@@ -101,18 +131,37 @@ let doWhen = (pred, action, arg) => {
       ticking = true;
     }
   },
+  query = () => {
+    let n = window.innerWidth;
+    if (n > 1025) return 3;
+    if (n > 768 && n <= 1024) return 2;
+    return 1;
+  },
   scroller = (el, els, i, cb) => (e) => {
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1.1),
-      n = window.innerWidth,
-      inc = 1;
-    if (n > 1025) inc = 3;
-    if (n > 768 && n <= 1024) inc = 2;
+      k = 0,
+      inc = query();
+
     if (lastKnownScrollPosition > j) {
-      doWhen(els[i++], cb, el);
+      while (k < inc) {
+        el = els[i + k];
+        doWhen(el, cb, el);
+        k++;
+      }
+      i += k;
     }
   },
-  handler = curry22(throttle)(22)(scroller(el, els, 0, exec));
-exec(el);
-document.addEventListener("scroll", handler);
-//document.addEventListener("scroll", handler);
+  incr = query();
+
+while (j < incr) {
+  el = els[i + j];
+  exec(el);
+  j++;
+}
+i = j;
+
+document.addEventListener(
+  "scroll",
+  curry22(throttle)(22)(scroller(el, els, 0, exec))
+);
