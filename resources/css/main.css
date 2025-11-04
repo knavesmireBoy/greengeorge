@@ -1754,7 +1754,7 @@ html.js #home section.services article.f > aside {
     border: solid 1px blue;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 3fr) 1fr 3fr 1fr 3fr 2fr 1fr 3fr 1fr;
-    grid-template-rows: repeat(3, 36em) 20em 20em 5em 20em 8em 20em 4em 12em 4em 20em 1fr;
+    grid-template-rows: repeat(3, 52em) 29em 29em 7em 29em 7em 29em 11em 16em 11em 29em 1fr;
   }
   #gallery main > section:first-of-type > div a {
     display: block;
@@ -1766,13 +1766,12 @@ html.js #home section.services article.f > aside {
   }
   #gallery main > section:first-of-type > div a:nth-child(14) {
     grid-column: 2/3;
-    grid-row: 8/13;
+    grid-row: 8/11;
   }
   #gallery main > section:first-of-type > div a:nth-child(13) {
     grid-row: span 2;
   }
   #gallery main > section:first-of-type > div a:nth-child(16) {
-    opacity: 0.6;
     grid-row: 11/13;
     grid-column: 2/3;
   }
