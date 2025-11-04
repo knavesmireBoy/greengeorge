@@ -10,16 +10,28 @@ let tagTester = (name) => {
   isNumber = tagTester("Number"),
   isString = tagTester("String"),
   getResult = (o) => (isFunction(o) ? o() : o),
-  throttlePause;
+  scrollPause,
+  resizePause;
 
 function throttle(callback, time) {
-  if (throttlePause) {
+  if (scrollPause) {
     return;
   }
-  throttlePause = true;
+  scrollPause = true;
   setTimeout(() => {
     callback();
-    throttlePause = false;
+    scrollPause = false;
+  }, time);
+}
+
+function throttle2(callback, time) {
+  if (resizePause) {
+    return;
+  }
+  resizePause = true;
+  setTimeout(() => {
+    callback();
+    resizePause = false;
   }, time);
 }
 
@@ -90,7 +102,7 @@ function getScrollThreshold(el, percent) {
     elementHeight = el.offsetHeight || el.getBoundingClientRect().height;
   ({ top } = getElementOffset(el));
 
-  return (top * percent + elementHeight) - window.innerHeight;
+  return top * percent + elementHeight - window.innerHeight;
 }
 
 function inc() {
@@ -107,43 +119,49 @@ let doWhen = (pred, action) => {
   },
   subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
+  curry2 = (f) => (a) => (b) => f(b, a),
   curry22 = (f) => (a) => (b) => () => f(b, a),
   curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
+  gt = (a, b) => a > b,
+  gtThan = curry2(gt),
   exec = curry4(subMethod)("active")("add")("classList"),
   execDefer = curry44(subMethod)("active")("add")("classList"),
   lastKnownScrollPosition = 0,
+  prevWidth = window.innerWidth,
   ticking = false,
   els = document.querySelectorAll("#gal a"),
   i = 0,
   j = 0,
   log = console.log,
   el = els[0],
-  handler = (el, els, i, cb) => (e) => {
-    lastKnownScrollPosition = window.scrollY;
-    let j = getScrollThreshold(el, 1.1);
-    if (!ticking) {
-      setTimeout(() => {
-        if (lastKnownScrollPosition > j) {
-          el = els[i++];
-          doWhen(el, cb, el);
-        }
-        ticking = false;
-      }, 20);
-      ticking = true;
+  query = (n, flag = false) => {
+    if (flag) {
+      if (n < 768) return 768;
+      if (n > 768) return 1024;
     }
-  },
-  query = () => {
-    let n = window.innerWidth;
     if (n > 1025) return 3;
     if (n > 768 && n <= 1024) return 2;
     return 1;
   },
-  scroller = (el, els, i, cb) => (e) => {
+  predicate = gtThan(query(window.innerWidth, true)),
+  scroller = (el, els, i, cb, e) => (e) => {
+    //el is the NEXT element primed for receiving the active class
+    //not we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
     lastKnownScrollPosition = window.scrollY;
     let j = getScrollThreshold(el, 1),
-      x = getScrollThreshold(els[i + 1], 1),
       k = 0,
-      inc = query();
+      inc = query(window.innerWidth);
+
+    if (e === "resize") {
+      if (predicate(window.innerWidth)) {
+        i++;
+        //if we've moved to a window size expecting another active element
+        //apply a class of active to the previous element not the primed one (to stay in sync) 
+        el = els[i - 1];
+        doWhen(el, cb);
+        predicate = gtThan(query(window.innerWidth, true));
+      }
+    }
     if (lastKnownScrollPosition > j) {
       while (k < inc) {
         el = els[i + k];
@@ -151,10 +169,10 @@ let doWhen = (pred, action) => {
         k++;
       }
       i += k;
-      el = els[i-1];
+      el = els[i - 1];
     }
   },
-  incr = query();
+  incr = query(window.innerWidth);
 
 while (j < incr) {
   el = els[i + j];
@@ -163,7 +181,13 @@ while (j < incr) {
 }
 
 i = j;
+
 document.addEventListener(
   "scroll",
-  curry22(throttle)(22)(scroller(el, els, i, exec))
+  curry22(throttle)(22)(scroller(el, els, i, exec, "scroll"))
+);
+
+window.addEventListener(
+  "resize",
+  curry22(throttle2)(22)(scroller(el, els, i, exec, "resize"))
 );
