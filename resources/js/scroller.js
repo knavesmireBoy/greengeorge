@@ -157,7 +157,8 @@ function reactor(e) {
     getprop = (o, p) => o[p],
     append = ptL(prevoke("appendChild")),
     appendor = ptL(mittel("appendChild")),
-    climb = compose(curry2(getprop)("parentNode"), invoke),
+    getParent = curry2(getprop)("parentNode"),
+    climb = compose(getParent, invoke),
     compduo = (f1, f2) => compose(f2, f1),
     duocomp = curry2(compduo),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
@@ -165,6 +166,14 @@ function reactor(e) {
     delay = (f) => () => f(),
     whilst = curry2(meta.doWhen),
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
+    doCountText = defer(invk, document, "createTextNode", "/1"),
+    doSpanText = defer(invk, document, "createTextNode", "1"),
+
+    makePara = whilst(ptL(compduo, utils.doMakeDefer("p"))),
+    makeSpan = whilst(ptL(compduo, utils.doMakeDefer("span"))),
+    makeSpanText = whilst(ptL(compduo, doSpanText)),
+    makeParaText = whilst(ptL(compduo, doCountText)),
+
     doHeadText = defer(invk, document, "createTextNode", "my head"),
     perform = compose(ptL(insert, hook), pass(setId), utils.doMakeDefer("div")),
     doIf = whilst(perform),
@@ -178,8 +187,21 @@ function reactor(e) {
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
 
   let cb = compose(
+    invoke,
+    makeParaText,
+    whilst(append),
+    getParent,
+    climb,
+    makeSpanText,
+    whilst(append),
+    invoke,
+    makeSpan,
+    whilst(append),
     getResult,
-    whilst(ptL(compduo, header)),
+    makePara,
+    whilst(append),
+    getResult,
+    whilst(ptL(compduo, utils.doMakeDefer("header"))),
     whilst(append),
     hasLightbox
   );
