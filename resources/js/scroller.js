@@ -39,12 +39,14 @@ function getScrollThreshold(el, percent) {
   return top * percent + elementHeight - window.innerHeight;
 }
 
-function insert(hook, node){
+function insert(hook, node) {
   return hook.parentNode.insertBefore(node, hook);
 }
 
 const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
+  always = meta.always,
+  negator = meta.negator,
   ptL = meta.doPartial(),
   defer = meta.doPartial(true),
   compose = meta.compose,
@@ -66,6 +68,13 @@ const meta = greenGeorge.meta,
     }
   },
   log = console.log,
+  invoke = (f) => f(),
+  safeInvoke = (f) => {
+    isFunction(f) ? f() : null;
+  },
+  invk = (o, m, v) => o[m](v),
+  prevoke = (m) => (o, v) => o[m](v),
+  invok = (o, m, k, v) => o[m](k, v),
   subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
   curry2 = meta.curryRight(2),
@@ -137,28 +146,45 @@ document.addEventListener(
   curry22(throttle)(22)(scroller(el, els, i, activate, "scroll"))
 );
 
-
 function reactor(e) {
   e.preventDefault();
   let hook = meta.$("gallery"),
     lightbox = meta.$("lightbox"),
-    insertBefore = ptL(insert, hook),
-    invoke = (f) => f(),
-    invk = (o, m, v) => o[m](v),
-    prevoke = (m) => (o, v) => o[m](v),
-    thenappend = prevoke('appendChild'),
-    invok = (o, m, k, v) => o[m](k, v),
+    mittel = (m) => (o, v) => {
+      log(o, v);
+      return o[m](v);
+    },
+    getprop = (o, p) => o[p],
+    append = ptL(prevoke("appendChild")),
+    appendor = ptL(mittel("appendChild")),
+    climb = compose(curry2(getprop)("parentNode"), invoke),
+    compduo = (f1, f2) => compose(f2, f1),
+    duocomp = curry2(compduo),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
-    doText = defer(invk, document, 'createTextNode', 'LIGHTBOX'),
-    append = ptL(invk, hook, "appendChild"),
-    perform = compose(append, pass(setId), utils.doMakeDefer("div")),
-    doIf = curry2(meta.doWhen)(perform),
-    doComp = (f1, f2) => compose(f2, f1),
-    hasLightbox = compose(invoke, ptL(doComp, doText), ptL(thenappend), insertBefore, doIf, meta.negator(meta.always(lightbox)));
+    kids = defer(invk, ["header", "main", "footer"], "map", utils.doMakeDefer),
+    delay = (f) => () => f(),
+    whilst = curry2(meta.doWhen),
+    doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
+    doHeadText = defer(invk, document, "createTextNode", "my head"),
+    perform = compose(ptL(insert, hook), pass(setId), utils.doMakeDefer("div")),
+    doIf = whilst(perform),
+    header = compose(
+      climb,
+      ptL(compduo, doHeadText),
+      append,
+      utils.doMakeDefer("header")
+    ),
+    populate = compose(climb, ptL(compduo, doText), append),
+    hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
 
+  let cb = compose(
+    getResult,
+    whilst(ptL(compduo, header)),
+    whilst(append),
+    hasLightbox
+  );
+  //kids().map(compose(invoke, cb));
 
-hasLightbox();
-  // perform();
+  cb();
 }
-
 gallery.addEventListener("click", reactor);
