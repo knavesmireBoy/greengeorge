@@ -39,7 +39,20 @@ function getScrollThreshold(el, percent) {
   return top * percent + elementHeight - window.innerHeight;
 }
 
-const tagTester = (name) => {
+function insert(hook, node){
+  return hook.parentNode.insertBefore(node, hook);
+}
+
+const meta = greenGeorge.meta,
+  utils = greenGeorge.utils,
+  ptL = meta.doPartial(),
+  defer = meta.doPartial(true),
+  compose = meta.compose,
+  pass = (f) => (arg) => {
+    f(arg);
+    return arg;
+  },
+  tagTester = (name) => {
     const tag = "[object " + name + "]";
     return function (obj) {
       return toString.call(obj) === tag;
@@ -55,7 +68,8 @@ const tagTester = (name) => {
   log = console.log,
   subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
-  curry2 = (f) => (a) => (b) => f(b, a),
+  curry2 = meta.curryRight(2),
+  curry3 = meta.curryRight(3),
   curry22 = (f) => (a) => (b) => () => f(b, a),
   curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
   gt = (a, b) => a > b,
@@ -102,7 +116,7 @@ const tagTester = (name) => {
   },
   inc = query(window.innerWidth);
 
-  let throttled,
+let throttled,
   resizePause,
   j = 0,
   i = 0,
@@ -123,9 +137,28 @@ document.addEventListener(
   curry22(throttle)(22)(scroller(el, els, i, activate, "scroll"))
 );
 
-log(gallery)
 
-gallery.addEventListener("click", (e) => {
-  log(e);
+function reactor(e) {
   e.preventDefault();
-});
+  let hook = meta.$("gallery"),
+    lightbox = meta.$("lightbox"),
+    insertBefore = ptL(insert, hook),
+    invoke = (f) => f(),
+    invk = (o, m, v) => o[m](v),
+    prevoke = (m) => (o, v) => o[m](v),
+    thenappend = prevoke('appendChild'),
+    invok = (o, m, k, v) => o[m](k, v),
+    setId = curry4(invok)("lightbox")("id")("setAttribute"),
+    doText = defer(invk, document, 'createTextNode', 'LIGHTBOX'),
+    append = ptL(invk, hook, "appendChild"),
+    perform = compose(append, pass(setId), utils.doMakeDefer("div")),
+    doIf = curry2(meta.doWhen)(perform),
+    doComp = (f1, f2) => compose(f2, f1),
+    hasLightbox = compose(invoke, ptL(doComp, doText), ptL(thenappend), insertBefore, doIf, meta.negator(meta.always(lightbox)));
+
+
+hasLightbox();
+  // perform();
+}
+
+gallery.addEventListener("click", reactor);

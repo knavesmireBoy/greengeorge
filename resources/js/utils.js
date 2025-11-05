@@ -580,7 +580,7 @@ if (!window.greenGeorge) {
   }
   
   function findOrCreate(ancrnode, nodestr, idstr) {
-    let node = comp(utils.setId(id).wrap(meta.pass), utils.doMake)(nodestr);
+    let node = comp(utils.setId(idstr).wrap(meta.pass), utils.doMake)(nodestr);
   }
   
   function applyClass(kls, el, flag = false) {
