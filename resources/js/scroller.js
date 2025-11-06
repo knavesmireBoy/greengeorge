@@ -61,9 +61,9 @@ const meta = greenGeorge.meta,
     };
   },
   isFunction = tagTester("Function"),
-  getResult = (o) => (isFunction(o) ? o() : o),
+  getRes = (o) => (isFunction(o) ? o() : o),
   doWhen = (pred, action) => {
-    if (getResult(pred)) {
+    if (getRes(pred)) {
       return action(pred);
     }
   },
@@ -153,8 +153,7 @@ function reactor(e) {
     mittel = (m, k) => (o, v) => {
       return o[m](k, v);
     },
-    settingId = mittel('setAttribute', 'id'),
-    set_id = compose(pass, curry2(settingId)),
+    settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     getprop = (o, p) => o[p],
     append = ptL(prevoke("appendChild")),
     getParent = curry2(getprop)("parentNode"),
@@ -167,28 +166,26 @@ function reactor(e) {
     whilst = curry2(meta.doWhen),
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
     doCountText = defer(invk, document, "createTextNode", "1/1"),
-    doSpanText = defer(invk, document, "createTextNode", "1"),
-    makePara = compose(getResult, whilst(ptL(compduo, make("p")))),
-    makeDiv = compose(getResult, whilst(ptL(compduo, make("div")))),
-    makeHeader = compose(getResult, whilst(ptL(compduo, make("header")))),
+    makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
+    makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
+    makeHeader = compose(getRes, whilst(ptL(compduo, make("header")))),
     makeParaText = whilst(ptL(compduo, doCountText)),
-    doHeadText = defer(invk, document, "createTextNode", "my head"),
     perform = compose(ptL(insert, hook), pass(setId), make("div")),
     doIf = whilst(perform),
+    para1 = compose(settingId("fullscreen"), makePara),
+    para2 = compose(settingId("zoom"), makePara),
+    para3 = compose(settingId("exit"), makePara),
     populate = compose(climb, ptL(compduo, doText), append),
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
 
   let cb = compose(
-    set_id("exit"),
-    makePara,
+    para3,
     whilst(append),
     getParent,
-    set_id("zoom"),
-    makePara,
+    para2,
     whilst(append),
     getParent,
-    set_id("fullscreen"),
-    makePara,
+    para1,
     whilst(append),
     makeDiv,
     whilst(append),
