@@ -48,6 +48,7 @@ const meta = greenGeorge.meta,
   always = meta.always,
   negator = meta.negator,
   ptL = meta.doPartial(),
+  pApply = meta.pApply,
   defer = meta.doPartial(true),
   compose = meta.compose,
   pass = (f) => (arg) => {
@@ -153,32 +154,66 @@ function reactor(e) {
     mittel = (m, k) => (o, v) => {
       return o[m](k, v);
     },
+    src = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
+    settingSrc = compose(pass, curry2(mittel("setAttribute", "src"))),
     getprop = (o, p) => o[p],
+    assign = (o,p,v) => {
+      o[p] = v;
+      return o;
+    },
     append = ptL(prevoke("appendChild")),
     getParent = curry2(getprop)("parentNode"),
+    getParent3 = compose(getParent, getParent, getParent),
     make = utils.doMakeDefer,
+    maker = utils.doMake,
+    left = curry3(assign)('<')('innerHTML'),
+    right = curry3(assign)('>')('innerHTML'),
     climb = compose(getParent, invoke),
     climber = compose(getParent, climb),
+    complog = (f1, f2) => {
+      log(compose(f2, f1)());
+      return compose(f2, f1);
+    },
     compduo = (f1, f2) => compose(f2, f1),
+    compsrc = ptL(compduo, src),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
+    setSrc = curry4(invok)(e.target.src)("src")("setAttribute"),
     kids = defer(invk, ["header", "main", "footer"], "map", make),
     whilst = curry2(meta.doWhen),
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
+    doText2 = ptL(invk, document, "createTextNode", "para"),
     doCountText = defer(invk, document, "createTextNode", "1/1"),
+    dotext = defer(invk, document, "createTextNode"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
     makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
     makeHeader = compose(getRes, whilst(ptL(compduo, make("header")))),
+    makeMain = compose(getRes, whilst(ptL(compduo, make("main")))),
     makeParaText = whilst(ptL(compduo, doCountText)),
     perform = compose(ptL(insert, hook), pass(setId), make("div")),
     doIf = whilst(perform),
-    para1 = compose(settingId("fullscreen"), makePara),
-    para2 = compose(settingId("zoom"), makePara),
-    para3 = compose(settingId("exit"), makePara),
-    populate = compose(climb, ptL(compduo, doText), append),
+    paracomp = ptL(compduo, make("p")),
+    img = ptL(compduo, make("img")),
+    //img(settingSrc(e.target.src))
+
+    foo = compose(getRes, ptL(compduo, doText2)),
+
+    doparas = pApply(
+      invk,
+      [
+        paracomp(settingId("fullscreen")),
+        paracomp(settingId("zoom")),
+        paracomp(settingId("exit")),
+      ],
+      "map"
+    ),
+    doparas2 = pApply(invk, [paracomp(left), paracomp(right)], "map"),
+    populate = compose(climb, pApply(compduo, doText), append),
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
 
+
   let cb = compose(
+    /*
     para3,
     whilst(append),
     getParent,
@@ -186,6 +221,19 @@ function reactor(e) {
     whilst(append),
     getParent,
     para1,
+
+*/ log,
+    curry3(invk)(getRes)("map"),
+    doparas2,
+    curry2(compduo),
+    whilst(append),
+    makeMain,
+    whilst(append),
+    getParent3,
+    utils.getZero,
+    curry3(invk)(getRes)("map"),
+    doparas,
+    curry2(compduo),
     whilst(append),
     makeDiv,
     whilst(append),
