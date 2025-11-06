@@ -159,7 +159,7 @@ function reactor(e) {
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     settingSrc = compose(pass, curry2(mittel("setAttribute", "src"))),
     getprop = (o, p) => o[p],
-    assign = (o,p,v) => {
+    assign = (o, p, v) => {
       o[p] = v;
       return o;
     },
@@ -168,8 +168,8 @@ function reactor(e) {
     getParent3 = compose(getParent, getParent, getParent),
     make = utils.doMakeDefer,
     maker = utils.doMake,
-    left = curry3(assign)('<')('innerHTML'),
-    right = curry3(assign)('>')('innerHTML'),
+    left = curry3(assign)("<")("innerHTML"),
+    right = curry3(assign)(">")("innerHTML"),
     climb = compose(getParent, invoke),
     climber = compose(getParent, climb),
     complog = (f1, f2) => {
@@ -183,6 +183,8 @@ function reactor(e) {
     kids = defer(invk, ["header", "main", "footer"], "map", make),
     whilst = curry2(meta.doWhen),
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
+    doLeft = defer(invk, document, "createTextNode", "<"),
+    doRight = defer(invk, document, "createTextNode", ">"),
     doText2 = defer(invk, document, "createTextNode", "para"),
     doCountText = defer(invk, document, "createTextNode", "1/1"),
     dotext = defer(invk, document, "createTextNode"),
@@ -194,12 +196,17 @@ function reactor(e) {
     perform = compose(ptL(insert, hook), pass(setId), make("div")),
     doIf = whilst(perform),
     paracomp = ptL(compduo, make("p")),
-    paracomp2 = ptL(compduo, doText2),
-    paracomp3 = compose(log, curry2(invoker)(doText2()), compose(append, make('p'))),
+    foo = compose(climb, ptL(compduo, doLeft), append, make('p')),
+    bar = compose(climb, ptL(compduo, doRight), append, make('p')),
+    paracomp2 = compose(getRes, ptL(compduo, doText2)),
+    paracomp3 = compose(
+      log,
+      curry2(invoker)(doText2()),
+      compose(append, make("p"))
+    ),
+    paratext = ptL(compduo, doText2),
     img = ptL(compduo, make("img")),
     //img(settingSrc(e.target.src))
-
-    foo = compose(getRes, ptL(compduo, doText2)),
 
     doparas = pApply(
       invk,
@@ -210,11 +217,13 @@ function reactor(e) {
       ],
       "map"
     ),
-    doparas2 = pApply(invk, [paracomp(left), paracomp(right)], "map"),
+    //doparas2 = pApply(invk, [paracomp(left), paracomp(right)], "map"),
+    doparas2 = pApply(invk, [foo, bar], "map"),
+    doparas3 = pApply(invk, [paratext, paratext], "map"),
     populate = compose(climb, pApply(compduo, doText), append),
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
 
-    paracomp3();
+  log(paracomp2(append(document.body)));
   let cb = compose(
     /*
     para3,
