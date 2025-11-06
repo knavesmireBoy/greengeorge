@@ -70,6 +70,7 @@ const meta = greenGeorge.meta,
   },
   log = console.log,
   invoke = (f) => f(),
+  invoker = (f, a) => f(a),
   safeInvoke = (f) => {
     isFunction(f) ? f() : null;
   },
@@ -182,7 +183,7 @@ function reactor(e) {
     kids = defer(invk, ["header", "main", "footer"], "map", make),
     whilst = curry2(meta.doWhen),
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
-    doText2 = ptL(invk, document, "createTextNode", "para"),
+    doText2 = defer(invk, document, "createTextNode", "para"),
     doCountText = defer(invk, document, "createTextNode", "1/1"),
     dotext = defer(invk, document, "createTextNode"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
@@ -193,6 +194,8 @@ function reactor(e) {
     perform = compose(ptL(insert, hook), pass(setId), make("div")),
     doIf = whilst(perform),
     paracomp = ptL(compduo, make("p")),
+    paracomp2 = ptL(compduo, doText2),
+    paracomp3 = compose(log, curry2(invoker)(doText2()), compose(append, make('p'))),
     img = ptL(compduo, make("img")),
     //img(settingSrc(e.target.src))
 
@@ -211,7 +214,7 @@ function reactor(e) {
     populate = compose(climb, pApply(compduo, doText), append),
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
 
-
+    paracomp3();
   let cb = compose(
     /*
     para3,
