@@ -66,6 +66,10 @@ const meta = greenGeorge.meta,
     f(arg);
     return arg;
   },
+  wrap = (arg) => (fn) => {
+    fn(arg);
+    return arg;
+  },
   tagTester = (name) => {
     const tag = "[object " + name + "]";
     return function (obj) {
@@ -171,9 +175,10 @@ function reactor(e) {
     make = utils.doMakeDefer,
     whilst = curry2(meta.doWhen),
     doMap = curry3(invk)(getRes)("map"),
-    src = defer(invk, e.target, "getAttribute", "src"),
+    getSrc = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     settingSrc = compose(pass, curry2(mittel("setAttribute", "src"))),
+    settingSrc2 = compose(pass, ptL(mittel("setAttribute", "src"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
     getParent = curry2(getprop)("parentNode"),
     getParent2 = compose(getParent, getParent),
@@ -182,7 +187,7 @@ function reactor(e) {
     climber = compose(getParent, climb),
     textLeft = defer(invk, document, "createTextNode", "<"),
     textRight = defer(invk, document, "createTextNode", ">"),
-    textSrc = compose(ptL(invk, document, "createTextNode"), baseName, src),
+    textSrc = compose(ptL(invk, document, "createTextNode"), baseName, getSrc),
     textCount = defer(invk, document, "createTextNode", "1/1"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
     makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
@@ -192,17 +197,12 @@ function reactor(e) {
     makeParaText = whilst(ptL(compduo, textCount)),
     textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
     paracomp = ptL(compduo, make("p")),
+    applySrc = compose(curry2(mittel("setAttribute", "src")), getSrc),
     imgcomp = compose(
       getParent,
-      settingSrc(e.target.src),
       getRes,
-      ptL(compduo, make("img")),
-      append,
-      make("figure")
-    ),
-    imgcompAlt = compose(
-      getParent,
-      settingSrc(e.target.src),
+      curry2(invoker)(applySrc()),
+      wrap,
       getRes,
       ptL(compduo, make("img")),
       append,
