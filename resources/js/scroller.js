@@ -43,6 +43,15 @@ function insert(hook, node) {
   return hook.parentNode.insertBefore(node, hook);
 }
 
+function baseName(str)
+{
+   var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+    if(base.lastIndexOf(".") != -1)       
+        base = base.substring(0, base.lastIndexOf("."));
+   return base;
+}
+
+
 const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
   always = meta.always,
@@ -155,21 +164,18 @@ function reactor(e) {
     return;
   }
 
+  log(baseName(e.target.src));
+
   let tgt = e.target,
     hook = meta.$("gallery"),
     lightbox = meta.$("lightbox"),
     mittel = (m, k) => (o, v) => {
-      log(o, v);
       return o[m](k, v);
     },
     src = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     settingSrc = compose(pass, curry2(mittel("setAttribute", "src"))),
     getprop = (o, p) => o[p],
-    assign = (o, p, v) => {
-      o[p] = v;
-      return o;
-    },
     append = ptL(prevoke("appendChild")),
     getParent = curry2(getprop)("parentNode"),
     getParent2 = compose(getParent, getParent),
@@ -178,7 +184,6 @@ function reactor(e) {
     climb = compose(getParent, invoke),
     climber = compose(getParent, climb),
     compduo = (f1, f2) => compose(f2, f1),
-    compsrc = ptL(compduo, src),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
     setSrc = curry4(invok)(e.target.src)("src")("setAttribute"),
     kids = defer(invk, ["header", "main", "footer"], "map", make),
@@ -187,8 +192,9 @@ function reactor(e) {
     doLeft = defer(invk, document, "createTextNode", "<"),
     doRight = defer(invk, document, "createTextNode", ">"),
     doFooter = defer(invk, document, "createTextNode", tgt.src),
+    dotext = ptL(invk, document, "createTextNode"),
+    src_txt = compose(dotext, baseName, src),
     doCountText = defer(invk, document, "createTextNode", "1/1"),
-    dotext = defer(invk, document, "createTextNode"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
     makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
     makeHeader = compose(getRes, whilst(ptL(compduo, make("header")))),
@@ -226,7 +232,7 @@ function reactor(e) {
     ),
     populate = compose(climb, pApply(compduo, doText), append),
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox))),
-    f = compose(climb, ptL(compduo, doFooter), append, make("p"));
+    f = compose(climb, ptL(compduo, src_txt), append, make("p"));
   let cb = compose(
     getRes,
     curry2(invoker)(f),

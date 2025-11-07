@@ -35,6 +35,7 @@ String.prototype.capitalize = function (char) {
   return res.map(mapper).join(" ");
 };
 
+
 function longestRepetition(s) {
   var count = 0;
   var temp = s.charAt(0);
