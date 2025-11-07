@@ -1838,6 +1838,8 @@ html.js #home section.services article.f > aside {
   top: 0;
   left: 0;
   z-index: 1;
+  min-height: 100vh;
+  max-height: 100vh;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1902,7 +1904,8 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox main figure img {
   display: block;
   width: 100%;
-  border: solid 1px;
+  height: 100%;
+  object-fit: cover;
 }
 #gallery #lightbox main figure figcaption {
   display: none;
