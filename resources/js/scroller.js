@@ -153,8 +153,7 @@ function reactor(e) {
   let hook = meta.$("gallery"),
     lightbox = meta.$("lightbox"),
     mittel = (m, k) => (o, v) => {
-
-      log(o,v)
+      log(o, v);
       return o[m](k, v);
     },
     src = defer(invk, e.target, "getAttribute", "src"),
@@ -167,6 +166,7 @@ function reactor(e) {
     },
     append = ptL(prevoke("appendChild")),
     getParent = curry2(getprop)("parentNode"),
+    getParent2 = compose(getParent, getParent),
     getParent3 = compose(getParent, getParent, getParent),
     make = utils.doMakeDefer,
     climb = compose(getParent, invoke),
@@ -186,15 +186,20 @@ function reactor(e) {
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
     makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
     makeHeader = compose(getRes, whilst(ptL(compduo, make("header")))),
+    makeFooter = compose(getRes, whilst(ptL(compduo, make("footer")))),
     makeMain = compose(getRes, whilst(ptL(compduo, make("main")))),
     makeParaText = whilst(ptL(compduo, doCountText)),
     perform = compose(ptL(insert, hook), pass(setId), make("div")),
     doIf = whilst(perform),
     paracomp = ptL(compduo, make("p")),
-    imgcomp = ptL(compduo, make("img")),
-
-    foo = compose(getParent, settingSrc(e.target.src), getRes, ptL(compduo, make("img")), append, make("figure")),
-    //img(settingSrc(e.target.src))
+    imgcomp = compose(
+      getParent,
+      settingSrc(e.target.src),
+      getRes,
+      ptL(compduo, make("img")),
+      append,
+      make("figure")
+    ),
     doparas = pApply(
       invk,
       [
@@ -209,14 +214,13 @@ function reactor(e) {
       invk,
       [
         compose(climb, ptL(compduo, doLeft), append, make("p")),
-        foo,
+        imgcomp,
         compose(climb, ptL(compduo, doRight), append, make("p")),
       ],
       "map"
     ),
     populate = compose(climb, pApply(compduo, doText), append),
     hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
-
   let cb = compose(
     /*
     para3,
@@ -227,7 +231,15 @@ function reactor(e) {
     getParent,
     para1,
 
-*/ log,
+*/
+getRes,
+curry2(invoker)(make("p")),
+curry2(compduo),
+whilst(append),
+    makeFooter,
+    whilst(append),
+    getParent2,
+    utils.getZero,
     curry3(invk)(getRes)("map"),
     doparas2,
     curry2(compduo),
