@@ -50,7 +50,7 @@
     > div {
       display: grid;
       padding: 1.5%;
-      row-gap: .3%;
+      row-gap: 0.3%;
       column-gap: 1.5%;
       border: solid 1px blue;
       grid-template-columns: repeat(2, 1fr);
@@ -75,11 +75,10 @@
         }
 
         &:nth-child(16) {
-         grid-row:  12/15;
-         grid-column: 1/2;
+          grid-row: 12/15;
+          grid-column: 1/2;
           opacity: 1;
         }
-
       }
       img {
         width: 100%;
@@ -138,13 +137,7 @@
   }
 }
 
-#gallery section {
-  > div > figure > img {
-    display: block;
-    width: 100%;
-    border: solid 1px;
-  }
-
+#gallery {
   #lightbox {
     overflow: scroll;
     gap: 0;
@@ -177,6 +170,7 @@
       @include flexy();
       column-gap: 2em;
       font-size: 2rem;
+
       p {
         margin: auto;
         @include flex(1, 1, 1em);
@@ -188,6 +182,11 @@
         border: solid 1px white;
         margin: 0.75em 0;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
+        img {
+          display: block;
+          width: 100%;
+          border: solid 1px;
+        }
       }
     }
     header {

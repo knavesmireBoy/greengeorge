@@ -150,7 +150,13 @@ document.addEventListener(
 
 function reactor(e) {
   e.preventDefault();
-  let hook = meta.$("gallery"),
+
+  if (!e.target.src) {
+    return;
+  }
+
+  let tgt = e.target,
+    hook = meta.$("gallery"),
     lightbox = meta.$("lightbox"),
     mittel = (m, k) => (o, v) => {
       log(o, v);
@@ -180,7 +186,7 @@ function reactor(e) {
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
     doLeft = defer(invk, document, "createTextNode", "<"),
     doRight = defer(invk, document, "createTextNode", ">"),
-    doText2 = defer(invk, document, "createTextNode", "para"),
+    doFooter = defer(invk, document, "createTextNode", tgt.src),
     doCountText = defer(invk, document, "createTextNode", "1/1"),
     dotext = defer(invk, document, "createTextNode"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
@@ -200,7 +206,7 @@ function reactor(e) {
       append,
       make("figure")
     ),
-    doparas = pApply(
+    headparas = pApply(
       invk,
       [
         paracomp(settingId("fullscreen")),
@@ -209,8 +215,7 @@ function reactor(e) {
       ],
       "map"
     ),
-    //doparas2 = pApply(invk, [paracomp(left), paracomp(right)], "map"),
-    doparas2 = pApply(
+    mainparas = pApply(
       invk,
       [
         compose(climb, ptL(compduo, doLeft), append, make("p")),
@@ -220,28 +225,19 @@ function reactor(e) {
       "map"
     ),
     populate = compose(climb, pApply(compduo, doText), append),
-    hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox)));
+    hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox))),
+    f = compose(climb, ptL(compduo, doFooter), append, make("p"));
   let cb = compose(
-    /*
-    para3,
+    getRes,
+    curry2(invoker)(f),
+    curry2(compduo),
     whilst(append),
-    getParent,
-    para2,
-    whilst(append),
-    getParent,
-    para1,
-
-*/
-getRes,
-curry2(invoker)(make("p")),
-curry2(compduo),
-whilst(append),
     makeFooter,
     whilst(append),
     getParent2,
     utils.getZero,
     curry3(invk)(getRes)("map"),
-    doparas2,
+    mainparas,
     curry2(compduo),
     whilst(append),
     makeMain,
@@ -249,7 +245,7 @@ whilst(append),
     getParent3,
     utils.getZero,
     curry3(invk)(getRes)("map"),
-    doparas,
+    headparas,
     curry2(compduo),
     whilst(append),
     makeDiv,
