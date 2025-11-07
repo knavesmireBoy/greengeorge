@@ -60,6 +60,7 @@ const meta = greenGeorge.meta,
   pApply = meta.pApply,
   defer = meta.doPartial(true),
   compose = meta.compose,
+  compduo = (f1, f2) => compose(f2, f1),
   pass = (f) => (arg) => {
     f(arg);
     return arg;
@@ -164,8 +165,6 @@ function reactor(e) {
     return;
   }
 
-  log(baseName(e.target.src));
-
   let tgt = e.target,
     hook = meta.$("gallery"),
     lightbox = meta.$("lightbox"),
@@ -183,26 +182,21 @@ function reactor(e) {
     make = utils.doMakeDefer,
     climb = compose(getParent, invoke),
     climber = compose(getParent, climb),
-    compduo = (f1, f2) => compose(f2, f1),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
-    setSrc = curry4(invok)(e.target.src)("src")("setAttribute"),
-    kids = defer(invk, ["header", "main", "footer"], "map", make),
     whilst = curry2(meta.doWhen),
     doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
-    doLeft = defer(invk, document, "createTextNode", "<"),
-    doRight = defer(invk, document, "createTextNode", ">"),
-    doFooter = defer(invk, document, "createTextNode", tgt.src),
+    textLeft = defer(invk, document, "createTextNode", "<"),
+    textRight = defer(invk, document, "createTextNode", ">"),
     dotext = ptL(invk, document, "createTextNode"),
-    src_txt = compose(dotext, baseName, src),
-    doCountText = defer(invk, document, "createTextNode", "1/1"),
+    textSrc = compose(dotext, baseName, src),
+    textCount = defer(invk, document, "createTextNode", "1/1"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
     makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
     makeHeader = compose(getRes, whilst(ptL(compduo, make("header")))),
     makeFooter = compose(getRes, whilst(ptL(compduo, make("footer")))),
     makeMain = compose(getRes, whilst(ptL(compduo, make("main")))),
-    makeParaText = whilst(ptL(compduo, doCountText)),
+    makeParaText = whilst(ptL(compduo, textCount)),
     perform = compose(ptL(insert, hook), pass(setId), make("div")),
-    doIf = whilst(perform),
     paracomp = ptL(compduo, make("p")),
     imgcomp = compose(
       getParent,
@@ -224,15 +218,15 @@ function reactor(e) {
     mainparas = pApply(
       invk,
       [
-        compose(climb, ptL(compduo, doLeft), append, make("p")),
+        compose(climb, ptL(compduo, textLeft), append, make("p")),
         imgcomp,
-        compose(climb, ptL(compduo, doRight), append, make("p")),
+        compose(climb, ptL(compduo, textRight), append, make("p")),
       ],
       "map"
     ),
     populate = compose(climb, pApply(compduo, doText), append),
-    hasLightbox = compose(whilst(populate), doIf, negator(always(lightbox))),
-    f = compose(climb, ptL(compduo, src_txt), append, make("p"));
+    hasLightbox = compose(whilst(populate), whilst(perform), negator(always(lightbox))),
+    f = compose(climb, ptL(compduo, textSrc), append, make("p"));
   let cb = compose(
     getRes,
     curry2(invoker)(f),
