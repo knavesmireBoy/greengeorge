@@ -136,39 +136,54 @@ function slider(current) {
   var i = mapped.findIndex((src) => src === current) + 1;
 
   return function (e) {
-    if (el.nodeName !== "P") {
+    if (e.target.nodeName !== "P") {
       return;
     }
     let el = e.target,
-      fig = el.parentNode,
-      main = fig.parentNode,
-      neu = main.lastElementChild,
-      next = neu.firstElementChild,
-      j;
+      main = el.parentNode,
+      nextfig = main.lastElementChild,
+      next = nextfig.firstElementChild,
+      fig = main.querySelector("figure"),
+      current = fig.firstElementChild;
+    j;
 
-    if (el.nodeName === "P") {
-      if (el.previousElementSibling) {
-        if (mapped[i + 1]) {
-          setsrc(el, mapped[i++]);
-          j = mapped[i + 1] ? i + 1 : 0;
-          setsrc(next, mapped[j]);
-        } else {
-          setsrc(el, mapped[0]);
-          i = 0;
-        }
+    if (el.previousElementSibling) {
+      if (mapped[i + 1]) {
+        setsrc(current, mapped[i++]);
+        j = mapped[i + 1] ? i + 1 : 0;
+        setsrc(next, mapped[j]);
+      } else {
+        setsrc(current, mapped[0]);
+        i = 0;
       }
+    } else {
+      if (mapped[i - 1]) {
+        log('really', i)
 
-      setTimeout(function () {
-        utils.insertAfter(neu, main.firstElementChild);
-        utils.insertAfter(fig, main.lastElementChild);
-        main.classList.remove("mv");
-        main.classList.add("mvd");
-      }, 100);
-      main.classList.add("mv");
-      setTimeout(function () {
-        main.classList.remove("mvd");
-      }, 150);
+        setsrc(current, mapped[i--]);
+        j = mapped[i - 1] ? i - 1 : mapped.length - 1;
+        log('ok', i)
+        setsrc(next, mapped[j]);
+      } else {
+
+        log(i);
+        setsrc(current, mapped[0]);
+        i = mapped.length - 1;
+        setsrc(next, mapped[i]);
+       
+      }
     }
+
+    setTimeout(function () {
+      utils.insertAfter(nextfig, main.firstElementChild);
+      utils.insertAfter(fig, main.lastElementChild);
+      main.classList.remove("mv");
+      main.classList.add("mvd");
+    }, 100);
+    main.classList.add("mv");
+    setTimeout(function () {
+      main.classList.remove("mvd");
+    }, 150);
   };
 }
 
