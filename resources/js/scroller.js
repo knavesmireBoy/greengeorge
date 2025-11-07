@@ -61,6 +61,7 @@ const meta = greenGeorge.meta,
   defer = meta.doPartial(true),
   compose = meta.compose,
   compduo = (f1, f2) => compose(f2, f1),
+  getprop = (o, p) => o[p],
   pass = (f) => (arg) => {
     f(arg);
     return arg;
@@ -86,6 +87,7 @@ const meta = greenGeorge.meta,
   },
   invk = (o, m, v) => o[m](v),
   prevoke = (m) => (o, v) => o[m](v),
+  mittel = (m, k) => (o, v) => o[m](k, v),
   invok = (o, m, k, v) => o[m](k, v),
   subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
@@ -165,30 +167,22 @@ function reactor(e) {
     return;
   }
 
-  let tgt = e.target,
-    hook = meta.$("gallery"),
-    lightbox = meta.$("lightbox"),
-    mittel = (m, k) => (o, v) => {
-      return o[m](k, v);
-    },
+  let append = ptL(prevoke("appendChild")),
+    make = utils.doMakeDefer,
+    whilst = curry2(meta.doWhen),
+    doMap = curry3(invk)(getRes)("map"),
     src = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     settingSrc = compose(pass, curry2(mittel("setAttribute", "src"))),
-    getprop = (o, p) => o[p],
-    append = ptL(prevoke("appendChild")),
+    setId = curry4(invok)("lightbox")("id")("setAttribute"),
     getParent = curry2(getprop)("parentNode"),
     getParent2 = compose(getParent, getParent),
     getParent3 = compose(getParent, getParent, getParent),
-    make = utils.doMakeDefer,
     climb = compose(getParent, invoke),
     climber = compose(getParent, climb),
-    setId = curry4(invok)("lightbox")("id")("setAttribute"),
-    whilst = curry2(meta.doWhen),
-    doText = defer(invk, document, "createTextNode", "LIGHTBOX"),
     textLeft = defer(invk, document, "createTextNode", "<"),
     textRight = defer(invk, document, "createTextNode", ">"),
-    dotext = ptL(invk, document, "createTextNode"),
-    textSrc = compose(dotext, baseName, src),
+    textSrc = compose(ptL(invk, document, "createTextNode"), baseName, src),
     textCount = defer(invk, document, "createTextNode", "1/1"),
     makePara = compose(getRes, whilst(ptL(compduo, make("p")))),
     makeDiv = compose(getRes, whilst(ptL(compduo, make("div")))),
@@ -196,9 +190,17 @@ function reactor(e) {
     makeFooter = compose(getRes, whilst(ptL(compduo, make("footer")))),
     makeMain = compose(getRes, whilst(ptL(compduo, make("main")))),
     makeParaText = whilst(ptL(compduo, textCount)),
-    perform = compose(ptL(insert, hook), pass(setId), make("div")),
+    textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
     paracomp = ptL(compduo, make("p")),
     imgcomp = compose(
+      getParent,
+      settingSrc(e.target.src),
+      getRes,
+      ptL(compduo, make("img")),
+      append,
+      make("figure")
+    ),
+    imgcompAlt = compose(
       getParent,
       settingSrc(e.target.src),
       getRes,
@@ -224,19 +226,19 @@ function reactor(e) {
       ],
       "map"
     ),
-    populate = compose(climb, pApply(compduo, doText), append),
-    hasLightbox = compose(whilst(populate), whilst(perform), negator(always(lightbox))),
-    f = compose(climb, ptL(compduo, textSrc), append, make("p"));
+    lightbox = meta.$("lightbox"),
+    perform = compose(ptL(insert, meta.$("gallery")), pass(setId), make("div")),
+    hasLightbox = compose(whilst(perform), negator(always(lightbox)));
   let cb = compose(
     getRes,
-    curry2(invoker)(f),
+    curry2(invoker)(textFooterSrc),
     curry2(compduo),
     whilst(append),
     makeFooter,
     whilst(append),
     getParent2,
     utils.getZero,
-    curry3(invk)(getRes)("map"),
+    doMap,
     mainparas,
     curry2(compduo),
     whilst(append),
@@ -244,7 +246,7 @@ function reactor(e) {
     whilst(append),
     getParent3,
     utils.getZero,
-    curry3(invk)(getRes)("map"),
+    doMap,
     headparas,
     curry2(compduo),
     whilst(append),
@@ -259,8 +261,6 @@ function reactor(e) {
     whilst(append),
     hasLightbox
   );
-  //kids().map(compose(invoke, cb));
-
   cb();
 }
 gallery.addEventListener("click", reactor);
