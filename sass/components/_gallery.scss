@@ -145,6 +145,7 @@
     top: 0;
     left: 0;
     z-index: 1;
+    //min-height: 80vh;
 
     img {
       width: 100%;
@@ -170,7 +171,6 @@
       @include flexy();
       column-gap: 2em;
       font-size: 2rem;
-
       p {
         margin: auto;
         @include flex(1, 1, 1em);
@@ -187,6 +187,9 @@
           width: 100%;
           border: solid 1px;
         }
+        figcaption{
+          display: none;
+        }
       }
     }
     header {
@@ -198,6 +201,13 @@
       div {
         @include flexy();
         position: relative;
+        p {
+          width: 2em;
+          height: 2em;
+          &:after {
+            content: 'x';
+          }
+        }
       }
       p {
         transition: opacity 1s ease-in;

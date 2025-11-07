@@ -1904,6 +1904,9 @@ html.js #home section.services article.f > aside {
   width: 100%;
   border: solid 1px;
 }
+#gallery #lightbox main figure figcaption {
+  display: none;
+}
 #gallery #lightbox header {
   padding: 1.4em;
   position: relative;
@@ -1928,6 +1931,13 @@ html.js #home section.services article.f > aside {
   display: flex;
   flex-wrap: nowrap;
   position: relative;
+}
+#gallery #lightbox header div p {
+  width: 2em;
+  height: 2em;
+}
+#gallery #lightbox header div p:after {
+  content: "x";
 }
 #gallery #lightbox header p {
   transition: opacity 1s ease-in;

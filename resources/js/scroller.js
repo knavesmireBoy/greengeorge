@@ -40,17 +40,55 @@ function getScrollThreshold(el, percent) {
 }
 
 function insert(hook, node) {
-  return hook.parentNode.insertBefore(node, hook);
+  return hook.insertBefore(node, hook.firstElementChild);
 }
 
-function baseName(str)
-{
-   var base = new String(str).substring(str.lastIndexOf('/') + 1); 
-    if(base.lastIndexOf(".") != -1)       
-        base = base.substring(0, base.lastIndexOf("."));
-   return base;
+function baseName(str) {
+  var base = new String(str).substring(str.lastIndexOf("/") + 1);
+  if (base.lastIndexOf(".") != -1)
+    base = base.substring(0, base.lastIndexOf("."));
+  return base;
 }
 
+function direct(e) {
+  if (e.target.nodeName === "P") {
+    const el = e.target,
+      esc = document.getElementById("esc"),
+      box = document.getElementById("lightbox");
+
+    if (el.id === "fullscreen") {
+      return toggle(document.querySelector("#lightbox figure img"));
+    }
+    if (el.id === "exit") {
+      //return exit(esc);
+      return quit(box);
+    }
+    if (el.id === "zoom") {
+      return zoom(fade);
+    }
+  }
+}
+
+function isFullScreen() {
+  return (
+    (document.fullscreenElement && document.fullscreenElement !== null) ||
+    (document.webkitFullscreenElement &&
+      document.webkitFullscreenElement !== null) ||
+    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+    (document.msFullscreenElement && document.msFullscreenElement !== null)
+  );
+}
+
+
+function fade(i) {
+  let elem = document.getElementById("esc");
+  if (i > 0) {
+    elem.style.opacity = i / 100;
+    setTimeout(defer(fade, i - 2), 66);
+  } else {
+    exit(elem);
+  }
+}
 
 const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
@@ -105,6 +143,60 @@ const meta = greenGeorge.meta,
   thenactivate = curry44(subMethod)("active")("add")("classList"),
   gallery = document.getElementById("gal"),
   els = document.querySelectorAll("#gal a"),
+  exit = function (elem) {
+    if (elem) elem.parentNode.removeChild(elem);
+    document.getElementById("exit").className = "fader";
+  },
+  quit = (el) => {
+    el.parentNode.removeChild(el);
+  },
+  toggle = (el) => {
+    let l,
+      r,
+      fig = el.parentNode,
+      main = fig.parentNode;
+    if (fig.previousElementSibling) {
+      l = fig.previousElementSibling;
+      r = fig.nextElementSibling;
+      main = fig.parentNode;
+      main.removeChild(l);
+      main.removeChild(r);
+      fig.style.margin = 0;
+      fig.style.borderWidth = 0;
+    } else {
+      l = document.createElement("p");
+      r = document.createElement("p");
+      l.innerHTML = "&lt";
+      r.innerHTML = "&gt;";
+      main.appendChild(r);
+      main.insertBefore(l, fig);
+      fig.style.marginTop = ".75em";
+      fig.style.marginBottom = ".75em";
+      fig.style.borderWidth = "1px";
+    }
+  },
+  zoom = (cb, n = 150) => {
+    const el = document.createElement("p"),
+      esc = document.getElementById("esc"),
+      box = document.getElementById("lightbox");
+
+    if (box.requestFullscreen) {
+      box.requestFullscreen();
+    }
+
+    if (!esc) {
+      el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
+      el.id = "esc";
+      box.insertBefore(el, box.firstElementChild);
+      cb(n);
+    }
+    if (isFullScreen()) {
+      document
+        .exitFullscreen?.()
+        .then(() => console.log("Document Exited from Full screen mode"))
+        .catch((err) => console.error(`${err}!`));
+    }
+  },
   query = (n, flag = false) => {
     if (flag) {
       return n <= 768 ? 768 : 1024;
@@ -174,8 +266,12 @@ function reactor(e) {
   let append = ptL(prevoke("appendChild")),
     make = utils.doMakeDefer,
     whilst = curry2(meta.doWhen),
-    myMaker = (str) => compose(whilst(append), getRes, whilst(ptL(compduo, make(str)))),
+    myMaker = (str) =>
+      compose(whilst(append), getRes, whilst(ptL(compduo, make(str)))),
+    myMaker2 = (str, f = (a) => a) =>
+      compose(whilst(append), f, getRes, whilst(ptL(compduo, make(str)))),
     doMap = curry3(invk)(getRes)("map"),
+    listen = pass(curry4(invok)(direct)("click")("addEventListener")),
     getSrc = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
@@ -188,11 +284,11 @@ function reactor(e) {
     textRight = defer(invk, document, "createTextNode", ">"),
     textSrc = compose(ptL(invk, document, "createTextNode"), baseName, getSrc),
     textCount = defer(invk, document, "createTextNode", "1/1"),
-    makePara = myMaker('p'),
-    makeDiv = myMaker('div'),
-    makeHeader = myMaker('header'),
-    makeFooter = myMaker('footer'),
-    makeMain = myMaker('main'),
+    makePara = myMaker("p"),
+    makeDiv = myMaker("div"),
+    makeHeader = myMaker2("header", listen),
+    makeFooter = myMaker("footer"),
+    makeMain = myMaker("main"),
     makeParaText = whilst(ptL(compduo, textCount)),
     textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
     paracomp = ptL(compduo, make("p")),

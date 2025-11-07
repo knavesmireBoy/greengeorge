@@ -77,7 +77,7 @@ const defer = (f, arg) => () => f(arg),
   undo = curry4(subMethod)("fader")("remove")("classList"),
   exit = function (elem) {
     if (elem) elem.parentNode.removeChild(elem);
-    xit.className = "fader";
+    document.getElementById("exit").className = "fader";
   },
   quit = (el) => {
     el.parentNode.removeChild(el);
