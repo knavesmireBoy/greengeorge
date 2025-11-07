@@ -1909,7 +1909,7 @@ html.js #home section.services article.f > aside {
   height: 100%;
   object-fit: cover;
 }
-#gallery #lightbox main figure:nth-child(4) {
+#gallery #lightbox main figure:first-of-type {
   display: none;
 }
 #gallery #lightbox main.mv figure:first-of-type {
@@ -1919,10 +1919,10 @@ html.js #home section.services article.f > aside {
   transform: translateX(200%);
 }
 #gallery #lightbox main.mvd figure:first-of-type {
-  transform: translateX(200%);
+  transform: none;
 }
 #gallery #lightbox main.mvd figure:last-of-type {
-  transform: none;
+  transform: translateX(-200%);
 }
 #gallery #lightbox header {
   padding: 1.4em;
@@ -1999,6 +1999,15 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox.fader header p,
 #gallery #lightbox.fader footer p {
   opacity: 0;
+}
+#gallery #lightbox.rev main {
+  background-color: red;
+}
+#gallery #lightbox.rev main figure:first-of-type {
+  display: block;
+}
+#gallery #lightbox.rev main figure:last-of-type {
+  display: none;
 }
 
 .js #gal a {

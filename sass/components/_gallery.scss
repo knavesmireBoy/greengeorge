@@ -192,10 +192,12 @@
           height: 100%;
           object-fit: cover;
         }
-        &:nth-child(4) {
+
+        &:first-of-type {
           display: none;
         }
       }
+
       &.mv {
         figure:first-of-type {
           transform: translateX(-200%);
@@ -206,12 +208,11 @@
       }
       &.mvd {
         figure:first-of-type {
-          transform: translateX(200%);
-        }
-        figure:last-of-type {
           transform: none;
         }
-
+        figure:last-of-type {
+          transform: translateX(-200%);
+        }
       }
     }
     header {
@@ -278,6 +279,18 @@
       header p,
       footer p {
         opacity: 0;
+      }
+    }
+    &.rev {
+      main {
+        background-color: red;
+        figure:first-of-type {
+          display: block;
+        }
+
+        figure:last-of-type {
+          display: none;
+        }
       }
     }
   }

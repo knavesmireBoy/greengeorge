@@ -89,44 +89,6 @@ function fade(i) {
   }
 }
 
-function foo(i = 0) {
-  const images = document.querySelectorAll("#gal img"),
-    gang = meta.toArray(images),
-    mapped = gang.map(curry3(invk)("src")("getAttribute")),
-    j = mapped.length;
-  return function (e) {
-    const el = e.target;
-    if (el.nodeName === "P") {
-      if (el.nextElementSibling) {
-        let img = utils.getTargetNode(
-          el.nextElementSibling,
-          /IMG/,
-          "firstChild"
-        );
-        if (mapped[i + 1]) {
-          img.setAttribute("src", mapped[i++]);
-        } else {
-          img.setAttribute("src", mapped[0]);
-          i = 0;
-        }
-        // el.nextElementSibling.style.transform = `translateX(-100%)`;
-      } else {
-        let img = utils.getTargetNode(
-          el.previousElementSibling,
-          /IMG/,
-          "firstChild"
-        );
-        if (mapped[i - 1]) {
-          img.setAttribute("src", mapped[i--]);
-        } else {
-          img.setAttribute("src", mapped[j - 1]);
-          i = j - 1;
-        }
-      }
-    }
-  };
-}
-
 function slider(current) {
   const images = document.querySelectorAll("#gal img"),
     gang = meta.toArray(images),
@@ -141,13 +103,20 @@ function slider(current) {
     }
     let el = e.target,
       main = el.parentNode,
-      nextfig = main.lastElementChild,
+      figures = main.querySelectorAll("figure"),
+      currentfig = figures[1],
+      nextfig = figures[0],
       next = nextfig.firstElementChild,
-      fig = main.querySelector("figure"),
-      current = fig.firstElementChild;
-    j;
+      current = currentfig.firstElementChild,
+      rev = document.querySelector('.rev');
+      j;
 
     if (el.previousElementSibling) {
+
+      if(rev){
+        main.parentNode.classList.remove('rev');
+      }
+
       if (mapped[i + 1]) {
         setsrc(current, mapped[i++]);
         j = mapped[i + 1] ? i + 1 : 0;
@@ -157,29 +126,42 @@ function slider(current) {
         i = 0;
       }
     } else {
+
+      if(!rev){
+        main.parentNode.classList.add('rev');
+        main.appendChild(nextfig);
+      }
       if (mapped[i - 1]) {
         setsrc(current, mapped[i--]);
-        if(!mapped[i - 1]){
-          j = mapped.length - 1;
-        }
-        else {
-          j = i - 1;
-        }
+        j = mapped[i - 1] ? i - 1 : mapped.length - 1;
         setsrc(next, mapped[j]);
       } else {
         i = mapped.length - 1;
         setsrc(current, mapped[i]);
-        setsrc(next, mapped[i-1]);
+        setsrc(next, mapped[i - 1]);
       }
     }
 
     setTimeout(function () {
+
+      if(rev){
+     /*
       utils.insertAfter(nextfig, main.firstElementChild);
-      utils.insertAfter(fig, main.lastElementChild);
+      utils.insertAfter(currentfig, main.lastElementChild);
+      */
+      }
+
+      else {
+        main.insertBefore(currentfig, main.firstElementChild);
+        main.insertBefore(nextfig, main.lastElementChild);
+      }
+ 
       main.classList.remove("mv");
       main.classList.add("mvd");
     }, 100);
+
     main.classList.add("mv");
+
     setTimeout(function () {
       main.classList.remove("mvd");
     }, 150);
@@ -414,10 +396,10 @@ function reactor(e) {
     mainparas = pApply(
       invk,
       [
+        imgcomp,
         compose(climb, ptL(compduo, textLeft), append, make("p")),
         imgcomp,
         compose(climb, ptL(compduo, textRight), append, make("p")),
-        imgcomp,
       ],
       "map"
     ),
