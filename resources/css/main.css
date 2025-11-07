@@ -1891,15 +1891,17 @@ html.js #home section.services article.f > aside {
   cursor: pointer;
 }
 #gallery #lightbox main figure {
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 1 1em;
-  -ms-flex: 1 1 1em;
-  flex: 1 1 1em;
+  -webkit-box: 3;
+  -moz-box: 3;
+  -webkit-flex: 3 1 1em;
+  -ms-flex: 3 1 1em;
+  flex: 3 1 1em;
   border-radius: 2px;
   border: solid 1px white;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
+  transform: translateX(0);
+  transition: transform 200ms ease-in;
 }
 #gallery #lightbox main figure img {
   display: block;
@@ -1907,8 +1909,20 @@ html.js #home section.services article.f > aside {
   height: 100%;
   object-fit: cover;
 }
-#gallery #lightbox main figure figcaption {
+#gallery #lightbox main figure:nth-child(4) {
   display: none;
+}
+#gallery #lightbox main.mv figure:first-of-type {
+  transform: translateX(-200%);
+}
+#gallery #lightbox main.mv figure:last-of-type {
+  transform: translateX(200%);
+}
+#gallery #lightbox main.mvd figure:first-of-type {
+  transform: translateX(200%);
+}
+#gallery #lightbox main.mvd figure:last-of-type {
+  transform: none;
 }
 #gallery #lightbox header {
   padding: 1.4em;

@@ -79,7 +79,6 @@ function isFullScreen() {
   );
 }
 
-
 function fade(i) {
   let elem = document.getElementById("esc");
   if (i > 0) {
@@ -88,6 +87,78 @@ function fade(i) {
   } else {
     exit(elem);
   }
+}
+
+function foo(i = 0) {
+  const images = document.querySelectorAll("#gal img"),
+    gang = meta.toArray(images),
+    mapped = gang.map(curry3(invk)("src")("getAttribute")),
+    j = mapped.length;
+  return function (e) {
+    const el = e.target;
+    if (el.nodeName === "P") {
+      if (el.nextElementSibling) {
+        let img = utils.getTargetNode(
+          el.nextElementSibling,
+          /IMG/,
+          "firstChild"
+        );
+        if (mapped[i + 1]) {
+          img.setAttribute("src", mapped[i++]);
+        } else {
+          img.setAttribute("src", mapped[0]);
+          i = 0;
+        }
+        // el.nextElementSibling.style.transform = `translateX(-100%)`;
+      } else {
+        let img = utils.getTargetNode(
+          el.previousElementSibling,
+          /IMG/,
+          "firstChild"
+        );
+        if (mapped[i - 1]) {
+          img.setAttribute("src", mapped[i--]);
+        } else {
+          img.setAttribute("src", mapped[j - 1]);
+          i = j - 1;
+        }
+      }
+    }
+  };
+}
+
+function slider(i = 0) {
+  const images = document.querySelectorAll("#gal img"),
+    gang = meta.toArray(images),
+    mapped = gang.map(curry3(invk)("src")("getAttribute")),
+    j = mapped.length;
+  /*
+
+  */
+
+  return function (e) {
+
+    if(this.lastElementChild.nodeName === 'P'){
+      const fig = this.querySelector("figure"),
+      neu = fig.cloneNode(true);
+      this.appendChild(neu);
+    }
+      
+    let el = e.target,
+      fig = el.parentNode,
+      main = fig.parentNode,
+      neu = main.lastElementChild;
+    setTimeout(function () {
+      utils.insertAfter(neu, main.firstElementChild);
+      utils.insertAfter(fig, main.lastElementChild);
+      main.classList.remove("mv");
+      main.classList.add("mvd");
+    }, 100);
+    main.classList.add("mv");
+    setTimeout(function () {
+      main.classList.remove("mvd");
+    }, 150);
+  };
 }
 
 const meta = greenGeorge.meta,
@@ -271,7 +342,8 @@ function reactor(e) {
     myMaker2 = (str, f = (a) => a) =>
       compose(whilst(append), f, getRes, whilst(ptL(compduo, make(str)))),
     doMap = curry3(invk)(getRes)("map"),
-    listen = pass(curry4(invok)(direct)("click")("addEventListener")),
+    mydirect = pass(curry4(invok)(direct)("click")("addEventListener")),
+    myfoo = pass(curry4(invok)(slider())("click")("addEventListener")),
     getSrc = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
@@ -286,9 +358,9 @@ function reactor(e) {
     textCount = defer(invk, document, "createTextNode", "1/1"),
     makePara = myMaker("p"),
     makeDiv = myMaker("div"),
-    makeHeader = myMaker2("header", listen),
+    makeHeader = myMaker2("header", mydirect),
     makeFooter = myMaker("footer"),
-    makeMain = myMaker("main"),
+    makeMain = myMaker2("main", myfoo),
     makeParaText = whilst(ptL(compduo, textCount)),
     textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
     paracomp = ptL(compduo, make("p")),

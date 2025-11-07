@@ -16,6 +16,25 @@ function maxWindow() {
   }
 }
 */
+function getNextElement(node, type = 1) {
+  if (node && node.nodeType === type) {
+    return node;
+  }
+  if (node && node.nextSibling) {
+    return getNextElement(node.nextSibling);
+  }
+  return null;
+}
+
+function insertAfter(newElement, targetElement) {
+  var parent = targetElement.parentNode;
+  if (parent.lastChild === targetElement) {
+    parent.appendChild(newElement);
+  } else if (newElement) {
+    parent.insertBefore(newElement, getNextElement(targetElement.nextSibling));
+  }
+  return newElement;
+}
 
 function isFullScreen() {
   return (
@@ -122,8 +141,10 @@ const defer = (f, arg) => () => f(arg),
       cb(n);
     }
     if (isFullScreen()) {
-      document.exitFullscreen?.().then(() => console.log("Document Exited from Full screen mode"))
-      .catch((err) => console.error(`${err}!`));
+      document
+        .exitFullscreen?.()
+        .then(() => console.log("Document Exited from Full screen mode"))
+        .catch((err) => console.error(`${err}!`));
     }
   },
   direct = (e) => {
@@ -140,7 +161,26 @@ const defer = (f, arg) => () => f(arg),
     if (el.nextElementSibling && !el.previousElementSibling) {
       return zoom(fade);
     }
+  },
+  slider = (e) => {
+    let el = e.target,
+      fig = el.parentNode,
+      main = fig.parentNode,
+      neu = main.lastElementChild;
+
+    setTimeout(function () {
+      insertAfter(neu, main.firstElementChild);
+      insertAfter(fig, main.lastElementChild);
+      main.classList.remove("mv");
+      main.classList.add("mvd");
+    }, 100);
+    main.classList.add("mv");
+    setTimeout(function () {
+      main.classList.remove("mvd");
+    }, 150);
   };
+
+img.parentNode.parentNode.addEventListener("click", slider);
 
 controls.addEventListener("click", direct);
 
