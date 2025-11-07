@@ -291,6 +291,22 @@
         figure:last-of-type {
           display: none;
         }
+
+        &.mv {
+          figure:first-of-type {
+            transform: translateX(-200%);
+          }
+          figure:last-of-type {
+            transform: translateX(200%);
+          }
+        }
+        &.mvd {
+          figure:first-of-type {
+            transform: translateX(200%);
+          }
+          figure:last-of-type {
+            transform: none;
+          }
       }
     }
   }
