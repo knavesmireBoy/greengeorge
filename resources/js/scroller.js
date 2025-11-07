@@ -127,37 +127,48 @@ function foo(i = 0) {
   };
 }
 
-function slider(i = 0) {
+function slider(current) {
   const images = document.querySelectorAll("#gal img"),
     gang = meta.toArray(images),
     mapped = gang.map(curry3(invk)("src")("getAttribute")),
-    j = mapped.length;
-  /*
+    setsrc = mittel("setAttribute", "src");
 
-  */
+  var i = mapped.findIndex((src) => src === current) + 1;
 
   return function (e) {
-
-    if(this.lastElementChild.nodeName === 'P'){
-      const fig = this.querySelector("figure"),
-      neu = fig.cloneNode(true);
-      this.appendChild(neu);
+    if (el.nodeName !== "P") {
+      return;
     }
-      
     let el = e.target,
       fig = el.parentNode,
       main = fig.parentNode,
-      neu = main.lastElementChild;
-    setTimeout(function () {
-      utils.insertAfter(neu, main.firstElementChild);
-      utils.insertAfter(fig, main.lastElementChild);
-      main.classList.remove("mv");
-      main.classList.add("mvd");
-    }, 100);
-    main.classList.add("mv");
-    setTimeout(function () {
-      main.classList.remove("mvd");
-    }, 150);
+      neu = main.lastElementChild,
+      next = neu.firstElementChild,
+      j;
+
+    if (el.nodeName === "P") {
+      if (el.previousElementSibling) {
+        if (mapped[i + 1]) {
+          setsrc(el, mapped[i++]);
+          j = mapped[i + 1] ? i + 1 : 0;
+          setsrc(next, mapped[j]);
+        } else {
+          setsrc(el, mapped[0]);
+          i = 0;
+        }
+      }
+
+      setTimeout(function () {
+        utils.insertAfter(neu, main.firstElementChild);
+        utils.insertAfter(fig, main.lastElementChild);
+        main.classList.remove("mv");
+        main.classList.add("mvd");
+      }, 100);
+      main.classList.add("mv");
+      setTimeout(function () {
+        main.classList.remove("mvd");
+      }, 150);
+    }
   };
 }
 
@@ -330,7 +341,9 @@ document.addEventListener(
 function reactor(e) {
   e.preventDefault();
 
-  if (!e.target.src) {
+  let src = e.target.getAttribute("src");
+
+  if (!src) {
     return;
   }
 
@@ -343,7 +356,7 @@ function reactor(e) {
       compose(whilst(append), f, getRes, whilst(ptL(compduo, make(str)))),
     doMap = curry3(invk)(getRes)("map"),
     mydirect = pass(curry4(invok)(direct)("click")("addEventListener")),
-    myfoo = pass(curry4(invok)(slider())("click")("addEventListener")),
+    myslider = pass(curry4(invok)(slider(src))("click")("addEventListener")),
     getSrc = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
@@ -360,7 +373,7 @@ function reactor(e) {
     makeDiv = myMaker("div"),
     makeHeader = myMaker2("header", mydirect),
     makeFooter = myMaker("footer"),
-    makeMain = myMaker2("main", myfoo),
+    makeMain = myMaker2("main", myslider),
     makeParaText = whilst(ptL(compduo, textCount)),
     textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
     paracomp = ptL(compduo, make("p")),
@@ -390,6 +403,7 @@ function reactor(e) {
         compose(climb, ptL(compduo, textLeft), append, make("p")),
         imgcomp,
         compose(climb, ptL(compduo, textRight), append, make("p")),
+        imgcomp,
       ],
       "map"
     ),
