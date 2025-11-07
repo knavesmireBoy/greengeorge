@@ -158,19 +158,18 @@ function slider(current) {
       }
     } else {
       if (mapped[i - 1]) {
-        log('really', i)
-
         setsrc(current, mapped[i--]);
-        j = mapped[i - 1] ? i - 1 : mapped.length - 1;
-        log('ok', i)
+        if(!mapped[i - 1]){
+          j = mapped.length - 1;
+        }
+        else {
+          j = i - 1;
+        }
         setsrc(next, mapped[j]);
       } else {
-
-        log(i);
-        setsrc(current, mapped[0]);
         i = mapped.length - 1;
-        setsrc(next, mapped[i]);
-       
+        setsrc(current, mapped[i]);
+        setsrc(next, mapped[i-1]);
       }
     }
 
