@@ -1901,7 +1901,7 @@ html.js #home section.services article.f > aside {
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
   transform: translateX(0);
-  transition: transform 300ms ease-in;
+  transition: transform 150ms ease-in;
 }
 #gallery #lightbox main figure img {
   display: block;
@@ -2003,7 +2003,19 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox.rev main figure:last-of-type {
   display: none;
 }
+#gallery #lightbox.rev main.mv figure:first-of-type {
+  transform: translateX(-200%);
+  border-color: red;
+}
+#gallery #lightbox.rev main.mv figure:last-of-type {
+  border-color: blue;
+}
+#gallery #lightbox.rev main.mvd figure:first-of-type {
+  transform: translateX(200%);
+  border-color: cyan;
+}
 #gallery #lightbox.rev main.mvd figure:last-of-type {
+  border-color: magenta;
   transform: none;
 }
 
