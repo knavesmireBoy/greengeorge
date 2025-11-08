@@ -165,11 +165,11 @@ function slider(current) {
 
       main.classList.remove("mv");
       main.classList.add("mvd");
-    }, 150);
+    }, 200);
 
     setTimeout(function () {
       main.classList.remove("mvd");
-    }, 170);
+    }, 220);
 
     main.classList.add("mv");
   };
