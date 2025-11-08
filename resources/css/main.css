@@ -1994,9 +1994,6 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox.fader footer p {
   opacity: 0;
 }
-#gallery #lightbox.rev main {
-  background-color: rgba(255, 0, 0, 0.5);
-}
 #gallery #lightbox.rev main figure:first-of-type {
   display: block;
 }
@@ -2005,17 +2002,11 @@ html.js #home section.services article.f > aside {
 }
 #gallery #lightbox.rev main.mv figure:first-of-type {
   transform: translateX(-200%);
-  border-color: red;
-}
-#gallery #lightbox.rev main.mv figure:last-of-type {
-  border-color: blue;
 }
 #gallery #lightbox.rev main.mvd figure:first-of-type {
   transform: translateX(200%);
-  border-color: cyan;
 }
 #gallery #lightbox.rev main.mvd figure:last-of-type {
-  border-color: magenta;
   transform: none;
 }
 

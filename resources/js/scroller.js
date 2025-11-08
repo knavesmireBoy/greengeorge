@@ -124,7 +124,6 @@ function slider(current) {
       } else {
         setsrc(next, mapped[i]);
         i = 0;
-      
       }
     } else {
       if (!rev) {
@@ -135,12 +134,12 @@ function slider(current) {
       }
 
       if (mapped[i - 1]) {
-        i--;
-        if (!swap) {
-          setsrc(current, mapped[i]);
+        if (swap) {
+          setsrc(current, mapped[i - 1]);
         } else {
-          setsrc(next, mapped[i - 1]);
+          setsrc(next, mapped[i]);
         }
+        i--;
         j = mapped[i - 1] ? i - 1 : mapped.length - 1;
         setsrc(next, mapped[j]);
       } else {
