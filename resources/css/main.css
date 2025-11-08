@@ -2006,9 +2006,6 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox.rev main.mvd figure:first-of-type {
   transform: translateX(200%);
 }
-#gallery #lightbox.rev main.mvd figure:last-of-type {
-  transform: none;
-}
 
 .js #gal a {
   transform: scale(75%);
