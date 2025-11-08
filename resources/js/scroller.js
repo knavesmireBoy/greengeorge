@@ -93,6 +93,7 @@ function slider(current) {
   const images = document.querySelectorAll("#gal img"),
     gang = meta.toArray(images),
     mapped = gang.map(curry3(invk)("src")("getAttribute")),
+    n = mapped.length,
     setsrc = mittel("setAttribute", "src");
 
   var i = mapped.findIndex((src) => src === current) + 1,
@@ -110,7 +111,6 @@ function slider(current) {
       next = nextfig.firstElementChild,
       current = currentfig.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
-      ran = current.src !== next.src,
       j;
 
     if (el.innerHTML === "&gt;") {
@@ -140,7 +140,7 @@ function slider(current) {
           setsrc(next, mapped[i]);
         }
         i--;
-        j = mapped[i - 1] ? i - 1 : mapped.length - 1;
+        j = mapped[i - 1] ? i - 1 : n - 1;
         setsrc(next, mapped[j]);
       } else {
         i = mapped.length - 1;
@@ -157,7 +157,6 @@ function slider(current) {
         main.insertBefore(currentfig, main.firstElementChild);
         main.insertBefore(nextfig, main.lastElementChild);
       }
-
       main.classList.remove("mv");
       main.classList.add("mvd");
     }, 200);
@@ -165,7 +164,9 @@ function slider(current) {
     setTimeout(function () {
       main.classList.remove("mvd");
     }, 220);
-
+    j = (i % n) || n;
+    meta.$('caption').innerHTML = baseName(mapped[i]);
+    meta.$('count').innerHTML = `${j}/${n}`;
     main.classList.add("mv");
   };
 }
@@ -342,12 +343,6 @@ function reactor(e) {
   if (!src) {
     return;
   }
-  let bodge = {
-    src: "../resources/images/hedge-1.jpeg",
-    getAttribute: function () {
-      return this.src;
-    },
-  };
   let append = ptL(prevoke("appendChild")),
     make = utils.doMakeDefer,
     whilst = curry2(meta.doWhen),
@@ -359,7 +354,6 @@ function reactor(e) {
     mydirect = pass(curry4(invok)(direct)("click")("addEventListener")),
     myslider = pass(curry4(invok)(slider(src))("click")("addEventListener")),
     getSrc = defer(invk, e.target, "getAttribute", "src"),
-    getSrc2 = defer(invk, bodge, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
     getParent = curry2(getprop)("parentNode"),
@@ -371,30 +365,19 @@ function reactor(e) {
     textRight = defer(invk, document, "createTextNode", ">"),
     textSrc = compose(ptL(invk, document, "createTextNode"), baseName, getSrc),
     textCount = defer(invk, document, "createTextNode", "1/1"),
-    makePara = myMaker("p"),
+    makePara = myMaker2("p", settingId('count')),
     makeDiv = myMaker("div"),
     makeHeader = myMaker2("header", mydirect),
     makeFooter = myMaker("footer"),
     makeMain = myMaker2("main", myslider),
     makeParaText = whilst(ptL(compduo, textCount)),
-    textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
+    textFooterSrc = compose(climb, ptL(compduo, textSrc), append, settingId('caption'), make("p")),
     paracomp = ptL(compduo, make("p")),
     applySrc = compose(curry2(mittel("setAttribute", "src")), getSrc),
-    applySrc2 = compose(curry2(mittel("setAttribute", "src")), getSrc2),
     imgcomp = compose(
       getParent,
       getRes,
       curry2(invoker)(applySrc()),
-      wrap,
-      getRes,
-      ptL(compduo, make("img")),
-      append,
-      make("figure")
-    ),
-    imgcomp2 = compose(
-      getParent,
-      getRes,
-      curry2(invoker)(applySrc2()),
       wrap,
       getRes,
       ptL(compduo, make("img")),
@@ -413,7 +396,7 @@ function reactor(e) {
     mainparas = pApply(
       invk,
       [
-        imgcomp2,
+        imgcomp,
         compose(climb, ptL(compduo, textLeft), append, make("p")),
         imgcomp,
         compose(climb, ptL(compduo, textRight), append, make("p")),
