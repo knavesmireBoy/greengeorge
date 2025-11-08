@@ -114,6 +114,7 @@ function slider(current) {
       j;
 
     if (el.innerHTML === "&gt;") {
+
       if (rev) {
         main.parentNode.classList.remove("rev");
       }
@@ -121,7 +122,7 @@ function slider(current) {
       if (mapped[i + 1]) {
         setsrc(current, mapped[i++]);
         j = mapped[i + 1] ? i : 0;
-        j = ran ? j : i + 1;
+        j = ran ? j : i - 1;
         setsrc(next, mapped[j]);
       } else {
         setsrc(current, mapped[0]);
@@ -159,9 +160,9 @@ function slider(current) {
           swap = false;
         }
       } else {
-        if (ran) {
-          main.insertBefore(currentfig, main.firstElementChild);
-          main.insertBefore(nextfig, main.lastElementChild);
+        if (!ran) {
+        main.insertBefore(currentfig, main.firstElementChild);
+       main.insertBefore(nextfig, main.lastElementChild);
         }
         else {
           log(666);

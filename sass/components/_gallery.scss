@@ -200,18 +200,20 @@
 
       &.mv {
         figure:first-of-type {
-          transform: translateX(-200%);
+       //  transform: translateX(-200%);
+      // transform: translateX(200%);
         }
         figure:last-of-type {
-          transform: translateX(200%);
+        // transform: translateX(200%);
         }
       }
       &.mvd {
         figure:first-of-type {
           transform: none;
+         // transform: translateX(200%);
         }
         figure:last-of-type {
-          transform: translateX(-200%);
+         // transform: translateX(200%);
         }
       }
     }
@@ -283,7 +285,7 @@
     }
     &.rev {
       main {
-        background-color: rgba(255,0,0, .8);
+        background-color: rgba(255,0,0,.5);
         figure:first-of-type {
           display: block;
         }
