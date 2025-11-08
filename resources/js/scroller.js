@@ -110,6 +110,7 @@ function slider(current) {
       next = nextfig.firstElementChild,
       current = currentfig.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
+      ran = current.src !== next.src,
       j;
 
     if (el.innerHTML === "&gt;") {
@@ -119,7 +120,8 @@ function slider(current) {
 
       if (mapped[i + 1]) {
         setsrc(current, mapped[i++]);
-        j = mapped[i + 1] ? i + 1 : 0;
+        j = mapped[i + 1] ? i : 0;
+        j = ran ? j : i + 1;
         setsrc(next, mapped[j]);
       } else {
         setsrc(current, mapped[0]);
@@ -127,7 +129,6 @@ function slider(current) {
       }
     } else {
       if (!rev) {
-        log(main.parentNode);
         main.parentNode.classList.add("rev");
         main.appendChild(currentfig);
         utils.insertAfter(nextfig, e.target);
@@ -135,38 +136,42 @@ function slider(current) {
       }
 
       if (mapped[i - 1]) {
-        if(!swap){
-          setsrc(current, mapped[i--]);   
+        i--;
+        if (!swap) {
+          setsrc(current, mapped[i]);
         }
-        else {
-          i--;
-        }
-          
         j = mapped[i - 1] ? i - 1 : mapped.length - 1;
         setsrc(next, mapped[j]);
       } else {
-       // i = mapped.length - 1;
-       // setsrc(current, mapped[i]);
-      //  setsrc(next, mapped[i - 1]);
+        i = mapped.length - 1;
+        setsrc(current, mapped[i]);
+        setsrc(next, mapped[i - 1]);
       }
       //swap = rev && swap ? false : swap;
     }
 
     setTimeout(function () {
       if (document.getElementsByClassName("rev")[0]) {
-        /*
-      utils.insertAfter(nextfig, main.firstElementChild);
-      utils.insertAfter(currentfig, main.lastElementChild);
-      */
+        if (!swap) {
+          utils.insertAfter(nextfig, main.firstElementChild);
+          utils.insertAfter(currentfig, main.lastElementChild);
+        } else {
+          swap = false;
+        }
       } else {
-        main.insertBefore(currentfig, main.firstElementChild);
-        main.insertBefore(nextfig, main.lastElementChild);
+        if (ran) {
+          main.insertBefore(currentfig, main.firstElementChild);
+          main.insertBefore(nextfig, main.lastElementChild);
+        }
+        else {
+          log(666);
+        }
       }
 
       main.classList.remove("mv");
       main.classList.add("mvd");
     }, 100);
-
+   
     main.classList.add("mv");
 
     setTimeout(function () {

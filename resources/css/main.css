@@ -2001,7 +2001,7 @@ html.js #home section.services article.f > aside {
   opacity: 0;
 }
 #gallery #lightbox.rev main {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.8);
 }
 #gallery #lightbox.rev main figure:first-of-type {
   display: block;
