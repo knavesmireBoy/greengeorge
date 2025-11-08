@@ -95,7 +95,8 @@ function slider(current) {
     mapped = gang.map(curry3(invk)("src")("getAttribute")),
     setsrc = mittel("setAttribute", "src");
 
-  var i = mapped.findIndex((src) => src === current) + 1;
+  var i = mapped.findIndex((src) => src === current) + 1,
+    swap = false;
 
   return function (e) {
     if (e.target.nodeName !== "P") {
@@ -108,13 +109,12 @@ function slider(current) {
       nextfig = figures[0],
       next = nextfig.firstElementChild,
       current = currentfig.firstElementChild,
-      rev = document.querySelector('.rev');
+      rev = document.getElementsByClassName("rev")[0],
       j;
 
-    if (el.previousElementSibling) {
-
-      if(rev){
-        main.parentNode.classList.remove('rev');
+    if (el.innerHTML === "&gt;") {
+      if (rev) {
+        main.parentNode.classList.remove("rev");
       }
 
       if (mapped[i + 1]) {
@@ -126,36 +126,43 @@ function slider(current) {
         i = 0;
       }
     } else {
-
-      if(!rev){
-        main.parentNode.classList.add('rev');
-        main.appendChild(nextfig);
+      if (!rev) {
+        log(main.parentNode);
+        main.parentNode.classList.add("rev");
+        main.appendChild(currentfig);
+        utils.insertAfter(nextfig, e.target);
+        swap = true;
       }
+
       if (mapped[i - 1]) {
-        setsrc(current, mapped[i--]);
+        if(!swap){
+          setsrc(current, mapped[i--]);   
+        }
+        else {
+          i--;
+        }
+          
         j = mapped[i - 1] ? i - 1 : mapped.length - 1;
         setsrc(next, mapped[j]);
       } else {
-        i = mapped.length - 1;
-        setsrc(current, mapped[i]);
-        setsrc(next, mapped[i - 1]);
+       // i = mapped.length - 1;
+       // setsrc(current, mapped[i]);
+      //  setsrc(next, mapped[i - 1]);
       }
+      //swap = rev && swap ? false : swap;
     }
 
     setTimeout(function () {
-
-      if(rev){
-     /*
+      if (document.getElementsByClassName("rev")[0]) {
+        /*
       utils.insertAfter(nextfig, main.firstElementChild);
       utils.insertAfter(currentfig, main.lastElementChild);
       */
-      }
-
-      else {
+      } else {
         main.insertBefore(currentfig, main.firstElementChild);
         main.insertBefore(nextfig, main.lastElementChild);
       }
- 
+
       main.classList.remove("mv");
       main.classList.add("mvd");
     }, 100);
