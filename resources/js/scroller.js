@@ -114,7 +114,6 @@ function slider(current) {
       j;
 
     if (el.innerHTML === "&gt;") {
-
       if (rev) {
         main.parentNode.classList.remove("rev");
       }
@@ -160,24 +159,19 @@ function slider(current) {
           swap = false;
         }
       } else {
-        if (!ran) {
         main.insertBefore(currentfig, main.firstElementChild);
-       main.insertBefore(nextfig, main.lastElementChild);
-        }
-        else {
-          log(666);
-        }
+        main.insertBefore(nextfig, main.lastElementChild);
       }
 
       main.classList.remove("mv");
       main.classList.add("mvd");
-    }, 100);
-   
-    main.classList.add("mv");
+    }, 150);
 
     setTimeout(function () {
       main.classList.remove("mvd");
-    }, 150);
+    }, 170);
+
+    main.classList.add("mv");
   };
 }
 
@@ -349,13 +343,16 @@ document.addEventListener(
 
 function reactor(e) {
   e.preventDefault();
-
   let src = e.target.getAttribute("src");
-
   if (!src) {
     return;
   }
-
+  let bodge = {
+    src: "../resources/images/hedge-1.jpeg",
+    getAttribute: function () {
+      return this.src;
+    },
+  };
   let append = ptL(prevoke("appendChild")),
     make = utils.doMakeDefer,
     whilst = curry2(meta.doWhen),
@@ -367,6 +364,7 @@ function reactor(e) {
     mydirect = pass(curry4(invok)(direct)("click")("addEventListener")),
     myslider = pass(curry4(invok)(slider(src))("click")("addEventListener")),
     getSrc = defer(invk, e.target, "getAttribute", "src"),
+    getSrc2 = defer(invk, bodge, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
     getParent = curry2(getprop)("parentNode"),
@@ -387,10 +385,21 @@ function reactor(e) {
     textFooterSrc = compose(climb, ptL(compduo, textSrc), append, make("p")),
     paracomp = ptL(compduo, make("p")),
     applySrc = compose(curry2(mittel("setAttribute", "src")), getSrc),
+    applySrc2 = compose(curry2(mittel("setAttribute", "src")), getSrc2),
     imgcomp = compose(
       getParent,
       getRes,
       curry2(invoker)(applySrc()),
+      wrap,
+      getRes,
+      ptL(compduo, make("img")),
+      append,
+      make("figure")
+    ),
+    imgcomp2 = compose(
+      getParent,
+      getRes,
+      curry2(invoker)(applySrc2()),
       wrap,
       getRes,
       ptL(compduo, make("img")),
@@ -409,7 +418,7 @@ function reactor(e) {
     mainparas = pApply(
       invk,
       [
-        imgcomp,
+        imgcomp2,
         compose(climb, ptL(compduo, textLeft), append, make("p")),
         imgcomp,
         compose(climb, ptL(compduo, textRight), append, make("p")),
