@@ -119,13 +119,12 @@ function slider(current) {
       }
 
       if (mapped[i + 1]) {
-        setsrc(current, mapped[i++]);
-        j = mapped[i + 1] ? i : 0;
-        j = ran ? j : i - 1;
-        setsrc(next, mapped[j]);
+        setsrc(current, mapped[i]);
+        setsrc(next, mapped[i++]);
       } else {
-        setsrc(current, mapped[0]);
+        setsrc(next, mapped[i]);
         i = 0;
+      
       }
     } else {
       if (!rev) {
@@ -140,17 +139,15 @@ function slider(current) {
         if (!swap) {
           setsrc(current, mapped[i]);
         } else {
-          //main.appendChild(currentfig);
           setsrc(next, mapped[i - 1]);
         }
         j = mapped[i - 1] ? i - 1 : mapped.length - 1;
         setsrc(next, mapped[j]);
       } else {
         i = mapped.length - 1;
-        // setsrc(current, mapped[i]);
-        // setsrc(next, mapped[i - 1]);
+        setsrc(current, mapped[i]);
+        setsrc(next, mapped[i - 1]);
       }
-      //swap = rev && swap ? false : swap;
     }
 
     setTimeout(function () {
