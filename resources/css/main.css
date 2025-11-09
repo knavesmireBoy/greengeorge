@@ -1900,22 +1900,37 @@ html.js #home section.services article.f > aside {
   border: solid 1px white;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
   transform: translateX(0);
+  color: khaki;
+  -webkit-transition: -webkit-transform 150ms ease-in;
+  -moz-transition: -moz-transform 150ms ease-in;
+  -ms-transition: -ms-transform 150ms ease-in;
+  -o-transition: -o-transform 150ms ease-in;
   transition: transform 150ms ease-in;
 }
 #gallery #lightbox main figure img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 #gallery #lightbox main figure:first-of-type {
   display: none;
 }
 #gallery #lightbox main.mv figure:last-of-type {
+  -webkit-transform: translateX(200%);
+  -moz-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  -o-transform: translateX(200%);
   transform: translateX(200%);
 }
 #gallery #lightbox main.mvd figure:last-of-type {
+  -webkit-transform: translateX(-200%);
+  -moz-transform: translateX(-200%);
+  -ms-transform: translateX(-200%);
+  -o-transform: translateX(-200%);
   transform: translateX(-200%);
 }
 #gallery #lightbox header {
@@ -1951,6 +1966,10 @@ html.js #home section.services article.f > aside {
   content: "x";
 }
 #gallery #lightbox header p {
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -ms-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
   transition: opacity 1s ease-in;
   opacity: 1;
 }
@@ -1972,6 +1991,10 @@ html.js #home section.services article.f > aside {
 }
 #gallery #lightbox footer p {
   opacity: 1;
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -ms-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
   transition: opacity 1s ease-in;
 }
 #gallery #lightbox #esc {
@@ -2001,20 +2024,45 @@ html.js #home section.services article.f > aside {
   display: none;
 }
 #gallery #lightbox.rev main.mv figure:first-of-type {
+  -webkit-transform: translateX(-200%);
+  -moz-transform: translateX(-200%);
+  -ms-transform: translateX(-200%);
+  -o-transform: translateX(-200%);
   transform: translateX(-200%);
 }
 #gallery #lightbox.rev main.mvd figure:first-of-type {
+  -webkit-transform: translateX(200%);
+  -moz-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  -o-transform: translateX(200%);
   transform: translateX(200%);
 }
 
 .js #gal a {
+  -webkit-transform: scale(75%);
+  -moz-transform: scale(75%);
+  -ms-transform: scale(75%);
+  -o-transform: scale(75%);
   transform: scale(75%);
   opacity: 0;
 }
 .js #gal a.active {
   opacity: 1;
+  -webkit-transform: scale(100%);
+  -moz-transform: scale(100%);
+  -ms-transform: scale(100%);
+  -o-transform: scale(100%);
   transform: scale(100%);
-  transition: opacity 1s ease-in-out 0.1s, transform 1s ease-in-out 0.1s;
+  -webkit-transition: opacity 1s ease-in-out 0.1s;
+  -moz-transition: opacity 1s ease-in-out 0.1s;
+  -ms-transition: opacity 1s ease-in-out 0.1s;
+  -o-transition: opacity 1s ease-in-out 0.1s;
+  transition: opacity 1s ease-in-out 0.1s;
+  -webkit-transition: -webkit-transform 1s ease-in-out 0.1s;
+  -moz-transition: -moz-transform 1s ease-in-out 0.1s;
+  -ms-transition: -ms-transform 1s ease-in-out 0.1s;
+  -o-transition: -o-transform 1s ease-in-out 0.1s;
+  transition: transform 1s ease-in-out 0.1s;
 }
 
 #contact main > section:first-child {
