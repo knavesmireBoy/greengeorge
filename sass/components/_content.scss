@@ -73,6 +73,9 @@ main > section {
     font-size: 1.3em;
     margin: 0 0 1em;
   }
+  &:first-child {
+    background-color: $bg;
+  }
   &.services {
     padding: 0.7em 2em 2em;
     background-color: $main;
@@ -104,7 +107,6 @@ main > section {
     }
   }
   &.testimonials {
-    font-size: 0.875em;
     line-height: 1.6;
     h2 {
       font-size: 2.5em;
@@ -131,7 +133,6 @@ main > footer {
 }
 
 main section.contact {
-  background-color: $main;
   h2,
   h4 {
     @include flex(1, 1, 100%);
@@ -187,9 +188,8 @@ main section.contact {
 }
 
 main > footer nav {
-  font-size: 0.625rem;
+  font-size: 0.725em;
   padding: 0.25em 0;
-  border-top: solid 1px white;
   ul li {
     a:link,
     a:visited {
@@ -220,7 +220,7 @@ body > div > footer {
     font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
   }
   header nav ul li a {
-    padding: 0 2em;
+    padding: 0 1.6em;
     font-size: 1.125rem;
     color: $main;
     transition: transform 0.2s ease-out;

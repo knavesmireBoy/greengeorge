@@ -12,11 +12,9 @@ html {
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          @include flex(1, 1, 100%);
+          @include flex(0, 0, 100%);
           @include flexy();
-
-          min-height: 5em;
-          border: solid 1px;
+          height: 10.5em;
           &:first-child {
             background-image: url("../images/IMG_1477.jpg");
           }
@@ -105,13 +103,6 @@ html {
     section.services {
       > div {
         article {
-          &:first-child {
-            @include prefix(
-              animation,
-              services 28s ease-in 1s infinite normal forwards,
-              o moz webkit
-            );
-          }
           &:nth-of-type(1) > aside {
             background-image: url("../assets/lawn.jpeg");
             background-position: 0 top;
@@ -167,6 +158,18 @@ html {
       background-image: url("../assets/tidy.jpeg");
     }
   }
+  &.no-js {
+    section.services article {
+      /*
+      @include prefix(
+        animation,
+        services 28s ease-in 1s infinite normal forwards,
+        o moz webkit
+      );
+    }
+      */
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -218,31 +221,20 @@ html {
   }
 }
 
-@media only screen and (min-width: 820px) {
-  html {
-    #home {
-      section:first-child {
-        aside {
-          min-height: 50em;
-          justify-content: center;
-          // background-color: darkkhaki;
-        }
-      }
-    }
-  }
-}
-
 @media only screen and (min-width: 667px) {
   html #home main > {
     section:first-of-type {
-      padding: 2rem;
+      padding: 3rem 1.2rem;
       column-gap: 2rem;
       display: grid;
       grid-template-columns: (62% 1fr);
-      //grid-template-rows: auto;
       aside {
         order: 2;
         grid-column: 2/3;
+        figure {
+          min-height: 100%;
+          width: 100%;
+        }
       }
       article {
         margin: 0;
@@ -263,15 +255,43 @@ html {
   }
 }
 @media only screen and (min-width: 769px) {
-  html.no-js {
-    section.services div {
-      article {
-        &:first-child {
-          @include prefix(
-            animation,
-            services_mid 28s ease-in 1s infinite normal forwards,
-            o moz webkit
-          );
+  html {
+    &.no-js {
+      section {
+        &.services div {
+          article {
+            &:first-child {
+              @include prefix(
+                animation,
+                services_mid 28s ease-in 1s infinite normal forwards,
+                o moz webkit
+              );
+            }
+          }
+        }
+      }
+    }
+    #home main > section:first-child {
+      font-size: 1.005rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 820px) {
+  html {
+    #home main > {
+      section:first-child {
+        @include flexy();
+        article {
+          @include justify(center);
+          @include flex(7, 1, 1em);
+        }
+
+        aside {
+          @include flex(4, 1, 1em);
+          figure {
+            height: calc(525px + 155 * ((100vw - 820px) / (1280 - 820)));
+          }
         }
       }
     }
