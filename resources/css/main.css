@@ -732,11 +732,31 @@ section.services + div span {
     background: rgb(25, 78, 39) url("../assets/Green-George-logo-beige.svg") no-repeat 95% 70%/12%;
     font-size: 1.125rem;
   }
+  main:first-of-type footer section.contact {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(8, 6.5%);
+  }
   main:first-of-type footer section.contact p:before {
     width: 2em;
     height: 2em;
     margin-right: 1em;
     display: block;
+  }
+  main:first-of-type footer section.contact p:nth-child(-n+2) {
+    grid-row: 1/2;
+  }
+  main:first-of-type footer section.contact p:nth-child(1) {
+    grid-column: span 4;
+  }
+  main:first-of-type footer section.contact p:nth-child(2) {
+    grid-column: span 3;
+  }
+  main:first-of-type footer section.contact p:nth-last-child(-n+3) {
+    grid-row: 2/3;
+  }
+  main:first-of-type footer section.contact p:nth-child(3) {
+    grid-column: span 2;
   }
   main:first-of-type footer section.payment {
     font-size: 1.8rem;
@@ -823,7 +843,7 @@ section.services + div span {
   }
 }
 html #home section:first-child {
-  padding: 1rem;
+  padding: 1rem 0;
   line-height: 1.6;
 }
 html #home section:first-child aside {
