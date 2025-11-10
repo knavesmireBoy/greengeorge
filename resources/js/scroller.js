@@ -164,9 +164,9 @@ function slider(current) {
     setTimeout(function () {
       main.classList.remove("mvd");
     }, 220);
-    j = (i % n) || n;
-    meta.$('caption').innerHTML = baseName(mapped[i]);
-    meta.$('count').innerHTML = `${j}/${n}`;
+    j = i % n || n;
+    meta.$("caption").innerHTML = baseName(mapped[i]);
+    meta.$("count").innerHTML = `${j}/${n}`;
     main.classList.add("mv");
   };
 }
@@ -289,6 +289,19 @@ const meta = greenGeorge.meta,
   scroller = (el, els, i, cb, e) => (ev) => {
     //el is the NEXT element primed for receiving the active class
     //not we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
+
+    let x = el.offsetHeight || el.getBoundingClientRect().height;
+
+    //if loading page half scrolled reveal all
+    if (!lastKnownScrollPosition && window.scrollY > x) {
+      while (els[i]) {
+        doWhen(els[i], cb);
+        i++;
+      }
+      i = 0;
+      return;
+    }
+
     lastKnownScrollPosition = window.scrollY;
     let n = window.innerWidth,
       j = getScrollThreshold(el, 1),
@@ -365,13 +378,19 @@ function reactor(e) {
     textRight = defer(invk, document, "createTextNode", ">"),
     textSrc = compose(ptL(invk, document, "createTextNode"), baseName, getSrc),
     textCount = defer(invk, document, "createTextNode", "1/1"),
-    makePara = myMaker2("p", settingId('count')),
+    makePara = myMaker2("p", settingId("count")),
     makeDiv = myMaker("div"),
     makeHeader = myMaker2("header", mydirect),
     makeFooter = myMaker("footer"),
     makeMain = myMaker2("main", myslider),
     makeParaText = whilst(ptL(compduo, textCount)),
-    textFooterSrc = compose(climb, ptL(compduo, textSrc), append, settingId('caption'), make("p")),
+    textFooterSrc = compose(
+      climb,
+      ptL(compduo, textSrc),
+      append,
+      settingId("caption"),
+      make("p")
+    ),
     paracomp = ptL(compduo, make("p")),
     applySrc = compose(curry2(mittel("setAttribute", "src")), getSrc),
     imgcomp = compose(

@@ -736,6 +736,10 @@ section.services + div span {
     display: grid;
     gap: 0;
     grid-template-columns: repeat(8, 6.5%);
+    grid-template-columns: 3em 7em 3em 3em 3em 5em 8em 1fr;
+  }
+  main:first-of-type footer section.contact p {
+    grid-column: span 1;
   }
   main:first-of-type footer section.contact p:before {
     width: 2em;
@@ -747,16 +751,19 @@ section.services + div span {
     grid-row: 1/2;
   }
   main:first-of-type footer section.contact p:nth-child(1) {
-    grid-column: span 4;
+    grid-column: span 5;
   }
   main:first-of-type footer section.contact p:nth-child(2) {
-    grid-column: span 3;
+    grid-column: span 2;
   }
   main:first-of-type footer section.contact p:nth-last-child(-n+3) {
     grid-row: 2/3;
   }
   main:first-of-type footer section.contact p:nth-child(3) {
     grid-column: span 2;
+  }
+  main:first-of-type footer section.contact p:nth-child(4):before {
+    margin: 0;
   }
   main:first-of-type footer section.payment {
     font-size: 1.8rem;
