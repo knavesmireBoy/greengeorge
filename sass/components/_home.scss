@@ -1,12 +1,26 @@
 html {
   #home {
     section:first-child {
+      padding: 1rem;
+      line-height: 1.6;
+
       aside {
         @include flexy();
         overflow-x: hidden;
+        min-height: 100%;
         figure {
           @include flex(0, 0, 100%);
           @include flexy();
+        }
+      }
+      article {
+        h1 {
+          font-size: 4em;
+          line-height: 1;
+        }
+        h4 {
+          font-size: 1.7em;
+          margin: 0.5em 0;
         }
       }
     }
@@ -126,6 +140,40 @@ html {
           span6 29s linear 0s infinite normal forwards,
           o moz webkit
         );
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 667px) {
+  html #home {
+    section:first-of-type {
+      padding: 2rem;
+      column-gap: 2rem;
+      display: grid;
+      align-content: start;
+      grid-template-columns: (62% 1fr);
+      border: solid 1px chocolate;
+      aside {
+        order: 2;
+        // @include flex(4, 1, 1em);
+        grid-column: 2/3;
+
+        figure {
+          height: 100%;
+          border: solid 1px chocolate;
+        }
+      }
+      article {
+        margin: 0;
+        grid-column: 1/2;
+        @include flexy();
+        flex-direction: column;
+        @include justify();
+        button {
+          align-self: start;
+          margin: 1.5em 0 0;
+        }
       }
     }
   }

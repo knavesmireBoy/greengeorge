@@ -1398,6 +1398,10 @@ section.services + div span {
     flex: 1 0 31.333%;
   }
 }
+html #home section:first-child {
+  padding: 1rem;
+  line-height: 1.6;
+}
 html #home section:first-child aside {
   display: -webkit-box;
   display: -moz-box;
@@ -1406,6 +1410,7 @@ html #home section:first-child aside {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
+  min-height: 100%;
 }
 html #home section:first-child aside figure {
   -webkit-box: 0;
@@ -1419,6 +1424,14 @@ html #home section:first-child aside figure {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
+}
+html #home section:first-child article h1 {
+  font-size: 4em;
+  line-height: 1;
+}
+html #home section:first-child article h4 {
+  font-size: 1.7em;
+  margin: 0.5em 0;
 }
 html.no-js #home {
   background-color: lavender;
@@ -1510,6 +1523,43 @@ html.js #home section.services article.f > aside {
     -moz-animation: span6 29s linear 0s infinite normal forwards;
     -webkit-animation: span6 29s linear 0s infinite normal forwards;
     animation: span6 29s linear 0s infinite normal forwards;
+  }
+}
+@media only screen and (min-width: 667px) {
+  html #home section:first-of-type {
+    padding: 2rem;
+    column-gap: 2rem;
+    display: grid;
+    align-content: start;
+    grid-template-columns: 62% 1fr;
+    border: solid 1px chocolate;
+  }
+  html #home section:first-of-type aside {
+    order: 2;
+    grid-column: 2/3;
+  }
+  html #home section:first-of-type aside figure {
+    height: 100%;
+    border: solid 1px chocolate;
+  }
+  html #home section:first-of-type article {
+    margin: 0;
+    grid-column: 1/2;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: center;
+    justify-content: space-between;
+  }
+  html #home section:first-of-type article button {
+    align-self: start;
+    margin: 1.5em 0 0;
   }
 }
 @media only screen and (min-width: 769px) {
