@@ -67,74 +67,7 @@ main > section {
       margin: 1em 0;
     }
   }
-  &:first-child aside {
-    figure {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 10.5em;
-      &:first-child {
-        background-image: url("../images/IMG_1477.jpg");
-      }
-      &:nth-child(2) {
-        background-image: url("../images/IMG_0556.jpg");
-      }
-      &:nth-child(3) {
-        background-image: url("../images/IMG_1478.jpg");
-      }
-      &:nth-child(4) {
-        background-image: url("../images/IMG_0229.jpg");
-      }
-      &:nth-child(5) {
-        background-image: url("../images/IMG_1531.jpg");
-        background-position: center 55%;
-      }
-      &:nth-child(6) {
-        background-image: url("../images/IMG_1530.jpg");
-      }
-      &:nth-child(7) {
-        background-image: url("../images/IMG_1485.jpg");
-        background-position: center 60%;
-      }
-      &:nth-child(8) {
-        background-image: url("../images/IMG_1478.jpg");
-      }
-      &:nth-child(9) {
-        background-image: url("../images/IMG_1442.jpg");
-        background-position: center 70%;
-      }
-      &:nth-child(10) {
-        background-image: url("../images/IMG_1395.jpg");
-        background-position: center 80%;
-      }
-      &:nth-child(11) {
-        background-image: url("../images/IMG_0558.jpg");
-      }
-      &:nth-child(12) {
-        background-image: url("../images/IMG_0388.jpg");
-      }
-      &:nth-child(13) {
-        background-image: url("../images/IMG_0324.jpg");
-        background-position: center 55%;
-      }
-      &:nth-child(14) {
-        background-image: url("../images/IMG_0311.jpg");
-      }
-      &:nth-child(15) {
-        background-image: url("../images/20241114_094758.jpg");
-        background-position: center 60%;
-      }
-      &:nth-child(16) {
-        background-image: url("../images/20241104_131502.jpg");
-        background-position: center 65%;
-      }
-      &:nth-child(17) {
-        background-image: url("../images/10PLTMGGEh8.jpg");
-        background-position: center 60%;
-      }
-    }
-  }
+
   &:nth-child(2) article p:first-child {
     color: $main;
     font-size: 1.3em;
@@ -188,13 +121,6 @@ main > section {
       font-style: italic;
     }
   }
-}
-.mission article p:first-child {
-  font-family: "Handwritten", cursive;
-  text-align: center;
-  color: $main;
-  font-size: 1.3em;
-  //font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
 }
 
 main > footer {
