@@ -850,7 +850,7 @@ section.services + div span {
   }
 }
 html #home section:first-child {
-  padding: 1rem 0;
+  padding: 1rem;
   line-height: 1.6;
 }
 html #home section:first-child aside {
