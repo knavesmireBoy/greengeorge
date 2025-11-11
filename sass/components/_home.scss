@@ -150,7 +150,7 @@ html {
       &.pause {
         aside {
           figure {
-            filter: grayscale(.5);
+            filter: brightness(50%);
             @include prefix(animation, none, o moz webkit);
           }
         }

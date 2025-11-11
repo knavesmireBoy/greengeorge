@@ -1486,7 +1486,7 @@ html #home #player aside figure {
   animation: main 90s ease-in-out 500ms infinite reverse backwards;
 }
 html #home #player.pause aside figure {
-  filter: grayscale(0.5);
+  filter: brightness(50%);
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;

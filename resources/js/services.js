@@ -192,15 +192,15 @@ const meta = greenGeorge.meta,
   doActive = comp(curry2(preActive)("add"), getTarget),
   undoActive = comp(curry2(preActive)("remove"), getTarget),
   doAlt = meta.doAlternate(),
-  ev = i => e => {
-    let f   = curry2(utils.getComputedStyle)('background-image'),
-    parent = getTarget(e).firstElementChild,
-    nodes = meta.toArray(parent.childNodes).filter( n => n.nodeType === 1),
-    opts = [f(e.target), f(nodes[0])];
+  ev = (i) => (e) => {
+    let f = curry2(utils.getComputedStyle)("background-image"),
+      parent = getTarget(e).firstElementChild,
+      nodes = meta.toArray(parent.childNodes).filter((n) => n.nodeType === 1),
+      opts = [f(e.target), f(nodes[0])];
     doToggle(e);
     nodes[0].style.backgroundImage = opts[Number(!i)];
   },
-doToggle = doAlt([doActive, undoActive]);
+  doToggle = doAlt([doActive, undoActive]);
 if (player) {
   player.addEventListener("click", ev(1));
 }
