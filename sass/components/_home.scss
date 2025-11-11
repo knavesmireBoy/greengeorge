@@ -160,14 +160,11 @@ html {
   }
   &.no-js {
     section.services article {
-      /*
       @include prefix(
         animation,
         services 28s ease-in 1s infinite normal forwards,
         o moz webkit
       );
-    }
-      */
     }
   }
 }
@@ -338,35 +335,49 @@ html {
   }
 }
 @media only screen and (min-width: 1025px) {
-  html.no-js #control span {
-    &:first-child {
-      @include prefix(
-        animation,
-        span21 29s linear 0s infinite normal forwards,
-        o moz webkit
-      );
-    }
-    &:nth-child(2) {
-      @include prefix(
-        animation,
-        span22 29s linear 0s infinite normal forwards,
-        o moz webkit
-      );
-    }
-    &:nth-child(3) {
-      @include prefix(
-        animation,
-        span23 29s linear 0s infinite normal forwards,
-        o moz webkit
-      );
+  html.no-js {
+    section.services div {
+      article {
+        &:first-child {
+          @include prefix(
+            animation,
+            services_max 28s ease-in 1s infinite normal forwards,
+            o moz webkit
+          );
+        }
+      }
     }
 
-    &:nth-child(4) {
-      @include prefix(
-        animation,
-        span24 29s linear 0s infinite normal forwards,
-        o moz webkit
-      );
+    #control span {
+      &:first-child {
+        @include prefix(
+          animation,
+          span21 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(2) {
+        @include prefix(
+          animation,
+          span22 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(3) {
+        @include prefix(
+          animation,
+          span23 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+
+      &:nth-child(4) {
+        @include prefix(
+          animation,
+          span24 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
     }
   }
 }

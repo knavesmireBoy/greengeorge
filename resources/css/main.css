@@ -112,6 +112,525 @@ Test if `$value` is a valid direction
 @param {*} $value - Value to test
 @return {Bool}
 */
+.spandef {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.spanhi {
+  background-color: white;
+}
+
+@keyframes services_alt {
+  17% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  37% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  57% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  77% {
+    transform: translateX(-301%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  97% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(-500%);
+  }
+}
+@keyframes services {
+  0% {
+    margin-left: 0%;
+  }
+  14% {
+    margin-left: 0%;
+  }
+  17% {
+    margin-left: -100%;
+  }
+  32% {
+    margin-left: -100%;
+  }
+  35% {
+    margin-left: -200%;
+  }
+  49% {
+    margin-left: -200%;
+  }
+  52% {
+    margin-left: -300%;
+  }
+  67% {
+    margin-left: -300%;
+  }
+  70% {
+    margin-left: -400%;
+  }
+  84% {
+    margin-left: -400%;
+  }
+  87% {
+    margin-left: -500%;
+  }
+  100% {
+    margin-left: -500%;
+  }
+}
+@keyframes span1 {
+  0% {
+    background-color: white;
+  }
+  17% {
+    background-color: white;
+  }
+  18% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span2 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  17% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  18% {
+    background-color: white;
+  }
+  34% {
+    background-color: white;
+  }
+  35% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span3 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  34% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  35% {
+    background-color: white;
+  }
+  51% {
+    background-color: white;
+  }
+  52% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span4 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  51% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  52% {
+    background-color: white;
+  }
+  68% {
+    background-color: white;
+  }
+  71% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span5 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  70% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  71% {
+    background-color: white;
+  }
+  87% {
+    background-color: white;
+  }
+  88% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span6 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  86% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  87% {
+    background-color: white;
+  }
+  100% {
+    background-color: white;
+  }
+}
+@keyframes services_mid {
+  0% {
+    margin-left: 0%;
+  }
+  17% {
+    margin-left: 0%;
+  }
+  20% {
+    margin-left: -52%;
+  }
+  37% {
+    margin-left: -52%;
+  }
+  40% {
+    margin-left: -104%;
+  }
+  57% {
+    margin-left: -104%;
+  }
+  60% {
+    margin-left: -156%;
+  }
+  77% {
+    margin-left: -156%;
+  }
+  80% {
+    margin-left: -208%;
+  }
+  100% {
+    margin-left: -208%;
+  }
+}
+@keyframes span11 {
+  0% {
+    background-color: white;
+  }
+  19% {
+    background-color: white;
+  }
+  20% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span12 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  19% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  20% {
+    background-color: white;
+  }
+  39% {
+    background-color: white;
+  }
+  40% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span13 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  39% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  40% {
+    background-color: white;
+  }
+  59% {
+    background-color: white;
+  }
+  60% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span14 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  59% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  60% {
+    background-color: white;
+  }
+  79% {
+    background-color: white;
+  }
+  80% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span15 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  79% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  80% {
+    background-color: white;
+  }
+  99% {
+    background-color: white;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes services_max {
+  0% {
+    margin-left: 0%;
+  }
+  22% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: -34.333%;
+  }
+  47% {
+    margin-left: -34.333%;
+  }
+  50% {
+    margin-left: -68.666%;
+  }
+  72% {
+    margin-left: -68.666%;
+  }
+  75% {
+    margin-left: -103%;
+  }
+  100% {
+    margin-left: -103%;
+  }
+}
+@keyframes span21 {
+  0% {
+    background-color: white;
+  }
+  24% {
+    background-color: white;
+  }
+  25% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span22 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  25% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  26% {
+    background-color: white;
+  }
+  49% {
+    background-color: white;
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span23 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  51% {
+    background-color: white;
+  }
+  74% {
+    background-color: white;
+  }
+  75% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes span24 {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  75% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  76% {
+    background-color: white;
+  }
+  99% {
+    background-color: white;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes main {
+  5% {
+    transform: translateX(0%);
+  }
+  6% {
+    transform: translateX(-100%);
+  }
+  11% {
+    transform: translateX(-100%);
+  }
+  12% {
+    transform: translateX(-200%);
+  }
+  17% {
+    transform: translateX(-200%);
+  }
+  18% {
+    transform: translateX(-300%);
+  }
+  23% {
+    transform: translateX(-300%);
+  }
+  24% {
+    transform: translateX(-400%);
+  }
+  29% {
+    transform: translateX(-400%);
+  }
+  30% {
+    transform: translateX(-500%);
+  }
+  35% {
+    transform: translateX(-500%);
+  }
+  36% {
+    transform: translateX(-600%);
+  }
+  41% {
+    transform: translateX(-600%);
+  }
+  42% {
+    transform: translateX(-700%);
+  }
+  47% {
+    transform: translateX(-700%);
+  }
+  48% {
+    transform: translateX(-800%);
+  }
+  53% {
+    transform: translateX(-800%);
+  }
+  54% {
+    transform: translateX(-900%);
+  }
+  59% {
+    transform: translateX(-900%);
+  }
+  60% {
+    transform: translateX(-1000%);
+  }
+  65% {
+    transform: translateX(-1000%);
+  }
+  66% {
+    transform: translateX(-1100%);
+  }
+  71% {
+    transform: translateX(-1100%);
+  }
+  72% {
+    transform: translateX(-1200%);
+  }
+  77% {
+    transform: translateX(-1200%);
+  }
+  78% {
+    transform: translateX(-1300%);
+  }
+  83% {
+    transform: translateX(-1300%);
+  }
+  84% {
+    transform: translateX(-1400%);
+  }
+  89% {
+    transform: translateX(-1400%);
+  }
+  90% {
+    transform: translateX(-1500%);
+  }
+  95% {
+    transform: translateX(-1500%);
+  }
+  96% {
+    transform: translateX(-1600%);
+  }
+  100% {
+    transform: translateX(-1600%);
+  }
+}
+@keyframes testimonials {
+  30% {
+    transform: translateX(0%);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  63% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(-200%);
+  }
+  97% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+@keyframes testi {
+  30% {
+    margin-left: 0%;
+  }
+  33% {
+    margin-left: -100%;
+  }
+  63% {
+    margin-left: -100%;
+  }
+  66% {
+    margin-left: -200%;
+  }
+  97% {
+    margin-left: -200%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
+@keyframes gallery {
+  0% {
+    transform: scale(80%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
 @font-face {
   font-family: "Crimson";
   src: url("../font/Crimson-Bold.woff2") format("woff2"), url("../font/Crimson-Bold.woff") format("woff");
@@ -191,7 +710,7 @@ main > section.services {
 main > section.services h2 {
   color: rgb(252, 246, 228);
   font-size: 2.3em;
-  margin: 0 0 0.5em;
+  line-height: 1.7;
 }
 main > section.services article {
   background-color: rgb(252, 246, 228);
@@ -325,6 +844,11 @@ body > div > footer ul a:active {
   color: white;
 }
 
+@media only screen and (min-width: 769px) {
+  .eco {
+    font-size: calc(18px + 4 * (100vw - 769px) / 511);
+  }
+}
 @media only screen and (min-width: 1025px) {
   .mission article p:first-child {
     font-size: calc(24px + 2 * (100vw - 1025px) / 255);
@@ -508,7 +1032,7 @@ main > footer .payment {
 main > footer .payment div {
   min-width: 2.8em;
   height: 2.15em;
-  width: 2.8em;
+  width: 2.9em;
   margin: 0 0.5em 0 0;
   border-radius: 4px;
   overflow: hidden;
@@ -664,7 +1188,39 @@ section.services + div span {
     width: 158px;
     height: 167px;
   }
-  section.services div {
+  main .eco {
+    padding: 1em;
+    padding-right: calc(16px + 84 * (100vw - 769px) / 511);
+    padding-left: calc(16px + 84 * (100vw - 769px) / 511);
+  }
+  main .eco ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-pack: space-around;
+    -ms-flex-pack: space-around;
+    -webkit-justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+  main .eco ul li {
+    padding: 0.15em 0 0.15em 2.5em;
+  }
+  main .eco ul li:nth-child(2) {
+    -webkit-box: 3;
+    -moz-box: 3;
+    -webkit-flex: 3 1 8em;
+    -ms-flex: 3 1 8em;
+    flex: 3 1 8em;
+    padding: 2em 0 0 0;
+  }
+  main section.services {
+    font-size: 1.2rem;
+  }
+  main section.services div {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -673,19 +1229,18 @@ section.services + div span {
     flex-wrap: nowrap;
     column-gap: 4%;
     overflow: hidden;
-    font-size: 1.2rem;
   }
-  section.services div article {
+  main section.services div article {
     -webkit-box: 1;
     -moz-box: 1;
     -webkit-flex: 1 0 48%;
     -ms-flex: 1 0 48%;
     flex: 1 0 48%;
   }
-  section.services div article p {
+  main section.services div article p {
     padding: 0 2em;
   }
-  section:first-child {
+  main section:first-child {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -696,7 +1251,7 @@ section.services + div span {
     padding-top: calc(30px + 30 * (100vw - 769px) / 511);
     padding-bottom: calc(30px + 20 * (100vw - 769px) / 511);
   }
-  section:first-child article {
+  main section:first-child article {
     font-size: 1.15em;
     -webkit-box: 7;
     -moz-box: 7;
@@ -706,10 +1261,10 @@ section.services + div span {
     margin-top: calc(40px + 100 * (100vw - 769px) / 511);
     margin-bottom: calc(40px + 100 * (100vw - 769px) / 511);
   }
-  section:first-child article h1 {
+  main section:first-child article h1 {
     font-size: 4em;
   }
-  section:first-child aside {
+  main section:first-child aside {
     -webkit-box: 3;
     -moz-box: 3;
     -webkit-flex: 3 1 10em;
@@ -717,10 +1272,10 @@ section.services + div span {
     flex: 3 1 10em;
     order: 2;
   }
-  section:first-child aside figure {
+  main section:first-child aside figure {
     height: 100%;
   }
-  section:first-child footer {
+  main section:first-child footer {
     -webkit-box: 0;
     -moz-box: 0;
     -webkit-flex: 0 0 100%;
@@ -769,7 +1324,7 @@ section.services + div span {
     font-size: 1.8rem;
   }
   main:first-of-type footer section.payment + nav {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
   main:first-of-type section.testimonials {
     font-size: 1.125rem;
@@ -804,34 +1359,10 @@ section.services + div span {
     top: 0;
     max-height: 100%;
   }
-  .eco {
-    padding: 1em 15%;
-    font-size: calc(16px + 2 * (100vw - 1025px) / 255);
+  main section.services h2 {
+    font-size: 3.125em;
   }
-  .eco ul {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: nowrap;
-    -webkit-box-pack: space-between;
-    -ms-flex-pack: space-between;
-    -webkit-justify-content: center;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .eco ul li {
-    padding: 0.15em 0 0.15em 2.5em;
-  }
-  .eco ul li:nth-child(2) {
-    -webkit-box: 3;
-    -moz-box: 3;
-    -webkit-flex: 3 1 1em;
-    -ms-flex: 3 1 1em;
-    flex: 3 1 1em;
-  }
-  section.services div {
+  main section.services div {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -841,7 +1372,7 @@ section.services + div span {
     column-gap: 3%;
     overflow: hidden;
   }
-  section.services div article {
+  main section.services div article {
     -webkit-box: 1;
     -moz-box: 1;
     -webkit-flex: 1 0 31.333%;
@@ -1000,14 +1531,10 @@ html.js #home section.services article.f > aside {
   background-image: url("../assets/tidy.jpeg");
 }
 html.no-js section.services article {
-  /*
-    @include prefix(
-      animation,
-      services 28s ease-in 1s infinite normal forwards,
-      o moz webkit
-    );
-  }
-    */
+  -o-animation: services 28s ease-in 1s infinite normal forwards;
+  -moz-animation: services 28s ease-in 1s infinite normal forwards;
+  -webkit-animation: services 28s ease-in 1s infinite normal forwards;
+  animation: services 28s ease-in 1s infinite normal forwards;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1169,6 +1696,12 @@ html.no-js section.services article {
   }
 }
 @media only screen and (min-width: 1025px) {
+  html.no-js section.services div article:first-child {
+    -o-animation: services_max 28s ease-in 1s infinite normal forwards;
+    -moz-animation: services_max 28s ease-in 1s infinite normal forwards;
+    -webkit-animation: services_max 28s ease-in 1s infinite normal forwards;
+    animation: services_max 28s ease-in 1s infinite normal forwards;
+  }
   html.no-js #control span:first-child {
     -o-animation: span21 29s linear 0s infinite normal forwards;
     -moz-animation: span21 29s linear 0s infinite normal forwards;

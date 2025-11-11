@@ -120,7 +120,7 @@ main > footer {
       //@include flex(0,0,auto);
       min-width: 2.8em;
       height: 2.15em;
-      width: 2.8em;
+      width: 2.9em;
       margin: 0 0.5em 0 0;
       border-radius: 4px;
       overflow: hidden;
@@ -240,43 +240,67 @@ section.services {
     height: 167px;
   }
 
-  section.services div {
-    @include flexy();
-    column-gap: 4%;
-    overflow: hidden;
-    font-size: 1.2rem;
-    article {
-      @include flex(1, 0, 48%);
-      p {
-        padding: 0 2em;
-      }
-    }
-  }
+  main {
+    .eco {
+      padding: 1em;
+      padding-right: calc(16px + 84 * ((100vw - 769px) / (1280 - 769)));
+      padding-left: calc(16px + 84 * ((100vw - 769px) / (1280 - 769)));
 
-  section:first-child {
-    @include flexy(wrap);
-    column-gap: 1em;
-    padding-top: calc(30px + 30 * ((100vw - 769px) / (1280 - 769)));
-    padding-bottom: calc(30px + 20 * ((100vw - 769px) / (1280 - 769)));
-    article {
-      font-size: 1.15em;
-      @include flex(7, 1, 10em);
-      margin-top: calc(40px + 100 * ((100vw - 769px) / (1280 - 769)));
-      margin-bottom: calc(40px + 100 * ((100vw - 769px) / (1280 - 769)));
-      h1 {
-        font-size: 4em;
+      ul {
+        @include flexy();
+        @include justify(space-around);
+        align-items: center;
+        li {
+          padding: 0.15em 0 0.15em 2.5em;
+          &:nth-child(2) {
+            @include flex(3, 1, 8em);
+            padding: 2em 0 0 0;
+          }
+        }
       }
     }
-    aside {
-      @include flex(3, 1, 10em);
-      order: 2;
-      figure {
-        height: 100%;
+
+    section.services {
+      font-size: 1.2rem;
+      div {
+        @include flexy();
+        column-gap: 4%;
+        overflow: hidden;
+
+        article {
+          @include flex(1, 0, 48%);
+          p {
+            padding: 0 2em;
+          }
+        }
       }
     }
-    footer {
-      @include flex(0, 0, 100%);
-      order: 3;
+
+    section:first-child {
+      @include flexy(wrap);
+      column-gap: 1em;
+      padding-top: calc(30px + 30 * ((100vw - 769px) / (1280 - 769)));
+      padding-bottom: calc(30px + 20 * ((100vw - 769px) / (1280 - 769)));
+      article {
+        font-size: 1.15em;
+        @include flex(7, 1, 10em);
+        margin-top: calc(40px + 100 * ((100vw - 769px) / (1280 - 769)));
+        margin-bottom: calc(40px + 100 * ((100vw - 769px) / (1280 - 769)));
+        h1 {
+          font-size: 4em;
+        }
+      }
+      aside {
+        @include flex(3, 1, 10em);
+        order: 2;
+        figure {
+          height: 100%;
+        }
+      }
+      footer {
+        @include flex(0, 0, 100%);
+        order: 3;
+      }
     }
   }
 
@@ -298,33 +322,32 @@ section.services {
             margin-right: 1em;
             display: block;
           }
-          &:nth-child(-n+2){
+          &:nth-child(-n + 2) {
             grid-row: 1/2;
           }
 
-          &:nth-child(1){
+          &:nth-child(1) {
             grid-column: span 5;
           }
-          &:nth-child(2){
+          &:nth-child(2) {
             grid-column: span 2;
           }
 
-          &:nth-last-child(-n+3){
+          &:nth-last-child(-n + 3) {
             grid-row: 2/3;
           }
-          &:nth-child(3){
+          &:nth-child(3) {
             grid-column: span 2;
           }
-          &:nth-child(4):before{
+          &:nth-child(4):before {
             margin: 0;
           }
-
         }
       }
       section.payment {
         font-size: 1.8rem;
         & + nav {
-          font-size: 1.05rem;
+          font-size: 1rem;
         }
       }
     }
@@ -353,28 +376,20 @@ section.services {
       }
     }
   }
-  .eco {
-    padding: 1em 15%;
-    font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
-    ul {
-      @include flexy();
-      @include justify(space-between);
-      align-items: center;
-      li {
-        padding: 0.15em 0 0.15em 2.5em;
-        &:nth-child(2) {
-          @include flex(3, 1, 1em);
+
+  main {
+    section.services {
+      h2 {
+        font-size: 3.125em;
+      }
+      div {
+        @include flexy();
+        column-gap: 3%;
+        overflow: hidden;
+        article {
+          @include flex(1, 0, 31.333%);
         }
       }
     }
   }
-  section.services div {
-    @include flexy();
-    column-gap: 3%;
-    overflow: hidden;
-    article {
-      @include flex(1, 0, 31.333%);
-    }
-  }
-
 }
