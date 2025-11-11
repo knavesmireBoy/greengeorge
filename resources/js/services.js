@@ -1,3 +1,11 @@
+/*jslint nomen: true */
+/* eslint-disable indent */
+/* eslint-disable no-param-reassign */
+/*global greenGeorge: false */
+if (!window.greenGeorge) {
+  window.greenGeorge = {};
+}
+
 function loop(element) {
   element.parentNode.appendChild(element);
   element.style.marginLeft = 0;
@@ -15,6 +23,16 @@ function setServicesBgImage(nodes, klasses) {
 
 function paint(node, val) {
   node.style.backgroundColor = val;
+}
+
+function sub(o, p, m, v) {
+  return o[p][m](v);
+}
+
+function prevoke(p, v) {
+  return function (o, m) {
+    return sub(o, p, m, v);
+  };
 }
 
 let inc = 0,
@@ -65,6 +83,7 @@ let inc = 0,
   },
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
+  player = document.getElementById("player"),
   liveArticles = (service && service.getElementsByTagName("article")) || [],
   articles = (service && service.querySelectorAll("article")) || [],
   i = articles.length,
@@ -79,9 +98,17 @@ let inc = 0,
     paint
   ),
   cb = compose(cycle, finder(articles)),
-  stepper = (element, data, validator, callback, dur = 500, inc = 0, start = undefined) => {
+  stepper = (
+    element,
+    data,
+    validator,
+    callback,
+    dur = 500,
+    inc = 0,
+    start = undefined
+  ) => {
     let [travel, factor] = resize(data, 1),
-    duration;
+      duration;
 
     return (timestamp) => {
       if (!start && inc) {
@@ -105,8 +132,7 @@ let inc = 0,
           callback(element);
           if (validator(element)) {
             request = requestAnimationFrame(step);
-          }
-          else {
+          } else {
             cancelAnimationFrame(request);
           }
         }
@@ -153,4 +179,20 @@ if (el) {
   control.addEventListener("click", controller);
   cb(el);
   setServicesBgImage(liveArticles, ["a", "b", "c", "d", "e", "f"]);
+}
+
+const meta = greenGeorge.meta,
+  utils = greenGeorge.utils,
+  getProp = (o, p) => o[p],
+  comp = meta.compose,
+  curry2 = meta.curryRight(2),
+  curry22 = meta.curryRight(2, true),
+  getTarget = curry2(getProp)("currentTarget"),
+  preActive = prevoke("classList", "pause"),
+  doActive = comp(curry2(preActive)("add"), getTarget),
+  undoActive = comp(curry2(preActive)("remove"), getTarget),
+  doAlt = meta.doAlternate();
+doToggle = doAlt([doActive, undoActive]);
+if (player) {
+  player.addEventListener("click", doToggle);
 }

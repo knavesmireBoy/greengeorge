@@ -191,7 +191,7 @@ section > aside {
       &:first-child {
         @include prefix(
           animation,
-          testi 28s ease-in 1s infinite normal forwards,
+          testi 40s ease-in 1s infinite normal forwards,
           o moz webkit
         );
       }

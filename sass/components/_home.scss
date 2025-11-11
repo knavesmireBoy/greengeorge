@@ -135,16 +135,25 @@ html {
       }
     }
   }
-  &.no-js #home {
-    section.services div {
-      border: solid 1px white;
-      article {
-        &:first-child {
+  #home {
+    #player {
+      aside {
+        figure {
           @include prefix(
             animation,
-            services 28s ease-in 1s 1 normal forwards,
+            main 90s ease-in-out 500ms infinite reverse backwards,
             o moz webkit
           );
+        }
+      }
+
+      &.pause {
+        background-color: khaki;
+        aside {
+          figure {
+            filter: grayscale(.5);
+            @include prefix(animation, none, o moz webkit);
+          }
         }
       }
     }
