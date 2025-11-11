@@ -87,8 +87,7 @@ html {
         }
       }
     }
-  }
-  #home {
+
     section:first-child {
       aside {
         figure {
@@ -136,6 +135,20 @@ html {
       }
     }
   }
+  &.no-js #home {
+    section.services div {
+      border: solid 1px white;
+      article {
+        &:first-child {
+          @include prefix(
+            animation,
+            services 28s ease-in 1s 1 normal forwards,
+            o moz webkit
+          );
+        }
+      }
+    }
+  }
 
   &.js #home section.services article {
     &.a > aside {
@@ -156,15 +169,6 @@ html {
     }
     &.f > aside {
       background-image: url("../assets/tidy.jpeg");
-    }
-  }
-  &.no-js {
-    section.services article {
-      @include prefix(
-        animation,
-        services 28s ease-in 1s infinite normal forwards,
-        o moz webkit
-      );
     }
   }
 }

@@ -120,38 +120,6 @@ Test if `$value` is a valid direction
   background-color: white;
 }
 
-@keyframes services_alt {
-  17% {
-    transform: translateX(0%);
-  }
-  20% {
-    transform: translateX(-100%);
-  }
-  37% {
-    transform: translateX(-100%);
-  }
-  40% {
-    transform: translateX(-200%);
-  }
-  57% {
-    transform: translateX(-200%);
-  }
-  60% {
-    transform: translateX(-300%);
-  }
-  77% {
-    transform: translateX(-301%);
-  }
-  80% {
-    transform: translateX(-400%);
-  }
-  97% {
-    transform: translateX(-400%);
-  }
-  100% {
-    transform: translateX(-500%);
-  }
-}
 @keyframes services {
   0% {
     margin-left: 0%;
@@ -1511,6 +1479,15 @@ html #home .mission article p:first-child {
   color: rgb(25, 78, 39);
   font-size: 1.3em;
 }
+html.no-js #home section.services div {
+  border: solid 1px white;
+}
+html.no-js #home section.services div article:first-child {
+  -o-animation: services 28s ease-in 1s 1 normal forwards;
+  -moz-animation: services 28s ease-in 1s 1 normal forwards;
+  -webkit-animation: services 28s ease-in 1s 1 normal forwards;
+  animation: services 28s ease-in 1s 1 normal forwards;
+}
 html.js #home section.services article.a > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: 0 top;
@@ -1529,12 +1506,6 @@ html.js #home section.services article.e > aside {
 }
 html.js #home section.services article.f > aside {
   background-image: url("../assets/tidy.jpeg");
-}
-html.no-js section.services article {
-  -o-animation: services 28s ease-in 1s infinite normal forwards;
-  -moz-animation: services 28s ease-in 1s infinite normal forwards;
-  -webkit-animation: services 28s ease-in 1s infinite normal forwards;
-  animation: services 28s ease-in 1s infinite normal forwards;
 }
 
 @media only screen and (max-width: 768px) {

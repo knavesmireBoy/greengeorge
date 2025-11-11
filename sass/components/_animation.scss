@@ -5,77 +5,44 @@
   background-color: white;
 }
 
-  @keyframes services_alt {
-    17% {
-      transform: translateX(-0%);
-    }
-    20% {
-      transform: translateX(-100%);
-    }
-    37% {
-      transform: translateX(-100%);
-    }
-    40% {
-      transform: translateX(-200%);
-    }
-    57% {
-      transform: translateX(-200%);
-    }
-    60% {
-      transform: translateX(-300%);
-    }
-    77% {
-      transform: translateX(-301%);
-    }
-    80% {
-      transform: translateX(-400%);
-    }
-    97% {
-      transform: translateX(-400%);
-    }
-    100% {
-      transform: translateX(-500%);
-    }
+@keyframes services {
+  0% {
+    margin-left: -0%;
   }
-
-  @keyframes services {
-    0% {
-      margin-left: -0%;
-    }
-    14% {
-      margin-left: -0%;
-    }
-    17% {
-      margin-left: -100%;
-    }
-    32% {
-      margin-left: -100%;
-    }
-    35% {
-      margin-left: -200%;
-    }
-    49% {
-      margin-left: -200%;
-    }
-    52% {
-      margin-left: -300%;
-    }
-    67% {
-      margin-left: -300%;
-    }
-    70% {
-      margin-left: -400%;
-    }
-    84% {
-      margin-left: -400%;
-    }
-    87% {
-      margin-left: -500%;
-    }
-    100% {
-      margin-left: -500%;
-    }
+  14% {
+    margin-left: -0%;
   }
+  17% {
+    margin-left: -100%;
+  }
+  32% {
+    margin-left: -100%;
+  }
+  35% {
+    margin-left: -200%;
+  }
+  49% {
+    margin-left: -200%;
+  }
+  52% {
+    margin-left: -300%;
+  }
+  67% {
+    margin-left: -300%;
+  }
+  70% {
+    margin-left: -400%;
+  }
+  84% {
+    margin-left: -400%;
+  }
+  87% {
+    margin-left: -500%;
+  }
+  100% {
+    margin-left: -500%;
+  }
+}
 
   @keyframes span1 {
     0% {
