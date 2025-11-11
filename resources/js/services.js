@@ -193,11 +193,10 @@ const meta = greenGeorge.meta,
   undoActive = comp(curry2(preActive)("remove"), getTarget),
   doAlt = meta.doAlternate(),
   ev = i => e => {
-    let url = utils.getComputedStyle(e.target, 'background-image'),
+    let f   = curry2(utils.getComputedStyle)('background-image'),
     parent = getTarget(e).firstElementChild,
     nodes = meta.toArray(parent.childNodes).filter( n => n.nodeType === 1),
-    href = utils.getComputedStyle(nodes[0], 'background-image'),
-    opts = [url, href];
+    opts = [f(e.target), f(nodes[0])];
     doToggle(e);
     nodes[0].style.backgroundImage = opts[Number(!i)];
   },
