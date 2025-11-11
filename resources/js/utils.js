@@ -972,6 +972,7 @@ greenGeorge.utils = (function () {
       ) {
         computedStyle = def.getComputedStyle(element, null);
       }
+
       if (computedStyle) {
         try {
           return (

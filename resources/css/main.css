@@ -1485,9 +1485,6 @@ html #home #player aside figure {
   -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   animation: main 90s ease-in-out 500ms infinite reverse backwards;
 }
-html #home #player.pause {
-  background-color: khaki;
-}
 html #home #player.pause aside figure {
   filter: grayscale(0.5);
   -o-animation: none;
