@@ -48,8 +48,14 @@ function myslider(hook, gang, i, flag) {
         return;
       }
       if (!auto) {
+        if(t){
         clearTimeout(t);
-        flag = !flag;
+        t = 0;
+        }
+        else {
+          play(e, true);
+        }
+       // flag = !flag;
       }
     }
     let cb = () => {
