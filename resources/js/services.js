@@ -21,6 +21,66 @@ function setServicesBgImage(nodes, klasses) {
   }
 }
 
+function myslider(hook, gang, i) {
+  const f = curry2(utils.getComputedStyle)("background-image"),
+    urls = gang.map(f),
+    exec = curry22(preActive)("add"),
+    undo = curry22(preActive)("remove"),
+    n = urls.length;
+  while (i < n) {
+    hook.removeChild(gang[i++]);
+  }
+
+  setTimeout(exec(gang[0]), 1111);
+
+  return function (e) {
+    e.stopPropagation();
+    if (e.target.nodeName !== "FIGURE") {
+      return;
+    }
+
+    /*
+
+    let el = e.target,
+      main = el.parentNode,
+      figures = main.querySelectorAll("figure"),
+      currentfig = figures[1],
+      nextfig = figures[0],
+      next = nextfig.firstElementChild,
+      current = currentfig.firstElementChild,
+      j;
+
+    if (mapped[i + 1]) {
+      setsrc(current, mapped[i]);
+      setsrc(next, mapped[i++]);
+    } else {
+      setsrc(next, mapped[i]);
+      i = 0;
+    }
+
+    setTimeout(function () {
+      if (document.getElementsByClassName("rev")[0]) {
+        utils.insertAfter(nextfig, main.firstElementChild);
+        utils.insertAfter(currentfig, main.lastElementChild);
+      } else {
+        main.insertBefore(currentfig, main.firstElementChild);
+        main.insertBefore(nextfig, main.lastElementChild);
+      }
+      main.classList.remove("mv");
+      main.classList.add("mvd");
+    }, 200);
+
+    setTimeout(function () {
+      main.classList.remove("mvd");
+    }, 220);
+    j = i % n || n;
+    main.classList.add("mv");
+    setTimeout(myslider, 4444);
+  };
+  */
+  };
+}
+
 function paint(node, val) {
   node.style.backgroundColor = val;
 }
@@ -39,7 +99,19 @@ let inc = 0,
   t = 500,
   margins = [100, 52, 34.333],
   request,
-  start,
+  start;
+
+const meta = greenGeorge.meta,
+  utils = greenGeorge.utils,
+  getProp = (o, p) => o[p],
+  comp = meta.compose,
+  curry2 = meta.curryRight(2),
+  curry22 = meta.curryRight(2, true),
+  getTarget = curry2(getProp)("currentTarget"),
+  preActive = prevoke("classList", "pause"),
+  doActive = comp(curry2(preActive)("add"), getTarget),
+  undoActive = comp(curry2(preActive)("remove"), getTarget),
+  doAlt = meta.doAlternate(),
   compose = (...fns) =>
     fns.reduce(
       (f, g) =>
@@ -84,6 +156,8 @@ let inc = 0,
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
   player = document.getElementById("player"),
+  aside = player.querySelector("aside"),
+  figures = aside.querySelectorAll("figure"),
   liveArticles = (service && service.getElementsByTagName("article")) || [],
   articles = (service && service.querySelectorAll("article")) || [],
   i = articles.length,
@@ -181,18 +255,8 @@ if (el) {
   setServicesBgImage(liveArticles, ["a", "b", "c", "d", "e", "f"]);
 }
 
-const meta = greenGeorge.meta,
-  utils = greenGeorge.utils,
-  getProp = (o, p) => o[p],
-  comp = meta.compose,
-  curry2 = meta.curryRight(2),
-  curry22 = meta.curryRight(2, true),
-  getTarget = curry2(getProp)("currentTarget"),
-  preActive = prevoke("classList", "pause"),
-  doActive = comp(curry2(preActive)("add"), getTarget),
-  undoActive = comp(curry2(preActive)("remove"), getTarget),
-  doAlt = meta.doAlternate(),
-  ev = (i) => (e) => {
+/*
+const ev = (i) => (e) => {
     let f = curry2(utils.getComputedStyle)("background-image"),
       parent = getTarget(e).firstElementChild,
       nodes = meta.toArray(parent.childNodes).filter((n) => n.nodeType === 1),
@@ -204,3 +268,6 @@ const meta = greenGeorge.meta,
 if (player) {
   player.addEventListener("click", ev(1));
 }
+*/
+
+myslider(aside, meta.toArray(figures), 2);
