@@ -21,7 +21,7 @@ function setServicesBgImage(nodes, klasses) {
   }
 }
 
-function myslider(hook, gang, i, flag) {
+function myslider(hook, gang, i, delay) {
   const f = curry2(utils.getComputedStyle)("background-image"),
     urls = gang.map(f),
     exec = curry22(preMove)("add"),
@@ -30,7 +30,7 @@ function myslider(hook, gang, i, flag) {
     j = i;
 
   let k = 0,
-    t;
+    t = true;
   while (i < n) {
     hook.removeChild(gang[i++]);
   }
@@ -43,30 +43,28 @@ function myslider(hook, gang, i, flag) {
 
   return function play(e, auto) {
     if (e) {
-      e.stopPropagation();
       if (e.target.nodeName !== "FIGURE") {
         return;
       }
-      if (!auto) {
-        if(t){
+      e.stopPropagation();
+      if(t){
         clearTimeout(t);
-        t = 0;
-        }
-        else {
-          play(e, true);
-        }
-       // flag = !flag;
+        t = null;
+        return;
       }
     }
     let cb = () => {
+      if (t) {
         hook.insertBefore(hook.lastElementChild, hook.firstElementChild);
         undo(hook);
         i = i % n ? i : 0;
         hook.firstElementChild.style.backgroundImage = urls[i++];
-        play(e, true);
+        play();
+      }
     };
+
     setTimeout(exec(hook));
-    t = setTimeout(cb, 4444);
+    t = setTimeout(cb, delay);
   };
 }
 
@@ -211,7 +209,7 @@ const meta = greenGeorge.meta,
       }
     };
   },
-  slideshow = myslider(aside, meta.toArray(figures), 2, true);
+  slideshow = myslider(aside, meta.toArray(figures), 2, 4000);
 
 step = stepper(articles[0], margins, validator(next), cb);
 
