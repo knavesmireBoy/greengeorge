@@ -130,6 +130,29 @@ main > footer {
   padding: 1em;
   color: white;
   font-size: 0.875rem;
+
+  section.payment {
+    div {
+      width: 3em;
+      height: 2.2em;
+      background-color: orange;
+      background-repeat: no;
+      background-size: cover;
+
+      &:first-child {
+        background-image: url("../assets/visa.svg");
+      }
+      &:nth-child(2) {
+        background-image: url("../assets/mastercard.svg");
+      }
+      &:nth-child(3) {
+        background-image: url("../assets/americanexpress.svg");
+      }
+      &:last-child {
+        background-image: url("../assets/applepay.svg");
+      }
+    }
+  }
 }
 
 main section.contact {
@@ -217,10 +240,9 @@ body > div > footer {
 }
 
 @media only screen and (min-width: 769px) {
-    .eco {
-       font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
-     }
-  
+  .eco {
+    font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
+  }
 }
 
 @media only screen and (min-width: 1025px) {
@@ -238,7 +260,6 @@ body > div > footer {
       transform: scale(125%);
     }
   }
- 
 }
 
 @media only screen and (max-width: 1024px) {

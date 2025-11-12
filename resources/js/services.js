@@ -60,6 +60,7 @@ function myslider(hook, gang, i, delay, duration = 500) {
         clearTimeout(t);
         t = 0;
         activate(hook);
+        undo(hook);
         return;
       } else {
         deactivate(hook);
@@ -74,9 +75,9 @@ function myslider(hook, gang, i, delay, duration = 500) {
         hook.firstElementChild.style.backgroundPosition = pos[i];
       }
       hook.firstElementChild.style.backgroundImage = urls[i++];
-      
       if (t) play();
     };
+
     if (t) {
       setTimeout(exec(hook));
       t = setTimeout(cb, t < 0 ? 0 : delay);

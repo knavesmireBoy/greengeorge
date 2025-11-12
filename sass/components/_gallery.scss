@@ -180,7 +180,7 @@
       figure {
         @include flex(3, 1, 1em);
         border-radius: 2px;
-        border: solid 1px white;
+        
         margin: 0.75em 0;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
         @include prefix(transform, translateX(0), webkit moz ms o);
@@ -189,8 +189,9 @@
         img {
           display: block;
           width: 100%;
-        //  height: 100%;
-         // object-fit: cover;
+          border: solid 1px white;
+         // height: 100%;
+         // object-fit: contain;
         }
         &:first-of-type {
           display: none;
@@ -206,7 +207,7 @@
       &.mvd {
         figure:last-of-type {
           @include prefix(transform, translateX(-200%), webkit moz ms o);
-         // transform: translateX(-200%);
+          // transform: translateX(-200%);
         }
       }
     }
@@ -307,7 +308,11 @@
   &.active {
     opacity: 1;
     @include prefix(transform, scale(100%), webkit moz ms o);
-    @include prefix(transition, opacity 1s ease-in-out .1s, webkit moz ms o);
-    @include prefixer(transition, transform 1s ease-in-out .1s, webkit moz ms o);
+    @include prefix(transition, opacity 1s ease-in-out 0.1s, webkit moz ms o);
+    @include prefixer(
+      transition,
+      transform 1s ease-in-out 0.1s,
+      webkit moz ms o
+    );
   }
 }

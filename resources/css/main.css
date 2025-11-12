@@ -237,6 +237,25 @@ main > footer {
   color: white;
   font-size: 0.875rem;
 }
+main > footer section.payment div {
+  width: 3em;
+  height: 2.2em;
+  background-color: orange;
+  background-repeat: no;
+  background-size: cover;
+}
+main > footer section.payment div:first-child {
+  background-image: url("../assets/visa.svg");
+}
+main > footer section.payment div:nth-child(2) {
+  background-image: url("../assets/mastercard.svg");
+}
+main > footer section.payment div:nth-child(3) {
+  background-image: url("../assets/americanexpress.svg");
+}
+main > footer section.payment div:last-child {
+  background-image: url("../assets/applepay.svg");
+}
 
 main section.contact h2,
 main section.contact h4 {
@@ -1547,7 +1566,6 @@ html.js #home section.services article.f > aside {
   -ms-flex: 3 1 1em;
   flex: 3 1 1em;
   border-radius: 2px;
-  border: solid 1px white;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
   -webkit-transform: translateX(0);
@@ -1565,6 +1583,7 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox main figure img {
   display: block;
   width: 100%;
+  border: solid 1px white;
 }
 #gallery #lightbox main figure:first-of-type {
   display: none;
@@ -1734,9 +1753,6 @@ html.js #home section.services article.f > aside {
   width: 2em;
   height: 2em;
   margin: 0 0.7em 0 0;
-}
-#contact main > small a:link, #contact main > a:visited {
-  color: rgb(25, 78, 39);
 }
 
 #privacy main section article h3 {
