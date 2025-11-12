@@ -30,7 +30,7 @@ function myslider(hook, gang, i, delay) {
     j = i;
 
   let k = 0,
-    t = true;
+    t = 1;
   while (i < n) {
     hook.removeChild(gang[i++]);
   }
@@ -47,10 +47,12 @@ function myslider(hook, gang, i, delay) {
         return;
       }
       e.stopPropagation();
-      if(t){
+      if (t) {
         clearTimeout(t);
         t = null;
         return;
+      } else {
+        t = true;
       }
     }
     let cb = () => {
@@ -62,9 +64,10 @@ function myslider(hook, gang, i, delay) {
         play();
       }
     };
-
-    setTimeout(exec(hook));
-    t = setTimeout(cb, delay);
+    if (t) {
+      setTimeout(exec(hook));
+      t = setTimeout(cb, t && isNaN(t) ? 0 : delay);
+    }
   };
 }
 
