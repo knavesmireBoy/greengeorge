@@ -873,7 +873,6 @@ html #home section:first-child aside {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
-  border: solid 1px sienna;
 }
 html #home section:first-child aside figure {
   background-position: center;
@@ -1011,7 +1010,7 @@ html.js #home #player aside figure {
 }
 html.js #home #player aside figure:first-child {
   margin-left: -100%;
-  transition: margin 2s ease-in-out 2s;
+  transition: margin 500ms ease-in-out 3.5s;
 }
 html.js #home #player aside.mv figure:first-child {
   margin-left: 0%;

@@ -7,7 +7,6 @@ html {
       aside {
         @include flexy();
         overflow-x: hidden;
-        border: solid 1px sienna;
         figure {
           background-position: center;
           background-repeat: no-repeat;
@@ -169,7 +168,7 @@ html {
 
           &:first-child {
             margin-left: -100%;
-            transition: margin 2s ease-in-out 2s;
+            transition: margin 500ms ease-in-out 3.5s;
           }
         }
         &.mv {
