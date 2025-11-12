@@ -41,18 +41,19 @@ function myslider(hook, gang, i, delay) {
     k++;
   }
 
-  return function play(e, auto) {
+  return function play(e) {
     if (e) {
       if (e.target.nodeName !== "FIGURE") {
         return;
       }
       e.stopPropagation();
       if (t) {
+        //window.cancelAnimationFrame(t);
         clearTimeout(t);
-        t = null;
+        t = 0;
         return;
       } else {
-        t = true;
+        t = -1;
       }
     }
     let cb = () => {
@@ -66,7 +67,8 @@ function myslider(hook, gang, i, delay) {
     };
     if (t) {
       setTimeout(exec(hook));
-      t = setTimeout(cb, t && isNaN(t) ? 0 : delay);
+     // t = window.requestAnimationFrame(cb);
+      t = setTimeout(cb, t < 0 ? 0 : delay);
     }
   };
 }
