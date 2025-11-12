@@ -993,20 +993,28 @@ html #home #player aside figure {
   -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   animation: main 90s ease-in-out 500ms infinite reverse backwards;
 }
-html #home #player aside figure:first-child {
-  margin-left: -100%;
-  transition: margin 2s ease-in-out 2s;
-}
-html #home #player aside figure.pause {
-  background-color: khaki;
-  margin-left: 0;
-}
 html #home #player.pause aside figure {
   filter: brightness(50%);
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
+}
+html #home #player.pause aside:first-child {
+  margin-left: -100%;
+}
+html.js #home #player aside figure {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html.js #home #player aside figure:first-child {
+  margin-left: -100%;
+  transition: margin 2s ease-in-out 2s infinite backwards;
+}
+html.js #home #player aside.mv figure:first-child {
+  margin-left: 0%;
 }
 html.js #home section.services article.a > aside {
   background-image: url("../assets/lawn.jpeg");

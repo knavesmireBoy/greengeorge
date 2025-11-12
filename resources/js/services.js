@@ -21,63 +21,49 @@ function setServicesBgImage(nodes, klasses) {
   }
 }
 
-function myslider(hook, gang, i) {
+function myslider(hook, gang, i, flag) {
   const f = curry2(utils.getComputedStyle)("background-image"),
     urls = gang.map(f),
-    exec = curry22(preActive)("add"),
-    undo = curry22(preActive)("remove"),
-    n = urls.length;
+    exec = curry22(preMove)("add"),
+    undo = curry2(preMove)("remove"),
+    n = urls.length,
+    j = i;
+
+  let k = 0,
+    t;
   while (i < n) {
     hook.removeChild(gang[i++]);
   }
+  i = j;
 
-  setTimeout(exec(gang[0]), 1111);
+  while (k <= i) {
+    gang[k].style.backgroundImage = urls[k];
+    k++;
+  }
 
-  return function (e) {
-    e.stopPropagation();
-    if (e.target.nodeName !== "FIGURE") {
-      return;
-    }
-
-    /*
-
-    let el = e.target,
-      main = el.parentNode,
-      figures = main.querySelectorAll("figure"),
-      currentfig = figures[1],
-      nextfig = figures[0],
-      next = nextfig.firstElementChild,
-      current = currentfig.firstElementChild,
-      j;
-
-    if (mapped[i + 1]) {
-      setsrc(current, mapped[i]);
-      setsrc(next, mapped[i++]);
-    } else {
-      setsrc(next, mapped[i]);
-      i = 0;
-    }
-
-    setTimeout(function () {
-      if (document.getElementsByClassName("rev")[0]) {
-        utils.insertAfter(nextfig, main.firstElementChild);
-        utils.insertAfter(currentfig, main.lastElementChild);
-      } else {
-        main.insertBefore(currentfig, main.firstElementChild);
-        main.insertBefore(nextfig, main.lastElementChild);
+  return function play(e, auto) {
+    if (e) {
+      e.stopPropagation();
+      if (e.target.nodeName !== "FIGURE") {
+        return;
       }
-      main.classList.remove("mv");
-      main.classList.add("mvd");
-    }, 200);
-
-    setTimeout(function () {
-      main.classList.remove("mvd");
-    }, 220);
-    j = i % n || n;
-    main.classList.add("mv");
-    setTimeout(myslider, 4444);
-  };
-  */
+      if (!auto) {
+        //clearTimeout(t);
+        flag = !flag;
+      }
+    }
+    let cb = () => {
+      if (flag) {
+        hook.insertBefore(hook.lastElementChild, hook.firstElementChild);
+        undo(hook);
+        i = i % n ? i : 0;
+        hook.firstElementChild.style.backgroundImage = urls[i++];
+        play(e, true);
+      }
+      console.log(t);
+    };
+    setTimeout(exec(hook));
+    t = setTimeout(cb, 4444);
   };
 }
 
@@ -109,6 +95,7 @@ const meta = greenGeorge.meta,
   curry22 = meta.curryRight(2, true),
   getTarget = curry2(getProp)("currentTarget"),
   preActive = prevoke("classList", "pause"),
+  preMove = prevoke("classList", "mv"),
   doActive = comp(curry2(preActive)("add"), getTarget),
   undoActive = comp(curry2(preActive)("remove"), getTarget),
   doAlt = meta.doAlternate(),
@@ -220,7 +207,9 @@ const meta = greenGeorge.meta,
         }
       }
     };
-  };
+  },
+  slideshow = myslider(aside, meta.toArray(figures), 2, true);
+
 step = stepper(articles[0], margins, validator(next), cb);
 
 function controller(e) {
@@ -270,4 +259,5 @@ if (player) {
 }
 */
 
-myslider(aside, meta.toArray(figures), 2);
+aside.addEventListener("click", slideshow);
+slideshow();

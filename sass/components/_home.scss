@@ -144,14 +144,6 @@ html {
             main 90s ease-in-out 500ms infinite reverse backwards,
             o moz webkit
           );
-          &:first-child {
-            margin-left: -100%;
-            transition: margin 2s ease-in-out 2s;
-          }
-          &.pause {
-            background-color: khaki;
-            margin-left: 0;
-          }
         }
       }
 
@@ -161,30 +153,52 @@ html {
             filter: brightness(50%);
             @include prefix(animation, none, o moz webkit);
           }
+          &:first-child {
+            margin-left: -100%;
+          }
         }
       }
     }
   }
 
-  &.js #home section.services article {
-    &.a > aside {
-      background-image: url("../assets/lawn.jpeg");
-      background-position: 0 top;
+  &.js #home {
+    #player {
+      aside {
+        figure {
+          @include prefix(animation, none, o moz webkit);
+
+          &:first-child {
+            margin-left: -100%;
+            transition: margin 2s ease-in-out 2s infinite backwards;
+          }
+        }
+        &.mv {
+          figure:first-child {
+            margin-left: 0%;
+          }
+        }
+      }
     }
-    &.b > aside {
-      background-image: url("../images/IMG_1478.jpg");
-    }
-    &.c > aside {
-      background-image: url("../assets/weeding.jpeg");
-    }
-    &.d > aside {
-      background-image: url("../assets/pruning.jpeg");
-    }
-    &.e > aside {
-      background-image: url("../assets/hedge.jpeg");
-    }
-    &.f > aside {
-      background-image: url("../assets/tidy.jpeg");
+    section.services article {
+      &.a > aside {
+        background-image: url("../assets/lawn.jpeg");
+        background-position: 0 top;
+      }
+      &.b > aside {
+        background-image: url("../images/IMG_1478.jpg");
+      }
+      &.c > aside {
+        background-image: url("../assets/weeding.jpeg");
+      }
+      &.d > aside {
+        background-image: url("../assets/pruning.jpeg");
+      }
+      &.e > aside {
+        background-image: url("../assets/hedge.jpeg");
+      }
+      &.f > aside {
+        background-image: url("../assets/tidy.jpeg");
+      }
     }
   }
 }
