@@ -48,19 +48,16 @@ function myslider(hook, gang, i, flag) {
         return;
       }
       if (!auto) {
-        //clearTimeout(t);
+        clearTimeout(t);
         flag = !flag;
       }
     }
     let cb = () => {
-      if (flag) {
         hook.insertBefore(hook.lastElementChild, hook.firstElementChild);
         undo(hook);
         i = i % n ? i : 0;
         hook.firstElementChild.style.backgroundImage = urls[i++];
         play(e, true);
-      }
-      console.log(t);
     };
     setTimeout(exec(hook));
     t = setTimeout(cb, 4444);
