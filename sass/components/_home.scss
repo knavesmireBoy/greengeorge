@@ -177,6 +177,9 @@ html {
             margin-left: 0%;
           }
         }
+        &.pause {
+          filter: brightness(0.4);
+        }
       }
     }
     section.services article {

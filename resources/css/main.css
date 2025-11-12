@@ -1016,6 +1016,9 @@ html.js #home #player aside figure:first-child {
 html.js #home #player aside.mv figure:first-child {
   margin-left: 0%;
 }
+html.js #home #player aside.pause {
+  filter: brightness(0.4);
+}
 html.js #home section.services article.a > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: 0 top;

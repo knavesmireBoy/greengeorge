@@ -48,26 +48,26 @@ function myslider(hook, gang, i, delay) {
       }
       e.stopPropagation();
       if (t) {
-        //window.cancelAnimationFrame(t);
         clearTimeout(t);
         t = 0;
+        activate(hook);
+        //undo(hook);
         return;
       } else {
+        deactivate(hook);
+        //exec(hook)
         t = -1;
       }
     }
     let cb = () => {
-      if (t) {
         hook.insertBefore(hook.lastElementChild, hook.firstElementChild);
         undo(hook);
         i = i % n ? i : 0;
         hook.firstElementChild.style.backgroundImage = urls[i++];
-        play();
-      }
+        if(t) play();
     };
     if (t) {
       setTimeout(exec(hook));
-     // t = window.requestAnimationFrame(cb);
       t = setTimeout(cb, t < 0 ? 0 : delay);
     }
   };
@@ -102,8 +102,10 @@ const meta = greenGeorge.meta,
   getTarget = curry2(getProp)("currentTarget"),
   preActive = prevoke("classList", "pause"),
   preMove = prevoke("classList", "mv"),
-  doActive = comp(curry2(preActive)("add"), getTarget),
-  undoActive = comp(curry2(preActive)("remove"), getTarget),
+  activate = curry2(preActive)("add"),
+  deactivate = curry2(preActive)("remove"),
+  doActive = comp(activate, getTarget),
+  undoActive = comp(deactivate, getTarget),
   doAlt = meta.doAlternate(),
   compose = (...fns) =>
     fns.reduce(
@@ -225,8 +227,6 @@ function controller(e) {
     f = finder(a),
     i = f(e.target),
     j = 0,
-    cb,
-    r,
     article;
   if (e.target !== this) {
     cycle(i);
@@ -234,8 +234,6 @@ function controller(e) {
     article = articles[i];
     j = live.indexOf(article);
     i = 0;
-    //cb = stepper(live[0], margins, validator(live[j]), () => 0, 10);
-    //r = requestAnimationFrame(cb);
     while (i < j) {
       parent.appendChild(live[i]);
       i++;
