@@ -1735,6 +1735,9 @@ html.js #home section.services article.f > aside {
   height: 2em;
   margin: 0 0.7em 0 0;
 }
+#contact main > small a:link, #contact main > a:visited {
+  color: rgb(25, 78, 39);
+}
 
 #privacy main section article h3 {
   color: rgb(25, 78, 39);
