@@ -1,9 +1,25 @@
 #about {
   nav.eco {
+    padding: .7em 3em;
     ul {
+      @include flexy(wrap);
+      gap: .7em;
       font-size: 1.25em;
       li {
         position: relative;
+        @include flex(0, 1, auto);
+        padding: 0 0 0 2em;
+        background-size: 12%;
+        background-position: left center;
+        &:nth-child(2) {
+          @include flex(1, 1, 100%);
+          padding: 1.5em 0 0 0;
+          background-size: contain;
+          background-position: center;
+        }
+        &:first-child {
+          margin-left: auto;
+        }
       }
     }
   }
@@ -64,7 +80,7 @@
       }
     }
     .eco {
-      padding: .5em 1em;
+      padding: 0.5em 1em;
       padding-left: calc(16px + 140 * ((100vw - 769px) / (1280 - 760)));
       padding-right: calc(16px + 140 * ((100vw - 769px) / (1280 - 760)));
       font-size: 1em;
@@ -76,7 +92,6 @@
         li {
           padding: 0.15em 0 0.15em 2.5em;
           &:nth-child(2) {
-            font-size: 6rem;
             @include flex(1, 1, 1em);
           }
         }

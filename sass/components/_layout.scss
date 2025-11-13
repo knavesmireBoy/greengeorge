@@ -188,15 +188,16 @@ section > aside {
       @include flex(0, 0, 100%);
       @include flexy();
       flex-direction: column;
+      @include justify(center);
       &:first-child {
         @include prefix(
           animation,
-          testi 40s ease-in 1s infinite normal forwards,
+          testi 40s linear 1s infinite normal forwards,
           o moz webkit
         );
       }
       p {
-        margin: auto;
+       // margin: auto;
       }
     }
   }
