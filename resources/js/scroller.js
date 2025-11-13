@@ -108,23 +108,21 @@ function slider(current) {
   return function (e) {
     let img;
     if (e.target.nodeName !== "P") {
-     // return;
-    }
-    else {
+      return;
+    } else {
       img = getLocation(e);
     }
     let el = e.target,
-      main = utils.getTargetNode(el, /main/i, 'parentNode'),
+      main = utils.getTargetNode(el, /main/i, "parentNode"),
       figures = main.querySelectorAll("figure"),
       currentfig = figures[1],
       nextfig = figures[0],
-      next = nextfig?.firstElementChild,
-      current = currentfig?.firstElementChild,
+      next = nextfig.firstElementChild,
+      current = currentfig.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
       j;
     main.classList.remove("lscp");
-
-    if (el.innerHTML === "&gt;" || img) {
+    if (el.innerHTML === "&gt;" /* || img*/) {
       if (rev) {
         main.parentNode.classList.remove("rev");
       }
@@ -162,8 +160,12 @@ function slider(current) {
 
     setTimeout(function () {
       if (document.getElementsByClassName("rev")[0]) {
-        utils.insertAfter(nextfig, main.firstElementChild);
-        utils.insertAfter(currentfig, main.lastElementChild);
+        if (swap) {
+          swap = false;
+        } else {
+          utils.insertAfter(nextfig, main.firstElementChild);
+          utils.insertAfter(currentfig, main.lastElementChild);
+        }
       } else {
         main.insertBefore(currentfig, main.firstElementChild);
         main.insertBefore(nextfig, main.lastElementChild);
