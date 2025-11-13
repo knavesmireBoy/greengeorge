@@ -252,7 +252,7 @@ section.services {
         @include justify(space-around);
         align-items: center;
         li {
-          padding: 0.15em 0 0.15em 2.5em;
+          padding: 0 0 0 2.7em;
           &:nth-child(2) {
             @include flex(3, 1, 8em);
             padding: 1.5em 0 0 0;

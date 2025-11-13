@@ -698,7 +698,8 @@ main > section.services article > aside {
 main > section.services article h3 {
   color: rgb(25, 78, 39);
   margin: 1em 0;
-  font-size: 1.3em;
+  font-size: 1.6em;
+  line-height: 1;
 }
 main > section.testimonials {
   line-height: 1.6;
@@ -706,7 +707,7 @@ main > section.testimonials {
   background-image: url("../assets/Speechmarks-green10.png");
   background-color: rgb(252, 246, 228);
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: 55%;
   background-position: 50% 65%;
 }
 main > section.testimonials h2 {
@@ -1194,7 +1195,7 @@ section.services + div span {
     align-items: center;
   }
   main .eco ul li {
-    padding: 0.15em 0 0.15em 2.5em;
+    padding: 0 0 0 2.7em;
   }
   main .eco ul li:nth-child(2) {
     -webkit-box: 3;
@@ -1464,21 +1465,27 @@ html #home section:first-child aside figure {
   -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   animation: main 90s ease-in-out 500ms infinite reverse backwards;
 }
+html #home section.services > div article aside {
+  background-position: center;
+  background-size: cover;
+}
 html #home section.services > div article:nth-of-type(1) > aside {
   background-image: url("../assets/lawn.jpeg");
-  background-position: 0 top;
+  background-position: center top;
 }
 html #home section.services > div article:nth-of-type(2) > aside {
   background-image: url("../images/IMG_1478.jpg");
 }
 html #home section.services > div article:nth-of-type(3) > aside {
   background-image: url("../assets/weeding.jpeg");
+  background-position: center top;
 }
 html #home section.services > div article:nth-of-type(4) > aside {
   background-image: url("../assets/pruning.jpeg");
 }
 html #home section.services > div article:nth-of-type(5) > aside {
   background-image: url("../assets/hedge.jpeg");
+  background-position: center 80%;
 }
 html #home section.services > div article:nth-of-type(6) > aside {
   background-image: url("../assets/tidy.jpeg");
@@ -1492,21 +1499,30 @@ html #home .mission article p:first-child {
   color: rgb(25, 78, 39);
   font-size: 1.3em;
 }
-html #home #player aside figure {
+html #player aside figure {
   -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   -moz-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   animation: main 90s ease-in-out 500ms infinite reverse backwards;
 }
-html #home #player.pause aside figure {
+html #player.pause aside figure {
   filter: brightness(50%);
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
 }
-html #home #player.pause aside:first-child {
+html #player.pause aside:first-child {
   margin-left: -100%;
+}
+html.no-js {
+  background-color: khaki;
+}
+html.no-js section.services article:first-child {
+  -o-animation: services 28s ease-in 1s infinite normal forwards;
+  -moz-animation: services 28s ease-in 1s infinite normal forwards;
+  -webkit-animation: services 28s ease-in 1s infinite normal forwards;
+  animation: services 28s ease-in 1s infinite normal forwards;
 }
 html.js #home #player aside figure {
   -o-animation: none;
@@ -1526,22 +1542,27 @@ html.js #home #player aside.pause {
 }
 html.js #home section.services article.a > aside {
   background-image: url("../assets/lawn.jpeg");
-  background-position: 0 top;
+  background-position: center top;
 }
 html.js #home section.services article.b > aside {
   background-image: url("../images/IMG_1478.jpg");
+  background-position: center;
 }
 html.js #home section.services article.c > aside {
   background-image: url("../assets/weeding.jpeg");
+  background-position: center top;
 }
 html.js #home section.services article.d > aside {
   background-image: url("../assets/pruning.jpeg");
+  background-position: center;
 }
 html.js #home section.services article.e > aside {
   background-image: url("../assets/hedge.jpeg");
+  background-position: center 80%;
 }
 html.js #home section.services article.f > aside {
   background-image: url("../assets/tidy.jpeg");
+  background-position: center;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1582,7 +1603,7 @@ html.js #home section.services article.f > aside {
     animation: span6 29s linear 0s infinite normal forwards;
   }
 }
-@media only screen and (min-width: 667px) {
+@media only screen and (min-width: 769px) {
   html #home main > section:first-of-type {
     padding: 3rem 1.2rem;
     column-gap: 2rem;
