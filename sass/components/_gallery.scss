@@ -46,45 +46,47 @@
 }
 
 @media only screen and (min-width: 769px) {
-  #gallery main > section:first-of-type {
-    > div {
-      display: grid;
-      padding: 1.5%;
-      row-gap: 0.3%;
-      column-gap: 1.5%;
-      border: solid 1px blue;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, 13.75%) 7.77% 7.77% 2.1% 7.77% 3.2% 7.77% 2.1% 5% 2.33% 7.77% 1fr;
-      a {
-        border: solid 1px;
-        overflow: hidden;
-        &:nth-child(8),
-        &:nth-child(10) {
-          grid-row: span 3;
-        }
-        &:nth-child(14) {
-          grid-column: 2/3;
-          grid-row: 8/11;
-        }
-        &:nth-child(13) {
-          grid-row: span 2;
-        }
-        &:nth-child(15) {
-          grid-row: 11/13;
-          grid-column: 2/3;
-        }
+  #gallery {
+    main > section:first-of-type {
+      > div {
+        display: grid;
+        padding: 1.5%;
+        row-gap: 0.3%;
+        column-gap: 1.5%;
+        border: solid 1px blue;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 13.75%) 7.77% 7.77% 2.1% 7.77% 3.2% 7.77% 2.1% 5% 2.33% 7.77% 1fr;
+        a {
+          border: solid 1px;
+          overflow: hidden;
+          &:nth-child(8),
+          &:nth-child(10) {
+            grid-row: span 3;
+          }
+          &:nth-child(14) {
+            grid-column: 2/3;
+            grid-row: 8/11;
+          }
+          &:nth-child(13) {
+            grid-row: span 2;
+          }
+          &:nth-child(15) {
+            grid-row: 11/13;
+            grid-column: 2/3;
+          }
 
-        &:nth-child(16) {
-          grid-row: 12/15;
-          grid-column: 1/2;
-          opacity: 1;
+          &:nth-child(16) {
+            grid-row: 12/15;
+            grid-column: 1/2;
+            opacity: 1;
+          }
         }
-      }
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        display: block;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          display: block;
+        }
       }
     }
   }
@@ -147,7 +149,9 @@
     z-index: 1;
     min-height: 100vh;
     max-height: 100vh;
-
+    min-width: 100vw;
+    @include flexy();
+    flex-direction: column;
     img {
       width: 100%;
       display: block;
@@ -156,7 +160,6 @@
         filter: brightness(0.9);
       }
     }
-    @include flexy(wrap);
     color: white;
     text-align: center;
     padding: 0;
@@ -170,28 +173,32 @@
     }
     & main {
       @include flexy();
-      column-gap: 2em;
+      @include flex(5, 1, 1em);
+      column-gap: 1em;
       font-size: 2rem;
+      align-items: center;
       p {
-        margin: auto;
+        margin: auto 0;
         @include flex(1, 1, 1em);
         cursor: pointer;
+        padding: 0.2em 0.4em 0.4em;
+        line-height: 1;
       }
       figure {
-        @include flex(3, 1, 1em);
+        @include flex(4, 1, 1em);
         border-radius: 2px;
-        
         margin: 0.75em 0;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
         @include prefix(transform, translateX(0), webkit moz ms o);
-        color: khaki;
         @include prefixer(transition, transform 150ms ease-in, webkit moz ms o);
+        max-width: 11em;
+
         img {
           display: block;
           width: 100%;
           border: solid 1px white;
-         // height: 100%;
-         // object-fit: contain;
+          // height: 100%;
+          // object-fit: contain;
         }
         &:first-of-type {
           display: none;
@@ -210,12 +217,16 @@
           // transform: translateX(-200%);
         }
       }
+      &.lscp figure {
+        max-width: 18em;
+      }
     }
     header {
       padding: 1.4em;
       position: relative;
       z-index: 1;
       @include flexy();
+      @include flex(0, 1, 100%);
       @include justify(space-between);
       div {
         @include flexy();
@@ -250,6 +261,7 @@
       background-color: rgba(0, 0, 0, 0.8);
       position: relative;
       z-index: 1;
+      @include flex(0, 1, 100%);
       p {
         opacity: 1;
         @include prefix(transition, opacity 1s ease-in, webkit moz ms o);
@@ -314,5 +326,10 @@
       transform 1s ease-in-out 0.1s,
       webkit moz ms o
     );
+  }
+}
+@media only screen and (max-width: 667px) {
+  #gallery #lightbox main p {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }

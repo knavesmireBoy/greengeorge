@@ -2053,12 +2053,14 @@ html.js #home section.services article.f > aside {
   z-index: 1;
   min-height: 100vh;
   max-height: 100vh;
+  min-width: 100vw;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
   color: white;
   text-align: center;
   padding: 0;
@@ -2091,24 +2093,32 @@ html.js #home section.services article.f > aside {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
-  column-gap: 2em;
+  -webkit-box: 5;
+  -moz-box: 5;
+  -webkit-flex: 5 1 1em;
+  -ms-flex: 5 1 1em;
+  flex: 5 1 1em;
+  column-gap: 1em;
   font-size: 2rem;
+  align-items: center;
 }
 #gallery #lightbox main p {
-  margin: auto;
+  margin: auto 0;
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 1em;
   -ms-flex: 1 1 1em;
   flex: 1 1 1em;
   cursor: pointer;
+  padding: 0.2em 0.4em 0.4em;
+  line-height: 1;
 }
 #gallery #lightbox main figure {
-  -webkit-box: 3;
-  -moz-box: 3;
-  -webkit-flex: 3 1 1em;
-  -ms-flex: 3 1 1em;
-  flex: 3 1 1em;
+  -webkit-box: 4;
+  -moz-box: 4;
+  -webkit-flex: 4 1 1em;
+  -ms-flex: 4 1 1em;
+  flex: 4 1 1em;
   border-radius: 2px;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
@@ -2117,12 +2127,12 @@ html.js #home section.services article.f > aside {
   -ms-transform: translateX(0);
   -o-transform: translateX(0);
   transform: translateX(0);
-  color: khaki;
   -webkit-transition: -webkit-transform 150ms ease-in;
   -moz-transition: -moz-transform 150ms ease-in;
   -ms-transition: -ms-transform 150ms ease-in;
   -o-transition: -o-transform 150ms ease-in;
   transition: transform 150ms ease-in;
+  max-width: 11em;
 }
 #gallery #lightbox main figure img {
   display: block;
@@ -2146,6 +2156,9 @@ html.js #home section.services article.f > aside {
   -o-transform: translateX(-200%);
   transform: translateX(-200%);
 }
+#gallery #lightbox main.lscp figure {
+  max-width: 18em;
+}
 #gallery #lightbox header {
   padding: 1.4em;
   position: relative;
@@ -2156,6 +2169,11 @@ html.js #home section.services article.f > aside {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 1 100%;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
   -webkit-box-pack: space-between;
   -ms-flex-pack: space-between;
   -webkit-justify-content: center;
@@ -2201,6 +2219,11 @@ html.js #home section.services article.f > aside {
   background-color: rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 1;
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 1 100%;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
 }
 #gallery #lightbox footer p {
   opacity: 1;
@@ -2278,6 +2301,11 @@ html.js #home section.services article.f > aside {
   transition: transform 1s ease-in-out 0.1s;
 }
 
+@media only screen and (max-width: 667px) {
+  #gallery #lightbox main p {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
 #contact main > section:first-child {
   color: rgb(252, 246, 228);
   background-color: rgb(25, 78, 39);

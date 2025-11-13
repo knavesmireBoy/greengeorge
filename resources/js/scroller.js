@@ -99,6 +99,7 @@ function slider(current) {
   var i = mapped.findIndex((src) => src === current) + 1,
     swap = false;
 
+
   return function (e) {
     if (e.target.nodeName !== "P") {
       return;
@@ -112,6 +113,15 @@ function slider(current) {
       current = currentfig.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
       j;
+    /*
+      console.log(lscp);
+      main.classList.remove("lscp");
+      if(lscp){
+        main.classList.add("lscp");
+        lscp = null;
+      }
+*/
+    
 
     if (el.innerHTML === "&gt;") {
       if (rev) {
@@ -167,6 +177,10 @@ function slider(current) {
     j = i % n || n;
     meta.$("caption").innerHTML = baseName(mapped[i]);
     meta.$("count").innerHTML = `${j}/${n}`;
+
+    if (currentfig.offsetHeight < currentfig.offsetWidth) {
+      main.classList.add("lscp");
+    }
     main.classList.add("mv");
   };
 }
@@ -222,6 +236,7 @@ const meta = greenGeorge.meta,
   gtThan = curry2(gt),
   activate = curry4(subMethod)("active")("add")("classList"),
   thenactivate = curry44(subMethod)("active")("add")("classList"),
+  thenlscp = curry4(subMethod)("lscp")("add")("classList"),
   gallery = document.getElementById("gal"),
   els = document.querySelectorAll("#gal a"),
   exit = function (elem) {
@@ -231,20 +246,19 @@ const meta = greenGeorge.meta,
   quit = (el) => {
     el.parentNode.removeChild(el);
   },
-  toggle = store => (el) => {
+  toggle = (store) => (el) => {
     let fig = el.parentNode,
       main = fig.parentNode,
-      p = main.querySelectorAll('p'),
+      p = main.querySelectorAll("p"),
       i = 0;
-      console.log(store);
+    console.log(store);
     if (p[0]) {
-      while(p[i]){
+      while (p[i]) {
         store[i] = main.removeChild(p[i++]);
       }
       fig.style.margin = 0;
       fig.style.borderWidth = 0;
     } else {
-     
       main.appendChild(store[1]);
       main.insertBefore(store[0], fig);
       store = [];
@@ -287,9 +301,7 @@ const meta = greenGeorge.meta,
   scroller = (el, els, i, cb, e) => (ev) => {
     //el is the NEXT element primed for receiving the active class
     //not we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
-
     let x = el.offsetHeight || el.getBoundingClientRect().height;
-
     //if loading page half scrolled reveal all
     if (!lastKnownScrollPosition && window.scrollY > x) {
       while (els[i]) {
@@ -348,12 +360,15 @@ document.addEventListener(
   curry22(throttle)(22)(scroller(el, els, i, activate, "scroll"))
 );
 
-function reactor(e) {
+function builder(e) {
   e.preventDefault();
-  let src = e.target.getAttribute("src");
+  let src = e.target.getAttribute("src"),
+    lscp = e.target.offsetHeight < e.target.offsetWidth,
+    maybelscp = lscp ? thenlscp : x => x;
   if (!src) {
     return;
   }
+
   let append = ptL(prevoke("appendChild")),
     make = utils.doMakeDefer,
     whilst = curry2(meta.doWhen),
@@ -364,6 +379,7 @@ function reactor(e) {
     doMap = curry3(invk)(getRes)("map"),
     mydirect = pass(curry4(invok)(direct)("click")("addEventListener")),
     myslider = pass(curry4(invok)(slider(src))("click")("addEventListener")),
+    myslider2 = compose(pass(maybelscp), myslider),
     getSrc = defer(invk, e.target, "getAttribute", "src"),
     settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
     setId = curry4(invok)("lightbox")("id")("setAttribute"),
@@ -380,7 +396,7 @@ function reactor(e) {
     makeDiv = myMaker("div"),
     makeHeader = myMaker2("header", mydirect),
     makeFooter = myMaker("footer"),
-    makeMain = myMaker2("main", myslider),
+    makeMain = myMaker2("main", myslider2),
     makeParaText = whilst(ptL(compduo, textCount)),
     textFooterSrc = compose(
       climb,
@@ -452,4 +468,4 @@ function reactor(e) {
   );
   cb();
 }
-gallery.addEventListener("click", reactor);
+gallery.addEventListener("click", builder);
