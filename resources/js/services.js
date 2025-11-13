@@ -28,8 +28,16 @@ function myslider(hook, gang, i, delay, duration = 500) {
     undo = curry2(preMove)("remove"),
     n = urls.length,
     j = i,
-    sixty = 'center 60%';
-    pos = {8: 'center 70%', 6: sixty, 14: sixty, 15: 'center 65%', 16: sixty, 12: 'center 55%', 10: 'center 40%'};
+    sixty = "center 60%";
+  pos = {
+    8: "center 70%",
+    6: sixty,
+    14: sixty,
+    15: "center 65%",
+    16: sixty,
+    12: "center 55%",
+    10: "center 40%",
+  };
 
   let k = 0,
     t = 1;
@@ -44,7 +52,6 @@ function myslider(hook, gang, i, delay, duration = 500) {
   }
 
   return function play(e) {
-
     /*
     starter = starter === undefined ? timestamp : starter;
     const elapsed = timestamp - start,
@@ -71,7 +78,7 @@ function myslider(hook, gang, i, delay, duration = 500) {
       hook.insertBefore(hook.lastElementChild, hook.firstElementChild);
       undo(hook);
       i = i % n ? i : 0;
-      if(pos[i]){
+      if (pos[i]) {
         hook.firstElementChild.style.backgroundPosition = pos[i];
       }
       hook.firstElementChild.style.backgroundImage = urls[i++];
@@ -89,16 +96,6 @@ function paint(node, val) {
   node.style.backgroundColor = val;
 }
 
-function sub(o, p, m, v) {
-  return o[p][m](v);
-}
-
-function prevoke(p, v) {
-  return function (o, m) {
-    return sub(o, p, m, v);
-  };
-}
-
 let inc = 0,
   t = 500,
   margins = [100, 52, 34.333],
@@ -111,6 +108,8 @@ const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
   getProp = (o, p) => o[p],
   comp = meta.compose,
+  sub = (o, p, m, v) => o[p][m](v),
+  prevoke = (p, v) => (o, m) => sub(o, p, m, v),
   curry2 = meta.curryRight(2),
   curry22 = meta.curryRight(2, true),
   getTarget = curry2(getProp)("currentTarget"),
@@ -121,12 +120,6 @@ const meta = greenGeorge.meta,
   doActive = comp(activate, getTarget),
   undoActive = comp(deactivate, getTarget),
   doAlt = meta.doAlternate(),
-  compose = (...fns) =>
-    fns.reduce(
-      (f, g) =>
-        (...vs) =>
-          f(g(...vs))
-    ),
   finder = (nodes) => (node) => {
     let i = 0,
       l = nodes.length;
@@ -180,7 +173,7 @@ const meta = greenGeorge.meta,
     ["rgba(255,255,255, .2)", "white"],
     paint
   ),
-  cb = compose(cycle, finder(articles)),
+  cb = comp(cycle, finder(articles)),
   stepper = (
     element,
     data,
@@ -234,13 +227,14 @@ const meta = greenGeorge.meta,
   step = stepper(articles[0], margins, validator(next), cb);
 
 function controller(e) {
-  let a = Array.prototype.slice.call(this.childNodes),
-    live = Array.prototype.slice.call(liveArticles),
+  let a = meta.toArray(this.childNodes).filter( n => n.nodeName === 'SPAN'),
+    live = meta.toArray(liveArticles).filter( n => n.nodeName === 'ARTICLE'),
     parent = liveArticles[0].parentNode,
     f = finder(a),
     i = f(e.target),
     j = 0,
     article;
+
   if (e.target !== this) {
     cycle(i);
     cancelAnimationFrame(request);
@@ -253,7 +247,6 @@ function controller(e) {
     }
   }
 }
-
 if (el) {
   request = requestAnimationFrame(step);
   control.addEventListener("click", controller);
