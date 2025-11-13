@@ -57,7 +57,7 @@ function direct(e) {
       box = document.getElementById("lightbox");
 
     if (el.id === "fullscreen") {
-      return toggle(document.querySelector("#lightbox figure img"));
+      return toggler(document.querySelector("#lightbox figure img"));
     }
     if (el.id === "exit") {
       //return exit(esc);
@@ -231,33 +231,29 @@ const meta = greenGeorge.meta,
   quit = (el) => {
     el.parentNode.removeChild(el);
   },
-  toggle = (el) => {
-    let l,
-      r,
-      fig = el.parentNode,
-      main = fig.parentNode;
-
-    //fix...
-    if (fig.previousElementSibling) {
-      l = fig.previousElementSibling;
-      r = fig.nextElementSibling;
-      main = fig.parentNode;
-      main.removeChild(l);
-      main.removeChild(r);
+  toggle = store => (el) => {
+    let fig = el.parentNode,
+      main = fig.parentNode,
+      p = main.querySelectorAll('p'),
+      i = 0;
+      console.log(store);
+    if (p[0]) {
+      while(p[i]){
+        store[i] = main.removeChild(p[i++]);
+      }
       fig.style.margin = 0;
       fig.style.borderWidth = 0;
     } else {
-      l = document.createElement("p");
-      r = document.createElement("p");
-      l.innerHTML = "&lt";
-      r.innerHTML = "&gt;";
-      main.appendChild(r);
-      main.insertBefore(l, fig);
+     
+      main.appendChild(store[1]);
+      main.insertBefore(store[0], fig);
+      store = [];
       fig.style.marginTop = ".75em";
       fig.style.marginBottom = ".75em";
       fig.style.borderWidth = "1px";
     }
   },
+  toggler = toggle([]),
   zoom = (cb, n = 150) => {
     const el = document.createElement("p"),
       esc = document.getElementById("esc"),
