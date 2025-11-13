@@ -2011,7 +2011,6 @@ html.js #home section.services article.f > aside {
     display: block;
     overflow: hidden;
     max-width: 100%;
-    max-width: 100%;
     grid-row: span 2;
   }
   #gallery main > section:first-of-type > div a:nth-child(8) {
@@ -2065,7 +2064,7 @@ html.js #home section.services article.f > aside {
   text-align: center;
   padding: 0;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 #gallery #lightbox img {
   width: 100%;
@@ -2101,6 +2100,7 @@ html.js #home section.services article.f > aside {
   column-gap: 1em;
   font-size: 2rem;
   align-items: center;
+  justify-content: center;
 }
 #gallery #lightbox main p {
   margin: auto 0;
@@ -2113,12 +2113,15 @@ html.js #home section.services article.f > aside {
   padding: 0.2em 0.4em 0.4em;
   line-height: 1;
 }
+#gallery #lightbox main p + figure {
+  max-width: 11em;
+}
 #gallery #lightbox main figure {
-  -webkit-box: 4;
-  -moz-box: 4;
-  -webkit-flex: 4 1 1em;
-  -ms-flex: 4 1 1em;
-  flex: 4 1 1em;
+  -webkit-box: 6;
+  -moz-box: 6;
+  -webkit-flex: 6 1 1em;
+  -ms-flex: 6 1 1em;
+  flex: 6 1 1em;
   border-radius: 2px;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
@@ -2132,7 +2135,6 @@ html.js #home section.services article.f > aside {
   -ms-transition: -ms-transform 150ms ease-in;
   -o-transition: -o-transform 150ms ease-in;
   transition: transform 150ms ease-in;
-  max-width: 11em;
 }
 #gallery #lightbox main figure img {
   display: block;
@@ -2156,7 +2158,7 @@ html.js #home section.services article.f > aside {
   -o-transform: translateX(-200%);
   transform: translateX(-200%);
 }
-#gallery #lightbox main.lscp figure {
+#gallery #lightbox main.lscp p + figure {
   max-width: 18em;
 }
 #gallery #lightbox header {

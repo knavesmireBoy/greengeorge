@@ -99,7 +99,6 @@ function slider(current) {
   var i = mapped.findIndex((src) => src === current) + 1,
     swap = false;
 
-
   return function (e) {
     if (e.target.nodeName !== "P") {
       return;
@@ -113,15 +112,7 @@ function slider(current) {
       current = currentfig.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
       j;
-    /*
-      console.log(lscp);
-      main.classList.remove("lscp");
-      if(lscp){
-        main.classList.add("lscp");
-        lscp = null;
-      }
-*/
-    
+    main.classList.remove("lscp");
 
     if (el.innerHTML === "&gt;") {
       if (rev) {
@@ -251,7 +242,6 @@ const meta = greenGeorge.meta,
       main = fig.parentNode,
       p = main.querySelectorAll("p"),
       i = 0;
-    console.log(store);
     if (p[0]) {
       while (p[i]) {
         store[i] = main.removeChild(p[i++]);
@@ -275,6 +265,8 @@ const meta = greenGeorge.meta,
 
     if (box.requestFullscreen) {
       box.requestFullscreen();
+    } else {
+      return;
     }
 
     if (!esc) {
@@ -364,7 +356,7 @@ function builder(e) {
   e.preventDefault();
   let src = e.target.getAttribute("src"),
     lscp = e.target.offsetHeight < e.target.offsetWidth,
-    maybelscp = lscp ? thenlscp : x => x;
+    maybelscp = lscp ? thenlscp : (x) => x;
   if (!src) {
     return;
   }
