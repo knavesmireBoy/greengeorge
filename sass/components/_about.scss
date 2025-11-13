@@ -9,10 +9,9 @@
   }
   main > section:first-of-type {
     @include flexy();
-    column-gap: 2em;
     font-size: 1.125rem;
+    padding: 3.25em 1.5em 2em;
     aside {
-      border: solid 1px;
       @include flex(7, 1, 1em);
       background: url("../images/IMG_0556.jpg") no-repeat center/cover;
       @include hide;
@@ -53,6 +52,8 @@
   #about main {
     > section:first-of-type {
       padding: 3.5rem 2rem;
+      column-gap: 2em;
+
       article h2 {
         font-size: calc(66px + 6 * ((100vw - 769px) / (1280 - 769)));
       }

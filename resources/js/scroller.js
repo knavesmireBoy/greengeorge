@@ -236,6 +236,8 @@ const meta = greenGeorge.meta,
       r,
       fig = el.parentNode,
       main = fig.parentNode;
+
+    //fix...
     if (fig.previousElementSibling) {
       l = fig.previousElementSibling;
       r = fig.nextElementSibling;

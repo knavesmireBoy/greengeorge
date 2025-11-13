@@ -77,11 +77,11 @@ html {
       }
       article {
         h1 {
-          font-size: 4em;
+          font-size: 2.6em;
           line-height: 1;
         }
         h4 {
-          font-size: 1.7em;
+          font-size: 1.29em;
           margin: 0.5em 0;
         }
       }
@@ -206,49 +206,51 @@ html {
 }
 
 @media only screen and (max-width: 768px) {
-  html.no-js {
-    #control span {
-      &:first-child {
-        @include prefix(
-          animation,
-          span1 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
-      }
-      &:nth-child(2) {
-        @include prefix(
-          animation,
-          span2 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
-      }
-      &:nth-child(3) {
-        @include prefix(
-          animation,
-          span3 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
-      }
-      &:nth-child(4) {
-        @include prefix(
-          animation,
-          span4 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
-      }
-      &:nth-child(5) {
-        @include prefix(
-          animation,
-          span5 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
-      }
-      &:nth-child(6) {
-        @include prefix(
-          animation,
-          span6 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
+  html {
+    &.no-js #home {
+      #control span {
+        &:first-child {
+          @include prefix(
+            animation,
+            span1 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(2) {
+          @include prefix(
+            animation,
+            span2 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(3) {
+          @include prefix(
+            animation,
+            span3 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(4) {
+          @include prefix(
+            animation,
+            span4 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(5) {
+          @include prefix(
+            animation,
+            span5 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(6) {
+          @include prefix(
+            animation,
+            span6 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
       }
     }
   }
@@ -306,7 +308,16 @@ html {
     }
     #home main > section:first-child {
       font-size: 1.005rem;
-    }
+
+      article {
+        h1 {
+          font-size: 3.88em;
+        }
+        h4 {
+          font-size: 1.6225em;
+        }
+      }
+    } //h
   }
 }
 

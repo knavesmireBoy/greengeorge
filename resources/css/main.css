@@ -715,7 +715,7 @@ section.services + div span {
     -webkit-flex: 3 1 8em;
     -ms-flex: 3 1 8em;
     flex: 3 1 8em;
-    padding: 2em 0 0 0;
+    padding: 1.5em 0 0 0;
   }
   main section.services {
     font-size: 1.2rem;
@@ -964,11 +964,11 @@ html #home section:first-child aside figure:nth-child(17) {
   background-position: center 60%;
 }
 html #home section:first-child article h1 {
-  font-size: 4em;
+  font-size: 2.6em;
   line-height: 1;
 }
 html #home section:first-child article h4 {
-  font-size: 1.7em;
+  font-size: 1.29em;
   margin: 0.5em 0;
 }
 html #home section:first-child aside figure {
@@ -1058,37 +1058,37 @@ html.js #home section.services article.f > aside {
 }
 
 @media only screen and (max-width: 768px) {
-  html.no-js #control span:first-child {
+  html.no-js #home #control span:first-child {
     -o-animation: span1 29s linear 0s infinite normal forwards;
     -moz-animation: span1 29s linear 0s infinite normal forwards;
     -webkit-animation: span1 29s linear 0s infinite normal forwards;
     animation: span1 29s linear 0s infinite normal forwards;
   }
-  html.no-js #control span:nth-child(2) {
+  html.no-js #home #control span:nth-child(2) {
     -o-animation: span2 29s linear 0s infinite normal forwards;
     -moz-animation: span2 29s linear 0s infinite normal forwards;
     -webkit-animation: span2 29s linear 0s infinite normal forwards;
     animation: span2 29s linear 0s infinite normal forwards;
   }
-  html.no-js #control span:nth-child(3) {
+  html.no-js #home #control span:nth-child(3) {
     -o-animation: span3 29s linear 0s infinite normal forwards;
     -moz-animation: span3 29s linear 0s infinite normal forwards;
     -webkit-animation: span3 29s linear 0s infinite normal forwards;
     animation: span3 29s linear 0s infinite normal forwards;
   }
-  html.no-js #control span:nth-child(4) {
+  html.no-js #home #control span:nth-child(4) {
     -o-animation: span4 29s linear 0s infinite normal forwards;
     -moz-animation: span4 29s linear 0s infinite normal forwards;
     -webkit-animation: span4 29s linear 0s infinite normal forwards;
     animation: span4 29s linear 0s infinite normal forwards;
   }
-  html.no-js #control span:nth-child(5) {
+  html.no-js #home #control span:nth-child(5) {
     -o-animation: span5 29s linear 0s infinite normal forwards;
     -moz-animation: span5 29s linear 0s infinite normal forwards;
     -webkit-animation: span5 29s linear 0s infinite normal forwards;
     animation: span5 29s linear 0s infinite normal forwards;
   }
-  html.no-js #control span:nth-child(6) {
+  html.no-js #home #control span:nth-child(6) {
     -o-animation: span6 29s linear 0s infinite normal forwards;
     -moz-animation: span6 29s linear 0s infinite normal forwards;
     -webkit-animation: span6 29s linear 0s infinite normal forwards;
@@ -1150,6 +1150,12 @@ html.js #home section.services article.f > aside {
   }
   html #home main > section:first-child {
     font-size: 1.005rem;
+  }
+  html #home main > section:first-child article h1 {
+    font-size: 3.88em;
+  }
+  html #home main > section:first-child article h4 {
+    font-size: 1.6225em;
   }
 }
 @media only screen and (min-width: 820px) {
@@ -1260,11 +1266,10 @@ html.js #home section.services article.f > aside {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
-  column-gap: 2em;
   font-size: 1.125rem;
+  padding: 3.25em 1.5em 2em;
 }
 #about main > section:first-of-type aside {
-  border: solid 1px;
   -webkit-box: 7;
   -moz-box: 7;
   -webkit-flex: 7 1 1em;
@@ -1311,6 +1316,7 @@ html.js #home section.services article.f > aside {
 @media only screen and (min-width: 769px) {
   #about main > section:first-of-type {
     padding: 3.5rem 2rem;
+    column-gap: 2em;
   }
   #about main > section:first-of-type article h2 {
     font-size: calc(66px + 6 * (100vw - 769px) / 511);
