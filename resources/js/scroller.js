@@ -9,6 +9,12 @@ function throttle(callback, time) {
   }, time);
 }
 
+function getLocation(e) {
+  var box = e.target.getBoundingClientRect(),
+    threshold = (box.right - box.left) / 2;
+  return e.clientX ? e.clientX - box.left > threshold : true;
+}
+
 function getElementOffset(el) {
   //https://medium.com/snips-ai/make-your-next-microsite-beautifully-readable-with-this-simple-javascript-technique-ffa1a18d6de2
   var top = 0,
@@ -100,21 +106,25 @@ function slider(current) {
     swap = false;
 
   return function (e) {
+    let img;
     if (e.target.nodeName !== "P") {
-      return;
+     // return;
+    }
+    else {
+      img = getLocation(e);
     }
     let el = e.target,
-      main = el.parentNode,
+      main = utils.getTargetNode(el, /main/i, 'parentNode'),
       figures = main.querySelectorAll("figure"),
       currentfig = figures[1],
       nextfig = figures[0],
-      next = nextfig.firstElementChild,
-      current = currentfig.firstElementChild,
+      next = nextfig?.firstElementChild,
+      current = currentfig?.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
       j;
     main.classList.remove("lscp");
 
-    if (el.innerHTML === "&gt;") {
+    if (el.innerHTML === "&gt;" || img) {
       if (rev) {
         main.parentNode.classList.remove("rev");
       }
@@ -166,6 +176,7 @@ function slider(current) {
       main.classList.remove("mvd");
     }, 220);
     j = i % n || n;
+
     meta.$("caption").innerHTML = baseName(mapped[i]);
     meta.$("count").innerHTML = `${j}/${n}`;
 
