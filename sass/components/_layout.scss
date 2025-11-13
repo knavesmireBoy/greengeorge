@@ -221,9 +221,9 @@ section.services {
     text-align: center;
     @include flexy();
     @include justify(space-around);
-    padding: 0.2em 230px;
-    padding-left: calc(230px + 270 * ((100vw - 550px) / (1280 - 550)));
-    padding-right: calc(230px + 270 * ((100vw - 550px) / (1280 - 550)));
+    padding: 0.2em 1.5em;
+    padding-left: calc(100px + 500 * ((100vw - 320px) / (1280 - 320)));
+    padding-right: calc(100px + 500 * ((100vw - 320px) / (1280 - 320)));
     margin-top: -1px;
     span {
       display: block;

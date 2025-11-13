@@ -1157,9 +1157,9 @@ section.services + div {
   -ms-flex-pack: space-around;
   -webkit-justify-content: center;
   justify-content: space-around;
-  padding: 0.2em 230px;
-  padding-left: calc(230px + 270 * (100vw - 550px) / 730);
-  padding-right: calc(230px + 270 * (100vw - 550px) / 730);
+  padding: 0.2em 1.5em;
+  padding-left: calc(100px + 500 * (100vw - 320px) / 960);
+  padding-right: calc(100px + 500 * (100vw - 320px) / 960);
   margin-top: -1px;
 }
 section.services + div span {
