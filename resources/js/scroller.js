@@ -105,7 +105,7 @@ function slider(current) {
   var i = mapped.findIndex((src) => src === current) + 1,
     swap = false;
 
-  return function (e) {
+  return function foo (e) {
     let img;
     if (e.target.nodeName !== "P") {
       return;
@@ -171,13 +171,19 @@ function slider(current) {
         main.insertBefore(currentfig, main.firstElementChild);
         main.insertBefore(nextfig, main.lastElementChild);
       }
-      main.classList.remove("mv");
-      main.classList.add("mvd");
+      if(!swap){
+        main.classList.remove("mv");
+        main.classList.add("mvd");
+      }
+    
       
     }, 200);
 
     setTimeout(function () {
-      main.classList.remove("mvd");
+      if(!swap){
+        main.classList.remove("mvd");
+      }
+      
     }, 220);
 
     j = i % n || n;
@@ -188,7 +194,13 @@ function slider(current) {
     if (currentfig.offsetHeight < currentfig.offsetWidth) {
       main.classList.add("lscp");
     }
-    if(!swap) main.classList.add("mv");
+    if(!swap) {
+      main.classList.add("mv");
+    }
+    else {
+      swap = false;
+      foo(e);
+    }
   };
 }
 
