@@ -2108,15 +2108,13 @@ html.js #home section.services article.f > aside {
   padding: 0.2em 0.4em 0.4em;
   line-height: 1;
 }
-#gallery #lightbox main p + figure {
-  max-width: 11em;
-}
 #gallery #lightbox main figure {
-  -webkit-box: 3;
-  -moz-box: 3;
-  -webkit-flex: 3 1 1em;
-  -ms-flex: 3 1 1em;
-  flex: 3 1 1em;
+  max-width: 11em;
+  -webkit-box: 4;
+  -moz-box: 4;
+  -webkit-flex: 4 1 1em;
+  -ms-flex: 4 1 1em;
+  flex: 4 1 1em;
   border-radius: 2px;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
@@ -2153,7 +2151,7 @@ html.js #home section.services article.f > aside {
   -o-transform: translateX(-200%);
   transform: translateX(-200%);
 }
-#gallery #lightbox main.lscp p + figure {
+#gallery #lightbox main.lscp figure {
   max-width: 18em;
 }
 #gallery #lightbox header {
@@ -2284,6 +2282,18 @@ html.js #home section.services article.f > aside {
 }
 #gallery #lightbox.zoom p#zoom {
   background-position: center 108%;
+}
+#gallery #lightbox.mag figure {
+  max-width: 100%;
+}
+#gallery #lightbox.mag .lscp figure {
+  max-width: 100%;
+}
+#gallery #lightbox.zoom figure {
+  max-width: 16em;
+}
+#gallery #lightbox.zoom .lscp figure {
+  max-width: 26em;
 }
 
 .js #gal a {

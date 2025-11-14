@@ -181,18 +181,16 @@
         cursor: pointer;
         padding: 0.2em 0.4em 0.4em;
         line-height: 1;
-        + figure {
-          max-width: 11em;
-        }
       }
       figure {
-        @include flex(3, 1, 1em);
+        max-width: 11em;
+        @include flex(4, 1, 1em);
         border-radius: 2px;
         margin: 0.75em 0;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
         @include prefix(transform, translateX(0), webkit moz ms o);
         @include prefixer(transition, transform 150ms ease-in, webkit moz ms o);
-      
+
         img {
           display: block;
           width: 100%;
@@ -217,8 +215,8 @@
           // transform: translateX(-200%);
         }
       }
-      &.lscp p + figure {
-       max-width: 18em;
+      &.lscp figure {
+        max-width: 18em;
       }
     }
     header {
@@ -231,21 +229,21 @@
       div {
         @include flexy();
         position: relative;
-        column-gap: .5em;
+        column-gap: 0.5em;
         p {
           width: 2em;
           height: 2em;
           &:last-child::after {
             content: "x";
             font-size: 2.6em;
-            line-height: .5;
+            line-height: 0.5;
           }
         }
         p#mag {
-          background: url("../assets/mag.png") no-repeat center 98%/cover;
+          background: url("../assets/mag.png") no-repeat center 98% / cover;
         }
         p#zoom {
-          background: url("../assets/fsceen.png") no-repeat center -8%/cover;
+          background: url("../assets/fsceen.png") no-repeat center -8% / cover;
         }
       }
       p {
@@ -326,8 +324,21 @@
     &.zoom p#zoom {
       background-position: center 108%;
     }
-  }//
-}
+    &.mag figure {
+      max-width: 100%;
+    }
+    &.mag .lscp figure {
+      max-width: 100%;
+    }
+
+    &.zoom figure {
+      max-width: 16em;
+    }
+    &.zoom .lscp figure {
+      max-width: 26em;
+    }
+  } //lightbox
+}//gallery
 
 .js #gal a {
   @include prefix(transform, scale(75%), webkit moz ms o);
