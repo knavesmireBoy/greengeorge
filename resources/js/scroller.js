@@ -112,12 +112,16 @@ function slider(current) {
     swap = false;
 
   return function shuffle(e) {
-    let img;
+    var img;
+
     if (e.target.nodeName !== "P") {
-      return;
-    } else {
-      img = getLocation(e);
+      if (e.target.nodeName !== "IMG") {
+        return;
+      } else {
+        img = getLocation(e);
+      }
     }
+
     let el = e.target,
       main = utils.getTargetNode(el, /main/i, "parentNode"),
       figures = main.querySelectorAll("figure"),
@@ -144,10 +148,10 @@ function slider(current) {
       },
       j;
     main.classList.remove("lscp");
-    if (el.innerHTML === "&gt;"  /*|| img*/) {
+   
+    if (el.innerHTML === "&gt;" || img) {
       if (rev) {
         main.parentNode.classList.remove("rev");
-        //swap = true;
       }
       if (mapped[i + 1]) {
         setsrc(current, mapped[i]);
