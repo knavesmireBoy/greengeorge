@@ -59,7 +59,6 @@ function baseName(str) {
 function direct(e) {
   if (e.target.nodeName === "P") {
     const el = e.target,
-      esc = document.getElementById("esc"),
       box = document.getElementById("lightbox");
 
 
@@ -67,7 +66,6 @@ function direct(e) {
       return toggler(document.querySelector("#lightbox figure img"));
     }
     if (el.id === "exit") {
-      //return exit(esc);
       return quit(box);
     }
     if (el.id === "zoom") {

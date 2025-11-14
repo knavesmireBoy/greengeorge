@@ -2112,11 +2112,11 @@ html.js #home section.services article.f > aside {
   max-width: 11em;
 }
 #gallery #lightbox main figure {
-  -webkit-box: 6;
-  -moz-box: 6;
-  -webkit-flex: 6 1 1em;
-  -ms-flex: 6 1 1em;
-  flex: 6 1 1em;
+  -webkit-box: 3;
+  -moz-box: 3;
+  -webkit-flex: 3 1 1em;
+  -ms-flex: 3 1 1em;
+  flex: 3 1 1em;
   border-radius: 2px;
   margin: 0.75em 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 8px -5px rgba(0, 0, 0, 0.3);
@@ -2190,7 +2190,6 @@ html.js #home section.services article.f > aside {
 #gallery #lightbox header div p {
   width: 2em;
   height: 2em;
-  border: solid 1px yellow;
 }
 #gallery #lightbox header div p:last-child::after {
   content: "x";
