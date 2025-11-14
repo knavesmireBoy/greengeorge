@@ -56,11 +56,17 @@ function baseName(str) {
   return base;
 }
 
+function getLandingImage(src) {
+  const images = document.querySelectorAll("#gal img"),
+    gang = meta.toArray(images),
+    mapped = gang.map(curry3(invk)("src")("getAttribute"));
+  return [mapped.findIndex((s) => src === s) + 1, mapped.length, mapped];
+}
+
 function direct(e) {
   if (e.target.nodeName === "P") {
     const el = e.target,
       box = document.getElementById("lightbox");
-
 
     if (el.id === "mag") {
       return toggler(document.querySelector("#lightbox figure img"));
@@ -95,11 +101,7 @@ function fade(i) {
 }
 
 function slider(current) {
-  const images = document.querySelectorAll("#gal img"),
-    gang = meta.toArray(images),
-    mapped = gang.map(curry3(invk)("src")("getAttribute")),
-    n = mapped.length,
-    setsrc = mittel("setAttribute", "src"),
+  const setsrc = mittel("setAttribute", "src"),
     move = curry4(subMethod)("mv")("add")("classList"),
     unmove = curry4(subMethod)("mv")("remove")("classList"),
     moved = curry4(subMethod)("mvd")("add")("classList"),
@@ -107,12 +109,10 @@ function slider(current) {
     after = ptL(utils.insertAfter),
     before = prevoker("insertBefore");
 
-  var i = mapped.findIndex((src) => src === current) + 1,
+  var [i, n, mapped] = getLandingImage(current),
     swap = false;
-    console.log(i)
   return function shuffle(e) {
     var img;
-   
     if (e.target.nodeName !== "P") {
       if (e.target.nodeName !== "IMG") {
         return;
@@ -120,7 +120,6 @@ function slider(current) {
         img = getLocation(e);
       }
     }
-
     let el = e.target,
       main = utils.getTargetNode(el, /main/i, "parentNode"),
       figures = main.querySelectorAll("figure"),
@@ -147,7 +146,7 @@ function slider(current) {
       },
       j;
     main.classList.remove("lscp");
-   
+
     if (el.innerHTML === "&gt;" || img) {
       if (rev) {
         main.parentNode.classList.remove("rev");
@@ -265,8 +264,8 @@ const meta = greenGeorge.meta,
     el.parentNode.removeChild(el);
   },
   toggle = (store) => (el) => {
-    let fig = utils.getTargetNode(el, /figure/i, 'parentNode'),
-      main = utils.getTargetNode(el, /main/i, 'parentNode'),
+    let fig = utils.getTargetNode(el, /figure/i, "parentNode"),
+      main = utils.getTargetNode(el, /main/i, "parentNode"),
       p = main.querySelectorAll("p"),
       i = 0;
     if (p[0]) {
@@ -275,15 +274,15 @@ const meta = greenGeorge.meta,
       }
       fig.style.margin = 0;
       fig.style.borderWidth = 0;
-      mag(meta.$('lightbox'));
-    } else {    
+      mag(meta.$("lightbox"));
+    } else {
       main.appendChild(store[1]);
       main.insertBefore(store[0], fig);
       store = [];
       fig.style.marginTop = ".75em";
       fig.style.marginBottom = ".75em";
       fig.style.borderWidth = "1px";
-      unmag(meta.$('lightbox'));
+      unmag(meta.$("lightbox"));
     }
   },
   toggler = toggle([]),
@@ -388,12 +387,7 @@ function builder(e) {
   let src = e.target.getAttribute("src"),
     lscp = e.target.offsetHeight < e.target.offsetWidth,
     maybelscp = lscp ? thenlscp : (x) => x,
-    images = document.querySelectorAll("#gal img"),
-    gang = meta.toArray(images),
-    mapped = gang.map(curry3(invk)("src")("getAttribute")),
-    n = mapped.length,
-    i = mapped.findIndex((s) => src === s) + 1;
-
+    [i, n] = getLandingImage(src);
   if (!src) {
     return;
   }
