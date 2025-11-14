@@ -144,7 +144,7 @@ function slider(current) {
       },
       j;
     main.classList.remove("lscp");
-    if (el.innerHTML === "&gt;"  || img) {
+    if (el.innerHTML === "&gt;"  /*|| img*/) {
       if (rev) {
         main.parentNode.classList.remove("rev");
         //swap = true;
