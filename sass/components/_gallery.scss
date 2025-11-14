@@ -226,6 +226,9 @@
       @include flexy();
       @include flex(0, 1, 100%);
       @include justify(space-between);
+      #count {
+        font-size: 1.5em;
+      }
       div {
         @include flexy();
         position: relative;

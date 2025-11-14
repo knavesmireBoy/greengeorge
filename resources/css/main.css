@@ -1760,11 +1760,12 @@ html.js #home section.services article.f > aside {
     animation: span24 29s linear 0s infinite normal forwards;
   }
 }
-html #services section:first-child {
+html #services main > section:first-of-type {
   padding: 1rem;
   line-height: 1.6;
+  background-color: #143f1f;
 }
-html #services section:first-child aside {
+html #services main > section:first-of-type aside {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1773,7 +1774,7 @@ html #services section:first-child aside {
   flex-wrap: nowrap;
   overflow-x: hidden;
 }
-html #services section:first-child aside figure {
+html #services main > section:first-of-type aside figure {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1784,112 +1785,115 @@ html #services section:first-child aside figure {
   flex: 0 0 100%;
   height: 10.5em;
 }
-html #services section:first-child aside figure:first-child {
+html #services main > section:first-of-type aside figure:first-child {
   background-image: url("../images/IMG_1477.jpg");
 }
-html #services section:first-child aside figure:nth-child(2) {
+html #services main > section:first-of-type aside figure:nth-child(2) {
   background-image: url("../images/IMG_0556.jpg");
 }
-html #services section:first-child aside figure:nth-child(3) {
+html #services main > section:first-of-type aside figure:nth-child(3) {
   background-image: url("../images/IMG_1478.jpg");
 }
-html #services section:first-child aside figure:nth-child(4) {
+html #services main > section:first-of-type aside figure:nth-child(4) {
   background-image: url("../images/IMG_0229.jpg");
 }
-html #services section:first-child aside figure:nth-child(5) {
+html #services main > section:first-of-type aside figure:nth-child(5) {
   background-image: url("../images/IMG_1531.jpg");
   background-position: center 55%;
 }
-html #services section:first-child aside figure:nth-child(6) {
+html #services main > section:first-of-type aside figure:nth-child(6) {
   background-image: url("../images/IMG_1530.jpg");
 }
-html #services section:first-child aside figure:nth-child(7) {
+html #services main > section:first-of-type aside figure:nth-child(7) {
   background-image: url("../images/IMG_1485.jpg");
   background-position: center 60%;
 }
-html #services section:first-child aside figure:nth-child(8) {
+html #services main > section:first-of-type aside figure:nth-child(8) {
   background-image: url("../images/IMG_1478.jpg");
 }
-html #services section:first-child aside figure:nth-child(9) {
+html #services main > section:first-of-type aside figure:nth-child(9) {
   background-image: url("../images/IMG_1442.jpg");
   background-position: center 70%;
 }
-html #services section:first-child aside figure:nth-child(10) {
+html #services main > section:first-of-type aside figure:nth-child(10) {
   background-image: url("../images/IMG_1395.jpg");
   background-position: center 80%;
 }
-html #services section:first-child aside figure:nth-child(11) {
+html #services main > section:first-of-type aside figure:nth-child(11) {
   background-image: url("../images/IMG_0558.jpg");
 }
-html #services section:first-child aside figure:nth-child(12) {
+html #services main > section:first-of-type aside figure:nth-child(12) {
   background-image: url("../images/IMG_0388.jpg");
 }
-html #services section:first-child aside figure:nth-child(13) {
+html #services main > section:first-of-type aside figure:nth-child(13) {
   background-image: url("../images/IMG_0324.jpg");
   background-position: center 55%;
 }
-html #services section:first-child aside figure:nth-child(14) {
+html #services main > section:first-of-type aside figure:nth-child(14) {
   background-image: url("../images/IMG_0311.jpg");
 }
-html #services section:first-child aside figure:nth-child(15) {
+html #services main > section:first-of-type aside figure:nth-child(15) {
   background-image: url("../images/20241114_094758.jpg");
   background-position: center 60%;
 }
-html #services section:first-child aside figure:nth-child(16) {
+html #services main > section:first-of-type aside figure:nth-child(16) {
   background-image: url("../images/20241104_131502.jpg");
   background-position: center 65%;
 }
-html #services section:first-child aside figure:nth-child(17) {
+html #services main > section:first-of-type aside figure:nth-child(17) {
   background-image: url("../images/10PLTMGGEh8.jpg");
   background-position: center 60%;
 }
-html #services section:first-child article h1 {
+html #services main > section:first-of-type article h1 {
   font-size: 2.6em;
   line-height: 1;
 }
-html #services section:first-child article h4 {
+html #services main > section:first-of-type article h4 {
   font-size: 1.29em;
   margin: 0.5em 0;
 }
-html #services section:first-child aside figure {
+html #services main > section:first-child aside figure {
   -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   -moz-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
   animation: main 90s ease-in-out 500ms infinite reverse backwards;
 }
-html #services section.services > div article aside {
+html #services main > section.services > div article aside {
   background-position: center;
   background-size: cover;
 }
-html #services section.services > div article:nth-of-type(1) > aside {
+html #services main > section.services > div article:nth-of-type(1) > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: center top;
 }
-html #services section.services > div article:nth-of-type(2) > aside {
+html #services main > section.services > div article:nth-of-type(2) > aside {
   background-image: url("../images/IMG_1478.jpg");
 }
-html #services section.services > div article:nth-of-type(3) > aside {
+html #services main > section.services > div article:nth-of-type(3) > aside {
   background-image: url("../assets/weeding.jpeg");
   background-position: center top;
 }
-html #services section.services > div article:nth-of-type(4) > aside {
+html #services main > section.services > div article:nth-of-type(4) > aside {
   background-image: url("../assets/pruning.jpeg");
 }
-html #services section.services > div article:nth-of-type(5) > aside {
+html #services main > section.services > div article:nth-of-type(5) > aside {
   background-image: url("../assets/hedge.jpeg");
   background-position: center 80%;
 }
-html #services section.services > div article:nth-of-type(6) > aside {
+html #services main > section.services > div article:nth-of-type(6) > aside {
   background-image: url("../assets/tidy.jpeg");
 }
-html #services .mission {
+html #services main > .mission {
   padding: 1rem;
 }
-html #services .mission article p:first-child {
+html #services main > .mission article p:first-child {
   font-family: "Handwritten", cursive;
   text-align: center;
   color: rgb(25, 78, 39);
   font-size: 1.3em;
+}
+html #control {
+  background-color: #143f1f;
 }
 html #player aside figure {
   -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
@@ -2567,6 +2571,9 @@ html.js #home section.services article.f > aside {
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.8);
 }
+#gallery #lightbox header #count {
+  font-size: 1.5em;
+}
 #gallery #lightbox header div {
   display: -webkit-box;
   display: -moz-box;
@@ -2741,6 +2748,9 @@ html.js #home section.services article.f > aside {
   margin: 0 0.7em 0 0;
 }
 
+#privacy main section article {
+  margin: 0 5rem 1rem 12rem;
+}
 #privacy main section article h3 {
   color: rgb(25, 78, 39);
 }
@@ -2752,7 +2762,7 @@ html.js #home section.services article.f > aside {
   color: rgb(204, 51, 102);
 }
 #privacy main > h1 {
-  margin: 0 0 0 0.5em;
+  margin: 0 0 0 12rem;
   font-size: 2em;
   color: rgb(25, 78, 39);
 }

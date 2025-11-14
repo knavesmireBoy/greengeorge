@@ -109,10 +109,10 @@ function slider(current) {
 
   var i = mapped.findIndex((src) => src === current) + 1,
     swap = false;
-
+    console.log(i)
   return function shuffle(e) {
     var img;
-
+   
     if (e.target.nodeName !== "P") {
       if (e.target.nodeName !== "IMG") {
         return;
@@ -387,7 +387,13 @@ function builder(e) {
   e.preventDefault();
   let src = e.target.getAttribute("src"),
     lscp = e.target.offsetHeight < e.target.offsetWidth,
-    maybelscp = lscp ? thenlscp : (x) => x;
+    maybelscp = lscp ? thenlscp : (x) => x,
+    images = document.querySelectorAll("#gal img"),
+    gang = meta.toArray(images),
+    mapped = gang.map(curry3(invk)("src")("getAttribute")),
+    n = mapped.length,
+    i = mapped.findIndex((s) => src === s) + 1;
+
   if (!src) {
     return;
   }
@@ -414,7 +420,7 @@ function builder(e) {
     textLeft = defer(invk, document, "createTextNode", "<"),
     textRight = defer(invk, document, "createTextNode", ">"),
     textSrc = compose(ptL(invk, document, "createTextNode"), baseName, getSrc),
-    textCount = defer(invk, document, "createTextNode", "1/1"),
+    textCount = defer(invk, document, "createTextNode", `${i}/${n}`),
     makePara = myMaker2("p", settingId("count")),
     makeDiv = myMaker("div"),
     makeHeader = myMaker2("header", mydirect),

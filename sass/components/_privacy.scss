@@ -1,6 +1,9 @@
 #privacy {
   main {
-    section article {
+    section {
+      article {
+        margin: 0 5rem 1rem 12rem;
+
         h3 {
             color: $main;
         }
@@ -14,10 +17,12 @@
         color: $privacy;
       }
     }
-    > h1 {
-      margin: 0 0 0 0.5em;
-      font-size: 2em;
-      color: $main;
-    }
+
   }
+  > h1 {
+    margin: 0 0 0 12rem;
+    font-size: 2em;
+    color: $main;
+  }
+}
 }
