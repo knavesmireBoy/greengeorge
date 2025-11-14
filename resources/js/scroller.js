@@ -137,26 +137,31 @@ function slider(current) {
     } else {
       if (!rev) {
         main.parentNode.classList.add("rev");
-        main.appendChild(currentfig);
-        utils.insertAfter(nextfig, e.target);
+        // main.appendChild(currentfig);
+        // utils.insertAfter(nextfig, e.target);
+        main.appendChild(nextfig);
         swap = true;
       }
 
       if (mapped[i - 1]) {
         if (swap) {
-          setsrc(current, mapped[i - 1]);
+         // setsrc(current, mapped[i - 1]);
+         // setsrc(next, mapped[i - 1]);
         } else {
           setsrc(next, mapped[i]);
         }
-        i--;
-        j = mapped[i - 1] ? i - 1 : n - 1;
-        setsrc(next, mapped[j]);
+        if (!swap) {
+          i--;
+          j = mapped[i - 1] ? i - 1 : n - 1;
+          setsrc(next, mapped[j]);
+        }
       } else {
         i = mapped.length - 1;
         setsrc(current, mapped[i]);
         setsrc(next, mapped[i - 1]);
       }
     }
+
 
     setTimeout(function () {
       if (document.getElementsByClassName("rev")[0]) {
@@ -170,13 +175,17 @@ function slider(current) {
         main.insertBefore(currentfig, main.firstElementChild);
         main.insertBefore(nextfig, main.lastElementChild);
       }
-      main.classList.remove("mv");
-      main.classList.add("mvd");
+      if(!swap){
+        main.classList.remove("mv");
+        main.classList.add("mvd");
+      }
+      
     }, 200);
 
     setTimeout(function () {
       main.classList.remove("mvd");
     }, 220);
+
     j = i % n || n;
 
     meta.$("caption").innerHTML = baseName(mapped[i]);
@@ -185,7 +194,8 @@ function slider(current) {
     if (currentfig.offsetHeight < currentfig.offsetWidth) {
       main.classList.add("lscp");
     }
-    main.classList.add("mv");
+    if(!swap) main.classList.add("mv");
+
   };
 }
 
