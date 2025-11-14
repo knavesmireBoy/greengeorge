@@ -62,7 +62,8 @@ function direct(e) {
       esc = document.getElementById("esc"),
       box = document.getElementById("lightbox");
 
-    if (el.id === "fullscreen") {
+
+    if (el.id === "mag") {
       return toggler(document.querySelector("#lightbox figure img"));
     }
     if (el.id === "exit") {
@@ -250,6 +251,10 @@ const meta = greenGeorge.meta,
   gt = (a, b) => a > b,
   gtThan = curry2(gt),
   activate = curry4(subMethod)("active")("add")("classList"),
+  zoomy = curry4(subMethod)("zoom")("add")("classList"),
+  unzoomy = curry4(subMethod)("zoom")("remove")("classList"),
+  mag = curry4(subMethod)("mag")("add")("classList"),
+  unmag = curry4(subMethod)("mag")("remove")("classList"),
   thenactivate = curry44(subMethod)("active")("add")("classList"),
   thenlscp = curry4(subMethod)("lscp")("add")("classList"),
   gallery = document.getElementById("gal"),
@@ -262,8 +267,8 @@ const meta = greenGeorge.meta,
     el.parentNode.removeChild(el);
   },
   toggle = (store) => (el) => {
-    let fig = el.parentNode,
-      main = fig.parentNode,
+    let fig = utils.getTargetNode(el, /figure/i, 'parentNode'),
+      main = utils.getTargetNode(el, /main/i, 'parentNode'),
       p = main.querySelectorAll("p"),
       i = 0;
     if (p[0]) {
@@ -272,13 +277,15 @@ const meta = greenGeorge.meta,
       }
       fig.style.margin = 0;
       fig.style.borderWidth = 0;
-    } else {
+      mag(meta.$('lightbox'));
+    } else {    
       main.appendChild(store[1]);
       main.insertBefore(store[0], fig);
       store = [];
       fig.style.marginTop = ".75em";
       fig.style.marginBottom = ".75em";
       fig.style.borderWidth = "1px";
+      unmag(meta.$('lightbox'));
     }
   },
   toggler = toggle([]),
@@ -289,6 +296,7 @@ const meta = greenGeorge.meta,
 
     if (box.requestFullscreen) {
       box.requestFullscreen();
+      zoomy(box);
     } else {
       return;
     }
@@ -300,6 +308,7 @@ const meta = greenGeorge.meta,
       cb(n);
     }
     if (isFullScreen()) {
+      unzoomy(box);
       document
         .exitFullscreen?.()
         .then(() => console.log("Document Exited from Full screen mode"))
@@ -436,8 +445,8 @@ function builder(e) {
     headparas = pApply(
       invk,
       [
-        paracomp(settingId("fullscreen")),
         paracomp(settingId("zoom")),
+        paracomp(settingId("mag")),
         paracomp(settingId("exit")),
       ],
       "map"

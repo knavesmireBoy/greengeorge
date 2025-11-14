@@ -53,11 +53,9 @@
         padding: 1.5%;
         row-gap: 0.3%;
         column-gap: 1.5%;
-        border: solid 1px blue;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 13.75%) 7.77% 7.77% 2.1% 7.77% 3.2% 7.77% 2.1% 5% 2.33% 7.77% 1fr;
         a {
-          border: solid 1px;
           overflow: hidden;
           &:nth-child(8),
           &:nth-child(10) {
@@ -233,12 +231,22 @@
       div {
         @include flexy();
         position: relative;
+        column-gap: .5em;
         p {
           width: 2em;
           height: 2em;
-          &:after {
+          border: solid 1px yellow;
+          &:last-child::after {
             content: "x";
+            font-size: 2.6em;
+            line-height: .5;
           }
+        }
+        p#mag {
+          background: url("../assets/mag.png") no-repeat center 98%/cover;
+        }
+        p#zoom {
+          background: url("../assets/fsceen.png") no-repeat center -8%/cover;
         }
       }
       p {
@@ -313,7 +321,13 @@
         }
       }
     }
-  }
+    &.mag p#mag {
+      background-position: center 0;
+    }
+    &.zoom p#zoom {
+      background-position: center 108%;
+    }
+  }//
 }
 
 .js #gal a {

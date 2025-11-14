@@ -1515,9 +1515,6 @@ html #player.pause aside figure {
 html #player.pause aside:first-child {
   margin-left: -100%;
 }
-html.no-js {
-  background-color: khaki;
-}
 html.no-js section.services article:first-child {
   -o-animation: services 28s ease-in 1s infinite normal forwards;
   -moz-animation: services 28s ease-in 1s infinite normal forwards;
@@ -1966,12 +1963,10 @@ html.js #home section.services article.f > aside {
     padding: 1.5%;
     row-gap: 0.3%;
     column-gap: 1.5%;
-    border: solid 1px blue;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 13.75%) 7.77% 7.77% 2.1% 7.77% 3.2% 7.77% 2.1% 5% 2.33% 7.77% 1fr;
   }
   #gallery main > section:first-of-type > div a {
-    border: solid 1px;
     overflow: hidden;
   }
   #gallery main > section:first-of-type > div a:nth-child(8), #gallery main > section:first-of-type > div a:nth-child(10) {
@@ -2190,13 +2185,23 @@ html.js #home section.services article.f > aside {
   display: flex;
   flex-wrap: nowrap;
   position: relative;
+  column-gap: 0.5em;
 }
 #gallery #lightbox header div p {
   width: 2em;
   height: 2em;
+  border: solid 1px yellow;
 }
-#gallery #lightbox header div p:after {
+#gallery #lightbox header div p:last-child::after {
   content: "x";
+  font-size: 2.6em;
+  line-height: 0.5;
+}
+#gallery #lightbox header div p#mag {
+  background: url("../assets/mag.png") no-repeat center 98%/cover;
+}
+#gallery #lightbox header div p#zoom {
+  background: url("../assets/fsceen.png") no-repeat center -8%/cover;
 }
 #gallery #lightbox header p {
   -webkit-transition: opacity 1s ease-in;
@@ -2274,6 +2279,12 @@ html.js #home section.services article.f > aside {
   -ms-transform: translateX(200%);
   -o-transform: translateX(200%);
   transform: translateX(200%);
+}
+#gallery #lightbox.mag p#mag {
+  background-position: center 0;
+}
+#gallery #lightbox.zoom p#zoom {
+  background-position: center 108%;
 }
 
 .js #gal a {
