@@ -1,0 +1,456 @@
+html {
+    #services {
+      section:first-child {
+        padding: 1rem;
+        line-height: 1.6;
+  
+        aside {
+          @include flexy();
+          overflow-x: hidden;
+          figure {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            @include flex(0, 0, 100%);
+            //@include flexy();
+            height: 10.5em;
+            &:first-child {
+              background-image: url("../images/IMG_1477.jpg");
+            }
+            &:nth-child(2) {
+              background-image: url("../images/IMG_0556.jpg");
+            }
+            &:nth-child(3) {
+              background-image: url("../images/IMG_1478.jpg");
+            }
+            &:nth-child(4) {
+              background-image: url("../images/IMG_0229.jpg");
+            }
+            &:nth-child(5) {
+              background-image: url("../images/IMG_1531.jpg");
+              background-position: center 55%;
+            }
+            &:nth-child(6) {
+              background-image: url("../images/IMG_1530.jpg");
+            }
+            &:nth-child(7) {
+              background-image: url("../images/IMG_1485.jpg");
+              background-position: center 60%;
+            }
+            &:nth-child(8) {
+              background-image: url("../images/IMG_1478.jpg");
+            }
+            &:nth-child(9) {
+              background-image: url("../images/IMG_1442.jpg");
+              background-position: center 70%;
+            }
+            &:nth-child(10) {
+              background-image: url("../images/IMG_1395.jpg");
+              background-position: center 80%;
+            }
+            &:nth-child(11) {
+              background-image: url("../images/IMG_0558.jpg");
+            }
+            &:nth-child(12) {
+              background-image: url("../images/IMG_0388.jpg");
+            }
+            &:nth-child(13) {
+              background-image: url("../images/IMG_0324.jpg");
+              background-position: center 55%;
+            }
+            &:nth-child(14) {
+              background-image: url("../images/IMG_0311.jpg");
+            }
+            &:nth-child(15) {
+              background-image: url("../images/20241114_094758.jpg");
+              background-position: center 60%;
+            }
+            &:nth-child(16) {
+              background-image: url("../images/20241104_131502.jpg");
+              background-position: center 65%;
+            }
+            &:nth-child(17) {
+              background-image: url("../images/10PLTMGGEh8.jpg");
+              background-position: center 60%;
+            }
+          }
+        }
+        article {
+          h1 {
+            font-size: 2.6em;
+            line-height: 1;
+          }
+          h4 {
+            font-size: 1.29em;
+            margin: 0.5em 0;
+          }
+        }
+      }
+  
+      section:first-child {
+        aside {
+          figure {
+            @include prefix(
+              animation,
+              main 90s ease-in-out 500ms infinite reverse backwards,
+              o moz webkit
+            );
+          }
+        }
+      }
+      section.services {
+        > div {
+          article {
+            aside {
+              background-position: center;
+              background-size: cover;
+            }
+  
+            &:nth-of-type(1) {
+              > aside {
+                background-image: url("../assets/lawn.jpeg");
+                background-position: center top;
+              }
+            }
+  
+            &:nth-of-type(2) > aside {
+              background-image: url("../images/IMG_1478.jpg");
+            }
+            &:nth-of-type(3) > aside {
+              background-image: url("../assets/weeding.jpeg");
+              background-position: center top;
+            }
+            &:nth-of-type(4) > aside {
+              background-image: url("../assets/pruning.jpeg");
+            }
+            &:nth-of-type(5) > aside {
+              background-image: url("../assets/hedge.jpeg");
+              background-position: center 80%;
+            }
+            &:nth-of-type(6) > aside {
+              background-image: url("../assets/tidy.jpeg");
+            }
+          }
+        }
+      }
+  
+      .mission {
+        padding: 1rem;
+        article p:first-child {
+          font-family: "Handwritten", cursive;
+          text-align: center;
+          color: $main;
+          font-size: 1.3em;
+          //font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
+        }
+      }
+    }
+    #player {
+      aside {
+        figure {
+          @include prefix(
+            animation,
+            main 90s ease-in-out 500ms infinite reverse backwards,
+            o moz webkit
+          );
+        }
+      }
+  
+      &.pause {
+        aside {
+          figure {
+            filter: brightness(50%);
+            @include prefix(animation, none, o moz webkit);
+          }
+          &:first-child {
+            margin-left: -100%;
+          }
+        }
+      }
+    }
+  
+    &.no-js {
+      //background-color: khaki;
+      section.services article:first-child {
+        @include prefix(
+          animation,
+          services 28s ease-in 1s infinite normal forwards,
+          o moz webkit
+        );
+      }
+    }
+  
+    &.js #home {
+      #player {
+        aside {
+          figure {
+            @include prefix(animation, none, o moz webkit);
+  
+            &:first-child {
+              margin-left: -100%;
+              transition: margin 500ms ease-in-out 3.5s;
+            }
+          }
+          &.mv {
+            figure:first-child {
+              margin-left: 0%;
+            }
+          }
+          &.pause {
+            filter: brightness(0.4);
+          }
+        }
+      }
+      section.services article {
+        &.a > aside {
+          background-image: url("../assets/lawn.jpeg");
+          background-position: center top;
+        }
+        &.b > aside {
+          background-image: url("../images/IMG_1478.jpg");
+          background-position: center;
+        }
+        &.c > aside {
+          background-image: url("../assets/weeding.jpeg");
+          background-position: center top;
+        }
+        &.d > aside {
+          background-image: url("../assets/pruning.jpeg");
+          background-position: center;
+        }
+        &.e > aside {
+          background-image: url("../assets/hedge.jpeg");
+          background-position: center 80%;
+        }
+        &.f > aside {
+          background-image: url("../assets/tidy.jpeg");
+          background-position: center;
+        }
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    html {
+      &.no-js #home {
+        #control span {
+          &:first-child {
+            @include prefix(
+              animation,
+              span1 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(2) {
+            @include prefix(
+              animation,
+              span2 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(3) {
+            @include prefix(
+              animation,
+              span3 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(4) {
+            @include prefix(
+              animation,
+              span4 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(5) {
+            @include prefix(
+              animation,
+              span5 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(6) {
+            @include prefix(
+              animation,
+              span6 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+        }
+      }
+    }
+  }
+  
+  @media only screen and (min-width: 769px) {
+    html #home main > {
+      section:first-of-type {
+        padding: 3rem 1.2rem;
+        column-gap: 2rem;
+        display: grid;
+        grid-template-columns: (62% 1fr);
+        aside {
+          order: 2;
+          grid-column: 2/3;
+          figure {
+            min-height: 100%;
+            width: 100%;
+          }
+        }
+        article {
+          margin: 0;
+          grid-column: 1/2;
+          @include flexy();
+          flex-direction: column;
+          @include justify();
+          > * {
+            @include flex(0, 0, auto);
+            @include justify(start);
+          }
+          button {
+            align-self: start;
+            margin: 1.5em 0 0;
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 769px) {
+    html {
+      &.no-js {
+        section {
+          &.services div {
+            article {
+              &:first-child {
+                @include prefix(
+                  animation,
+                  services_mid 28s ease-in 1s infinite normal forwards,
+                  o moz webkit
+                );
+              }
+            }
+          }
+        }
+      }
+      #home main > section:first-child {
+        font-size: 1.005rem;
+  
+        article {
+          h1 {
+            font-size: 3.88em;
+          }
+          h4 {
+            font-size: 1.6225em;
+          }
+        }
+      } //h
+    }
+  }
+  
+  @media only screen and (min-width: 820px) {
+    html {
+      #home main > {
+        section:first-child {
+          @include flexy();
+          article {
+            @include justify(center);
+            @include flex(7, 1, 1em);
+          }
+  
+          aside {
+            @include flex(4, 1, 1em);
+            figure {
+              height: calc(525px + 155 * ((100vw - 820px) / (1280 - 820)));
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    html.no-js #control span {
+      &:first-child {
+        @include prefix(
+          animation,
+          span11 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(2) {
+        @include prefix(
+          animation,
+          span12 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(3) {
+        @include prefix(
+          animation,
+          span13 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(4) {
+        @include prefix(
+          animation,
+          span14 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+      &:nth-child(5) {
+        @include prefix(
+          animation,
+          span15 29s linear 0s infinite normal forwards,
+          o moz webkit
+        );
+      }
+    }
+  }
+  @media only screen and (min-width: 1025px) {
+    html.no-js {
+      section.services div {
+        article {
+          &:first-child {
+            @include prefix(
+              animation,
+              services_max 28s ease-in 1s infinite normal forwards,
+              o moz webkit
+            );
+          }
+        }
+      }
+  
+      #control span {
+        &:first-child {
+          @include prefix(
+            animation,
+            span21 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(2) {
+          @include prefix(
+            animation,
+            span22 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+        &:nth-child(3) {
+          @include prefix(
+            animation,
+            span23 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+  
+        &:nth-child(4) {
+          @include prefix(
+            animation,
+            span24 29s linear 0s infinite normal forwards,
+            o moz webkit
+          );
+        }
+      }
+    }
+  }
+  

@@ -1760,6 +1760,396 @@ html.js #home section.services article.f > aside {
     animation: span24 29s linear 0s infinite normal forwards;
   }
 }
+html #services section:first-child {
+  padding: 1rem;
+  line-height: 1.6;
+}
+html #services section:first-child aside {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+html #services section:first-child aside figure {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  height: 10.5em;
+}
+html #services section:first-child aside figure:first-child {
+  background-image: url("../images/IMG_1477.jpg");
+}
+html #services section:first-child aside figure:nth-child(2) {
+  background-image: url("../images/IMG_0556.jpg");
+}
+html #services section:first-child aside figure:nth-child(3) {
+  background-image: url("../images/IMG_1478.jpg");
+}
+html #services section:first-child aside figure:nth-child(4) {
+  background-image: url("../images/IMG_0229.jpg");
+}
+html #services section:first-child aside figure:nth-child(5) {
+  background-image: url("../images/IMG_1531.jpg");
+  background-position: center 55%;
+}
+html #services section:first-child aside figure:nth-child(6) {
+  background-image: url("../images/IMG_1530.jpg");
+}
+html #services section:first-child aside figure:nth-child(7) {
+  background-image: url("../images/IMG_1485.jpg");
+  background-position: center 60%;
+}
+html #services section:first-child aside figure:nth-child(8) {
+  background-image: url("../images/IMG_1478.jpg");
+}
+html #services section:first-child aside figure:nth-child(9) {
+  background-image: url("../images/IMG_1442.jpg");
+  background-position: center 70%;
+}
+html #services section:first-child aside figure:nth-child(10) {
+  background-image: url("../images/IMG_1395.jpg");
+  background-position: center 80%;
+}
+html #services section:first-child aside figure:nth-child(11) {
+  background-image: url("../images/IMG_0558.jpg");
+}
+html #services section:first-child aside figure:nth-child(12) {
+  background-image: url("../images/IMG_0388.jpg");
+}
+html #services section:first-child aside figure:nth-child(13) {
+  background-image: url("../images/IMG_0324.jpg");
+  background-position: center 55%;
+}
+html #services section:first-child aside figure:nth-child(14) {
+  background-image: url("../images/IMG_0311.jpg");
+}
+html #services section:first-child aside figure:nth-child(15) {
+  background-image: url("../images/20241114_094758.jpg");
+  background-position: center 60%;
+}
+html #services section:first-child aside figure:nth-child(16) {
+  background-image: url("../images/20241104_131502.jpg");
+  background-position: center 65%;
+}
+html #services section:first-child aside figure:nth-child(17) {
+  background-image: url("../images/10PLTMGGEh8.jpg");
+  background-position: center 60%;
+}
+html #services section:first-child article h1 {
+  font-size: 2.6em;
+  line-height: 1;
+}
+html #services section:first-child article h4 {
+  font-size: 1.29em;
+  margin: 0.5em 0;
+}
+html #services section:first-child aside figure {
+  -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  -moz-animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  animation: main 90s ease-in-out 500ms infinite reverse backwards;
+}
+html #services section.services > div article aside {
+  background-position: center;
+  background-size: cover;
+}
+html #services section.services > div article:nth-of-type(1) > aside {
+  background-image: url("../assets/lawn.jpeg");
+  background-position: center top;
+}
+html #services section.services > div article:nth-of-type(2) > aside {
+  background-image: url("../images/IMG_1478.jpg");
+}
+html #services section.services > div article:nth-of-type(3) > aside {
+  background-image: url("../assets/weeding.jpeg");
+  background-position: center top;
+}
+html #services section.services > div article:nth-of-type(4) > aside {
+  background-image: url("../assets/pruning.jpeg");
+}
+html #services section.services > div article:nth-of-type(5) > aside {
+  background-image: url("../assets/hedge.jpeg");
+  background-position: center 80%;
+}
+html #services section.services > div article:nth-of-type(6) > aside {
+  background-image: url("../assets/tidy.jpeg");
+}
+html #services .mission {
+  padding: 1rem;
+}
+html #services .mission article p:first-child {
+  font-family: "Handwritten", cursive;
+  text-align: center;
+  color: rgb(25, 78, 39);
+  font-size: 1.3em;
+}
+html #player aside figure {
+  -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  -moz-animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  animation: main 90s ease-in-out 500ms infinite reverse backwards;
+}
+html #player.pause aside figure {
+  filter: brightness(50%);
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html #player.pause aside:first-child {
+  margin-left: -100%;
+}
+html.no-js section.services article:first-child {
+  -o-animation: services 28s ease-in 1s infinite normal forwards;
+  -moz-animation: services 28s ease-in 1s infinite normal forwards;
+  -webkit-animation: services 28s ease-in 1s infinite normal forwards;
+  animation: services 28s ease-in 1s infinite normal forwards;
+}
+html.js #home #player aside figure {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html.js #home #player aside figure:first-child {
+  margin-left: -100%;
+  transition: margin 500ms ease-in-out 3.5s;
+}
+html.js #home #player aside.mv figure:first-child {
+  margin-left: 0%;
+}
+html.js #home #player aside.pause {
+  filter: brightness(0.4);
+}
+html.js #home section.services article.a > aside {
+  background-image: url("../assets/lawn.jpeg");
+  background-position: center top;
+}
+html.js #home section.services article.b > aside {
+  background-image: url("../images/IMG_1478.jpg");
+  background-position: center;
+}
+html.js #home section.services article.c > aside {
+  background-image: url("../assets/weeding.jpeg");
+  background-position: center top;
+}
+html.js #home section.services article.d > aside {
+  background-image: url("../assets/pruning.jpeg");
+  background-position: center;
+}
+html.js #home section.services article.e > aside {
+  background-image: url("../assets/hedge.jpeg");
+  background-position: center 80%;
+}
+html.js #home section.services article.f > aside {
+  background-image: url("../assets/tidy.jpeg");
+  background-position: center;
+}
+
+@media only screen and (max-width: 768px) {
+  html.no-js #home #control span:first-child {
+    -o-animation: span1 29s linear 0s infinite normal forwards;
+    -moz-animation: span1 29s linear 0s infinite normal forwards;
+    -webkit-animation: span1 29s linear 0s infinite normal forwards;
+    animation: span1 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #home #control span:nth-child(2) {
+    -o-animation: span2 29s linear 0s infinite normal forwards;
+    -moz-animation: span2 29s linear 0s infinite normal forwards;
+    -webkit-animation: span2 29s linear 0s infinite normal forwards;
+    animation: span2 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #home #control span:nth-child(3) {
+    -o-animation: span3 29s linear 0s infinite normal forwards;
+    -moz-animation: span3 29s linear 0s infinite normal forwards;
+    -webkit-animation: span3 29s linear 0s infinite normal forwards;
+    animation: span3 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #home #control span:nth-child(4) {
+    -o-animation: span4 29s linear 0s infinite normal forwards;
+    -moz-animation: span4 29s linear 0s infinite normal forwards;
+    -webkit-animation: span4 29s linear 0s infinite normal forwards;
+    animation: span4 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #home #control span:nth-child(5) {
+    -o-animation: span5 29s linear 0s infinite normal forwards;
+    -moz-animation: span5 29s linear 0s infinite normal forwards;
+    -webkit-animation: span5 29s linear 0s infinite normal forwards;
+    animation: span5 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #home #control span:nth-child(6) {
+    -o-animation: span6 29s linear 0s infinite normal forwards;
+    -moz-animation: span6 29s linear 0s infinite normal forwards;
+    -webkit-animation: span6 29s linear 0s infinite normal forwards;
+    animation: span6 29s linear 0s infinite normal forwards;
+  }
+}
+@media only screen and (min-width: 769px) {
+  html #home main > section:first-of-type {
+    padding: 3rem 1.2rem;
+    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: 62% 1fr;
+  }
+  html #home main > section:first-of-type aside {
+    order: 2;
+    grid-column: 2/3;
+  }
+  html #home main > section:first-of-type aside figure {
+    min-height: 100%;
+    width: 100%;
+  }
+  html #home main > section:first-of-type article {
+    margin: 0;
+    grid-column: 1/2;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: center;
+    justify-content: space-between;
+  }
+  html #home main > section:first-of-type article > * {
+    -webkit-box: 0;
+    -moz-box: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: center;
+    justify-content: start;
+  }
+  html #home main > section:first-of-type article button {
+    align-self: start;
+    margin: 1.5em 0 0;
+  }
+}
+@media only screen and (min-width: 769px) {
+  html.no-js section.services div article:first-child {
+    -o-animation: services_mid 28s ease-in 1s infinite normal forwards;
+    -moz-animation: services_mid 28s ease-in 1s infinite normal forwards;
+    -webkit-animation: services_mid 28s ease-in 1s infinite normal forwards;
+    animation: services_mid 28s ease-in 1s infinite normal forwards;
+  }
+  html #home main > section:first-child {
+    font-size: 1.005rem;
+  }
+  html #home main > section:first-child article h1 {
+    font-size: 3.88em;
+  }
+  html #home main > section:first-child article h4 {
+    font-size: 1.6225em;
+  }
+}
+@media only screen and (min-width: 820px) {
+  html #home main > section:first-child {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  html #home main > section:first-child article {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box: 7;
+    -moz-box: 7;
+    -webkit-flex: 7 1 1em;
+    -ms-flex: 7 1 1em;
+    flex: 7 1 1em;
+  }
+  html #home main > section:first-child aside {
+    -webkit-box: 4;
+    -moz-box: 4;
+    -webkit-flex: 4 1 1em;
+    -ms-flex: 4 1 1em;
+    flex: 4 1 1em;
+  }
+  html #home main > section:first-child aside figure {
+    height: calc(525px + 155 * (100vw - 820px) / 460);
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  html.no-js #control span:first-child {
+    -o-animation: span11 29s linear 0s infinite normal forwards;
+    -moz-animation: span11 29s linear 0s infinite normal forwards;
+    -webkit-animation: span11 29s linear 0s infinite normal forwards;
+    animation: span11 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(2) {
+    -o-animation: span12 29s linear 0s infinite normal forwards;
+    -moz-animation: span12 29s linear 0s infinite normal forwards;
+    -webkit-animation: span12 29s linear 0s infinite normal forwards;
+    animation: span12 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(3) {
+    -o-animation: span13 29s linear 0s infinite normal forwards;
+    -moz-animation: span13 29s linear 0s infinite normal forwards;
+    -webkit-animation: span13 29s linear 0s infinite normal forwards;
+    animation: span13 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(4) {
+    -o-animation: span14 29s linear 0s infinite normal forwards;
+    -moz-animation: span14 29s linear 0s infinite normal forwards;
+    -webkit-animation: span14 29s linear 0s infinite normal forwards;
+    animation: span14 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(5) {
+    -o-animation: span15 29s linear 0s infinite normal forwards;
+    -moz-animation: span15 29s linear 0s infinite normal forwards;
+    -webkit-animation: span15 29s linear 0s infinite normal forwards;
+    animation: span15 29s linear 0s infinite normal forwards;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  html.no-js section.services div article:first-child {
+    -o-animation: services_max 28s ease-in 1s infinite normal forwards;
+    -moz-animation: services_max 28s ease-in 1s infinite normal forwards;
+    -webkit-animation: services_max 28s ease-in 1s infinite normal forwards;
+    animation: services_max 28s ease-in 1s infinite normal forwards;
+  }
+  html.no-js #control span:first-child {
+    -o-animation: span21 29s linear 0s infinite normal forwards;
+    -moz-animation: span21 29s linear 0s infinite normal forwards;
+    -webkit-animation: span21 29s linear 0s infinite normal forwards;
+    animation: span21 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(2) {
+    -o-animation: span22 29s linear 0s infinite normal forwards;
+    -moz-animation: span22 29s linear 0s infinite normal forwards;
+    -webkit-animation: span22 29s linear 0s infinite normal forwards;
+    animation: span22 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(3) {
+    -o-animation: span23 29s linear 0s infinite normal forwards;
+    -moz-animation: span23 29s linear 0s infinite normal forwards;
+    -webkit-animation: span23 29s linear 0s infinite normal forwards;
+    animation: span23 29s linear 0s infinite normal forwards;
+  }
+  html.no-js #control span:nth-child(4) {
+    -o-animation: span24 29s linear 0s infinite normal forwards;
+    -moz-animation: span24 29s linear 0s infinite normal forwards;
+    -webkit-animation: span24 29s linear 0s infinite normal forwards;
+    animation: span24 29s linear 0s infinite normal forwards;
+  }
+}
 #about nav.eco {
   padding: 0.7em 3em;
 }
