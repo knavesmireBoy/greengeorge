@@ -100,12 +100,18 @@ function slider(current) {
     gang = meta.toArray(images),
     mapped = gang.map(curry3(invk)("src")("getAttribute")),
     n = mapped.length,
-    setsrc = mittel("setAttribute", "src");
+    setsrc = mittel("setAttribute", "src"),
+    move = curry4(subMethod)("mv")("add")("classList"),
+    unmove = curry4(subMethod)("mv")("remove")("classList"),
+    moved = curry4(subMethod)("mvd")("add")("classList"),
+    unmoved = curry44(subMethod)("mvd")("remove")("classList"),
+    after = ptL(utils.insertAfter),
+    before = prevoker("insertBefore");
 
   var i = mapped.findIndex((src) => src === current) + 1,
     swap = false;
 
-  return function foo (e) {
+  return function shuffle(e) {
     let img;
     if (e.target.nodeName !== "P") {
       return;
@@ -120,13 +126,29 @@ function slider(current) {
       next = nextfig.firstElementChild,
       current = currentfig.firstElementChild,
       rev = document.getElementsByClassName("rev")[0],
+      doBefore = ptL(before, main),
+      swapper = () => {
+        if (document.getElementsByClassName("rev")[0]) {
+          if (swap) {
+            swap = false;
+          } else {
+            after(nextfig, main.firstElementChild);
+            after(currentfig, main.lastElementChild);
+          }
+        } else {
+          doBefore(currentfig, main.firstElementChild);
+          doBefore(nextfig, main.lastElementChild);
+        }
+        unmove(main);
+        moved(main);
+      },
       j;
     main.classList.remove("lscp");
-    if (el.innerHTML === "&gt;" /* || img*/) {
+    if (el.innerHTML === "&gt;"  || img) {
       if (rev) {
         main.parentNode.classList.remove("rev");
+        //swap = true;
       }
-
       if (mapped[i + 1]) {
         setsrc(current, mapped[i]);
         setsrc(next, mapped[i++]);
@@ -142,12 +164,8 @@ function slider(current) {
       }
 
       if (mapped[i - 1]) {
-        if (swap) {
-        } else {
-          setsrc(next, mapped[i]);
-        }
-        
         if (!swap) {
+          setsrc(next, mapped[i]);
           i--;
           j = mapped[i - 1] ? i - 1 : n - 1;
           setsrc(next, mapped[j]);
@@ -158,48 +176,20 @@ function slider(current) {
         setsrc(next, mapped[i - 1]);
       }
     }
-
-    setTimeout(function () {
-      if (document.getElementsByClassName("rev")[0]) {
-        if (swap) {
-          swap = false;
-        } else {
-          utils.insertAfter(nextfig, main.firstElementChild);
-          utils.insertAfter(currentfig, main.lastElementChild);
-        }
-      } else {
-        main.insertBefore(currentfig, main.firstElementChild);
-        main.insertBefore(nextfig, main.lastElementChild);
-      }
-      if(!swap){
-        main.classList.remove("mv");
-        main.classList.add("mvd");
-      }
-    
-      
-    }, 200);
-
-    setTimeout(function () {
-      if(!swap){
-        main.classList.remove("mvd");
-      }
-      
-    }, 220);
-
-    j = i % n || n;
-
-    meta.$("caption").innerHTML = baseName(mapped[i]);
-    meta.$("count").innerHTML = `${j}/${n}`;
-
     if (currentfig.offsetHeight < currentfig.offsetWidth) {
       main.classList.add("lscp");
     }
-    if(!swap) {
-      main.classList.add("mv");
-    }
-    else {
+
+    if (!swap) {
+      setTimeout(swapper, 200);
+      setTimeout(unmoved(main), 220);
+      j = i % n || n;
+      meta.$("caption").innerHTML = baseName(mapped[i]);
+      meta.$("count").innerHTML = `${j}/${n}`;
+      move(main);
+    } else {
       swap = false;
-      foo(e);
+      shuffle(e);
     }
   };
 }
@@ -243,13 +233,15 @@ const meta = greenGeorge.meta,
   },
   invk = (o, m, v) => o[m](v),
   prevoke = (m) => (o, v) => o[m](v),
+  prevoker = (m) => (o, k, v) => o[m](k, v),
   mittel = (m, k) => (o, v) => o[m](k, v),
   invok = (o, m, k, v) => o[m](k, v),
   subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
   curry2 = meta.curryRight(2),
+  curry22 = meta.curryRight(2, true),
   curry3 = meta.curryRight(3),
-  curry22 = (f) => (a) => (b) => () => f(b, a),
+  curry222 = (f) => (a) => (b) => () => f(b, a),
   curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
   gt = (a, b) => a > b,
   gtThan = curry2(gt),
@@ -377,7 +369,7 @@ i = j;
 
 document.addEventListener(
   "scroll",
-  curry22(throttle)(22)(scroller(el, els, i, activate, "scroll"))
+  curry222(throttle)(22)(scroller(el, els, i, activate, "scroll"))
 );
 
 function builder(e) {
