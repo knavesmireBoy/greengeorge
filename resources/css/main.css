@@ -917,11 +917,12 @@ body > div > header h1 {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
 }
-body > div > header > div {
+body > div > header > a {
   width: 120px;
   height: 126.7px;
+  display: block;
 }
-body > div > header > div svg path {
+body > div > header > a svg path {
   fill: hsl(136deg, 51%, 20%) !important;
 }
 body > div > header input {
@@ -1172,9 +1173,10 @@ section.services + div span {
 }
 
 @media only screen and (min-width: 769px) {
-  body > div > header > div {
+  body > div > header > a {
     width: 158px;
     height: 167px;
+    display: block;
   }
   main .eco {
     padding: 1em;

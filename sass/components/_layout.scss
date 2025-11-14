@@ -18,9 +18,10 @@ body > div {
       color: white;
       @include flex(1, 1, 100%);
     }
-    > div {
+    > a {
       width: 120px;
       height: 126.7px;
+      display: block;
       svg path {
         fill: hsl(136, 51%, 20%) !important;
       }
@@ -236,9 +237,10 @@ section.services {
 }
 
 @media only screen and (min-width: 769px) {
-  body > div > header > div {
+  body > div > header > a {
     width: 158px;
     height: 167px;
+    display: block;
   }
 
   main {
