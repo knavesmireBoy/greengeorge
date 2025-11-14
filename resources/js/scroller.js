@@ -137,19 +137,16 @@ function slider(current) {
     } else {
       if (!rev) {
         main.parentNode.classList.add("rev");
-        // main.appendChild(currentfig);
-        // utils.insertAfter(nextfig, e.target);
         main.appendChild(nextfig);
         swap = true;
       }
 
       if (mapped[i - 1]) {
         if (swap) {
-         // setsrc(current, mapped[i - 1]);
-         // setsrc(next, mapped[i - 1]);
         } else {
           setsrc(next, mapped[i]);
         }
+        
         if (!swap) {
           i--;
           j = mapped[i - 1] ? i - 1 : n - 1;
@@ -161,7 +158,6 @@ function slider(current) {
         setsrc(next, mapped[i - 1]);
       }
     }
-
 
     setTimeout(function () {
       if (document.getElementsByClassName("rev")[0]) {
@@ -175,10 +171,8 @@ function slider(current) {
         main.insertBefore(currentfig, main.firstElementChild);
         main.insertBefore(nextfig, main.lastElementChild);
       }
-      if(!swap){
-        main.classList.remove("mv");
-        main.classList.add("mvd");
-      }
+      main.classList.remove("mv");
+      main.classList.add("mvd");
       
     }, 200);
 
@@ -195,7 +189,6 @@ function slider(current) {
       main.classList.add("lscp");
     }
     if(!swap) main.classList.add("mv");
-
   };
 }
 
