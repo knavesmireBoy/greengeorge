@@ -20,7 +20,6 @@ if (!window.greenGeorge) {
       }
     }
   }
-  
 
   function paint(node, val) {
     node.style.backgroundColor = val;

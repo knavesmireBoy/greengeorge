@@ -236,10 +236,16 @@
         p {
           width: 2em;
           height: 2em;
-          &:last-child::after {
-            content: "x";
-            font-size: 2.6em;
-            line-height: 0.5;
+          cursor: pointer;
+          &:last-child {
+            &::after {
+              content: "x";
+              font-size: 2.6em;
+              line-height: 0.5;
+            }
+            &:hover {
+              color: rgb(176, 33, 20);
+            }
           }
         }
         p#mag {
@@ -341,7 +347,7 @@
       max-width: 26em;
     }
   } //lightbox
-}//gallery
+} //gallery
 
 .js #gal a {
   @include prefix(transform, scale(75%), webkit moz ms o);

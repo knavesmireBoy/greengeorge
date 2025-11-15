@@ -1,103 +1,5 @@
 html {
   #services main > {
-    section:first-of-type {
-      padding: 1rem;
-      line-height: 1.6;
-      background-color: darken($main, 4%);
-      aside {
-        @include flexy();
-        overflow-x: hidden;
-        figure {
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          @include flex(0, 0, 100%);
-          //@include flexy();
-          height: 10.5em;
-          &:first-child {
-            background-image: url("../images/IMG_1477.jpg");
-          }
-          &:nth-child(2) {
-            background-image: url("../images/IMG_0556.jpg");
-          }
-          &:nth-child(3) {
-            background-image: url("../images/IMG_1478.jpg");
-          }
-          &:nth-child(4) {
-            background-image: url("../images/IMG_0229.jpg");
-          }
-          &:nth-child(5) {
-            background-image: url("../images/IMG_1531.jpg");
-            background-position: center 55%;
-          }
-          &:nth-child(6) {
-            background-image: url("../images/IMG_1530.jpg");
-          }
-          &:nth-child(7) {
-            background-image: url("../images/IMG_1485.jpg");
-            background-position: center 60%;
-          }
-          &:nth-child(8) {
-            background-image: url("../images/IMG_1478.jpg");
-          }
-          &:nth-child(9) {
-            background-image: url("../images/IMG_1442.jpg");
-            background-position: center 70%;
-          }
-          &:nth-child(10) {
-            background-image: url("../images/IMG_1395.jpg");
-            background-position: center 80%;
-          }
-          &:nth-child(11) {
-            background-image: url("../images/IMG_0558.jpg");
-          }
-          &:nth-child(12) {
-            background-image: url("../images/IMG_0388.jpg");
-          }
-          &:nth-child(13) {
-            background-image: url("../images/IMG_0324.jpg");
-            background-position: center 55%;
-          }
-          &:nth-child(14) {
-            background-image: url("../images/IMG_0311.jpg");
-          }
-          &:nth-child(15) {
-            background-image: url("../images/20241114_094758.jpg");
-            background-position: center 60%;
-          }
-          &:nth-child(16) {
-            background-image: url("../images/20241104_131502.jpg");
-            background-position: center 65%;
-          }
-          &:nth-child(17) {
-            background-image: url("../images/10PLTMGGEh8.jpg");
-            background-position: center 60%;
-          }
-        }
-      }
-      article {
-        h1 {
-          font-size: 2.6em;
-          line-height: 1;
-        }
-        h4 {
-          font-size: 1.29em;
-          margin: 0.5em 0;
-        }
-      }
-    }
-
-    section:first-child {
-      aside {
-        figure {
-          @include prefix(
-            animation,
-            main 90s ease-in-out 500ms infinite reverse backwards,
-            o moz webkit
-          );
-        }
-      }
-    }
     section.services {
       > div {
         article {
@@ -148,29 +50,6 @@ html {
   #control {
     background-color: darken($main, 4%);
   }
-  #player {
-    aside {
-      figure {
-        @include prefix(
-          animation,
-          main 90s ease-in-out 500ms infinite reverse backwards,
-          o moz webkit
-        );
-      }
-    }
-
-    &.pause {
-      aside {
-        figure {
-          filter: brightness(50%);
-          @include prefix(animation, none, o moz webkit);
-        }
-        &:first-child {
-          margin-left: -100%;
-        }
-      }
-    }
-  }
 
   &.no-js {
     //background-color: khaki;
@@ -183,28 +62,9 @@ html {
     }
   }
 
-  &.js #home {
-    #player {
-      aside {
-        figure {
-          @include prefix(animation, none, o moz webkit);
-
-          &:first-child {
-            margin-left: -100%;
-            transition: margin 500ms ease-in-out 3.5s;
-          }
-        }
-        &.mv {
-          figure:first-child {
-            margin-left: 0%;
-          }
-        }
-        &.pause {
-          filter: brightness(0.4);
-        }
-      }
-    }
-    section.services article {
+  &.js body#services > main {
+    background-color: khaki;
+    section.services div:first-of-type article {
       &.a > aside {
         background-image: url("../assets/lawn.jpeg");
         background-position: center top;
@@ -235,9 +95,8 @@ html {
 
 @media only screen and (max-width: 768px) {
   html {
-    &.no-js #home {
+    &.no-js #services {
       #control {
-        
         span {
           &:first-child {
             @include prefix(
@@ -288,39 +147,6 @@ html {
 }
 
 @media only screen and (min-width: 769px) {
-  html #home main > {
-    section:first-of-type {
-      padding: 3rem 1.2rem;
-      column-gap: 2rem;
-      display: grid;
-      grid-template-columns: (62% 1fr);
-      aside {
-        order: 2;
-        grid-column: 2/3;
-        figure {
-          min-height: 100%;
-          width: 100%;
-        }
-      }
-      article {
-        margin: 0;
-        grid-column: 1/2;
-        @include flexy();
-        flex-direction: column;
-        @include justify();
-        > * {
-          @include flex(0, 0, auto);
-          @include justify(start);
-        }
-        button {
-          align-self: start;
-          margin: 1.5em 0 0;
-        }
-      }
-    }
-  }
-}
-@media only screen and (min-width: 769px) {
   html {
     &.no-js {
       section {
@@ -337,7 +163,7 @@ html {
         }
       }
     }
-    #home main > section:first-child {
+    #services main > section:first-child {
       font-size: 1.005rem;
 
       article {
@@ -349,27 +175,6 @@ html {
         }
       }
     } //h
-  }
-}
-
-@media only screen and (min-width: 820px) {
-  html {
-    #home main > {
-      section:first-child {
-        @include flexy();
-        article {
-          @include justify(center);
-          @include flex(7, 1, 1em);
-        }
-
-        aside {
-          @include flex(4, 1, 1em);
-          figure {
-            height: calc(525px + 155 * ((100vw - 820px) / (1280 - 820)));
-          }
-        }
-      }
-    }
   }
 }
 
