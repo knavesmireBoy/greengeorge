@@ -136,8 +136,7 @@ main > footer {
     div {
       width: 3em;
       height: 2.2em;
-      background-color: orange;
-      background-repeat: no;
+      background-repeat: no-repeat;
       background-size: cover;
 
       &:first-child {
@@ -161,17 +160,20 @@ main section.contact {
   h4 {
     @include flex(1, 1, 100%);
   }
-  p:before {
-    width: 4vw;
-    height: 4vw;
-    width: 1.5em;
-    height: 1.5em;
-    overflow: hidden;
-    display: block;
-    margin-right: 5px;
-    background-color: white;
-    border-radius: 50%;
-    background-color: $main;
+  p {
+    line-height: 1.8;
+    &:before {
+      width: 4vw;
+      height: 4vw;
+      width: 1.5em;
+      height: 1.5em;
+      overflow: hidden;
+      display: block;
+      margin-right: 5px;
+      background-color: white;
+      border-radius: 50%;
+      background-color: $main;
+    }
   }
 
   p:nth-of-type(1) {

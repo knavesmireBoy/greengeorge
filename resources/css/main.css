@@ -551,41 +551,24 @@ Test if `$value` is a valid direction
     transform: translateX(-1600%);
   }
 }
-@keyframes testimonials {
-  30% {
-    transform: translateX(0%);
-  }
-  33% {
-    transform: translateX(-100%);
-  }
-  63% {
-    transform: translateX(-100%);
-  }
-  66% {
-    transform: translateX(-200%);
-  }
-  97% {
-    transform: translateX(-200%);
-  }
-  100% {
-    transform: translateX(-300%);
-  }
-}
 @keyframes testi {
-  30% {
+  22% {
     margin-left: 0%;
   }
-  33% {
+  25% {
     margin-left: -100%;
   }
-  63% {
+  47% {
     margin-left: -100%;
   }
-  66% {
+  50% {
     margin-left: -200%;
   }
-  97% {
+  72% {
     margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
   }
   100% {
     margin-left: -300%;
@@ -728,8 +711,7 @@ main > footer {
 main > footer section.payment div {
   width: 3em;
   height: 2.2em;
-  background-color: orange;
-  background-repeat: no;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 main > footer section.payment div:first-child {
@@ -752,6 +734,9 @@ main section.contact h4 {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
+}
+main section.contact p {
+  line-height: 1.8;
 }
 main section.contact p:before {
   width: 4vw;
@@ -1030,15 +1015,25 @@ main > footer .payment div:last-child {
   margin: 0;
 }
 
-body > div > main > footer {
+html body > div > main section > aside {
+  margin: 0 0 1.2em;
+}
+html body > div > main section > aside > a {
+  display: block;
+}
+html body > div > main section > aside > a img {
+  width: 100%;
+  display: block;
+}
+html body > div > main > footer {
   background-color: rgb(25, 78, 39);
   padding: 1.3em 1.3em 2.5em;
   color: white;
 }
-body > div > main > footer section.contact {
+html body > div > main > footer section.contact {
   padding: 0;
 }
-body > div > main section.contact {
+html body > div > main section.contact {
   padding: 1.3em 1.3em 2.5em;
   display: -webkit-box;
   display: -moz-box;
@@ -1047,7 +1042,7 @@ body > div > main section.contact {
   display: flex;
   flex-wrap: wrap;
 }
-body > div > main section.contact p {
+html body > div > main section.contact p {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1056,14 +1051,14 @@ body > div > main section.contact p {
   flex-wrap: nowrap;
   margin: 0 0 0.66em;
 }
-body > div > main + footer {
+html body > div > main + footer {
   background-color: black;
   padding: 5em;
   color: white;
   font-size: 0.5em;
   text-align: center;
 }
-body > div > main + footer ul {
+html body > div > main + footer ul {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1075,26 +1070,14 @@ body > div > main + footer ul {
   -webkit-justify-content: center;
   justify-content: center;
 }
-body > div > main + footer ul li {
+html body > div > main + footer ul li {
   margin: 0 0.4em;
 }
-
-section > aside {
-  margin: 0 0 1.2em;
-}
-section > aside > a {
-  display: block;
-}
-section > aside > a img {
-  width: 100%;
-  display: block;
-}
-
-.testimonials {
+html body > div > main section.testimonials {
   text-align: center;
   padding: 1em 3.7em 1em;
 }
-.testimonials div {
+html body > div > main section.testimonials div {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1104,7 +1087,7 @@ section > aside > a img {
   overflow-x: hidden;
   position: relative;
 }
-.testimonials div article {
+html body > div > main section.testimonials div article {
   -webkit-box: 0;
   -moz-box: 0;
   -webkit-flex: 0 0 100%;
@@ -1122,12 +1105,50 @@ section > aside > a img {
   -webkit-justify-content: center;
   justify-content: center;
 }
-.testimonials div article:first-child {
+html body > div > main section.testimonials div article:first-child {
   -o-animation: testi 40s linear 1s infinite normal forwards;
   -moz-animation: testi 40s linear 1s infinite normal forwards;
   -webkit-animation: testi 40s linear 1s infinite normal forwards;
   animation: testi 40s linear 1s infinite normal forwards;
 }
+html.js main section.testimonials {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+html.js main section.testimonials h2 {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+html.js main section.testimonials div {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 90%;
+  -ms-flex: 1 1 90%;
+  flex: 1 1 90%;
+}
+html.js main section.testimonials div article:first-child {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html.js main section.testimonials > p {
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 1em;
+  -ms-flex: 1 1 1em;
+  flex: 1 1 1em;
+  font-size: 2em;
+  margin: auto;
+}
+
 section.services > div {
   display: -webkit-box;
   display: -moz-box;
@@ -1641,29 +1662,32 @@ html.js #home #player aside.pause {
     height: calc(525px + 155 * (100vw - 820px) / 460);
   }
 }
-html #services main > section.services > div article aside {
+html #services main > section.services {
+  background-color: #143f1f;
+}
+html #services main > section.services article aside {
   background-position: center;
   background-size: cover;
 }
-html #services main > section.services > div article:nth-of-type(1) > aside {
+html #services main > section.services article:nth-of-type(1) > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: center top;
 }
-html #services main > section.services > div article:nth-of-type(2) > aside {
+html #services main > section.services article:nth-of-type(2) > aside {
   background-image: url("../images/IMG_1478.jpg");
 }
-html #services main > section.services > div article:nth-of-type(3) > aside {
+html #services main > section.services article:nth-of-type(3) > aside {
   background-image: url("../assets/weeding.jpeg");
   background-position: center top;
 }
-html #services main > section.services > div article:nth-of-type(4) > aside {
+html #services main > section.services article:nth-of-type(4) > aside {
   background-image: url("../assets/pruning.jpeg");
 }
-html #services main > section.services > div article:nth-of-type(5) > aside {
+html #services main > section.services article:nth-of-type(5) > aside {
   background-image: url("../assets/hedge.jpeg");
   background-position: center 80%;
 }
-html #services main > section.services > div article:nth-of-type(6) > aside {
+html #services main > section.services article:nth-of-type(6) > aside {
   background-image: url("../assets/tidy.jpeg");
 }
 html #services main > .mission {
@@ -1684,30 +1708,30 @@ html.no-js section.services article:first-child {
   -webkit-animation: services 28s ease-in 1s infinite normal forwards;
   animation: services 28s ease-in 1s infinite normal forwards;
 }
-html.js body#services > main {
+html.js #services > main {
   background-color: khaki;
 }
-html.js body#services > main section.services div:first-of-type article.a > aside {
+html.js #services > main section.services div article.a > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: center top;
 }
-html.js body#services > main section.services div:first-of-type article.b > aside {
+html.js #services > main section.services div article.b > aside {
   background-image: url("../images/IMG_1478.jpg");
   background-position: center;
 }
-html.js body#services > main section.services div:first-of-type article.c > aside {
+html.js #services > main section.services div article.c > aside {
   background-image: url("../assets/weeding.jpeg");
   background-position: center top;
 }
-html.js body#services > main section.services div:first-of-type article.d > aside {
+html.js #services > main section.services div article.d > aside {
   background-image: url("../assets/pruning.jpeg");
   background-position: center;
 }
-html.js body#services > main section.services div:first-of-type article.e > aside {
+html.js #services > main section.services div article.e > aside {
   background-image: url("../assets/hedge.jpeg");
   background-position: center 80%;
 }
-html.js body#services > main section.services div:first-of-type article.f > aside {
+html.js #services > main section.services div article.f > aside {
   background-image: url("../assets/tidy.jpeg");
   background-position: center;
 }
@@ -1900,10 +1924,10 @@ html.js body#services > main section.services div:first-of-type article.f > asid
   font-size: 4em;
   line-height: 1;
 }
-#about main > section:first-of-type article p {
+#about main > section:first-of-type article > p {
   font-size: 1em;
 }
-#about main > section:first-of-type article p:first-of-type {
+#about main > section:first-of-type article > p:first-of-type {
   color: rgb(25, 78, 39);
   font-size: 1.33em;
   margin: 0 0 1em;
@@ -1918,7 +1942,7 @@ html.js body#services > main section.services div:first-of-type article.f > asid
   font-size: 3.3em;
   margin: 0;
 }
-#about .testimonials p {
+#about .testimonials article p {
   font-size: 1em;
 }
 
@@ -1970,7 +1994,10 @@ html.js body#services > main section.services div:first-of-type article.f > asid
 @media only screen and (min-width: 1025px) {
   #about main .testimonials {
     background-size: 50%;
-    padding: 1em 8em;
+    padding: 1em 2em;
+  }
+  #about main .testimonials div article {
+    padding: 0 4em;
   }
 }
 #gallery main > section:first-of-type {

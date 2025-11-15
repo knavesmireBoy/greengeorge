@@ -1,37 +1,36 @@
 html {
   #services main > {
     section.services {
-      > div {
-        article {
-          aside {
-            background-position: center;
-            background-size: cover;
-          }
+      background-color: darken($main, 4%);
+      article {
+        aside {
+          background-position: center;
+          background-size: cover;
+        }
 
-          &:nth-of-type(1) {
-            > aside {
-              background-image: url("../assets/lawn.jpeg");
-              background-position: center top;
-            }
-          }
-
-          &:nth-of-type(2) > aside {
-            background-image: url("../images/IMG_1478.jpg");
-          }
-          &:nth-of-type(3) > aside {
-            background-image: url("../assets/weeding.jpeg");
+        &:nth-of-type(1) {
+          > aside {
+            background-image: url("../assets/lawn.jpeg");
             background-position: center top;
           }
-          &:nth-of-type(4) > aside {
-            background-image: url("../assets/pruning.jpeg");
-          }
-          &:nth-of-type(5) > aside {
-            background-image: url("../assets/hedge.jpeg");
-            background-position: center 80%;
-          }
-          &:nth-of-type(6) > aside {
-            background-image: url("../assets/tidy.jpeg");
-          }
+        }
+
+        &:nth-of-type(2) > aside {
+          background-image: url("../images/IMG_1478.jpg");
+        }
+        &:nth-of-type(3) > aside {
+          background-image: url("../assets/weeding.jpeg");
+          background-position: center top;
+        }
+        &:nth-of-type(4) > aside {
+          background-image: url("../assets/pruning.jpeg");
+        }
+        &:nth-of-type(5) > aside {
+          background-image: url("../assets/hedge.jpeg");
+          background-position: center 80%;
+        }
+        &:nth-of-type(6) > aside {
+          background-image: url("../assets/tidy.jpeg");
         }
       }
     }
@@ -62,9 +61,9 @@ html {
     }
   }
 
-  &.js body#services > main {
+  &.js #services > main {
     background-color: khaki;
-    section.services div:first-of-type article {
+    section.services div article {
       &.a > aside {
         background-image: url("../assets/lawn.jpeg");
         background-position: center top;
