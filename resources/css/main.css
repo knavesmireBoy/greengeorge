@@ -1945,10 +1945,6 @@ html #about .testimonials h2 {
 html #about .testimonials article p {
   font-size: 1em;
 }
-html.js .testimonials > div.mv article:first-child {
-  background-color: chocolate;
-  margin-left: -100%;
-}
 html.js .testimonials > div article {
   margin-left: -100%;
   background-color: orange;

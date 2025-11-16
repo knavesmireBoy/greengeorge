@@ -66,9 +66,8 @@ html {
   }
   &.js .testimonials > div {
     &.mv {
-      article:first-child {
-        background-color: chocolate;
-        margin-left: -100%;
+      article:last-child {
+       // margin-left: 0;
             
       }
     }
@@ -81,7 +80,6 @@ html {
       margin-left: -100%;
       background-color: orange;
       transition: margin-left 500ms linear;
-      //transition: transform 2s linear 1s;
       &:last-child {
         margin-left: 0;
       }
