@@ -1015,6 +1015,19 @@ main > footer .payment div:last-child {
   margin: 0;
 }
 
+html {
+  /*
+    &.js .testimonials > div {
+    article {
+      margin-left: -100%;
+      transition: margin-left 500ms linear 222ms;
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+    */
+}
 html body > div > main section > aside {
   margin: 0 0 1.2em;
 }
@@ -1075,7 +1088,7 @@ html body > div > main + footer ul li {
 }
 html body > div > main section.testimonials {
   text-align: center;
-  padding: 1em 3.7em 1em;
+  padding: 2em;
 }
 html body > div > main section.testimonials div {
   display: -webkit-box;
@@ -1099,6 +1112,7 @@ html body > div > main section.testimonials div article {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
+  padding: 0 4em;
   flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -1133,11 +1147,18 @@ html.js main section.testimonials div {
   -ms-flex: 1 1 90%;
   flex: 1 1 90%;
 }
+html.js main section.testimonials div article {
+  margin-left: -100%;
+  transition: margin-left 500ms linear 222ms;
+}
 html.js main section.testimonials div article:first-child {
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
+}
+html.js main section.testimonials div article:last-child {
+  margin-left: 0;
 }
 html.js main section.testimonials > p {
   -webkit-box: 1;
@@ -1944,13 +1965,6 @@ html #about .testimonials h2 {
 }
 html #about .testimonials article p {
   font-size: 1em;
-}
-html.js .testimonials > div article {
-  margin-left: -100%;
-  transition: margin-left 500ms linear 222ms;
-}
-html.js .testimonials > div article:last-child {
-  margin-left: 0;
 }
 
 @media only screen and (min-width: 769px) {

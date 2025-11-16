@@ -1,17 +1,16 @@
 function insert(hook, node) {
-  return utils.insertAfter(node, hook);
+  return uutils.insertAfter(node, hook);
 }
-
-const meta = greenGeorge.meta,
-  utils = greenGeorge.utils,
-  always = meta.always,
-  negator = meta.negator,
-  identity = meta.identity,
-  ptL = meta.doPartial(),
-  pApply = meta.pApply,
-  defer = meta.doPartial(true),
-  compose = meta.compose,
+//note mmeta etc.. avoid binding clashes from previous script
+const mmeta = greenGeorge.meta,
+  uutils = greenGeorge.utils,
+  log = console.log,
+  identity = mmeta.identity,
+  ptL = mmeta.doPartial(),
+  defer = mmeta.doPartial(true),
+  compose = mmeta.compose,
   compduo = (f1, f2) => compose(f2, f1),
+  composer = (f1, f2) => compose(f2, f1)(),
   getprop = (o, p) => o[p],
   pass = (f) => (arg) => {
     f(arg);
@@ -21,47 +20,21 @@ const meta = greenGeorge.meta,
     fn(arg);
     return arg;
   },
-  tagTester = (name) => {
-    const tag = "[object " + name + "]";
-    return function (obj) {
-      return toString.call(obj) === tag;
-    };
-  },
-  isFunction = tagTester("Function"),
-  getRes = (o) => (isFunction(o) ? o() : o),
-  doWhen = (pred, action) => {
-    if (getRes(pred)) {
-      return action(pred);
-    }
-  },
-  log = console.log,
   invoke = (f) => f(),
-  invoker = (f, a) => f(a),
-  safeInvoke = (f) => {
-    isFunction(f) ? f() : null;
-  },
   invk = (o, m, v) => o[m](v),
-  prevoke = (m) => (o, v) => o[m](v),
-  prevoker = (m) => (o, k, v) => o[m](k, v),
-  mittel = (m, k) => (o, v) => o[m](k, v),
+  pprevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
-  subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
-  curry2 = meta.curryRight(2),
-  curry22 = meta.curryRight(2, true),
-  curry3 = meta.curryRight(3),
-  curry222 = (f) => (a) => (b) => () => f(b, a),
-  curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
-  append = ptL(prevoke("appendChild")),
-  make = utils.doMakeDefer;
+  ccurry2 = mmeta.curryRight(2),
+  append = ptL(pprevoke("appendChild")),
+  make = uutils.doMakeDefer;
 
-function foo(e) {
+function play(e) {
   const parent = e.target.parentNode,
-    container = meta.byTagScope(parent)("div"),
-    article = meta.byTagScope(container)("article"),
-    articles = meta.byTagScope(container)("article", true),
+    container = mmeta.byTagScope(parent)("div"),
+    articles = mmeta.byTagScope(container)("article", true),
     i = articles.length - 1,
-    appender = defer(invk, container, "appendChild", article),
+    appender = defer(invk, container, "appendChild", articles[0]),
     inserter = defer(
       invok,
       container,
@@ -69,33 +42,30 @@ function foo(e) {
       articles[i],
       articles[0]
     );
-    let cb = meta.identity;
-
+    let cb = identity;
 
   if (e.target.nodeName === "P") {
     cb = e.target.nextElementSibling ? appender : inserter;
   }
-
   setTimeout(cb);
 }
 
 function builder() {
-  const getParent = curry2(getprop)("parentNode"),
+  const getParent = ccurry2(getprop)("parentNode"),
     climb = compose(getParent, invoke),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),
-    listen = curry4(invok)(foo)("click")("addEventListener"),
+    listen = curry4(invok)(play)("click")("addEventListener"),
     textFooter = compose(
       listen,
       getParent,
       climb,
       ptL(compduo, forward),
       append,
-      invoke,
-      ptL(compduo, make("p")),
+      ptL(composer, make("p")),
       append,
       getParent,
-      ptL(insert, meta.$Q(".testimonials h2")),
+      ptL(insert, mmeta.$Q(".testimonials h2")),
       climb,
       ptL(compduo, back),
       append,

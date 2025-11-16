@@ -178,7 +178,7 @@ html {
     }
     section.testimonials {
       text-align: center;
-      padding: 1em 3.7em 1em;
+      padding: 2em;
 
       div {
         @include flexy();
@@ -187,6 +187,7 @@ html {
         article {
           @include flex(0, 0, 100%);
           @include flexy();
+          padding: 0 4em;
           flex-direction: column;
           @include justify(center);
           &:first-child {
@@ -201,6 +202,18 @@ html {
     }
   } //main
 
+  /*
+    &.js .testimonials > div {
+    article {
+      margin-left: -100%;
+      transition: margin-left 500ms linear 222ms;
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+    */
+
   &.js {
     main section.testimonials {
       @include flexy(wrap);
@@ -211,8 +224,13 @@ html {
         @include flex(1, 1, 90%);
 
         article {
+          margin-left: -100%;
+          transition: margin-left 500ms linear 222ms;
           &:first-child {
             @include prefix(animation, none, o moz webkit);
+          }
+          &:last-child {
+            margin-left: 0;
           }
         }
       }
