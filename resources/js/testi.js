@@ -24,8 +24,10 @@ const mmeta = greenGeorge.meta,
   invk = (o, m, v) => o[m](v),
   pprevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
+  subMethod = (o, p, m, v) => o[p][m](v),
   curry4 = (f) => (a) => (b) => (c) => (d) => f(d, c, b, a),
   ccurry2 = mmeta.curryRight(2),
+
   append = ptL(pprevoke("appendChild")),
   make = uutils.doMakeDefer;
 
@@ -34,6 +36,7 @@ function play(e) {
     container = mmeta.byTagScope(parent)("div"),
     articles = mmeta.byTagScope(container)("article", true),
     i = articles.length - 1,
+    activate = curry4(subMethod)("animed")("add")("classList"),
     appender = defer(invk, container, "appendChild", articles[0]),
     inserter = defer(
       invok,
@@ -45,6 +48,7 @@ function play(e) {
     let cb = identity;
 
   if (e.target.nodeName === "P") {
+    activate(container);
     cb = e.target.nextElementSibling ? appender : inserter;
   }
   setTimeout(cb);

@@ -51,7 +51,6 @@ html {
   }
 
   &.no-js {
-    //background-color: khaki;
     section.services article:first-child {
       @include prefix(
         animation,
@@ -62,7 +61,6 @@ html {
   }
 
   &.js #services > main {
-    background-color: khaki;
     section.services div article {
       &.a > aside {
         background-image: url("../assets/lawn.jpeg");

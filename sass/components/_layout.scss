@@ -193,7 +193,7 @@ html {
           &:first-child {
             @include prefix(
               animation,
-              testi 40s linear 1s infinite normal forwards,
+              testi 30s linear 100ms infinite normal forwards,
               o moz webkit
             );
           }
@@ -201,18 +201,6 @@ html {
       }
     }
   } //main
-
-  /*
-    &.js .testimonials > div {
-    article {
-      margin-left: -100%;
-      transition: margin-left 500ms linear 222ms;
-      &:last-child {
-        margin-left: 0;
-      }
-    }
-  }
-    */
 
   &.js {
     main section.testimonials {
@@ -222,15 +210,17 @@ html {
       }
       div {
         @include flex(1, 1, 90%);
-
-        article {
-          margin-left: -100%;
-          transition: margin-left 500ms linear 222ms;
-          &:first-child {
-            @include prefix(animation, none, o moz webkit);
-          }
-          &:last-child {
-            margin-left: 0;
+        //allow animation until user has clicked an arrow then shut it down (animed)
+        &.animed {
+          article {
+            margin-left: -100%;
+            transition: margin-left 500ms linear 222ms;
+            &:first-child {
+              @include prefix(animation, none, o moz webkit);
+            }
+            &:last-child {
+              margin-left: 0;
+            }
           }
         }
       }
@@ -239,6 +229,10 @@ html {
         @include flex(1, 1, 1em);
         font-size: 2em;
         margin: auto;
+        cursor: pointer;
+        &:hover {
+          opacity: .5;
+        }
       }
     }
   }

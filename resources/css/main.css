@@ -1015,19 +1015,6 @@ main > footer .payment div:last-child {
   margin: 0;
 }
 
-html {
-  /*
-    &.js .testimonials > div {
-    article {
-      margin-left: -100%;
-      transition: margin-left 500ms linear 222ms;
-      &:last-child {
-        margin-left: 0;
-      }
-    }
-  }
-    */
-}
 html body > div > main section > aside {
   margin: 0 0 1.2em;
 }
@@ -1120,10 +1107,10 @@ html body > div > main section.testimonials div article {
   justify-content: center;
 }
 html body > div > main section.testimonials div article:first-child {
-  -o-animation: testi 40s linear 1s infinite normal forwards;
-  -moz-animation: testi 40s linear 1s infinite normal forwards;
-  -webkit-animation: testi 40s linear 1s infinite normal forwards;
-  animation: testi 40s linear 1s infinite normal forwards;
+  -o-animation: testi 30s linear 100ms infinite normal forwards;
+  -moz-animation: testi 30s linear 100ms infinite normal forwards;
+  -webkit-animation: testi 30s linear 100ms infinite normal forwards;
+  animation: testi 30s linear 100ms infinite normal forwards;
 }
 html.js main section.testimonials {
   display: -webkit-box;
@@ -1147,17 +1134,17 @@ html.js main section.testimonials div {
   -ms-flex: 1 1 90%;
   flex: 1 1 90%;
 }
-html.js main section.testimonials div article {
+html.js main section.testimonials div.animed article {
   margin-left: -100%;
   transition: margin-left 500ms linear 222ms;
 }
-html.js main section.testimonials div article:first-child {
+html.js main section.testimonials div.animed article:first-child {
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
 }
-html.js main section.testimonials div article:last-child {
+html.js main section.testimonials div.animed article:last-child {
   margin-left: 0;
 }
 html.js main section.testimonials > p {
@@ -1168,6 +1155,10 @@ html.js main section.testimonials > p {
   flex: 1 1 1em;
   font-size: 2em;
   margin: auto;
+  cursor: pointer;
+}
+html.js main section.testimonials > p:hover {
+  opacity: 0.5;
 }
 
 section.services > div {
@@ -1728,9 +1719,6 @@ html.no-js section.services article:first-child {
   -moz-animation: services 28s ease-in 1s infinite normal forwards;
   -webkit-animation: services 28s ease-in 1s infinite normal forwards;
   animation: services 28s ease-in 1s infinite normal forwards;
-}
-html.js #services > main {
-  background-color: khaki;
 }
 html.js #services > main section.services div article.a > aside {
   background-image: url("../assets/lawn.jpeg");
