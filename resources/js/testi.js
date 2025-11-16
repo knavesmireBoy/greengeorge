@@ -51,7 +51,9 @@ const meta = greenGeorge.meta,
   curry22 = meta.curryRight(2, true),
   curry3 = meta.curryRight(3),
   curry222 = (f) => (a) => (b) => () => f(b, a),
-  curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a);
+  curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a),
+  append = ptL(prevoke("appendChild")),
+  make = utils.doMakeDefer;
 
 function foo(e) {
   const parent = e.target.parentNode,
@@ -59,31 +61,26 @@ function foo(e) {
     article = meta.byTagScope(container)("article"),
     articles = meta.byTagScope(container)("article", true),
     i = articles.length - 1,
-    move = curry44(subMethod)("mv")("add")("classList")(container),
-    unmove = curry44(subMethod)("mv")("remove")("classList")(container),
-    moved = curry44(subMethod)("mvd")("add")("classList")(container),
-    unmoved = curry44(subMethod)("mvd")("remove")("classList")(container)
+    appender = defer(invk, container, "appendChild", article),
+    inserter = defer(
+      invok,
+      container,
+      "insertBefore",
+      articles[i],
+      articles[0]
+    );
+    let cb = meta.identity;
+
 
   if (parent.nodeName === "SECTION") {
-    
+    cb = e.target.nextElementSibling ? appender : inserter;
   }
-  //setTimeout(move, 1111);
-  //setTimeout(unmove, 3100);
-  setTimeout(() => {
-    //container.appendChild(article);
 
-
-   // unmove();
-   container.insertBefore(articles[i], articles[0]);
-  }, 3200);
-  //setTimeout(moved, 3100);
-  //setTimeout(unmoved, 400);
+  setTimeout(cb);
 }
 
 function builder() {
-  const append = ptL(prevoke("appendChild")),
-    make = utils.doMakeDefer,
-    getParent = curry2(getprop)("parentNode"),
+  const getParent = curry2(getprop)("parentNode"),
     climb = compose(getParent, invoke),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),

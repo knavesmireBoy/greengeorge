@@ -1952,28 +1952,29 @@ html.js .testimonials > div article {
 html.js .testimonials > div article:last-child {
   margin-left: 0;
 }
+
 @media only screen and (min-width: 769px) {
-  #about main > section:first-of-type {
+  html #about main > section:first-of-type {
     padding: 3.5rem 2rem;
     column-gap: 2em;
   }
-  #about main > section:first-of-type article h2 {
+  html #about main > section:first-of-type article h2 {
     font-size: calc(66px + 6 * (100vw - 769px) / 511);
   }
-  #about main > section:first-of-type aside {
+  html #about main > section:first-of-type aside {
     position: relative;
     left: 0;
     top: 0;
     max-height: 100%;
     margin: 0;
   }
-  #about main .eco {
+  html #about main .eco {
     padding: 0.5em 1em;
     padding-left: calc(16px + 140 * (100vw - 769px) / 520);
     padding-right: calc(16px + 140 * (100vw - 769px) / 520);
     font-size: 1em;
   }
-  #about main .eco ul {
+  html #about main .eco ul {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -1986,10 +1987,10 @@ html.js .testimonials > div article:last-child {
     justify-content: space-between;
     align-items: center;
   }
-  #about main .eco ul li {
+  html #about main .eco ul li {
     padding: 0.15em 0 0.15em 2.5em;
   }
-  #about main .eco ul li:nth-child(2) {
+  html #about main .eco ul li:nth-child(2) {
     -webkit-box: 1;
     -moz-box: 1;
     -webkit-flex: 1 1 1em;
