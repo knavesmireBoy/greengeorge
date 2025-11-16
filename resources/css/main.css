@@ -1947,13 +1947,11 @@ html #about .testimonials article p {
 }
 html.js .testimonials > div article {
   margin-left: -100%;
-  background-color: orange;
   transition: margin-left 500ms linear;
 }
 html.js .testimonials > div article:last-child {
   margin-left: 0;
 }
-
 @media only screen and (min-width: 769px) {
   #about main > section:first-of-type {
     padding: 3.5rem 2rem;

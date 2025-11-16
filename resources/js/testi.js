@@ -57,6 +57,8 @@ function foo(e) {
   const parent = e.target.parentNode,
     container = meta.byTagScope(parent)("div"),
     article = meta.byTagScope(container)("article"),
+    articles = meta.byTagScope(container)("article", true),
+    i = articles.length - 1,
     move = curry44(subMethod)("mv")("add")("classList")(container),
     unmove = curry44(subMethod)("mv")("remove")("classList")(container),
     moved = curry44(subMethod)("mvd")("add")("classList")(container),
@@ -65,14 +67,14 @@ function foo(e) {
   if (parent.nodeName === "SECTION") {
     
   }
-  setTimeout(move, 1111);
+  //setTimeout(move, 1111);
   //setTimeout(unmove, 3100);
   setTimeout(() => {
-
-    container.appendChild(article);
-    unmove();
+    //container.appendChild(article);
 
 
+   // unmove();
+   container.insertBefore(articles[i], articles[0]);
   }, 3200);
   //setTimeout(moved, 3100);
   //setTimeout(unmoved, 400);

@@ -68,21 +68,19 @@ html {
     &.mv {
       article:last-child {
        // margin-left: 0;
-            
       }
     }
     &.mvd {
       article {
-       // transform: translateX(-200%);
       }
     }
     article {
       margin-left: -100%;
-      background-color: orange;
       transition: margin-left 500ms linear;
       &:last-child {
         margin-left: 0;
       }
+      &:first-child {}
     }
   }
 }
