@@ -1,69 +1,93 @@
-#about {
-  nav.eco {
-    padding: .7em 3em;
-    ul {
-      @include flexy(wrap);
-      gap: .7em;
-      font-size: 1.25em;
-      li {
-        position: relative;
-        @include flex(0, 1, auto);
-        padding: 0 0 0 2em;
-        background-size: 12%;
-        background-position: left center;
-        &:nth-child(2) {
-          @include flex(1, 1, 100%);
-          padding: 1.5em 0 0 0;
-          background-size: contain;
-          background-position: center;
-        }
-        &:first-child {
-          margin-left: auto;
+html {
+  #about {
+    nav.eco {
+      padding: 0.7em 3em;
+      ul {
+        @include flexy(wrap);
+        gap: 0.7em;
+        font-size: 1.25em;
+        li {
+          position: relative;
+          @include flex(0, 1, auto);
+          padding: 0 0 0 2em;
+          background-size: 12%;
+          background-position: left center;
+          &:nth-child(2) {
+            @include flex(1, 1, 100%);
+            padding: 1.5em 0 0 0;
+            background-size: contain;
+            background-position: center;
+          }
+          &:first-child {
+            margin-left: auto;
+          }
         }
       }
     }
+    main > section:first-of-type {
+      @include flexy();
+      font-size: 1.125rem;
+      padding: 3.25em 1.5em 2em;
+      aside {
+        @include flex(7, 1, 1em);
+        background: url("../images/IMG_0556.jpg") no-repeat center/cover;
+        @include hide;
+      }
+      article {
+        @include flex(5, 1, 1em);
+        h2 {
+          font-size: 4em;
+          line-height: 1;
+        }
+        > p {
+          font-size: 1em;
+          &:first-of-type {
+            color: $main;
+            font-size: 1.33em;
+            margin: 0 0 1em;
+          }
+        }
+        ul {
+          font-size: 1em;
+        }
+      }
+    }
+    .testimonials {
+      font-size: 1.125rem;
+
+      h2 {
+        font-size: 3.3em;
+        margin: 0;
+      }
+      article p {
+        font-size: 1em;
+      }
+    }
   }
-  main > section:first-of-type {
-    @include flexy();
-    font-size: 1.125rem;
-    padding: 3.25em 1.5em 2em;
-    aside {
-      @include flex(7, 1, 1em);
-      background: url("../images/IMG_0556.jpg") no-repeat center/cover;
-      @include hide;
+  &.js .testimonials > div {
+    &.mv {
+      article:first-child {
+        background-color: chocolate;
+        margin-left: -100%;
+            
+      }
+    }
+    &.mvd {
+      article {
+       // transform: translateX(-200%);
+      }
     }
     article {
-      @include flex(5, 1, 1em);
-      h2 {
-        font-size: 4em;
-        line-height: 1;
+      margin-left: -100%;
+      background-color: orange;
+      transition: margin-left 500ms linear;
+      //transition: transform 2s linear 1s;
+      &:last-child {
+        margin-left: 0;
       }
-      > p {
-        font-size: 1em;
-        &:first-of-type {
-          color: $main;
-          font-size: 1.33em;
-          margin: 0 0 1em;
-        }
-      }
-      ul {
-        font-size: 1em;
-      }
-    }
-  }
-  .testimonials {
-    font-size: 1.125rem;
-
-    h2 {
-      font-size: 3.3em;
-      margin: 0;
-    }
-    article p {
-      font-size: 1em;
     }
   }
 }
-
 @media only screen and (min-width: 769px) {
   #about main {
     > section:first-of-type {

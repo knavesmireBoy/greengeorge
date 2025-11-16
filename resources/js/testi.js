@@ -53,33 +53,56 @@ const meta = greenGeorge.meta,
   curry222 = (f) => (a) => (b) => () => f(b, a),
   curry44 = (f) => (a) => (b) => (c) => (d) => () => f(d, c, b, a);
 
+function foo(e) {
+  const parent = e.target.parentNode,
+    container = meta.byTagScope(parent)("div"),
+    article = meta.byTagScope(container)("article"),
+    move = curry44(subMethod)("mv")("add")("classList")(container),
+    unmove = curry44(subMethod)("mv")("remove")("classList")(container),
+    moved = curry44(subMethod)("mvd")("add")("classList")(container),
+    unmoved = curry44(subMethod)("mvd")("remove")("classList")(container)
+
+  if (parent.nodeName === "SECTION") {
+    
+  }
+  setTimeout(move, 1111);
+  //setTimeout(unmove, 3100);
+  setTimeout(() => {
+
+    container.appendChild(article);
+    unmove();
+
+
+  }, 3200);
+  //setTimeout(moved, 3100);
+  //setTimeout(unmoved, 400);
+}
+
 function builder() {
   const append = ptL(prevoke("appendChild")),
     make = utils.doMakeDefer,
-    whilst = curry2(meta.doWhen),
     getParent = curry2(getprop)("parentNode"),
-    getParent2 = compose(getParent, getParent),
-    getParent3 = compose(getParent, getParent2),
     climb = compose(getParent, invoke),
-    climber = compose(getParent, climb),
-    myMaker = (str, f = (a) => a) =>
-      compose(whilst(append), f, getRes, whilst(ptL(compduo, make(str)))),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),
-    paraForward = myMaker("p", settingId("forward")),
-    paraBack = myMaker("p", settingId("back")),
-    textForward = whilst(ptL(compduo, forward)),
-    textBack = whilst(ptL(compduo, back)),
-    settingId = compose(pass, curry2(mittel("setAttribute", "id"))),
-    perform = compose(ptL(insert, meta.$Q(".testimonial h2")), paraBack),
-    doTextNode = ptL(invk, document, "createTextNode");
-
-    const ptxt = compose(doTextNode, always("fred")),
-
+    listen = curry4(invok)(foo)("click")("addEventListener"),
     textFooter = compose(
+      listen,
+      getParent,
       climb,
-      ptL(compduo, ptxt),
-      perform,
+      ptL(compduo, forward),
+      append,
+      invoke,
+      ptL(compduo, make("p")),
+      append,
+      getParent,
+      ptL(insert, meta.$Q(".testimonials h2")),
+      climb,
+      ptL(compduo, back),
+      append,
       make("p")
     );
+  textFooter();
 }
+
+document.addEventListener("DOMContentLoaded", builder);
