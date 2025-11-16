@@ -1947,7 +1947,7 @@ html #about .testimonials article p {
 }
 html.js .testimonials > div article {
   margin-left: -100%;
-  transition: margin-left 500ms linear;
+  transition: margin-left 500ms linear 222ms;
 }
 html.js .testimonials > div article:last-child {
   margin-left: 0;

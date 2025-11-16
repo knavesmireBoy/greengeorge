@@ -67,7 +67,7 @@ html {
   &.js .testimonials > div {
     article {
       margin-left: -100%;
-      transition: margin-left 500ms linear;
+      transition: margin-left 500ms linear 222ms;
       &:last-child {
         margin-left: 0;
       }

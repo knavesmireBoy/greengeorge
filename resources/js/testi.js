@@ -72,7 +72,7 @@ function foo(e) {
     let cb = meta.identity;
 
 
-  if (parent.nodeName === "SECTION") {
+  if (e.target.nodeName === "P") {
     cb = e.target.nextElementSibling ? appender : inserter;
   }
 
