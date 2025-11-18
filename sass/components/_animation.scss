@@ -460,17 +460,20 @@
     }
     25% {
       margin-left: -100%;
+      opacity: 1;
     }
     47% {
       margin-left: -100%;
     }
     50% {
       margin-left: -200%;
+      opacity: .5;
     }
     72% {
       margin-left: -200%;
     }
     75% {
+      opacity: 0;
       margin-left: -300%;
     }
     100% {
