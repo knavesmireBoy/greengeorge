@@ -96,6 +96,7 @@ function play(j) {
           hold = [];
         j++;
 
+        console.log(k, i);
         while (k) {
           container.insertBefore(articles[i], articles[0]);
           i--;
@@ -112,6 +113,7 @@ function play(j) {
           }
           articles = mmeta.byTagScope(container)("article", true);
           i = articles.length;
+          console.log(k);
           while (k) {
             container.insertBefore(articles[i], articles[0]);
             i--;
