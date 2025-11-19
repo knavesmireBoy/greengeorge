@@ -56,9 +56,11 @@ function play(j) {
   return function player(e, t = 0) {
     const parent = e.target.parentNode,
       container = mmeta.byTagScope(parent)("div"),
+      activate = curry4(subMethod)("animed")("add")("classList");
+
+    var cb = identity,
       articles = mmeta.byTagScope(container)("article", true),
       i = articles.length - 1,
-      activate = curry4(subMethod)("animed")("add")("classList"),
       appender = defer(invk, container, "appendChild", articles[0]),
       inserter = defer(
         invok,
@@ -67,13 +69,6 @@ function play(j) {
         articles[i],
         articles[0]
       );
-
-    var cb = identity,
-      myarticles,
-      k,
-      y = 0,
-      t,
-      hold = [];
     if (e.target.nodeName === "P") {
       if (j) {
         activate(container);
@@ -82,31 +77,29 @@ function play(j) {
         cb = e.target.id === "forward" ? inserter : appender;
         setTimeout(cb);
       } else {
-        now = Date.now() - elapsed;
-        console.log(`seconds elapsed = ${Math.floor(now / 1000)}`);
-        //console.log(articles[0].innerHTML, container.offsetWidth);
-
+        let now = Date.now() - elapsed,
         t = `${Math.floor(now / 1000)}` % 30;
         k = fubar(t);
+        y = 0,
+        hold = [],
+        articles;
+        console.log(`seconds elapsed = ${Math.floor(now / 1000)}`);
         j++;
         while (container.firstChild) {
           hold.push(container.removeChild(container.firstChild));
         }
-
         hold = hold.filter((n) => n.nodeType === 1);
         hold = mmeta.reverse(hold);
         while (hold[y]) {
           container.appendChild(hold[y++]);
         }
-        myarticles = mmeta.byTagScope(container)("article", true);
+        articles = mmeta.byTagScope(container)("article", true);
         y = i;
-        //dn f g tb
         while (k) {
-          container.insertBefore(myarticles[y], myarticles[0]);
+          container.insertBefore(articles[y], articles[0]);
           y--;
           k--;
         }
-
         activate(parent);
       }
     }
