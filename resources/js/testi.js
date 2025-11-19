@@ -92,6 +92,7 @@ function play(j) {
         let now = Date.now() - elapsed,
           t = `${Math.floor(now / 1000)}` % 28, //modulo by duration of the animation
           k = fubar(t, forward),
+          y = 0,
           hold = [];
         j++;
 
@@ -110,6 +111,7 @@ function play(j) {
             container.appendChild(hold[y++]);
           }
           articles = mmeta.byTagScope(container)("article", true);
+          i = articles.length;
           while (k) {
             container.insertBefore(articles[i], articles[0]);
             i--;
