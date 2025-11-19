@@ -64,7 +64,6 @@ function testi() {
 }
 
 function play(j) {
-  let now;
 
   return function player(e, t = 0) {
     const parent = e.target.parentNode,
@@ -91,15 +90,14 @@ function play(j) {
         setTimeout(cb);
       } else {
         let now = Date.now() - elapsed,
-          t = `${Math.floor(now / 1000)}` % 30,
+          t = `${Math.floor(now / 1000)}` % 28, //modulo by duration of the animation
           k = fubar(t, forward),
-          y = i,
           hold = [];
         j++;
 
         while (k) {
-          container.insertBefore(articles[y], articles[0]);
-          y--;
+          container.insertBefore(articles[i], articles[0]);
+          i--;
           k--;
         }
         if (forward) {
@@ -112,10 +110,9 @@ function play(j) {
             container.appendChild(hold[y++]);
           }
           articles = mmeta.byTagScope(container)("article", true);
-          y = i;
           while (k) {
-            container.insertBefore(articles[y], articles[0]);
-            y--;
+            container.insertBefore(articles[i], articles[0]);
+            i--;
             k--;
           }
         }
