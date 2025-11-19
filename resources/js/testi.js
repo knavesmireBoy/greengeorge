@@ -32,17 +32,30 @@ const mmeta = greenGeorge.meta,
   ccurry2 = mmeta.curryRight(2),
   append = ptL(pprevoke("appendChild")),
   make = uutils.doMakeDefer,
-  fubar = (t) => {
-    if (t <= 7) {
+  fubar = (t, flag = false) => {
+    if (flag) {
+      if (t <= 7) {
+        return 0;
+      }
+      if (t > 7 && t <= 14) {
+        return 1;
+      }
+      if (t > 14 && t <= 21) {
+        return 2;
+      }
+      return 3;
+    } else {
+      if (t <= 7) {
+        return 3;
+      }
+      if (t > 7 && t <= 14) {
+        return 2;
+      }
+      if (t > 14 && t <= 21) {
+        return 1;
+      }
       return 0;
     }
-    if (t > 7 && t <= 14) {
-      return 1;
-    }
-    if (t > 14 && t <= 21) {
-      return 2;
-    }
-    return 3;
   },
   animator = document.querySelector(".testimonials article");
 
@@ -59,6 +72,7 @@ function play(j) {
       activate = curry4(subMethod)("animed")("add")("classList");
 
     var cb = identity,
+      forward = false,
       articles = mmeta.byTagScope(container)("article", true),
       i = articles.length - 1,
       appender = defer(invk, container, "appendChild", articles[0]),
@@ -70,35 +84,40 @@ function play(j) {
         articles[0]
       );
     if (e.target.nodeName === "P") {
+      forward = e.target.id === "forward";
       if (j) {
         activate(container);
-       // t = `${Math.floor(now / 1000)}` % 30;
-       // k = fubar(t);
-        cb = e.target.id === "forward" ? inserter : appender;
+        cb = forward ? inserter : appender;
         setTimeout(cb);
       } else {
         let now = Date.now() - elapsed,
-        t = `${Math.floor(now / 1000)}` % 30;
-        k = fubar(t);
-        y = 0,
-        hold = [],
-        articles;
-        console.log(`seconds elapsed = ${Math.floor(now / 1000)}`);
+          t = `${Math.floor(now / 1000)}` % 30,
+          k = fubar(t, forward),
+          y = i,
+          hold = [];
         j++;
-        while (container.firstChild) {
-          hold.push(container.removeChild(container.firstChild));
-        }
-        hold = hold.filter((n) => n.nodeType === 1);
-        hold = mmeta.reverse(hold);
-        while (hold[y]) {
-          container.appendChild(hold[y++]);
-        }
-        articles = mmeta.byTagScope(container)("article", true);
-        y = i;
+
         while (k) {
           container.insertBefore(articles[y], articles[0]);
           y--;
           k--;
+        }
+        if (forward) {
+          while (container.firstChild) {
+            hold.push(container.removeChild(container.firstChild));
+          }
+          hold = hold.filter((n) => n.nodeType === 1);
+          hold = mmeta.reverse(hold);
+          while (hold[y]) {
+            container.appendChild(hold[y++]);
+          }
+          articles = mmeta.byTagScope(container)("article", true);
+          y = i;
+          while (k) {
+            container.insertBefore(articles[y], articles[0]);
+            y--;
+            k--;
+          }
         }
         activate(parent);
       }
