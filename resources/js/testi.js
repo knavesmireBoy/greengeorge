@@ -1,6 +1,8 @@
 function insert(hook, node) {
   return uutils.insertAfter(node, hook);
 }
+
+var elapsed;
 //note mmeta etc.. avoid binding clashes from previous script
 const mmeta = greenGeorge.meta,
   uutils = greenGeorge.utils,
@@ -29,33 +31,27 @@ const mmeta = greenGeorge.meta,
   curry4 = mmeta.curryRight(4),
   ccurry2 = mmeta.curryRight(2),
   append = ptL(pprevoke("appendChild")),
-  make = uutils.doMakeDefer;
+  make = uutils.doMakeDefer,
+  fubar = (t) => {
+    if (t <= 7) {
+      return 0;
+    }
+    if (t > 7 && t <= 14) {
+      return 1;
+    }
+    if (t > 14 && t <= 21) {
+      return 2;
+    }
+    return 3;
+  },
+  animator = document.querySelector(".testimonials article");
 
-var elapsed;
-
-function foo(e) {
+function testi() {
   elapsed = Date.now();
-}
-
-function fubar(t) {
-  if (t < 8) {
-    return 0;
-  }
-  if (t > 8 && t < 14) {
-    return 1;
-  }
-
-  if (t > 15 && t < 23) {
-    return 2;
-  }
-
-  return 3;
 }
 
 function play(j) {
   let now;
-  const el = document.querySelector(".testimonials article");
-  el.addEventListener("animationstart", foo, false);
 
   return function player(e, t = 0) {
     const parent = e.target.parentNode,
@@ -73,24 +69,19 @@ function play(j) {
       );
 
     var cb = identity,
+      myarticles,
+      k,
+      y = 0,
       t,
-      k, y = 0;
+      hold = [];
     if (e.target.nodeName === "P") {
       if (j) {
         activate(container);
-        t = `${Math.floor(now / 1000)}` % 30;
-        k = fubar(t);
-        //dn fl gd tb
-        //dn //fl gd tb  = fl gd tb dn app1
-        //dn fl //gd tb app2
-        //dn fl gd//tb app3
-        //cb = e.target.id === "forward" ? appender : inserter;
+       // t = `${Math.floor(now / 1000)}` % 30;
+       // k = fubar(t);
         cb = e.target.id === "forward" ? inserter : appender;
-     
-
         setTimeout(cb);
       } else {
-        activate(parent);
         now = Date.now() - elapsed;
         console.log(`seconds elapsed = ${Math.floor(now / 1000)}`);
         //console.log(articles[0].innerHTML, container.offsetWidth);
@@ -98,13 +89,25 @@ function play(j) {
         t = `${Math.floor(now / 1000)}` % 30;
         k = fubar(t);
         j++;
-        /*
-        while(k > 0){
-          container.appendChild(articles[y]);
-          y++;
+        while (container.firstChild) {
+          hold.push(container.removeChild(container.firstChild));
+        }
+
+        hold = hold.filter((n) => n.nodeType === 1);
+        hold = mmeta.reverse(hold);
+        while (hold[y]) {
+          container.appendChild(hold[y++]);
+        }
+        myarticles = mmeta.byTagScope(container)("article", true);
+        y = i;
+        //dn f g tb
+        while (k) {
+          container.insertBefore(myarticles[y], myarticles[0]);
+          y--;
           k--;
         }
-          */
+
+        activate(parent);
       }
     }
   };
@@ -138,3 +141,6 @@ function builder() {
 }
 
 document.addEventListener("DOMContentLoaded", builder);
+animator.addEventListener("animationstart", testi, false);
+
+//testi();

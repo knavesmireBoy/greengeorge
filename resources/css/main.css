@@ -1110,10 +1110,10 @@ html body > div > main section.testimonials div article {
   justify-content: center;
 }
 html body > div > main section.testimonials div article:first-child {
-  -o-animation: testi 30s linear 100ms infinite normal forwards;
-  -moz-animation: testi 30s linear 100ms infinite normal forwards;
-  -webkit-animation: testi 30s linear 100ms infinite normal forwards;
-  animation: testi 30s linear 100ms infinite normal forwards;
+  -o-animation: testi 28s linear 100ms infinite normal forwards;
+  -moz-animation: testi 28s linear 100ms infinite normal forwards;
+  -webkit-animation: testi 28s linear 100ms infinite normal forwards;
+  animation: testi 28s linear 100ms infinite normal forwards;
 }
 html.js main section.testimonials {
   display: -webkit-box;
@@ -1141,12 +1141,6 @@ html.js main section.testimonials div.animed article {
   margin-left: -100%;
   transition: margin-left 500ms linear 222ms;
 }
-html.js main section.testimonials div.animed article:first-child {
-  -o-animation: none;
-  -moz-animation: none;
-  -webkit-animation: none;
-  animation: none;
-}
 html.js main section.testimonials div.animed article:last-child {
   margin-left: 0;
 }
@@ -1162,6 +1156,18 @@ html.js main section.testimonials > p {
 }
 html.js main section.testimonials > p:hover {
   opacity: 0.5;
+}
+html.js main section.testimonials.animed div article {
+  margin-left: -100%;
+}
+html.js main section.testimonials.animed div article:first-child {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html.js main section.testimonials.animed div article:last-child {
+  margin-left: 0;
 }
 
 section.services > div {

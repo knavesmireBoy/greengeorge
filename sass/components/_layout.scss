@@ -193,7 +193,7 @@ html {
           &:first-child {
             @include prefix(
               animation,
-              testi 30s linear 100ms infinite normal forwards,
+              testi 28s linear 100ms infinite normal forwards,
               o moz webkit
             );
           }
@@ -215,9 +215,7 @@ html {
           article {
             margin-left: -100%;
             transition: margin-left 500ms linear 222ms;
-            &:first-child {
-              @include prefix(animation, none, o moz webkit);
-            }
+           
             &:last-child {
               margin-left: 0;
             }
@@ -231,7 +229,18 @@ html {
         margin: auto;
         cursor: pointer;
         &:hover {
-          opacity: .5;
+          opacity: 0.5;
+        }
+      }
+      &.animed div {
+        article {
+          margin-left: -100%;
+          &:first-child {
+            @include prefix(animation, none, o moz webkit);
+          }
+          &:last-child {
+            margin-left: 0;
+          }
         }
       }
     }
