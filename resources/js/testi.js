@@ -96,24 +96,26 @@ function play(j) {
           hold = [];
         j++;
 
-        console.log(k, i);
-        while (k) {
-          container.insertBefore(articles[i], articles[0]);
-          i--;
-          k--;
-        }
         if (forward) {
           while (container.firstChild) {
             hold.push(container.removeChild(container.firstChild));
           }
           hold = hold.filter((n) => n.nodeType === 1);
           hold = mmeta.reverse(hold);
+
           while (hold[y]) {
-            container.appendChild(hold[y++]);
+           container.appendChild(hold[y++]);
           }
+           //!!get LIVE collection
           articles = mmeta.byTagScope(container)("article", true);
-          i = articles.length;
-          console.log(k);
+          while (k) {
+            container.insertBefore(articles[i], articles[0]);
+            i--;
+            k--;
+          }
+            
+        }
+        else {
           while (k) {
             container.insertBefore(articles[i], articles[0]);
             i--;
