@@ -95,7 +95,7 @@ function play(j) {
           y = 0,
           hold = [];
         j++;
-
+        log(k);
         if (forward) {
           while (container.firstChild) {
             hold.push(container.removeChild(container.firstChild));
@@ -113,7 +113,6 @@ function play(j) {
             i--;
             k--;
           }
-            
         }
         else {
           while (k) {
@@ -127,7 +126,7 @@ function play(j) {
     }
   };
 }
-
+// x * % = 1300 62.43
 function builder() {
   const getParent = ccurry2(getprop)("parentNode"),
     climb = compose(getParent, invoke),
