@@ -33,7 +33,7 @@ const mmeta = greenGeorge.meta,
   ccurry2 = mmeta.curryRight(2),
   append = ptL(pprevoke("appendChild")),
   make = uutils.doMakeDefer,
-  fubar = (t, flag = false) => {
+  mover = (t, flag = false) => {
     if (flag) {
       if (t < 7) {
         return 0;
@@ -64,10 +64,10 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(j, mod = 12) {
+function play(j, frame_length = 7) {
+  const section = mmeta.$Q(".testimonials"),
+    fade = curry44(subMethod)("fade")("add")("classList")(section);
 
-  const section = mmeta.$Q('.testimonials'),
-  fade = curry44(subMethod)("fade")("add")("classList")(section);
   setTimeout(fade, 4444);
 
   return function player(e, t = 0) {
@@ -78,12 +78,9 @@ function play(j, mod = 12) {
       forward = false,
       articles = mmeta.byTagScope(container)("article", true),
       i = articles.length - 1,
+      mod = frame_length * articles.length,
       appender = defer(invk, container, "appendChild"),
-      inserter = defer(
-        invok,
-        container,
-        "insertBefore",
-        articles[i]);
+      inserter = defer(invok, container, "insertBefore", articles[i]);
     if (e.target.nodeName === "P") {
       forward = e.target.id === "forward";
       if (j) {
@@ -92,26 +89,22 @@ function play(j, mod = 12) {
       } else {
         let now = Date.now() - elapsed,
           t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
-          k = fubar(t, forward),
+          k = mover(t, forward),
           y = 0,
           node,
           hold = [];
         j++;
 
         if (forward) {
-          while (node = container.lastChild) {
-            let el = container.removeChild(node);
-            if (node.nodeType === 1) {
-              hold.push(el);
-            }
+          while ((node = container.lastChild)) {
+            hold.push(container.removeChild(node));
           }
           while (hold[y]) {
             container.appendChild(hold[y++]);
           }
           articles = mmeta.byTagScope(container)("article", true);
-        }
-        else {
-          while (node = container.firstChild) {
+        } else {
+          while ((node = container.firstChild)) {
             let el = container.removeChild(node);
             if (node.nodeType === 1) {
               hold.push(el);
@@ -128,6 +121,8 @@ function play(j, mod = 12) {
           k--;
         }
         activate(section);
+
+        setTimeout(defer(player, e), 1000);
       }
     }
   };
@@ -138,7 +133,7 @@ function builder() {
     climb = compose(getParent, invoke),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),
-    listen = curry4(invok)(play(0, 28))("click")("addEventListener"),
+    listen = curry4(invok)(play(0))("click")("addEventListener"),
     settingId = compose(pass, ccurry2(prepair("setAttribute", "id"))),
     textFooter = compose(
       listen,
