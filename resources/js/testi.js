@@ -30,11 +30,19 @@ const mmeta = greenGeorge.meta,
   prepair = (m, k) => (o, v) => o[m](k, v),
   curry4 = mmeta.curryRight(4),
   curry44 = mmeta.curryRight(4, true),
-  ccurry2 = mmeta.curryRight(2),
+  cu1 = mmeta.curryRight(1, true),
+  cu2 = mmeta.curryRight(2),
+  cu13 = mmeta.curryLeft(3),
+  compvoke = (f1, f2, seed) => compose(f2, f1)(seed),
   append = ptL(pprevoke("appendChild")),
   remove = ptL(pprevoke("removeChild")),
+  mayremove = ptL(pprevoke("removeChild")),
   pusher = ptL(pprevoke("push")),
   make = uutils.doMakeDefer,
+  getbest = (fn, coll, arg) => {
+    let cb = coll.reduce((a, b) => (fn(arg) ? a : b));
+    return cb(arg);
+  },
   mover = (t, flag = false) => {
     if (flag) {
       if (t < 7) {
@@ -75,8 +83,11 @@ function play(j, frame_length = 7) {
   return function player(e, t = 0) {
     const container = mmeta.byTagScope(section)("div"),
       activate = curry4(subMethod)("animed")("add")("classList"),
-      doremove = remove(container),
-      doappend = append(container);
+      doremove = mayremove(container),
+      doappend = append(container),
+      validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
+        cu2((a, b) => a === b)(1)
+      );
 
     var cb = identity,
       forward = false,
@@ -97,15 +108,13 @@ function play(j, frame_length = 7) {
           y = 0,
           node,
           hold = [],
-          dopush = pusher(hold);
+          dopush = pusher(hold),
+          thenpush = compose(dopush, doremove),
+          maypush = ptL(getbest, validateNode, [thenpush, doremove]);
         j++;
-
         if (forward) {
           while ((node = container.lastChild)) {
-            let el = doremove(node);
-            if (node.nodeType === 1) {
-              dopush(el);
-            }
+            maypush(node);
           }
           while (hold[y]) {
             doappend(hold[y++]);
@@ -113,23 +122,18 @@ function play(j, frame_length = 7) {
           articles = mmeta.byTagScope(container)("article", true);
         } else {
           while ((node = container.firstChild)) {
-            let el = doremove(node);
-            if (node.nodeType === 1) {
-              dopush(el);
-            }
+            maypush(node);
           }
           while (hold[y]) {
             doappend(hold[y++]);
           }
         }
-
         while (k) {
           container.insertBefore(articles[i], container.firstChild);
           i--;
           k--;
         }
         activate(section);
-
         setTimeout(defer(player, e), 1000);
       }
     }
@@ -137,12 +141,12 @@ function play(j, frame_length = 7) {
 }
 // x * % = 1300 62.43
 function builder() {
-  const getParent = ccurry2(getprop)("parentNode"),
+  const getParent = cu2(getprop)("parentNode"),
     climb = compose(getParent, invoke),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),
     listen = curry4(invok)(play(0))("click")("addEventListener"),
-    settingId = compose(pass, ccurry2(prepair("setAttribute", "id"))),
+    settingId = compose(pass, cu2(prepair("setAttribute", "id"))),
     textFooter = compose(
       listen,
       getParent,
