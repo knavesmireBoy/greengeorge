@@ -190,6 +190,7 @@ html {
           padding: 0 4em;
           flex-direction: column;
           @include justify(center);
+          transition: margin-left 500ms linear 222ms;
           &:first-child {
             @include prefix(
               animation,
@@ -210,17 +211,6 @@ html {
       }
       div {
         @include flex(1, 1, 90%);
-        //allow animation until user has clicked an arrow then shut it down (animed)
-        &.animed {
-          article {
-            margin-left: -100%;
-            transition: margin-left 500ms linear 222ms;
-           
-            &:last-child {
-              margin-left: 0;
-            }
-          }
-        }
       }
 
       > p {
@@ -236,6 +226,7 @@ html {
         article {
           margin-left: -100%;
           &:first-child {
+            color: red;
             @include prefix(animation, none, o moz webkit);
           }
           &:last-child {
