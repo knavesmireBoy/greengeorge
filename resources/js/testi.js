@@ -32,6 +32,7 @@ const mmeta = greenGeorge.meta,
   curry44 = mmeta.curryRight(4, true),
   cu1 = mmeta.curryRight(1, true),
   cu2 = mmeta.curryRight(2),
+  cu22 = mmeta.curryRight(2, true),
   cu13 = mmeta.curryLeft(3),
   compvoke = (f1, f2, seed) => compose(f2, f1)(seed),
   append = ptL(pprevoke("appendChild")),
@@ -110,24 +111,19 @@ function play(j, frame_length = 7) {
           hold = [],
           dopush = pusher(hold),
           thenpush = compose(dopush, doremove),
-          maypush = ptL(getbest, validateNode, [thenpush, doremove]);
+          maypush = ptL(getbest, validateNode, [thenpush, doremove]),
+          first = cu2(getprop)("firstChild"),
+          last = cu2(getprop)("lastChild"),
+          getElement = forward ? last : first;
         j++;
-        if (forward) {
-          while ((node = container.lastChild)) {
-            maypush(node);
-          }
-          while (hold[y]) {
-            doappend(hold[y++]);
-          }
-          articles = mmeta.byTagScope(container)("article", true);
-        } else {
-          while ((node = container.firstChild)) {
-            maypush(node);
-          }
-          while (hold[y]) {
-            doappend(hold[y++]);
-          }
+        while ((node = getElement(container))) {
+          maypush(node);
         }
+        while (hold[y]) {
+          doappend(hold[y++]);
+        }
+        articles = mmeta.byTagScope(container)("article", true);
+
         while (k) {
           container.insertBefore(articles[i], container.firstChild);
           i--;
