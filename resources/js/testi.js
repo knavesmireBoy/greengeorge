@@ -32,6 +32,8 @@ const mmeta = greenGeorge.meta,
   curry44 = mmeta.curryRight(4, true),
   ccurry2 = mmeta.curryRight(2),
   append = ptL(pprevoke("appendChild")),
+  remove = ptL(pprevoke("removeChild")),
+  pusher = ptL(pprevoke("push")),
   make = uutils.doMakeDefer,
   mover = (t, flag = false) => {
     if (flag) {
@@ -72,7 +74,9 @@ function play(j, frame_length = 7) {
 
   return function player(e, t = 0) {
     const container = mmeta.byTagScope(section)("div"),
-      activate = curry4(subMethod)("animed")("add")("classList");
+      activate = curry4(subMethod)("animed")("add")("classList"),
+      doremove = remove(container),
+      doappend = append(container);
 
     var cb = identity,
       forward = false,
@@ -92,26 +96,30 @@ function play(j, frame_length = 7) {
           k = mover(t, forward),
           y = 0,
           node,
-          hold = [];
+          hold = [],
+          dopush = pusher(hold);
         j++;
 
         if (forward) {
           while ((node = container.lastChild)) {
-            hold.push(container.removeChild(node));
+            let el = doremove(node);
+            if (node.nodeType === 1) {
+              dopush(el);
+            }
           }
           while (hold[y]) {
-            container.appendChild(hold[y++]);
+            doappend(hold[y++]);
           }
           articles = mmeta.byTagScope(container)("article", true);
         } else {
           while ((node = container.firstChild)) {
-            let el = container.removeChild(node);
+            let el = doremove(node);
             if (node.nodeType === 1) {
-              hold.push(el);
+              dopush(el);
             }
           }
           while (hold[y]) {
-            container.appendChild(hold[y++]);
+            doappend(hold[y++]);
           }
         }
 
