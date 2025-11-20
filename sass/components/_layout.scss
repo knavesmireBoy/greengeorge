@@ -212,27 +212,35 @@ html {
       div {
         @include flex(1, 1, 90%);
       }
-
       > p {
         @include flex(1, 1, 1em);
         font-size: 2em;
         margin: auto;
         cursor: pointer;
-        &:hover {
-          opacity: 0.5;
+        opacity: 1;
+        transition: opacity 2s linear .5s;
+      }
+      &.animed {
+        div {
+          article {
+            margin-left: -100%;
+            &:first-child {
+              color: red;
+              @include prefix(animation, none, o moz webkit);
+            }
+            &:last-child {
+              margin-left: 0;
+            }
+          }
         }
       }
-      &.animed div {
-        article {
-          margin-left: -100%;
-          &:first-child {
-            color: red;
-            @include prefix(animation, none, o moz webkit);
-          }
-          &:last-child {
-            margin-left: 0;
-          }
+      &.fade {
+        > p {
+          opacity: 0;
         }
+      }
+      &:hover > p {
+        opacity: 1;
       }
     }
   }

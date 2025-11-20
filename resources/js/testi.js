@@ -29,6 +29,7 @@ const mmeta = greenGeorge.meta,
   subMethod = (o, p, m, v) => o[p][m](v),
   prepair = (m, k) => (o, v) => o[m](k, v),
   curry4 = mmeta.curryRight(4),
+  curry44 = mmeta.curryRight(4, true),
   ccurry2 = mmeta.curryRight(2),
   append = ptL(pprevoke("appendChild")),
   make = uutils.doMakeDefer,
@@ -64,9 +65,13 @@ function testi() {
 }
 
 function play(j, mod = 12) {
+
+  const section = mmeta.$Q('.testimonials'),
+  fade = curry44(subMethod)("fade")("add")("classList")(section);
+  setTimeout(fade, 4444);
+
   return function player(e, t = 0) {
-    const section = e.target.parentNode,
-      container = mmeta.byTagScope(section)("div"),
+    const container = mmeta.byTagScope(section)("div"),
       activate = curry4(subMethod)("animed")("add")("classList");
 
     var cb = identity,
@@ -104,13 +109,6 @@ function play(j, mod = 12) {
             container.appendChild(hold[y++]);
           }
           articles = mmeta.byTagScope(container)("article", true);
-          /*
-          while (k) {
-            container.insertBefore(articles[i], articles[0]);
-            i--;
-            k--;
-          }
-            */
         }
         else {
           while (node = container.firstChild) {

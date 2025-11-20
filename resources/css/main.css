@@ -1147,9 +1147,8 @@ html.js main section.testimonials > p {
   font-size: 2em;
   margin: auto;
   cursor: pointer;
-}
-html.js main section.testimonials > p:hover {
-  opacity: 0.5;
+  opacity: 1;
+  transition: opacity 2s linear 0.5s;
 }
 html.js main section.testimonials.animed div article {
   margin-left: -100%;
@@ -1163,6 +1162,12 @@ html.js main section.testimonials.animed div article:first-child {
 }
 html.js main section.testimonials.animed div article:last-child {
   margin-left: 0;
+}
+html.js main section.testimonials.fade > p {
+  opacity: 0;
+}
+html.js main section.testimonials:hover > p {
+  opacity: 1;
 }
 
 section.services > div {
