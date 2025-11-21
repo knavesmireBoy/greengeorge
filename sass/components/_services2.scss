@@ -4,7 +4,7 @@ html {
       background-color: darken($main, 4%);
       article {
         margin-left: -100%;
-        transition: margin-left 500ms linear 222ms;
+        //transition: margin-left 500ms linear 222ms;
         aside {
           background-position: center;
           background-size: cover;
@@ -150,21 +150,9 @@ html {
       #services main {
         section {
           &.services div {
-            column-gap: 0;
             article {
-             margin-left: -50%;
-             &:nth-child(1) {
-              order: 2;
-            }
-            &:nth-child(2) {
-              order: 1;
-            }
-            &:nth-child(3) {
-              order: 4;
-            }
-            &:nth-child(4) {
-              order: 3;
-            }
+             margin-left: -52%;
+
               &:nth-child(5) {
                 order: 6;
                 margin-left: 0;

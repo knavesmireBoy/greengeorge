@@ -1215,7 +1215,6 @@ html #services main > section.services {
 }
 html #services main > section.services article {
   margin-left: -100%;
-  transition: margin-left 500ms linear 222ms;
 }
 html #services main > section.services article aside {
   background-position: center;
@@ -1318,23 +1317,8 @@ html.no-js section.services article:first-child {
   html #services main > section:first-child article h4 {
     font-size: 1.6225em;
   }
-  html.js #services main section.services div {
-    column-gap: 0;
-  }
   html.js #services main section.services div article {
-    margin-left: -50%;
-  }
-  html.js #services main section.services div article:nth-child(1) {
-    order: 2;
-  }
-  html.js #services main section.services div article:nth-child(2) {
-    order: 1;
-  }
-  html.js #services main section.services div article:nth-child(3) {
-    order: 4;
-  }
-  html.js #services main section.services div article:nth-child(4) {
-    order: 3;
+    margin-left: -52%;
   }
   html.js #services main section.services div article:nth-child(5) {
     order: 6;
