@@ -1,142 +1,132 @@
 html {
-    #services main > {
-      section.services {
-        background-color: darken($main, 4%);
-        article {
-            margin-left: -100%;
-            transition: margin 500ms linear 222ms;
-          aside {
-            background-position: center;
-            background-size: cover;
-          }
-          &:nth-of-type(1) {
-            > aside {
-              background-image: url("../assets/lawn.jpeg");
-              background-position: center top;
-            }
-          }
-          &:nth-of-type(2) > aside {
-            background-image: url("../images/IMG_1478.jpg");
-          }
-          &:nth-of-type(3) > aside {
-            background-image: url("../assets/weeding.jpeg");
+  #services main > {
+    section.services {
+      background-color: darken($main, 4%);
+      article {
+        margin-left: -100%;
+        transition: margin-left 500ms linear 222ms;
+        aside {
+          background-position: center;
+          background-size: cover;
+        }
+        &:nth-of-type(1) {
+          > aside {
+            background-image: url("../assets/lawn.jpeg");
             background-position: center top;
           }
-          &:nth-of-type(4) > aside {
-            background-image: url("../assets/pruning.jpeg");
-          }
-          &:nth-of-type(5) > aside {
-            background-image: url("../assets/hedge.jpeg");
-            background-position: center 80%;
-          }
-          &:nth-of-type(6) > aside {
-            background-image: url("../assets/tidy.jpeg");
-          }
-          &:last-child {
-            margin-left: 0;
-          }
         }
-      }
-  
-      .mission {
-        padding: 1rem;
-        article p:first-child {
-          font-family: "Handwritten", cursive;
-          text-align: center;
-          color: $main;
-          font-size: 1.3em;
-          //font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
-        }
-      }
-    }
-    #control {
-      background-color: darken($main, 4%);
-    }
-  
-    &.no-js {
-      section.services article:first-child {
-        @include prefix(
-          animation,
-          services 28s ease-in 1s infinite normal forwards,
-          o moz webkit
-        );
-      }
-    }
-  
-    &.js #services > main {
-      section.services div article {
-        &.a > aside {
-          background-image: url("../assets/lawn.jpeg");
-          background-position: center top;
-        }
-        &.b > aside {
+        &:nth-of-type(2) > aside {
           background-image: url("../images/IMG_1478.jpg");
-          background-position: center;
         }
-        &.c > aside {
+        &:nth-of-type(3) > aside {
           background-image: url("../assets/weeding.jpeg");
           background-position: center top;
         }
-        &.d > aside {
+        &:nth-of-type(4) > aside {
           background-image: url("../assets/pruning.jpeg");
-          background-position: center;
         }
-        &.e > aside {
+        &:nth-of-type(5) > aside {
           background-image: url("../assets/hedge.jpeg");
           background-position: center 80%;
         }
-        &.f > aside {
+        &:nth-of-type(6) > aside {
           background-image: url("../assets/tidy.jpeg");
-          background-position: center;
+        }
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .mission {
+      padding: 1rem;
+      article p:first-child {
+        font-family: "Handwritten", cursive;
+        text-align: center;
+        color: $main;
+        font-size: 1.3em;
+        //font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
+      }
+    }
+  }
+  #control {
+    background-color: darken($main, 4%);
+  }
+
+  &.no-js {
+    section.services article:first-child {
+      @include prefix(
+        animation,
+        services 28s ease-in 1s infinite normal forwards,
+        o moz webkit
+      );
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    &.no-js #services {
+      #control {
+        span {
+          &:first-child {
+            @include prefix(
+              animation,
+              span1 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(2) {
+            @include prefix(
+              animation,
+              span2 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(3) {
+            @include prefix(
+              animation,
+              span3 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(4) {
+            @include prefix(
+              animation,
+              span4 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(5) {
+            @include prefix(
+              animation,
+              span5 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(6) {
+            @include prefix(
+              animation,
+              span6 29s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
         }
       }
     }
   }
-  
-  @media only screen and (max-width: 768px) {
-    html {
-      &.no-js #services {
-        #control {
-          span {
+}
+
+@media only screen and (min-width: 769px) {
+  html {
+    &.no-js {
+      section {
+        &.services div {
+          article {
             &:first-child {
               @include prefix(
                 animation,
-                span1 29s linear 0s infinite normal forwards,
-                o moz webkit
-              );
-            }
-            &:nth-child(2) {
-              @include prefix(
-                animation,
-                span2 29s linear 0s infinite normal forwards,
-                o moz webkit
-              );
-            }
-            &:nth-child(3) {
-              @include prefix(
-                animation,
-                span3 29s linear 0s infinite normal forwards,
-                o moz webkit
-              );
-            }
-            &:nth-child(4) {
-              @include prefix(
-                animation,
-                span4 29s linear 0s infinite normal forwards,
-                o moz webkit
-              );
-            }
-            &:nth-child(5) {
-              @include prefix(
-                animation,
-                span5 29s linear 0s infinite normal forwards,
-                o moz webkit
-              );
-            }
-            &:nth-child(6) {
-              @include prefix(
-                animation,
-                span6 29s linear 0s infinite normal forwards,
+                services_mid 28s ease-in 1s infinite normal forwards,
                 o moz webkit
               );
             }
@@ -144,124 +134,136 @@ html {
         }
       }
     }
-  }
-  
-  @media only screen and (min-width: 769px) {
-    html {
-      &.no-js {
+    #services main > section:first-child {
+      font-size: 1.005rem;
+
+      article {
+        h1 {
+          font-size: 3.88em;
+        }
+        h4 {
+          font-size: 1.6225em;
+        }
+      }
+    }
+    &.js {
+      #services main {
         section {
           &.services div {
+            column-gap: 0;
             article {
-              &:first-child {
-                @include prefix(
-                  animation,
-                  services_mid 28s ease-in 1s infinite normal forwards,
-                  o moz webkit
-                );
+             margin-left: -50%;
+             &:nth-child(1) {
+              order: 2;
+            }
+            &:nth-child(2) {
+              order: 1;
+            }
+            &:nth-child(3) {
+              order: 4;
+            }
+            &:nth-child(4) {
+              order: 3;
+            }
+              &:nth-child(5) {
+                order: 6;
+                margin-left: 0;
+              }
+              &:nth-child(6) {
+                order: 5;
+                margin-left: 0;
               }
             }
           }
         }
       }
-      #services main > section:first-child {
-        font-size: 1.005rem;
-  
-        article {
-          h1 {
-            font-size: 3.88em;
-          }
-          h4 {
-            font-size: 1.6225em;
-          }
-        }
-      } //h
     }
   }
-  
-  @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    html.no-js #control span {
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  html.no-js #control span {
+    &:first-child {
+      @include prefix(
+        animation,
+        span11 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(2) {
+      @include prefix(
+        animation,
+        span12 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(3) {
+      @include prefix(
+        animation,
+        span13 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(4) {
+      @include prefix(
+        animation,
+        span14 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+    &:nth-child(5) {
+      @include prefix(
+        animation,
+        span15 29s linear 0s infinite normal forwards,
+        o moz webkit
+      );
+    }
+  }
+}
+@media only screen and (min-width: 1025px) {
+  html.no-js {
+    section.services div {
+      article {
+        &:first-child {
+          @include prefix(
+            animation,
+            services_max 28s ease-in 1s infinite normal forwards,
+            o moz webkit
+          );
+        }
+      }
+    }
+
+    #control span {
       &:first-child {
         @include prefix(
           animation,
-          span11 29s linear 0s infinite normal forwards,
+          span21 29s linear 0s infinite normal forwards,
           o moz webkit
         );
       }
       &:nth-child(2) {
         @include prefix(
           animation,
-          span12 29s linear 0s infinite normal forwards,
+          span22 29s linear 0s infinite normal forwards,
           o moz webkit
         );
       }
       &:nth-child(3) {
         @include prefix(
           animation,
-          span13 29s linear 0s infinite normal forwards,
+          span23 29s linear 0s infinite normal forwards,
           o moz webkit
         );
       }
+
       &:nth-child(4) {
         @include prefix(
           animation,
-          span14 29s linear 0s infinite normal forwards,
-          o moz webkit
-        );
-      }
-      &:nth-child(5) {
-        @include prefix(
-          animation,
-          span15 29s linear 0s infinite normal forwards,
+          span24 29s linear 0s infinite normal forwards,
           o moz webkit
         );
       }
     }
   }
-  @media only screen and (min-width: 1025px) {
-    html.no-js {
-      section.services div {
-        article {
-          &:first-child {
-            @include prefix(
-              animation,
-              services_max 28s ease-in 1s infinite normal forwards,
-              o moz webkit
-            );
-          }
-        }
-      }
-  
-      #control span {
-        &:first-child {
-          @include prefix(
-            animation,
-            span21 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(2) {
-          @include prefix(
-            animation,
-            span22 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(3) {
-          @include prefix(
-            animation,
-            span23 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-  
-        &:nth-child(4) {
-          @include prefix(
-            animation,
-            span24 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-      }
-    }
-  }
-  
+}
