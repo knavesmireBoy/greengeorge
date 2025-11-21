@@ -1263,6 +1263,28 @@ html.no-js section.services article:first-child {
   animation: services 28s ease-in 1s infinite normal forwards;
 }
 
+html.js #services section.services > div article:nth-of-type(1) > aside {
+  background-image: url("../assets/tidy.jpeg");
+}
+html.js #services section.services > div article:nth-of-type(2) > aside {
+  background-image: url("../assets/hedge.jpeg");
+  background-position: center 80%;
+}
+html.js #services section.services > div article:nth-of-type(3) > aside {
+  background-image: url("../assets/pruning.jpeg");
+}
+html.js #services section.services > div article:nth-of-type(4) > aside {
+  background-image: url("../assets/weeding.jpeg");
+  background-position: center top;
+}
+html.js #services section.services > div article:nth-of-type(5) > aside {
+  background-image: url("../images/IMG_1478.jpg");
+}
+html.js #services section.services > div article:nth-of-type(6) > aside {
+  background-image: url("../assets/lawn.jpeg");
+  background-position: center top;
+}
+
 @media only screen and (max-width: 768px) {
   html.no-js #services #control span:first-child {
     -o-animation: span1 29s linear 0s infinite normal forwards;
@@ -1391,6 +1413,21 @@ html.no-js section.services article:first-child {
     -moz-animation: span24 29s linear 0s infinite normal forwards;
     -webkit-animation: span24 29s linear 0s infinite normal forwards;
     animation: span24 29s linear 0s infinite normal forwards;
+  }
+  html.js #services main section.services div article {
+    margin-left: -34.333%;
+  }
+  html.js #services main section.services div article:nth-child(4) {
+    order: 6;
+    margin-left: 0;
+  }
+  html.js #services main section.services div article:nth-child(5) {
+    order: 5;
+    margin-left: 0;
+  }
+  html.js #services main section.services div article:nth-child(6) {
+    order: 4;
+    margin-left: 0;
   }
 }
 html #about nav.eco {
