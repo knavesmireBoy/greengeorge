@@ -97,13 +97,10 @@ function play(offset = 0) {
       while (spans[request] !== tgt) {
         request++;
       }
-      log(offset);
       domindex = i - request;
-      log(domindex)
       domindex += offset;
-      log(domindex)
+      domindex = domindex % l;
       request = (i - domindex);
-      log(request, articles[i], i);
 
       while (request) {
        container.insertBefore(articles[i], container.firstChild);
