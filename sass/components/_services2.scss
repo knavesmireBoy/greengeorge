@@ -4,6 +4,7 @@ html {
         background-color: darken($main, 4%);
         article {
             margin-left: -100%;
+            transition: margin 500ms linear 222ms;
           aside {
             background-position: center;
             background-size: cover;

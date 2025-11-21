@@ -84,32 +84,31 @@ function testi() {
 
 function play(offset = 0) {
   var spans = meta.toArray(meta.$Q("#control span", true)),
-    _articles = meta.toArray(meta.byTagScope(container)("article", true)),
-    l = _articles.length,
-    i = l - 1;
+    articles = meta.$Q(".services article", true),
+    len = articles.length,
+    index = len - 1;
   return function (e) {
     let tgt = e.target,
-      request = 0,
+      req = 0,
       domindex = 0,
-      realindex = 0,
       articles = meta.$Q(".services article", true);
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
-      while (spans[request] !== tgt) {
-        request++;
+      while (spans[req] !== tgt) {
+        req++;
       }
-      domindex = i - request;
+      domindex = index - req;
       domindex += offset;
-      domindex = domindex % l;
-      request = (i - domindex);
+      domindex = domindex % len;
+      req = index - domindex;
 
-      while (request) {
-       container.insertBefore(articles[i], container.firstChild);
-        i--;
-        request--;
+      while (req) {
+        container.insertBefore(articles[index], container.firstChild);
+        index--;
+        req--;
         offset++;
       }
-      i = l - 1;
-      offset % l;
+      index = len - 1;
+      offset % len;
     }
   };
 }

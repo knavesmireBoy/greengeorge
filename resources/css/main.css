@@ -1688,6 +1688,7 @@ html #services main > section.services {
 }
 html #services main > section.services article {
   margin-left: -100%;
+  transition: margin 500ms linear 222ms;
 }
 html #services main > section.services article aside {
   background-position: center;
