@@ -5,6 +5,11 @@
 if (!window.greenGeorge) {
     window.greenGeorge = {};
   }
+
+  function paint(node, val) {
+    node.style.backgroundColor = val;
+  }
+  
   
   function loop(element) {
     element.parentNode.appendChild(element);

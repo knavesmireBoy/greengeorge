@@ -1,6 +1,26 @@
+/*jslint nomen: true */
+/* eslint-disable indent */
+/* eslint-disable no-param-reassign */
+/*global greenGeorge: false */
+if (!window.greenGeorge) {
+  window.greenGeorge = {};
+}
+
+function paint(node, val) {
+  node.style.backgroundColor = val;
+}
+
 function insert(hook, node) {
   return utils.insertAfter(node, hook);
 }
+
+let inc = 0,
+t = 500,
+margins = [100, 52, 34.333],
+request,
+requester,
+start,
+starter;
 
 var elapsed;
 //note meta etc.. avoid binding clashes from previous script
@@ -70,19 +90,56 @@ const meta = greenGeorge.meta,
     }
   },
   myservices = document.querySelectorAll(".services article"),
+
+
+  service = document.querySelector(".services"),
+  control = document.getElementById("control"),
+  liveArticles = (service && service.getElementsByTagName("article")) || [],
+  articles = (service && service.querySelectorAll("article")) || [],
+
+  el = articles[0],
+
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
     cu2((a, b) => a === b)(1)
-  );
+  ),
+  finder = (nodes) => (node) => {
+    let i = 0,
+      l = nodes.length;
+    while (i < l) {
+      if (nodes[i] === node) {
+        break;
+      }
+      i++;
+    }
+    return i;
+  },
+  spotify = (nodes, values, cb) => (j) => {
+    let i = nodes.length,
+      [dflt, current] = values;
+    while (i--) {
+      if (i === j) {
+        cb(nodes[i], current);
+      } else {
+        cb(nodes[i], dflt);
+      }
+    }
+  },
+  cycle = spotify(
+    control.getElementsByTagName("span"),
+    ["rgba(255,255,255, .2)", "white"],
+    paint
+  ),
+  cb = compose(cycle, finder(articles));
 
 function testi() {
   elapsed = Date.now();
 }
 
-function play(offset = 0) {
+function play(callback, offset = 0) {
   var spans = meta.toArray(meta.$Q("#control span", true)),
     articles = meta.$Q(".services article", true),
     len = articles.length,
@@ -107,6 +164,7 @@ function play(offset = 0) {
         req--;
         offset++;
       }
+      callback(articles[index]);
       index = len - 1;
       offset % len;
     }
@@ -127,8 +185,33 @@ function init(e) {
   while (hold[y]) {
     doappend(hold[y++]);
   }
-  articles = meta.byTagScope(container)("article", true);
 }
+
+
+function controller(e) {
+  let a = meta.toArray(this.childNodes).filter( n => n.nodeName === 'SPAN'),
+    live = meta.toArray(liveArticles).filter( n => n.nodeName === 'ARTICLE'),
+    parent = liveArticles[0].parentNode,
+    f = finder(a),
+    i = f(e.target),
+    j = 0,
+    article;
+
+  if (e.target !== this) {
+    cycle(i);
+    cancelAnimationFrame(request);
+    article = articles[i];
+    j = live.indexOf(article);
+    i = 0;
+    while (i < j) {
+      parent.appendChild(live[i]);
+      i++;
+    }
+  }
+}
+
 document.addEventListener("DOMContentLoaded", init);
-meta.$("control").addEventListener("click", play());
-// x * % = 1300 62.43
+cb(el);
+meta.$("control").addEventListener("click", play(cb));
+
+//control.addEventListener("click", controller);
