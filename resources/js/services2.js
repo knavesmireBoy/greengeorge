@@ -171,20 +171,48 @@ function play(callback, offset = 0) {
   var spans = meta.toArray(meta.$Q("#control span", true)),
     articles = meta.$Q(".services article", true),
     len = articles.length,
-    index = 0;
+    index = 0,
+    w = (r, i) => {
+      while (r) {
+        container.appendChild(articles[i]);
+        i++;
+        offset++;
+        r--;
+      }
+      return [i, offset];
+    };
+
+  function x(r, i, t) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(w(r, i));
+      }, t);
+    });
+  }
+
   return function (e) {
     let tgt = e.target,
       req = 0,
-      domindex = 0,
       articles = meta.$Q(".services article", true);
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
       }
+
+      log(req, 888)
       req -= offset;
       if (req < 0) {
         req = len + req;
       }
+
+      x(req, index, 2222).then((val) => {
+       let [i, offset] = val;
+       log(i, 666, offset)
+        callback(articles[i]);
+        offset = val % len;
+        index = 0;
+      });
+      /*
       while (req) {
         container.appendChild(articles[index]);
         index++;
@@ -194,6 +222,8 @@ function play(callback, offset = 0) {
       callback(articles[index]);
       index = 0;
       offset = offset % len;
+      */
+      log(req, index, 555, offset);
     }
   };
 }
