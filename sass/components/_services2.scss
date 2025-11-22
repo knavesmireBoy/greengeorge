@@ -3,9 +3,8 @@ html {
     section.services {
       background-color: darken($main, 4%);
       article {
-        //margin-left: -100%;
-        //transform: translateX(-500%);
-        transition: transform 500ms linear 222ms;
+        margin-left: 100%;
+        transition: margin 1s ease-in;
         aside {
           background-position: center;
           background-size: cover;
@@ -33,8 +32,8 @@ html {
         &:nth-of-type(6) > aside {
           background-image: url("../assets/tidy.jpeg");
         }
-        &:last-child {
-         // margin-left: 0;
+        &:first-child {
+          margin-left: 0;
         }
         figure {
           @include flex(1,1,1em);
@@ -188,13 +187,9 @@ html.js #services section.services > div article {
         section {
           &.services div {
             article {
-              transform: translateX(-260%);
-              transform: none;
-              &:nth-child(5) {
-             //   transform: none;
-              }
-              &:nth-child(6) {
-               // transform: none;
+              margin-left: 52%;
+              &:nth-child(-n+2) {
+               margin-left: 0;
               }
             }
           }
@@ -296,19 +291,9 @@ html.js #services section.services > div article {
         section {
           &.services div {
             article {
-              transform: none;
-              &:nth-child(4) {
-                //order: 6
-                transform: none;
-              }
-
-              &:nth-child(5) {
-                //order: 5;
-                transform: none;
-              }
-              &:nth-child(6) {
-                //order: 4;
-                transform: none;
+              margin-left: 34.333%;
+              &:nth-child(-n+3) {
+                margin-left: 0;
               }
             }
           }

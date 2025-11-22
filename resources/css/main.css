@@ -1214,7 +1214,8 @@ html #services main > section.services {
   background-color: #143f1f;
 }
 html #services main > section.services article {
-  transition: transform 500ms linear 222ms;
+  margin-left: 100%;
+  transition: margin 1s ease-in;
 }
 html #services main > section.services article aside {
   background-position: center;
@@ -1240,6 +1241,9 @@ html #services main > section.services article:nth-of-type(5) > aside {
 }
 html #services main > section.services article:nth-of-type(6) > aside {
   background-image: url("../assets/tidy.jpeg");
+}
+html #services main > section.services article:first-child {
+  margin-left: 0;
 }
 html #services main > section.services article figure {
   -webkit-box: 1;
@@ -1351,8 +1355,10 @@ html.js #services section.services > div article:nth-of-type(6) > aside {
     font-size: 1.6225em;
   }
   html.js #services main section.services div article {
-    transform: translateX(-260%);
-    transform: none;
+    margin-left: 52%;
+  }
+  html.js #services main section.services div article:nth-child(-n+2) {
+    margin-left: 0;
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -1419,16 +1425,10 @@ html.js #services section.services > div article:nth-of-type(6) > aside {
     animation: span24 29s linear 0s infinite normal forwards;
   }
   html.js #services main section.services div article {
-    transform: none;
+    margin-left: 34.333%;
   }
-  html.js #services main section.services div article:nth-child(4) {
-    transform: none;
-  }
-  html.js #services main section.services div article:nth-child(5) {
-    transform: none;
-  }
-  html.js #services main section.services div article:nth-child(6) {
-    transform: none;
+  html.js #services main section.services div article:nth-child(-n+3) {
+    margin-left: 0;
   }
 }
 html #about nav.eco {

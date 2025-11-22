@@ -181,28 +181,16 @@ function play(callback, offset = 0) {
       while (spans[req] !== tgt) {
         req++;
       }
-      /*
-      domindex = index - req;
-      domindex += offset;
-      domindex = domindex % len;
-      req = index - domindex;
-*/
-      log(req, offset)
       req -= offset;
-      //req = Math.max(req, 0);
-      log(req)
       if (req < 0) {
         req = len + req;
-        //offset = (len - 1) - offset;
       }
-      log(req, offset)
       while (req) {
         container.appendChild(articles[index]);
         index++;
         req--;
         offset++;
       }
-
       callback(articles[index]);
       index = 0;
       offset = offset % len;
