@@ -15,12 +15,12 @@ function insert(hook, node) {
 }
 
 let inc = 0,
-t = 500,
-margins = [100, 52, 34.333],
-request,
-requester,
-start,
-starter;
+  t = 500,
+  margins = [100, 52, 34.333],
+  request,
+  requester,
+  start,
+  starter;
 
 var elapsed;
 //note meta etc.. avoid binding clashes from previous script
@@ -90,15 +90,11 @@ const meta = greenGeorge.meta,
     }
   },
   myservices = document.querySelectorAll(".services article"),
-
-
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
   liveArticles = (service && service.getElementsByTagName("article")) || [],
   articles = (service && service.querySelectorAll("article")) || [],
-
   el = articles[0],
-
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
   doremove = mayremove(container),
@@ -139,7 +135,7 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(callback, offset = 0) {
+function play1(callback, offset = 0) {
   var spans = meta.toArray(meta.$Q("#control span", true)),
     articles = meta.$Q(".services article", true),
     len = articles.length,
@@ -171,6 +167,49 @@ function play(callback, offset = 0) {
   };
 }
 
+function play(callback, offset = 0) {
+  var spans = meta.toArray(meta.$Q("#control span", true)),
+    articles = meta.$Q(".services article", true),
+    len = articles.length,
+    index = 0;
+  return function (e) {
+    let tgt = e.target,
+      req = 0,
+      domindex = 0,
+      articles = meta.$Q(".services article", true);
+    if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
+      while (spans[req] !== tgt) {
+        req++;
+      }
+      /*
+      domindex = index - req;
+      domindex += offset;
+      domindex = domindex % len;
+      req = index - domindex;
+*/
+      log(req, offset)
+      req -= offset;
+      //req = Math.max(req, 0);
+      log(req)
+      if (req < 0) {
+        req = len + req;
+        //offset = (len - 1) - offset;
+      }
+      log(req, offset)
+      while (req) {
+        container.appendChild(articles[index]);
+        index++;
+        req--;
+        offset++;
+      }
+
+      callback(articles[index]);
+      index = 0;
+      offset = offset % len;
+    }
+  };
+}
+
 function init(e) {
   let y = 0,
     node,
@@ -187,10 +226,9 @@ function init(e) {
   }
 }
 
-
 function controller(e) {
-  let a = meta.toArray(this.childNodes).filter( n => n.nodeName === 'SPAN'),
-    live = meta.toArray(liveArticles).filter( n => n.nodeName === 'ARTICLE'),
+  let a = meta.toArray(this.childNodes).filter((n) => n.nodeName === "SPAN"),
+    live = meta.toArray(liveArticles).filter((n) => n.nodeName === "ARTICLE"),
     parent = liveArticles[0].parentNode,
     f = finder(a),
     i = f(e.target),
@@ -210,7 +248,7 @@ function controller(e) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", init);
+////document.addEventListener("DOMContentLoaded", init);
 cb(el);
 meta.$("control").addEventListener("click", play(cb));
 

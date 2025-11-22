@@ -1214,7 +1214,6 @@ html #services main > section.services {
   background-color: #143f1f;
 }
 html #services main > section.services article {
-  transform: translateX(-500%);
   transition: transform 500ms linear 222ms;
 }
 html #services main > section.services article aside {

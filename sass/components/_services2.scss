@@ -4,7 +4,7 @@ html {
       background-color: darken($main, 4%);
       article {
         //margin-left: -100%;
-        transform: translateX(-500%);
+        //transform: translateX(-500%);
         transition: transform 500ms linear 222ms;
         aside {
           background-position: center;
