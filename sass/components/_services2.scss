@@ -3,8 +3,9 @@ html {
     section.services {
       background-color: darken($main, 4%);
       article {
-        margin-left: -100%;
-        //transition: margin-left 500ms linear 222ms;
+        //margin-left: -100%;
+        transform: translateX(-500%);
+        transition: transform 500ms linear 222ms;
         aside {
           background-position: center;
           background-size: cover;
@@ -33,7 +34,17 @@ html {
           background-image: url("../assets/tidy.jpeg");
         }
         &:last-child {
-          margin-left: 0;
+         // margin-left: 0;
+        }
+        figure {
+          @include flex(1,1,1em);
+          img {
+            width: 100%;
+            max-height: 12em;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+          }
         }
       }
     }
@@ -177,14 +188,13 @@ html.js #services section.services > div article {
         section {
           &.services div {
             article {
-              margin-left: -52%;
+              transform: translateX(-260%);
+              transform: none;
               &:nth-child(5) {
-                order: 6;
-                margin-left: 0;
+             //   transform: none;
               }
               &:nth-child(6) {
-                order: 5;
-                margin-left: 0;
+               // transform: none;
               }
             }
           }
@@ -286,20 +296,19 @@ html.js #services section.services > div article {
         section {
           &.services div {
             article {
-              margin-left: -34.333%;
-
+              transform: none;
               &:nth-child(4) {
-                order: 6;
-                margin-left: 0;
+                //order: 6
+                transform: none;
               }
 
               &:nth-child(5) {
-                order: 5;
-                margin-left: 0;
+                //order: 5;
+                transform: none;
               }
               &:nth-child(6) {
-                order: 4;
-                margin-left: 0;
+                //order: 4;
+                transform: none;
               }
             }
           }
