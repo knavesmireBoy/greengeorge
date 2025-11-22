@@ -173,11 +173,11 @@ function play(callback, offset = 0) {
     len = articles.length,
     index = 0,
     w = (r, i) => {
-      while (r) {
+      while (r--) {
         container.appendChild(articles[i]);
         i++;
         offset++;
-        r--;
+        //r--;
       }
       return [i, offset];
     };
@@ -199,18 +199,18 @@ function play(callback, offset = 0) {
         req++;
       }
 
-      log(req, 888)
-      req -= offset;
+      log(999, req)
+      //req -= offset;
+
       if (req < 0) {
         req = len + req;
       }
 
       x(req, index, 2222).then((val) => {
        let [i, offset] = val;
-       log(i, 666, offset)
+       log('now')
         callback(articles[i]);
         offset = val % len;
-        index = 0;
       });
       /*
       while (req) {
@@ -223,7 +223,7 @@ function play(callback, offset = 0) {
       index = 0;
       offset = offset % len;
       */
-      log(req, index, 555, offset);
+      log(req, offset, index, 555);
     }
   };
 }
