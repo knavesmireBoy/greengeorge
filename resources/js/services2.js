@@ -105,7 +105,6 @@ const meta = greenGeorge.meta,
   finder = (nodes) => (node) => {
     let i = 0,
       l = nodes.length;
-      log(node);
     while (i < l) {
       if (nodes[i] === node) {
         break;
@@ -136,50 +135,10 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play1(callback, offset = 0) {
-  var spans = meta.toArray(meta.$Q("#control span", true)),
-    articles = meta.$Q(".services article", true),
-    len = articles.length,
-    index = len - 1;
-  return function (e) {
-    let tgt = e.target,
-      req = 0,
-      domindex = 0,
-      articles = meta.$Q(".services article", true);
-    if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
-      while (spans[req] !== tgt) {
-        req++;
-      }
-      domindex = index - req;
-      domindex += offset;
-      domindex = domindex % len;
-      req = index - domindex;
-
-      while (req) {
-        container.insertBefore(articles[index], container.firstChild);
-        index--;
-        req--;
-        offset++;
-      }
-      callback(articles[index]);
-      index = len - 1;
-      offset % len;
-    }
-  };
-}
-
 function play(callback, offset = 0) {
-
-  var spans = meta.toArray(meta.$Q("#control span", true)),
-    articles = meta.$Q(".services article", true),
-    len = articles.length,
-    index = 0;
-
-
-
+  var spans = meta.toArray(meta.$Q("#control span", true));
   return function (e) {
-
-    function x(r, i, t) {
+    function timer(r, i, t) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve(loopy(r, i));
@@ -190,7 +149,7 @@ function play(callback, offset = 0) {
     let tgt = e.target,
       req = 0,
       articles = meta.$Q(".services article", true),
-
+      len = articles.length,
       loopy = (r, o) => {
         let i = 0;
         while (r) {
@@ -202,26 +161,19 @@ function play(callback, offset = 0) {
         return [i, o];
       };
 
-
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
       }
 
-      log(777, req, offset)
       req -= offset;
-     
       if (req < 0) {
         req = len + req;
       }
-      log(999, req)
-      x(req, offset, 2222).then((val) => {
-       let [i, o] = val;
-       log(i, offset, articles[i])
+      timer(req, offset, 2222).then((value) => {
+        let [i, o] = value;
         callback(articles[i]);
         offset = o % len;
-        log(req, offset, 555);
-
       });
     }
   };
