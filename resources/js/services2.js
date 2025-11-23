@@ -159,15 +159,17 @@ function play(callback, offset = 0) {
           o++;
         }
         return [i, o];
+      },
+      snoopy = (r, i, o) => {
+        container.appendChild(articles[i]);
+          i++;
+          o++;
+        return [i, o];
       };
     serv.classList.add("mv");
-
-
-   
-
     setTimeout(function () {
       serv.classList.remove("mv");
-    }, 1000);
+    }, 1001);
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;

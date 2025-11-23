@@ -1433,19 +1433,10 @@ html.js #services section.services > div article:nth-of-type(6) > aside {
     animation: span24 29s linear 0s infinite normal forwards;
   }
   html.js #services section.services.mv div article {
-    margin-left: 34.333%;
+    margin-left: 0;
   }
   html.js #services section.services.mv div article:nth-child(1) {
     margin-left: -34.333%;
-  }
-  html.js #services section.services.mv div article:nth-child(2) {
-    margin-left: 0;
-  }
-  html.js #services section.services.mv div article:nth-child(3) {
-    margin-left: 0;
-  }
-  html.js #services section.services.mv div article:nth-child(4) {
-    margin-left: 0;
   }
 }
 html #about nav.eco {
