@@ -105,6 +105,7 @@ const meta = greenGeorge.meta,
   finder = (nodes) => (node) => {
     let i = 0,
       l = nodes.length;
+      log(node);
     while (i < l) {
       if (nodes[i] === node) {
         break;
@@ -168,62 +169,60 @@ function play1(callback, offset = 0) {
 }
 
 function play(callback, offset = 0) {
+
   var spans = meta.toArray(meta.$Q("#control span", true)),
     articles = meta.$Q(".services article", true),
     len = articles.length,
-    index = 0,
-    w = (r, i) => {
-      while (r--) {
-        container.appendChild(articles[i]);
-        i++;
-        offset++;
-        //r--;
-      }
-      return [i, offset];
-    };
+    index = 0;
 
-  function x(r, i, t) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(w(r, i));
-      }, t);
-    });
-  }
+
 
   return function (e) {
+
+    function x(r, i, t) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(loopy(r, i));
+        }, t);
+      });
+    }
+
     let tgt = e.target,
       req = 0,
-      articles = meta.$Q(".services article", true);
+      articles = meta.$Q(".services article", true),
+
+      loopy = (r, o) => {
+        let i = 0;
+        while (r) {
+          container.appendChild(articles[i]);
+          i++;
+          o++;
+          r--;
+        }
+        return [i, o];
+      };
+
+
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
       }
 
-      log(999, req)
-      //req -= offset;
-
+      log(777, req, offset)
+      req -= offset;
+     
       if (req < 0) {
         req = len + req;
       }
-
-      x(req, index, 2222).then((val) => {
-       let [i, offset] = val;
-       log('now')
+      log(999, req)
+      x(req, offset, 2222).then((val) => {
+       let [i, o] = val;
+       log(i, offset, articles[i])
         callback(articles[i]);
-        offset = val % len;
+        offset = o % len;
+        log(req, offset, 555);
+
       });
-      /*
-      while (req) {
-        container.appendChild(articles[index]);
-        index++;
-        req--;
-        offset++;
-      }
-      callback(articles[index]);
-      index = 0;
-      offset = offset % len;
-      */
-      log(req, offset, index, 555);
     }
   };
 }
