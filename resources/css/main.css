@@ -1210,67 +1210,61 @@ html.js #home #player aside.pause {
     height: calc(525px + 155 * (100vw - 820px) / 460);
   }
 }
-html #services main > section.services {
+html #services section.services {
   background-color: #143f1f;
 }
-html #services main > section.services article {
-  transition: margin 2s ease-in;
+html #services section.services article {
+  transition: margin 1s ease-in;
 }
-html #services main > section.services article aside {
+html #services section.services article aside {
   background-position: center;
   background-size: cover;
 }
-html #services main > section.services article:nth-of-type(1) > aside {
+html #services section.services article:nth-of-type(1) > aside {
   background-image: url("../assets/lawn.jpeg");
   background-position: center top;
 }
-html #services main > section.services article:nth-of-type(2) > aside {
+html #services section.services article:nth-of-type(2) > aside {
   background-image: url("../images/IMG_1478.jpg");
 }
-html #services main > section.services article:nth-of-type(3) > aside {
+html #services section.services article:nth-of-type(3) > aside {
   background-image: url("../assets/weeding.jpeg");
   background-position: center top;
 }
-html #services main > section.services article:nth-of-type(4) > aside {
+html #services section.services article:nth-of-type(4) > aside {
   background-image: url("../assets/pruning.jpeg");
 }
-html #services main > section.services article:nth-of-type(5) > aside {
+html #services section.services article:nth-of-type(5) > aside {
   background-image: url("../assets/hedge.jpeg");
   background-position: center 80%;
 }
-html #services main > section.services article:nth-of-type(6) > aside {
+html #services section.services article:nth-of-type(6) > aside {
   background-image: url("../assets/tidy.jpeg");
 }
-html #services main > section.services article figure {
+html #services section.services article figure {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 1em;
   -ms-flex: 1 1 1em;
   flex: 1 1 1em;
 }
-html #services main > section.services article figure img {
+html #services section.services article figure img {
   width: 100%;
   max-height: 12em;
   display: block;
   object-fit: cover;
   object-position: center top;
 }
-html #services main > section.services.mv article {
-  margin-left: 52%;
+html #services section.services.mv article {
+  margin-left: 100%;
 }
-html #services main > section.services.mv article:nth-child(1) {
-  margin-left: -52%;
-}
-html #services main > section.services.mv article:nth-child(2) {
+html #services section.services.mv article:nth-child(1) {
   margin-left: 0;
 }
-html #services main > section.services.mv article:nth-child(3) {
-  margin-left: 0;
-}
-html #services main > .mission {
+html #services .mission {
   padding: 1rem;
 }
-html #services main > .mission article p:first-child {
+html #services .mission article p:first-child {
   font-family: "Handwritten", cursive;
   text-align: center;
   color: rgb(25, 78, 39);
@@ -1362,6 +1356,18 @@ html.js #services section.services > div article:nth-of-type(6) > aside {
   html #services main > section:first-child article h4 {
     font-size: 1.6225em;
   }
+  html #services section.services.mv article {
+    margin-left: 52%;
+  }
+  html #services section.services.mv article:nth-child(1) {
+    margin-left: -52%;
+  }
+  html #services section.services.mv article:nth-child(2) {
+    margin-left: 0;
+  }
+  html #services section.services.mv article:nth-child(3) {
+    margin-left: 0;
+  }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   html.no-js #control span:first-child {
@@ -1426,10 +1432,19 @@ html.js #services section.services > div article:nth-of-type(6) > aside {
     -webkit-animation: span24 29s linear 0s infinite normal forwards;
     animation: span24 29s linear 0s infinite normal forwards;
   }
-  html.js #services main section.services div article {
+  html.js #services section.services.mv div article {
     margin-left: 34.333%;
   }
-  html.js #services main section.services div article:nth-child(-n+3) {
+  html.js #services section.services.mv div article:nth-child(1) {
+    margin-left: -34.333%;
+  }
+  html.js #services section.services.mv div article:nth-child(2) {
+    margin-left: 0;
+  }
+  html.js #services section.services.mv div article:nth-child(3) {
+    margin-left: 0;
+  }
+  html.js #services section.services.mv div article:nth-child(4) {
     margin-left: 0;
   }
 }

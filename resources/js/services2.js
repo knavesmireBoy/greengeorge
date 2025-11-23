@@ -162,9 +162,12 @@ function play(callback, offset = 0) {
       };
     serv.classList.add("mv");
 
+
+   
+
     setTimeout(function () {
       serv.classList.remove("mv");
-    }, 2111);
+    }, 1000);
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
@@ -174,7 +177,7 @@ function play(callback, offset = 0) {
       if (req < 0) {
         req = len + req;
       }
-      timer(req, offset, 2000).then((value) => {
+      timer(req, offset, 1000).then((value) => {
         let [i, o] = value;
         callback(articles[i]);
         offset = o % len;

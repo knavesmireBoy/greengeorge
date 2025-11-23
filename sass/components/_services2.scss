@@ -1,9 +1,9 @@
 html {
-  #services main > {
+  #services {
     section.services {
       background-color: darken($main, 4%);
       article {
-        transition: margin 2s ease-in;
+        transition: margin 1s ease-in;
         aside {
           background-position: center;
           background-size: cover;
@@ -35,7 +35,7 @@ html {
           //margin-left: 0;
         }
         figure {
-          @include flex(1,1,1em);
+          @include flex(1, 1, 1em);
           img {
             width: 100%;
             max-height: 12em;
@@ -47,16 +47,10 @@ html {
       }
       &.mv {
         article {
-          margin-left: 52%;
+          margin-left: 100%;
           &:nth-child(1) {
-           margin-left: -52%;
+            margin-left: 0;
           }
-          &:nth-child(2) {
-            margin-left: 0;
-           }
-           &:nth-child(3) {
-            margin-left: 0;
-           }
         }
       }
     }
@@ -195,16 +189,18 @@ html.js #services section.services > div article {
         }
       }
     }
-    &.js {
-      #services main {
-        section {
-          &.services div {
-            article {
-             // margin-left: 52%;
-              &:nth-child(-n+2) {
-              // margin-left: 0;
-              }
-            }
+    #services {
+      section.services.mv {
+        article {
+          margin-left: 52%;
+          &:nth-child(1) {
+            margin-left: -52%;
+          }
+          &:nth-child(2) {
+            margin-left: 0;
+          }
+          &:nth-child(3) {
+            margin-left: 0;
           }
         }
       }
@@ -300,14 +296,21 @@ html.js #services section.services > div article {
     }
 
     &.js {
-      #services main {
-        section {
-          &.services div {
-            article {
-              margin-left: 34.333%;
-              &:nth-child(-n+3) {
-                margin-left: 0;
-              }
+      #services {
+        section.services.mv div {
+          article {
+            margin-left: 34.333%;
+            &:nth-child(1) {
+              margin-left: -34.333%;
+            }
+            &:nth-child(2) {
+              margin-left: 0;
+            }
+            &:nth-child(3) {
+              margin-left: 0;
+            }
+            &:nth-child(4) {
+              margin-left: 0;
             }
           }
         }
