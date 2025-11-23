@@ -144,10 +144,10 @@ function play(callback, offset = 0, index = 0) {
     function tick(action, t) {
       add(serv);
       setTimeout(rem, t);
-      return function (r, i) {
+      return function (r, o) {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            resolve(action(r, i));
+            resolve(action(r, o));
           }, t);
         });
       };
@@ -165,15 +165,14 @@ function play(callback, offset = 0, index = 0) {
           i++;
           o++;
         }
-        return [i, o];
+        return [r, i, o];
       },
-      snoopy = (r, i, o) => {
+      loopless = (r, i, o) => {
         container.appendChild(articles[i]);
         i++;
         o++;
         return [i, o];
-      },
-      mytimer = tick(loopy, 1000);
+      };
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
@@ -185,10 +184,12 @@ function play(callback, offset = 0, index = 0) {
         req = len + req;
       }
 
+      let mytimer = tick(loopy, 1000);
       mytimer(req, offset).then((value) => {
-        let [i, o] = value;
+        let [r, i, o] = value;
         callback(articles[i]);
         offset = o % len;
+        req = r;
       });
     }
   };
