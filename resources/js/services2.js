@@ -136,14 +136,21 @@ function testi() {
 }
 
 function play(callback, offset = 0, index = 0) {
-  var spans = meta.toArray(meta.$Q("#control span", true));
+  var spans = meta.toArray(meta.$Q("#control span", true)),
+    serv = meta.$Q(".services"),
+    add = curry4(subMethod)("mv")("add")("classList"),
+    rem = curry44(subMethod)("mv")("remove")("classList")(serv);
   return function (e) {
-    function timer(r, i, t) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(loopy(r, i));
-        }, t);
-      });
+    function tick(action, t) {
+      add(serv);
+      setTimeout(rem, t);
+      return function (r, i) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(action(r, i));
+          }, t);
+        });
+      };
     }
 
     let tgt = e.target,
@@ -165,27 +172,23 @@ function play(callback, offset = 0, index = 0) {
         i++;
         o++;
         return [i, o];
-      };
+      },
+      mytimer = tick(loopy, 1000);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
       }
 
-      serv.classList.add("mv");
-      setTimeout(function () {
-        serv.classList.remove("mv");
-      }, 1001);
-
       req -= offset;
       if (req < 0) {
         req = len + req;
       }
-      timer(req, offset, 1000).then((value) => {
+
+      mytimer(req, offset).then((value) => {
         let [i, o] = value;
         callback(articles[i]);
         offset = o % len;
-        index = i;
       });
     }
   };
