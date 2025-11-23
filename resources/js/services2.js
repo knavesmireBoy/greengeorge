@@ -135,7 +135,7 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(callback, offset = 0) {
+function play(callback, offset = 0, index = 0) {
   var spans = meta.toArray(meta.$Q("#control span", true));
   return function (e) {
     function timer(r, i, t) {
@@ -162,18 +162,20 @@ function play(callback, offset = 0) {
       },
       snoopy = (r, i, o) => {
         container.appendChild(articles[i]);
-          i++;
-          o++;
+        i++;
+        o++;
         return [i, o];
       };
-    serv.classList.add("mv");
-    setTimeout(function () {
-      serv.classList.remove("mv");
-    }, 1001);
+
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
       }
+
+      serv.classList.add("mv");
+      setTimeout(function () {
+        serv.classList.remove("mv");
+      }, 1001);
 
       req -= offset;
       if (req < 0) {
@@ -183,6 +185,7 @@ function play(callback, offset = 0) {
         let [i, o] = value;
         callback(articles[i]);
         offset = o % len;
+        index = i;
       });
     }
   };
