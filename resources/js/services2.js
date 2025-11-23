@@ -140,11 +140,12 @@ function play(callback, offset = 0, index = 0) {
     serv = meta.$Q(".services"),
     add = curry4(subMethod)("mv")("add")("classList"),
     rem = curry44(subMethod)("mv")("remove")("classList")(serv);
+
   return function (e) {
-    function tick(action, t) {
-      add(serv);
-      setTimeout(rem, t);
-      return function (r, o) {
+    function tick(action) {
+      return function (r, o, t) {
+        add(serv);
+        setTimeout(rem, t);
         return new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve(action(r, o));
@@ -184,13 +185,17 @@ function play(callback, offset = 0, index = 0) {
         req = len + req;
       }
 
-      let mytimer = tick(loopy, 1000);
-      mytimer(req, offset).then((value) => {
-        let [r, i, o] = value;
+      let mytimer = tick(loopy);
+
+      async function func(f, ...args) {
+        const result = await f(...args);
+        let [r, i, o] = result;
         callback(articles[i]);
         offset = o % len;
         req = r;
-      });
+        log(req);
+      }
+      func(mytimer, req, offset, 1000);
     }
   };
 }
