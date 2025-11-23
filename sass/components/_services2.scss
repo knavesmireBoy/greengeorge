@@ -3,8 +3,7 @@ html {
     section.services {
       background-color: darken($main, 4%);
       article {
-        margin-left: 100%;
-        transition: margin 1s ease-in;
+        transition: margin 2s ease-in;
         aside {
           background-position: center;
           background-size: cover;
@@ -33,7 +32,7 @@ html {
           background-image: url("../assets/tidy.jpeg");
         }
         &:first-child {
-          margin-left: 0;
+          //margin-left: 0;
         }
         figure {
           @include flex(1,1,1em);
@@ -44,6 +43,20 @@ html {
             object-fit: cover;
             object-position: center top;
           }
+        }
+      }
+      &.mv {
+        article {
+          margin-left: 52%;
+          &:nth-child(1) {
+           margin-left: -52%;
+          }
+          &:nth-child(2) {
+            margin-left: 0;
+           }
+           &:nth-child(3) {
+            margin-left: 0;
+           }
         }
       }
     }
@@ -187,9 +200,9 @@ html.js #services section.services > div article {
         section {
           &.services div {
             article {
-              margin-left: 52%;
+             // margin-left: 52%;
               &:nth-child(-n+2) {
-               margin-left: 0;
+              // margin-left: 0;
               }
             }
           }

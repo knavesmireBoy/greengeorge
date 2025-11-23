@@ -252,8 +252,6 @@ section.services {
     overflow: hidden;
     article {
       @include flex(0, 0, 100%);
-      //transition: transform 1s 4s;
-      //transform: translateX(-100%);
     }
   }
 

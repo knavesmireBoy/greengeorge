@@ -148,19 +148,23 @@ function play(callback, offset = 0) {
 
     let tgt = e.target,
       req = 0,
+      serv = meta.$Q(".services"),
       articles = meta.$Q(".services article", true),
       len = articles.length,
       loopy = (r, o) => {
         let i = 0;
-        while (r) {
+        while (r--) {
           container.appendChild(articles[i]);
           i++;
           o++;
-          r--;
         }
         return [i, o];
       };
+    serv.classList.add("mv");
 
+    setTimeout(function () {
+      serv.classList.remove("mv");
+    }, 2111);
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
@@ -170,7 +174,7 @@ function play(callback, offset = 0) {
       if (req < 0) {
         req = len + req;
       }
-      timer(req, offset, 2222).then((value) => {
+      timer(req, offset, 2000).then((value) => {
         let [i, o] = value;
         callback(articles[i]);
         offset = o % len;
