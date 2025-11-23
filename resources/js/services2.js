@@ -172,7 +172,8 @@ function play(callback, offset = 0, index = 0) {
         container.appendChild(articles[i]);
         i++;
         o++;
-        return [i, o];
+        r--;
+        return [r, i, o];
       };
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
@@ -193,7 +194,9 @@ function play(callback, offset = 0, index = 0) {
         callback(articles[i]);
         offset = o % len;
         req = r;
-        log(req);
+        if(req > 0){
+          func(f, ...args);
+        }
       }
       func(mytimer, req, offset, 1000);
     }
