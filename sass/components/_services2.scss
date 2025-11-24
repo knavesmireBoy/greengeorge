@@ -6,7 +6,7 @@ html {
         0deg,
         $main 0%,
         darken($main, 10%),
-      75%,
+        75%,
         $main 100%
       );
 
@@ -47,7 +47,7 @@ html {
     }
   }
   #control {
-   // background-color: darken($main, 4%);
+    // background-color: darken($main, 4%);
   }
 
   &.no-js {
