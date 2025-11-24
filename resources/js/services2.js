@@ -143,7 +143,7 @@ function play(callback, offset = 0, index = 0) {
 
   return function (e) {
     function tick(action) {
-      return function (r, i, o, t) {
+      return function (t, r, i, o) {
         add(serv);
         setTimeout(rem, t);
         return new Promise((resolve, reject) => {
@@ -188,17 +188,18 @@ function play(callback, offset = 0, index = 0) {
 
       let mytimer = tick(loopless);
 
-      async function func(f, r, i, o, t) {
-        const result = await f(r, i, o, t);
-        let [r1, i1, o1] = result;
-        callback(articles[i1]);
-        offset = o1 % len;
-        req = r1;
-        if(req > 0){
-         return func(f, r1, i1, o1, t);
+      async function func(f, t, ...args) {
+        const result = await f(t, ...args);
+        let [r, i, o] = result;
+        callback(articles[i]);
+        offset = o % len;
+       // i = 0;
+       log(i);
+        if(r > 0){
+         return func(f, t, r, i, o);
         }
       }
-      func(mytimer, req, 0, offset, 1000);
+      func(mytimer, 1000, req, 0, offset);
     }
   };
 }
