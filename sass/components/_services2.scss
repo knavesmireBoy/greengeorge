@@ -1,38 +1,21 @@
 html {
   #services {
     section.services {
-      background-color: darken($main, 4%);
+      background: darken($main, 4%);
+      background: linear-gradient(
+        0deg,
+        $main 0%,
+        darken($main, 10%),
+      75%,
+        $main 100%
+      );
+
       article {
-        transition: margin 1s ease-in;
+        //margin-left: 0;
+        transition: margin 0.75s ease-in;
         aside {
           background-position: center;
           background-size: cover;
-        }
-        &:nth-of-type(1) {
-          > aside {
-            background-image: url("../assets/lawn.jpeg");
-            background-position: center top;
-          }
-        }
-        &:nth-of-type(2) > aside {
-          background-image: url("../images/IMG_1478.jpg");
-        }
-        &:nth-of-type(3) > aside {
-          background-image: url("../assets/weeding.jpeg");
-          background-position: center top;
-        }
-        &:nth-of-type(4) > aside {
-          background-image: url("../assets/pruning.jpeg");
-        }
-        &:nth-of-type(5) > aside {
-          background-image: url("../assets/hedge.jpeg");
-          background-position: center 80%;
-        }
-        &:nth-of-type(6) > aside {
-          background-image: url("../assets/tidy.jpeg");
-        }
-        &:first-child {
-          //margin-left: 0;
         }
         figure {
           @include flex(1, 1, 1em);
@@ -46,11 +29,8 @@ html {
         }
       }
       &.mv {
-        article {
-          margin-left: 100%;
-          &:nth-child(1) {
-            margin-left: 0;
-          }
+        article:first-child {
+          margin-left: -100%;
         }
       }
     }
@@ -67,7 +47,7 @@ html {
     }
   }
   #control {
-    background-color: darken($main, 4%);
+   // background-color: darken($main, 4%);
   }
 
   &.no-js {
@@ -78,32 +58,6 @@ html {
         o moz webkit
       );
     }
-  }
-}
-
-html.js #services section.services > div article {
-  &:nth-of-type(1) {
-    > aside {
-      background-image: url("../assets/tidy.jpeg");
-    }
-  }
-  &:nth-of-type(2) > aside {
-    background-image: url("../assets/hedge.jpeg");
-    background-position: center 80%;
-  }
-  &:nth-of-type(3) > aside {
-    background-image: url("../assets/pruning.jpeg");
-  }
-  &:nth-of-type(4) > aside {
-    background-image: url("../assets/weeding.jpeg");
-    background-position: center top;
-  }
-  &:nth-of-type(5) > aside {
-    background-image: url("../images/IMG_1478.jpg");
-  }
-  &:nth-of-type(6) > aside {
-    background-image: url("../assets/lawn.jpeg");
-    background-position: center top;
   }
 }
 
@@ -191,17 +145,8 @@ html.js #services section.services > div article {
     }
     #services {
       section.services.mv {
-        article {
-          margin-left: 52%;
-          &:nth-child(1) {
-            margin-left: -52%;
-          }
-          &:nth-child(2) {
-            margin-left: 0;
-          }
-          &:nth-child(3) {
-            margin-left: 0;
-          }
+        article:first-child {
+          margin-left: -52%;
         }
       }
     }
@@ -298,12 +243,8 @@ html.js #services section.services > div article {
     &.js {
       #services {
         section.services.mv div {
-          article {
-            margin-left: 0;
-            &:nth-child(1) {
-              margin-left: -34.333%;
-            }
-          
+          article:first-child {
+            margin-left: -34.333%;
           }
         }
       }

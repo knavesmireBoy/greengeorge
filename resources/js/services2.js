@@ -154,27 +154,20 @@ function play(callback, offset = 0, index = 0) {
       };
     }
 
-    let tgt = e.target,
-      req = 0,
+    const tgt = e.target,
       serv = meta.$Q(".services"),
       articles = meta.$Q(".services article", true),
       len = articles.length,
-      loopy = (r, o) => {
-        let i = 0;
-        while (r--) {
-          container.appendChild(articles[i]);
-          i++;
-          o++;
-        }
-        return [r, i, o];
-      },
-      loopless = (r, i, o) => {
+      mover = (r, i, o) => {
         container.appendChild(articles[i]);
         i++;
         o++;
         r--;
         return [r, i, o];
-      };
+      },
+      mytimer = tick(mover);
+
+    let req = 0;
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
@@ -186,20 +179,16 @@ function play(callback, offset = 0, index = 0) {
         req = len + req;
       }
 
-      let mytimer = tick(loopless);
-
       async function func(f, t, ...args) {
         const result = await f(t, ...args);
         let [r, i, o] = result;
         callback(articles[i]);
         offset = o % len;
-       // i = 0;
-       log(i);
-        if(r > 0){
-         return func(f, t, r, i, o);
+        if (r > 0) {
+          return func(f, t, r, i, o);
         }
       }
-      func(mytimer, 1000, req, 0, offset);
+      func(mytimer, 750, req, 0, offset);
     }
   };
 }
