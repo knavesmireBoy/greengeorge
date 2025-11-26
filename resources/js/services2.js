@@ -47,7 +47,9 @@ const meta = greenGeorge.meta,
   prevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
   subMethod = (o, p, m, v) => o[p][m](v),
+  subKlas = (p, v) => o[p][m](v),
   prepair = (m, k) => (o, v) => o[m](k, v),
+  prepSubMethod = (p, v) => (o, m) => o[p][m](v),
   curry4 = meta.curryRight(4),
   curry44 = meta.curryRight(4, true),
   cu1 = meta.curryRight(1, true),
@@ -63,6 +65,13 @@ const meta = greenGeorge.meta,
   getbest = (fn, coll, arg) => {
     let cb = coll.reduce((a, b) => (fn(arg) ? a : b));
     return cb(arg);
+  },
+  //appender = defer(invk, container, "appendChild"),
+  //inserter = defer(invok, container, "insertBefore"),
+  hifactory = prepSubMethod('classList', 'hi'),
+  highlighter = {
+    exec: cu2(hifactory)('add'),
+    undo: cu2(hifactory)('remove'),
   },
   mover = (t, flag = false) => {
     if (flag) {
@@ -113,7 +122,7 @@ const meta = greenGeorge.meta,
     }
     return i;
   },
-  spotify = (nodes, values, cb) => (j) => {
+  spotify1 = (nodes, values, cb) => (j) => {
     let i = nodes.length,
       [dflt, current] = values;
     while (i--) {
@@ -124,7 +133,21 @@ const meta = greenGeorge.meta,
       }
     }
   },
+  spotify = (nodes, o) => (j) => {
+    let i = nodes.length;
+    while (i--) {
+      if (i === j) {
+        o.exec(nodes[i]);
+      } else {
+        o.undo(nodes[i]);
+      }
+    }
+  },
   cycle = spotify(
+    control.getElementsByTagName("span"),
+    highlighter
+  ),
+  cycle1 = spotify(
     control.getElementsByTagName("span"),
     ["rgba(255,255,255, .2)", "white"],
     paint

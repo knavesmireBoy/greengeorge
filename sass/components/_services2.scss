@@ -11,7 +11,6 @@ html {
       );
 
       article {
-        //margin-left: 0;
         transition: margin 0.75s ease-in;
         aside {
           background-position: center;
@@ -46,9 +45,6 @@ html {
       }
     }
   }
-  #control {
-    // background-color: darken($main, 4%);
-  }
 
   &.no-js {
     section.services article:first-child {
@@ -57,6 +53,11 @@ html {
         services 28s ease-in 1s infinite normal forwards,
         o moz webkit
       );
+    }
+  }
+  &.js {
+    #services #control span.hi {
+      background-color: white;
     }
   }
 }

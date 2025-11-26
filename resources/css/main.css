@@ -1253,6 +1253,9 @@ html.no-js section.services article:first-child {
   -webkit-animation: services 28s ease-in 1s infinite normal forwards;
   animation: services 28s ease-in 1s infinite normal forwards;
 }
+html.js #services #control span.hi {
+  background-color: white;
+}
 
 @media only screen and (max-width: 768px) {
   html.no-js #services #control span:first-child {
