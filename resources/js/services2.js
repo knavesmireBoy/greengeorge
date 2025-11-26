@@ -66,12 +66,10 @@ const meta = greenGeorge.meta,
     let cb = coll.reduce((a, b) => (fn(arg) ? a : b));
     return cb(arg);
   },
-  //appender = defer(invk, container, "appendChild"),
-  //inserter = defer(invok, container, "insertBefore"),
-  hifactory = prepSubMethod('classList', 'hi'),
+  hifactory = prepSubMethod("classList", "hi"),
   highlighter = {
-    exec: cu2(hifactory)('add'),
-    undo: cu2(hifactory)('remove'),
+    exec: cu2(hifactory)("add"),
+    undo: cu2(hifactory)("remove"),
   },
   mover = (t, flag = false) => {
     if (flag) {
@@ -106,6 +104,8 @@ const meta = greenGeorge.meta,
   el = articles[0],
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
+  appender = ptL(invk, container, "appendChild"),
+  inserter = defer(invok, container, "insertBefore"),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
@@ -122,17 +122,6 @@ const meta = greenGeorge.meta,
     }
     return i;
   },
-  spotify1 = (nodes, values, cb) => (j) => {
-    let i = nodes.length,
-      [dflt, current] = values;
-    while (i--) {
-      if (i === j) {
-        cb(nodes[i], current);
-      } else {
-        cb(nodes[i], dflt);
-      }
-    }
-  },
   spotify = (nodes, o) => (j) => {
     let i = nodes.length;
     while (i--) {
@@ -143,15 +132,7 @@ const meta = greenGeorge.meta,
       }
     }
   },
-  cycle = spotify(
-    control.getElementsByTagName("span"),
-    highlighter
-  ),
-  cycle1 = spotify(
-    control.getElementsByTagName("span"),
-    ["rgba(255,255,255, .2)", "white"],
-    paint
-  ),
+  cycle = spotify(control.getElementsByTagName("span"), highlighter),
   cb = compose(cycle, finder(articles));
 
 function testi() {
@@ -162,7 +143,8 @@ function play(callback, offset = 0, index = 0) {
   var spans = meta.toArray(meta.$Q("#control span", true)),
     serv = meta.$Q(".services"),
     add = curry4(subMethod)("mv")("add")("classList"),
-    rem = curry44(subMethod)("mv")("remove")("classList")(serv);
+    rem = curry44(subMethod)("mv")("remove")("classList")(serv),
+    contains = cu2(hifactory)("contains");
 
   return function (e) {
     function tick(action) {
@@ -182,7 +164,7 @@ function play(callback, offset = 0, index = 0) {
       articles = meta.$Q(".services article", true),
       len = articles.length,
       mover = (r, i, o) => {
-        container.appendChild(articles[i]);
+        appender(articles[i]);
         i++;
         o++;
         r--;
@@ -190,12 +172,19 @@ function play(callback, offset = 0, index = 0) {
       },
       mytimer = tick(mover);
 
-    let req = 0;
+    let req = 0,
+    k = 0;
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
         req++;
       }
+
+      while (!contains(spans[k])) {
+        k++;
+      }
+
+      log(k, offset);
 
       req -= offset;
       if (req < 0) {
