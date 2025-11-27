@@ -210,11 +210,8 @@ function play(callback) {
       }
 
       while (!contains(spans[k])) {
-        log(6, k);
         k++;
       }
-
-      log(9, k);
 
       if (req < k) {
         mytimer = tick(mover, "rv");
