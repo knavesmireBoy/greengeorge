@@ -1382,7 +1382,7 @@ html.js #services #control span.hi {
     margin-left: -34.333%;
   }
   html.js #services section.services.rv div article {
-    transition: margin 0.15s ease-in;
+    transition: margin 0.1s ease-in;
   }
   html.js #services section.services.rv div article:first-child {
     margin-left: -34.333%;

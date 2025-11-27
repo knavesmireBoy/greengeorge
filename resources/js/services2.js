@@ -105,11 +105,16 @@ const meta = greenGeorge.meta,
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
+  appenderoo = ptL(invk, control, "appendChild"),
   inserter = defer(invok, container, "insertBefore"),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
     cu2((a, b) => a === b)(1)
+  ),
+  shifter = compose(
+    cu2(ptL(invok, control, "insertBefore")),
+    defer(utils.getNextElement, control.firstChild)
   ),
   finder = (nodes) => (node) => {
     let i = 0,
@@ -182,10 +187,11 @@ function play(callback) {
       while (!contains(spans[k])) {
         k++;
       }
-      
+    
       if (req < k) {
         mytimer = tick(mover, "rv");
         dur = 300 * Math.abs(req - k);
+        dur = 100;
       }
 
       req -= k;
