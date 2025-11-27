@@ -105,7 +105,6 @@ const meta = greenGeorge.meta,
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
-  appenderoo = ptL(invk, control, "appendChild"),
   inserter = defer(invok, container, "insertBefore"),
   doremove = mayremove(container),
   doappend = append(container),
@@ -113,7 +112,7 @@ const meta = greenGeorge.meta,
     cu2((a, b) => a === b)(1)
   ),
   shifter = compose(
-    cu2(ptL(invok, control, "insertBefore")),
+    ptL(invk, control, "appendChild"),
     defer(utils.getNextElement, control.firstChild)
   ),
   finder = (nodes) => (node) => {
@@ -138,14 +137,22 @@ const meta = greenGeorge.meta,
     }
   },
   cycle = spotify(control.getElementsByTagName("span"), highlighter),
-  cb = compose(cycle, finder(articles));
+  cb = compose(cycle, finder(articles)),
+  foo = (n, f) => () => {
+    let i = n;
+    while (n--) {
+      f();
+    }
+    n = i;
+  };
 
 function testi() {
   elapsed = Date.now();
 }
 
 function play(callback) {
-  var spans = meta.toArray(meta.$Q("#control span", true)),
+  var control = meta.$("control"),
+    spans = control.getElementsByTagName("span"),
     serv = meta.$Q(".services"),
     adder = ptL(subMethod, serv, "classList", "add"),
     remvr = defer(subMethod, serv, "classList", "remove"),
@@ -157,17 +164,23 @@ function play(callback) {
       return function (t, r, i, k) {
         let j = 0,
           unit = 109;
+
         k = Math.max((k + 1) % 6, 1);
         unit *= k;
 
-
-    while (arts[j]) {
-         arts[j]["style"]["transform"] = `translateX(${-unit}%)`;
+        while (arts[j]) {
+          arts[j]["style"]["transform"] = `translateX(${-unit}%)`;
           j++;
         }
 
-      
-        
+        setTimeout(function () {
+          let j = 0;
+          while (arts[j]) {
+            arts[j]["style"]["transform"] = "none";
+            j++;
+          }
+        }, t);
+
         return new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve(action(r, i, k));
@@ -197,8 +210,11 @@ function play(callback) {
       }
 
       while (!contains(spans[k])) {
+        log(6, k);
         k++;
       }
+
+      log(9, k);
 
       if (req < k) {
         mytimer = tick(mover, "rv");
@@ -264,6 +280,6 @@ function controller(e) {
 
 ////document.addEventListener("DOMContentLoaded", init);
 cb(el);
-meta.$("control").addEventListener("click", play(cb));
+meta.$("control").addEventListener("click", play(foo(5, shifter)));
 
 //control.addEventListener("click", controller);
