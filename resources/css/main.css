@@ -1215,7 +1215,7 @@ html #services section.services {
   background: linear-gradient(0deg, rgb(25, 78, 39) 0%, #0d2714, 75%, rgb(25, 78, 39) 100%);
 }
 html #services section.services article {
-  transition: margin 0.6s ease-in;
+  transition: all 0.6s ease-in;
 }
 html #services section.services article aside {
   background-position: center;
@@ -1234,9 +1234,6 @@ html #services section.services article figure img {
   display: block;
   object-fit: cover;
   object-position: center top;
-}
-html #services section.services.mv article:first-child {
-  margin-left: -100%;
 }
 html #services .mission {
   padding: 1rem;
@@ -1311,9 +1308,6 @@ html.js #services #control span.hi {
   html #services main > section:first-child article h4 {
     font-size: 1.6225em;
   }
-  html #services section.services.mv article:first-child {
-    margin-left: -52%;
-  }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   html.no-js #control span:first-child {
@@ -1378,14 +1372,11 @@ html.js #services #control span.hi {
     -webkit-animation: span24 29s linear 0s infinite normal forwards;
     animation: span24 29s linear 0s infinite normal forwards;
   }
-  html.js #services section.services.mv div article:first-child {
-    margin-left: -34.333%;
+  html.js #services section.services.mv div {
+    outline: solid 1px white;
   }
-  html.js #services section.services.rv div article {
-    transition: margin 0.1s ease-in;
-  }
-  html.js #services section.services.rv div article:first-child {
-    margin-left: -34.333%;
+  html.js #services section.services.mv div article {
+    transform: translateX(-109.5%);
   }
 }
 html #about nav.eco {

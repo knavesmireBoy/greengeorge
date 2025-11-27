@@ -149,16 +149,28 @@ function play(callback) {
     serv = meta.$Q(".services"),
     adder = ptL(subMethod, serv, "classList", "add"),
     remvr = defer(subMethod, serv, "classList", "remove"),
-    contains = cu2(hifactory)("contains");
+    contains = cu2(hifactory)("contains"),
+    arts = serv.getElementsByTagName("article");
 
   return function (e) {
     function tick(action, kls) {
-      return function (t, r, i) {
-        adder(kls);
-        setTimeout(remvr(kls), t);
+      return function (t, r, i, k) {
+        let j = 0,
+          unit = 109;
+        k = Math.max((k + 1) % 6, 1);
+        unit *= k;
+
+
+    while (arts[j]) {
+         arts[j]["style"]["transform"] = `translateX(${-unit}%)`;
+          j++;
+        }
+
+      
+        
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            resolve(action(r, i));
+            resolve(action(r, i, k));
           }, t);
         });
       };
@@ -167,11 +179,11 @@ function play(callback) {
     const tgt = e.target,
       articles = meta.$Q(".services article", true),
       len = articles.length,
-      mover = (r, i) => {
+      mover = (r, i, k) => {
         appender(articles[i]);
         i++;
         r--;
-        return [r, i];
+        return [r, i, k];
       };
 
     let req = 0,
@@ -187,7 +199,7 @@ function play(callback) {
       while (!contains(spans[k])) {
         k++;
       }
-    
+
       if (req < k) {
         mytimer = tick(mover, "rv");
         dur = 300 * Math.abs(req - k);
@@ -201,13 +213,13 @@ function play(callback) {
 
       async function func(f, t, ...args) {
         const result = await f(t, ...args);
-        let [r, i] = result;
+        let [r, i, o] = result;
         callback(articles[i]);
         if (r > 0) {
-          return func(f, t, r, i);
+          return func(f, t, r, i, o);
         }
       }
-      func(mytimer, dur, req, 0);
+      func(mytimer, dur, req, 0, k);
     }
   };
 }

@@ -11,7 +11,7 @@ html {
       );
 
       article {
-        transition: margin 0.6s ease-in;
+        transition: all 0.6s ease-in;
         aside {
           background-position: center;
           background-size: cover;
@@ -28,8 +28,11 @@ html {
         }
       }
       &.mv {
-        article:first-child {
-          margin-left: -100%;
+        article {
+          &:first-child {
+            //margin-left: -100%;
+            //transform: translateX(-100%);
+          }
         }
       }
     }
@@ -147,7 +150,7 @@ html {
     #services {
       section.services.mv {
         article:first-child {
-          margin-left: -52%;
+       //   margin-left: -52%;
         }
       }
     }
@@ -245,15 +248,19 @@ html {
       #services {
         section.services {
           &.mv div {
-            article:first-child {
-              margin-left: -34.333%;
+            outline: solid 1px white;
+            article {
+              transform: translateX(-109.5%);
+              &:first-child {
+                //margin-left: -34.333%;
+              }
             }
           }
           &.rv div {
             article {
-              transition: margin .1s ease-in;
+             // transition: margin 0.1s ease-in;
               &:first-child {
-                margin-left: -34.333%;
+              //  margin-left: -34.333%;
               }
             }
           }
