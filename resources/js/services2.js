@@ -184,8 +184,6 @@ function play(callback, offset = 0, index = 0) {
         k++;
       }
 
-      log(k, offset);
-
       req -= offset;
       if (req < 0) {
         req = len + req;
