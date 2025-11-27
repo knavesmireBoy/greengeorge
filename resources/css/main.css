@@ -1215,7 +1215,7 @@ html #services section.services {
   background: linear-gradient(0deg, rgb(25, 78, 39) 0%, #0d2714, 75%, rgb(25, 78, 39) 100%);
 }
 html #services section.services article {
-  transition: margin 0.75s ease-in;
+  transition: margin 0.6s ease-in;
 }
 html #services section.services article aside {
   background-position: center;
@@ -1379,6 +1379,12 @@ html.js #services #control span.hi {
     animation: span24 29s linear 0s infinite normal forwards;
   }
   html.js #services section.services.mv div article:first-child {
+    margin-left: -34.333%;
+  }
+  html.js #services section.services.rv div article {
+    transition: margin 0.15s ease-in;
+  }
+  html.js #services section.services.rv div article:first-child {
     margin-left: -34.333%;
   }
 }

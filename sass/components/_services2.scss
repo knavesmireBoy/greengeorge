@@ -11,7 +11,7 @@ html {
       );
 
       article {
-        transition: margin 0.75s ease-in;
+        transition: margin 0.6s ease-in;
         aside {
           background-position: center;
           background-size: cover;
@@ -243,9 +243,19 @@ html {
 
     &.js {
       #services {
-        section.services.mv div {
-          article:first-child {
-            margin-left: -34.333%;
+        section.services {
+          &.mv div {
+            article:first-child {
+              margin-left: -34.333%;
+            }
+          }
+          &.rv div {
+            article {
+              transition: margin 0.15s ease-in;
+              &:first-child {
+                margin-left: -34.333%;
+              }
+            }
           }
         }
       }

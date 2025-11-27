@@ -139,41 +139,40 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(callback, offset = 0, index = 0) {
+function play(callback) {
   var spans = meta.toArray(meta.$Q("#control span", true)),
     serv = meta.$Q(".services"),
-    add = curry4(subMethod)("mv")("add")("classList"),
-    rem = curry44(subMethod)("mv")("remove")("classList")(serv),
+    adder = ptL(subMethod, serv, "classList", "add"),
+    remvr = defer(subMethod, serv, "classList", "remove"),
     contains = cu2(hifactory)("contains");
 
   return function (e) {
-    function tick(action) {
-      return function (t, r, i, o) {
-        add(serv);
-        setTimeout(rem, t);
+    function tick(action, kls) {
+      return function (t, r, i) {
+        adder(kls);
+        setTimeout(remvr(kls), t);
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            resolve(action(r, i, o));
+            resolve(action(r, i));
           }, t);
         });
       };
     }
 
     const tgt = e.target,
-      serv = meta.$Q(".services"),
       articles = meta.$Q(".services article", true),
       len = articles.length,
-      mover = (r, i, o) => {
+      mover = (r, i) => {
         appender(articles[i]);
         i++;
-        o++;
         r--;
-        return [r, i, o];
-      },
-      mytimer = tick(mover);
+        return [r, i];
+      };
 
     let req = 0,
-    k = 0;
+      k = 0,
+      dur = 600,
+      mytimer = tick(mover, "mv");
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
@@ -183,22 +182,26 @@ function play(callback, offset = 0, index = 0) {
       while (!contains(spans[k])) {
         k++;
       }
+      
+      if (req < k) {
+        mytimer = tick(mover, "rv");
+        dur = 300 * Math.abs(req - k);
+      }
 
-      req -= offset;
+      req -= k;
       if (req < 0) {
         req = len + req;
       }
 
       async function func(f, t, ...args) {
         const result = await f(t, ...args);
-        let [r, i, o] = result;
+        let [r, i] = result;
         callback(articles[i]);
-        offset = o % len;
         if (r > 0) {
-          return func(f, t, r, i, o);
+          return func(f, t, r, i);
         }
       }
-      func(mytimer, 750, req, 0, offset);
+      func(mytimer, dur, req, 0);
     }
   };
 }
