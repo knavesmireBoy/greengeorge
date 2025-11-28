@@ -48,10 +48,6 @@ const meta = greenGeorge.meta,
   invk = (o, m, v) => o[m](v),
   prevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
-  lazyVal = (o, m, k, v) => {
-    log(k, v);
-    return o[m](v, k);
-  },
   subMethod = (o, p, m, v) => o[p][m](v),
   subKlas = (p, v) => o[p][m](v),
   prepair = (m, k) => (o, v) => o[m](k, v),
@@ -85,8 +81,14 @@ const meta = greenGeorge.meta,
     undo: cu2(transformfactory)("remove"),
   },
   transformerAlt = {
-    exec: compose(cu2(transformAltfactory)("add"), pass(cu2(transitfactory)("remove"))),
-    undo: compose(cu2(transitfactory)("add"), pass(cu2(transformAltfactory)("remove"))),
+    exec: compose(
+      cu2(transformAltfactory)("add"),
+      pass(cu2(transitfactory)("remove"))
+    ),
+    undo: compose(
+      cu2(transitfactory)("add"),
+      pass(cu2(transformAltfactory)("remove"))
+    ),
   },
   transit = {
     exec: cu2(transitfactory)("add"),
@@ -127,7 +129,6 @@ const meta = greenGeorge.meta,
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
   inserter = ptL(invok, container, "insertBefore"),
-  inserter2 = ptL(lazyVal, container, "insertBefore"),
   getRef = defer(utils.getNextElement, container.firstChild),
   getLast = defer(utils.getPrevElement, container.lastChild),
   getRefNode = ptL(
@@ -145,11 +146,7 @@ const meta = greenGeorge.meta,
     cu2(composer)(inserter),
     getLastNode
   ),
-  insertBefore = compose(
-    getRes,
-    ptL(composer, getRef),
-    ptL(composer, getLast, inserter)
-  ),
+  fubar = defer(composer, getRefNode, appender),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
@@ -208,7 +205,6 @@ function play(callback) {
       return function (t, r, i, k) {
         let j = 0;
         f();
-        log('tick');
         while (arts[j]) {
           o.exec(arts[j]);
           j++;
@@ -234,7 +230,7 @@ function play(callback) {
       articles = meta.$Q(".services article", true),
       len = articles.length,
       mover = (r, i, k) => {
-        appender(articles[i]);
+        fubar();
         i++;
         r--;
         return [r, i, k];
@@ -264,15 +260,14 @@ function play(callback) {
 
       if (req < k) {
         mytimer = tick(mova, transformerAlt, insertB4);
-       // dur = 300 * Math.abs(req - k);
-       // dur = 300;
+        // dur = 300 * Math.abs(req - k);
+        // dur = 300;
       }
 
       req -= k;
 
-
       if (req < 0) {
-      //  req = len + req;
+        //  req = len + req;
       }
 
       req = Math.abs(req);
