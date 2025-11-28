@@ -68,7 +68,7 @@ const meta = greenGeorge.meta,
     let cb = coll.reduce((a, b) => (fn(arg) ? a : b));
     return cb(arg);
   },
-  hifactory = prepSubMethod("classList", "hi"),
+  hifactory = prepSubMethod("classList", ["hi"]),
   transformfactory = prepSubMethod("classList", ["transform", "transit"]),
   transformAltfactory = prepSubMethod("classList", ["transform"]),
   transitfactory = prepSubMethod("classList", ["transit"]),
@@ -122,6 +122,7 @@ const meta = greenGeorge.meta,
   myservices = document.querySelectorAll(".services article"),
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
+  livespans = control.getElementsByTagName("span"),
   liveArticles = (service && service.getElementsByTagName("article")) || [],
   articles = (service && service.querySelectorAll("article")) || [],
   el = articles[0],
@@ -129,6 +130,7 @@ const meta = greenGeorge.meta,
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
   inserter = ptL(invok, container, "insertBefore"),
+  inserter2 = ptL(invok, control, "insertBefore"),
   getRef = defer(utils.getNextElement, container.firstChild),
   getLast = defer(utils.getPrevElement, container.lastChild),
   getRefNode = ptL(
@@ -146,6 +148,25 @@ const meta = greenGeorge.meta,
     cu2(composer)(inserter),
     getLastNode
   ),
+
+  getRefNode2 = ptL(
+    composer,
+    defer(getprop, control, "firstChild"),
+    defer(utils.getNextElement)
+  ),
+  getLastNode2 = defer(
+    composer,
+    defer(getprop, control, "lastChild"),
+    defer(utils.getPrevElement)
+  ),
+
+  insertB42 = compose(
+    ptL(composer, getRefNode2),
+    cu2(composer)(inserter2),
+    getLastNode2
+  ),
+
+
   fubar = defer(composer, getRefNode, appender),
   doremove = mayremove(container),
   doappend = append(container),
@@ -156,6 +177,7 @@ const meta = greenGeorge.meta,
     ptL(invk, control, "appendChild"),
     defer(utils.getNextElement, control.firstChild)
   ),
+
   finder = (nodes) => (node) => {
     let i = 0,
       l = nodes.length;
@@ -179,10 +201,11 @@ const meta = greenGeorge.meta,
   },
   cycle = spotify(control.getElementsByTagName("span"), highlighter),
   cb = compose(cycle, finder(articles)),
-  foo = (n, f) => () => {
-    let i = n;
+  foo = (n, fns) => (x = 0) => {
+    let i = n,
+    fn = fns[x];
     while (n--) {
-      f();
+      fn();
     }
     n = i;
   };
@@ -192,12 +215,8 @@ function testi() {
 }
 
 function play(callback) {
-  var control = meta.$("control"),
-    spans = control.getElementsByTagName("span"),
+  var contains = cu2(hifactory)("contains"),
     serv = meta.$Q(".services"),
-    adder = ptL(subMethod, serv, "classList", "add"),
-    remvr = defer(subMethod, serv, "classList", "remove"),
-    contains = cu2(hifactory)("contains"),
     arts = serv.getElementsByTagName("article");
 
   return function (e) {
@@ -243,43 +262,35 @@ function play(callback) {
 
     let req = 0,
       k = 0,
-      j = 0,
       dur = 600,
+      rev = 0,
       mytimer = tick(mover, transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
-      while (spans[req] !== tgt) {
+      while (livespans[req] !== tgt) {
         req++;
       }
 
-      while (!contains(spans[k])) {
+      while (!contains(livespans[k])) {
         k++;
       }
 
       if (req < k) {
         mytimer = tick(mova, transformerAlt, insertB4);
-        // dur = 300 * Math.abs(req - k);
-        // dur = 300;
+        rev = 1;
       }
-
       req -= k;
-
-      if (req < 0) {
-        //  req = len + req;
-      }
-
       req = Math.abs(req);
-
       async function func(f, t, ...args) {
         const result = await f(t, ...args),
           [r, i, o] = result,
           next = meta.pApply(func, f, t, r, i, o);
-        callback();
+        callback(o);
         if (r > 0) {
           setTimeout(next, t);
         }
       }
-      func(mytimer, dur, req, 0, k);
+      func(mytimer, dur, req, 0, rev);
     }
   };
 }
@@ -324,6 +335,7 @@ function controller(e) {
 
 ////document.addEventListener("DOMContentLoaded", init);
 cb(el);
-meta.$("control").addEventListener("click", play(foo(5, spanshifter)));
+highlighter.exec(livespans[0]);
+meta.$("control").addEventListener("click", play(foo(5, [spanshifter, insertB42])));
 
 //control.addEventListener("click", controller);
