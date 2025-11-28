@@ -49,7 +49,7 @@ const meta = greenGeorge.meta,
   prevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
   lazyVal = (o, m, k, v) => {
-    log(k,v)
+    log(k, v);
     return o[m](v, k);
   },
   subMethod = (o, p, m, v) => o[p][m](v),
@@ -130,12 +130,13 @@ const meta = greenGeorge.meta,
   inserter2 = ptL(lazyVal, container, "insertBefore"),
   getRef = defer(utils.getNextElement, container.firstChild),
   getLast = defer(utils.getPrevElement, container.lastChild),
+
+  
   insertBefore = compose(
     getRes,
     ptL(composer, getRef),
     ptL(composer, getLast, inserter)
   ),
-  insertBefore2 = compose(cu2(composer), ptL(composer, getRef, inserter2)),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
@@ -249,9 +250,19 @@ function play(callback) {
       }
 
       if (req < k) {
-        //log(container.lastElementChild);
-        //insertBefore();
-        inserter(container.lastElementChild,container.firstElementChild);
+
+let c = defer(getprop, container, 'firstChild'),
+c2 = defer(getprop, container, 'lastChild'),
+getRefNode = defer(composer, c, defer(utils.getNextElement)),
+getLastNode = defer(composer, c2, defer(utils.getPrevElement)),
+foo = compose(cu2(invokeArg)(container.firstChild), cu2(composer)(inserter), getLastNode);
+
+
+foo();
+
+
+        //inserter(container.lastElementChild, container.firstElementChild);
+    
         while (arts[j]) {
           transformer.exec(arts[j]);
           //transit.exec(arts[j]);
