@@ -1372,14 +1372,8 @@ html.js #services #control span.hi {
     -webkit-animation: span24 29s linear 0s infinite normal forwards;
     animation: span24 29s linear 0s infinite normal forwards;
   }
-  html.js #services section.services div {
-    outline: solid 1px white;
-  }
   html.js #services section.services div article.transform {
     transform: translateX(-109.5%);
-  }
-  html.js #services section.services div article.transrev {
-    transform: translateX(109.5%);
   }
 }
 html #about nav.eco {

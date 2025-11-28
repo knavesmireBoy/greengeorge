@@ -6,14 +6,6 @@ if (!window.greenGeorge) {
   window.greenGeorge = {};
 }
 
-function paint(node, val) {
-  node.style.backgroundColor = val;
-}
-
-function insert(hook, node) {
-  return utils.insertAfter(node, hook);
-}
-
 let inc = 0,
   t = 500,
   margins = [100, 52, 34.333],
@@ -27,9 +19,7 @@ var elapsed;
 const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
   log = console.log,
-  identity = meta.identity,
   ptL = meta.doPartial(),
-  getRes = meta.getResult,
   defer = meta.doPartial(true),
   compose = meta.compose,
   compduo = (f1, f2) => compose(f2, f1),
@@ -39,38 +29,14 @@ const meta = greenGeorge.meta,
     f(arg);
     return arg;
   },
-  wrap = (arg) => (fn) => {
-    fn(arg);
-    return arg;
-  },
-  invoke = (f) => f(),
-  invokeArg = (f, a) => f(a),
   invk = (o, m, v) => o[m](v),
   prevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
-  subMethod = (o, p, m, v) => o[p][m](v),
-  subKlas = (p, v) => o[p][m](v),
-  prepair = (m, k) => (o, v) => o[m](k, v),
   prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
-  curry4 = meta.curryRight(4),
-  curry44 = meta.curryRight(4, true),
-  cu1 = meta.curryRight(1, true),
   cu2 = meta.curryRight(2),
-  cu22 = meta.curryRight(2, true),
-  cu13 = meta.curryLeft(3),
-  compvoke = (f1, f2, seed) => compose(f2, f1)(seed),
-  append = ptL(prevoke("appendChild")),
-  remove = ptL(prevoke("removeChild")),
-  mayremove = ptL(prevoke("removeChild")),
-  pusher = ptL(prevoke("push")),
-  make = utils.doMakeDefer,
-  getbest = (fn, coll, arg) => {
-    let cb = coll.reduce((a, b) => (fn(arg) ? a : b));
-    return cb(arg);
-  },
   hifactory = prepSubMethod("classList", ["hi"]),
   transformfactory = prepSubMethod("classList", ["transform", "transit"]),
-  transformAltfactory = prepSubMethod("classList", ["transform"]),
+  transformRevfactory = prepSubMethod("classList", ["transform"]),
   transitfactory = prepSubMethod("classList", ["transit"]),
   highlighter = {
     exec: cu2(hifactory)("add"),
@@ -80,21 +46,21 @@ const meta = greenGeorge.meta,
     exec: cu2(transformfactory)("add"),
     undo: cu2(transformfactory)("remove"),
   },
-  transformerAlt = {
+  transformerRev = {
     exec: compose(
-      cu2(transformAltfactory)("add"),
+      cu2(transformRevfactory)("add"),
       pass(cu2(transitfactory)("remove"))
     ),
     undo: compose(
       cu2(transitfactory)("add"),
-      pass(cu2(transformAltfactory)("remove"))
+      pass(cu2(transformRevfactory)("remove"))
     ),
   },
   transit = {
     exec: cu2(transitfactory)("add"),
     undo: cu2(transitfactory)("remove"),
   },
-  mover = (t, flag = false) => {
+  animed = (t, flag = false) => {
     if (flag) {
       if (t < 7) {
         return 0;
@@ -119,13 +85,9 @@ const meta = greenGeorge.meta,
       return 0;
     }
   },
-  myservices = document.querySelectorAll(".services article"),
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
   livespans = control.getElementsByTagName("span"),
-  liveArticles = (service && service.getElementsByTagName("article")) || [],
-  articles = (service && service.querySelectorAll("article")) || [],
-  el = articles[0],
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
@@ -146,7 +108,6 @@ const meta = greenGeorge.meta,
     cu2(composer)(inserter),
     getLastNode
   ),
-
   getControlRefNode = ptL(
     composer,
     defer(getprop, control, "firstChild"),
@@ -163,11 +124,6 @@ const meta = greenGeorge.meta,
     getControlLastNode
   ),
   appendTo = defer(composer, getRefNode, appender),
-  doremove = mayremove(container),
-  doappend = append(container),
-  validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
-    cu2((a, b) => a === b)(1)
-  ),
   spotshifter = compose(
     ptL(invk, control, "appendChild"),
     defer(utils.getNextElement, control.firstChild)
@@ -194,13 +150,11 @@ function play(callback) {
     function tick(action, state, f = () => true) {
       return function (t, r, i, k) {
         let j = 0;
-        //
         f();//this would be insertB4 if going back, needs to run BEFORE, transform/transit classes are applied
         while (arts[j]) {
           state.exec(arts[j]);
           j++;
         }
-
         setTimeout(function () {
           let j = 0;
           while (arts[j]) {
@@ -244,7 +198,7 @@ function play(callback) {
       }
 
       if (reqst < offset) {
-        mytimer = tick(mova, transformerAlt, insertB4);
+        mytimer = tick(mova, transformerRev, insertB4);
         rev = 1;
       }
       reqst -= offset;

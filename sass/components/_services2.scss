@@ -152,7 +152,7 @@ html {
     #services {
       section.services.mv {
         article:first-child {
-       //   margin-left: -52%;
+          //   margin-left: -52%;
         }
       }
     }
@@ -250,19 +250,10 @@ html {
       #services {
         section.services {
           div {
-            outline: solid 1px white;
             article {
-              //transform: translateX(-109.5%);
-                &.transform {
+              &.transform {
                 transform: translateX(-109.5%);
               }
-              &.transrev {
-                transform: translateX(109.5%);
-              }
-            }
-          }
-          &.rv div {
-            article {
             }
           }
         }
