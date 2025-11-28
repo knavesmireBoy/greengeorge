@@ -130,9 +130,7 @@ const meta = greenGeorge.meta,
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
   inserter = ptL(invok, container, "insertBefore"),
-  inserter2 = ptL(invok, control, "insertBefore"),
-  getRef = defer(utils.getNextElement, container.firstChild),
-  getLast = defer(utils.getPrevElement, container.lastChild),
+  inserterControl = ptL(invok, control, "insertBefore"),
   getRefNode = ptL(
     composer,
     defer(getprop, container, "firstChild"),
@@ -149,59 +147,32 @@ const meta = greenGeorge.meta,
     getLastNode
   ),
 
-  getRefNode2 = ptL(
+  getControlRefNode = ptL(
     composer,
     defer(getprop, control, "firstChild"),
     defer(utils.getNextElement)
   ),
-  getLastNode2 = defer(
+  getControlLastNode = defer(
     composer,
     defer(getprop, control, "lastChild"),
     defer(utils.getPrevElement)
   ),
-
-  insertB42 = compose(
-    ptL(composer, getRefNode2),
-    cu2(composer)(inserter2),
-    getLastNode2
+  spotshifterbak = compose(
+    ptL(composer, getControlRefNode),
+    cu2(composer)(inserterControl),
+    getControlLastNode
   ),
-
-
-  fubar = defer(composer, getRefNode, appender),
+  appendTo = defer(composer, getRefNode, appender),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
     cu2((a, b) => a === b)(1)
   ),
-  spanshifter = compose(
+  spotshifter = compose(
     ptL(invk, control, "appendChild"),
     defer(utils.getNextElement, control.firstChild)
   ),
-
-  finder = (nodes) => (node) => {
-    let i = 0,
-      l = nodes.length;
-    while (i < l) {
-      if (nodes[i] === node) {
-        break;
-      }
-      i++;
-    }
-    return i;
-  },
-  spotify = (nodes, o) => (j) => {
-    let i = nodes.length;
-    while (i--) {
-      if (i === j) {
-        o.exec(nodes[i]);
-      } else {
-        o.undo(nodes[i]);
-      }
-    }
-  },
-  cycle = spotify(control.getElementsByTagName("span"), highlighter),
-  cb = compose(cycle, finder(articles)),
-  foo = (n, fns) => (x = 0) => {
+  domino = (n, fns) => (x = 0) => {
     let i = n,
     fn = fns[x];
     while (n--) {
@@ -220,19 +191,20 @@ function play(callback) {
     arts = serv.getElementsByTagName("article");
 
   return function (e) {
-    function tick(action, o, f = () => true) {
+    function tick(action, state, f = () => true) {
       return function (t, r, i, k) {
         let j = 0;
-        f();
+        //
+        f();//this would be insertB4 if going back, needs to run BEFORE, transform/transit classes are applied
         while (arts[j]) {
-          o.exec(arts[j]);
+          state.exec(arts[j]);
           j++;
         }
 
         setTimeout(function () {
           let j = 0;
           while (arts[j]) {
-            o.undo(arts[j]);
+            state.undo(arts[j]);
             j++;
           }
         }, t);
@@ -246,96 +218,50 @@ function play(callback) {
     }
 
     const tgt = e.target,
-      articles = meta.$Q(".services article", true),
-      len = articles.length,
-      mover = (r, i, k) => {
-        fubar();
-        i++;
-        r--;
-        return [r, i, k];
+      mover = (i, rev) => {
+        appendTo();//runs AFTER transform
+        i--;
+        return [i, rev];
       },
-      mova = (r, i, k) => {
-        i++;
-        r--;
-        return [r, i, k];
+      mova = (i, rev) => {
+        i--;
+        return [i, rev];
       };
 
-    let req = 0,
-      k = 0,
+    let reqst = 0,
+      offset = 0,
       dur = 600,
       rev = 0,
       mytimer = tick(mover, transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
-      while (livespans[req] !== tgt) {
-        req++;
+      while (livespans[reqst] !== tgt) {
+        reqst++;
       }
 
-      while (!contains(livespans[k])) {
-        k++;
+      while (!contains(livespans[offset])) {
+        offset++;
       }
 
-      if (req < k) {
+      if (reqst < offset) {
         mytimer = tick(mova, transformerAlt, insertB4);
         rev = 1;
       }
-      req -= k;
-      req = Math.abs(req);
+      reqst -= offset;
+      reqst = Math.abs(reqst);
       async function func(f, t, ...args) {
         const result = await f(t, ...args),
-          [r, i, o] = result,
-          next = meta.pApply(func, f, t, r, i, o);
-        callback(o);
-        if (r > 0) {
+          [i, rev] = result,
+          next = meta.pApply(func, f, t, i, rev);
+        callback(rev);
+        if (i > 0) {
           setTimeout(next, t);
         }
       }
-      func(mytimer, dur, req, 0, rev);
+      func(mytimer, dur, reqst, rev);
     }
   };
 }
 
-function init(e) {
-  let y = 0,
-    node,
-    hold = [],
-    dopush = pusher(hold),
-    thenpush = compose(dopush, doremove),
-    maypush = ptL(getbest, validateNode, [thenpush, doremove]),
-    getElement = cu2(getprop)("lastChild");
-  while ((node = getElement(container))) {
-    maypush(node);
-  }
-  while (hold[y]) {
-    doappend(hold[y++]);
-  }
-}
-
-function controller(e) {
-  let a = meta.toArray(this.childNodes).filter((n) => n.nodeName === "SPAN"),
-    live = meta.toArray(liveArticles).filter((n) => n.nodeName === "ARTICLE"),
-    parent = liveArticles[0].parentNode,
-    f = finder(a),
-    i = f(e.target),
-    j = 0,
-    article;
-
-  if (e.target !== this) {
-    cycle(i);
-    cancelAnimationFrame(request);
-    article = articles[i];
-    j = live.indexOf(article);
-    i = 0;
-    while (i < j) {
-      parent.appendChild(live[i]);
-      i++;
-    }
-  }
-}
-
-////document.addEventListener("DOMContentLoaded", init);
-cb(el);
 highlighter.exec(livespans[0]);
-meta.$("control").addEventListener("click", play(foo(5, [spanshifter, insertB42])));
-
-//control.addEventListener("click", controller);
+meta.$("control").addEventListener("click", play(domino(5, [spotshifter, spotshifterbak])));
