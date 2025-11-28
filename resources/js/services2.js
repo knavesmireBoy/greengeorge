@@ -236,10 +236,8 @@ function play(callback) {
         return [r, i, k];
       },
       mova = (r, i, k) => {
-        //insertB4();
         i++;
         r--;
-        log(r);
         return [r, i, k];
       };
 
@@ -276,7 +274,7 @@ function play(callback) {
         const result = await f(t, ...args),
           [r, i, o] = result,
           next = meta.pApply(func, f, t, r, i, o);
-        callback(articles[i]);
+        callback();
         if (r > 0) {
           setTimeout(next, t);
         }
