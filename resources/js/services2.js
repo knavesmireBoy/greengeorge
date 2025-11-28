@@ -44,9 +44,14 @@ const meta = greenGeorge.meta,
     return arg;
   },
   invoke = (f) => f(),
+  invokeArg = (f, a) => f(a),
   invk = (o, m, v) => o[m](v),
   prevoke = (m) => (o, v) => o[m](v),
   invok = (o, m, k, v) => o[m](k, v),
+  lazyVal = (o, m, k, v) => {
+    log(k,v)
+    return o[m](v, k);
+  },
   subMethod = (o, p, m, v) => o[p][m](v),
   subKlas = (p, v) => o[p][m](v),
   prepair = (m, k) => (o, v) => o[m](k, v),
@@ -121,7 +126,8 @@ const meta = greenGeorge.meta,
   section = meta.$Q(".services"),
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
-  inserter = defer(invok, container, "insertBefore"),
+  inserter = ptL(invok, container, "insertBefore"),
+  inserter2 = ptL(lazyVal, container, "insertBefore"),
   getRef = defer(utils.getNextElement, container.firstChild),
   getLast = defer(utils.getPrevElement, container.lastChild),
   insertBefore = compose(
@@ -129,6 +135,7 @@ const meta = greenGeorge.meta,
     ptL(composer, getRef),
     ptL(composer, getLast, inserter)
   ),
+  insertBefore2 = compose(cu2(composer), ptL(composer, getRef, inserter2)),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
@@ -242,26 +249,30 @@ function play(callback) {
       }
 
       if (req < k) {
-        insertBefore();
-
-        while(arts[j]){
+        //log(container.lastElementChild);
+        //insertBefore();
+        inserter(container.lastElementChild,container.firstElementChild);
+        while (arts[j]) {
           transformer.exec(arts[j]);
           //transit.exec(arts[j]);
           j++;
         }
-
-        j = 0;
-      
-
         setTimeout(function () {
-
-          while(arts[j]){
-            transformer.undo(arts[j]);
+          let j = 0;
+          while (arts[j]) {
             transit.exec(arts[j]);
-           // transit.undo(arts[j]);
+            transformer.undo(arts[j]);
             j++;
           }
         }, dur);
+
+        setTimeout(function () {
+          let j = 0;
+          while (arts[j]) {
+            transit.undo(arts[j]);
+            j++;
+          }
+        }, dur * 2);
 
         return;
         mytimer = tick(mover, "rv");
