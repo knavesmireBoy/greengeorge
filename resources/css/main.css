@@ -1214,25 +1214,28 @@ html #services section.services {
   background: #143f1f;
   background: linear-gradient(0deg, rgb(25, 78, 39) 0%, #0d2714, 75%, rgb(25, 78, 39) 100%);
 }
-html #services section.services article aside {
+html #services section.services div {
+  border: solid 1px orange;
+}
+html #services section.services div article aside {
   background-position: center;
   background-size: cover;
 }
-html #services section.services article figure {
+html #services section.services div article figure {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 1em;
   -ms-flex: 1 1 1em;
   flex: 1 1 1em;
 }
-html #services section.services article figure img {
+html #services section.services div article figure img {
   width: 100%;
   max-height: 12em;
   display: block;
   object-fit: cover;
   object-position: center top;
 }
-html #services section.services article.transit {
+html #services section.services div article.transit {
   transition: transform 0.6s ease-in;
 }
 html #services .mission {
@@ -1252,6 +1255,9 @@ html.no-js section.services article:first-child {
 }
 html.js #services #control span.hi {
   background-color: white;
+}
+html.js #services section.services div article.transform {
+  transform: translateX(-100%);
 }
 
 @media only screen and (max-width: 768px) {
@@ -1307,6 +1313,9 @@ html.js #services #control span.hi {
   }
   html #services main > section:first-child article h4 {
     font-size: 1.6225em;
+  }
+  html.js #services section.services div article.transform {
+    transform: translateX(-100%);
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -1373,7 +1382,7 @@ html.js #services #control span.hi {
     animation: span24 29s linear 0s infinite normal forwards;
   }
   html.js #services section.services div article.transform {
-    transform: translateX(-109.5%);
+    transform: translateX(-111%);
   }
 }
 html #about nav.eco {

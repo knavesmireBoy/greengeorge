@@ -9,31 +9,25 @@ html {
         75%,
         $main 100%
       );
-
-      article {
-        aside {
-          background-position: center;
-          background-size: cover;
-        }
-        figure {
-          @include flex(1, 1, 1em);
-          img {
-            width: 100%;
-            max-height: 12em;
-            display: block;
-            object-fit: cover;
-            object-position: center top;
-          }
-        }
-        &.transit {
-          transition: transform 0.6s ease-in;
-        }
-      }
-      &.mv {
+      div {
+        border: solid 1px orange;
         article {
-          &:first-child {
-            //margin-left: -100%;
-            //transform: translateX(-100%);
+          aside {
+            background-position: center;
+            background-size: cover;
+          }
+          figure {
+            @include flex(1, 1, 1em);
+            img {
+              width: 100%;
+              max-height: 12em;
+              display: block;
+              object-fit: cover;
+              object-position: center top;
+            }
+          }
+          &.transit {
+            transition: transform 0.6s ease-in;
           }
         }
       }
@@ -61,8 +55,13 @@ html {
     }
   }
   &.js {
-    #services #control span.hi {
-      background-color: white;
+    #services {
+      #control span.hi {
+        background-color: white;
+      }
+      section.services div article.transform {
+        transform: translateX(-100%);
+      }
     }
   }
 }
@@ -149,11 +148,9 @@ html {
         }
       }
     }
-    #services {
-      section.services.mv {
-        article:first-child {
-          //   margin-left: -52%;
-        }
+    &.js {
+      #services section.services div article.transform {
+        transform: translateX(-100%);
       }
     }
   }
@@ -247,16 +244,8 @@ html {
     }
 
     &.js {
-      #services {
-        section.services {
-          div {
-            article {
-              &.transform {
-                transform: translateX(-109.5%);
-              }
-            }
-          }
-        }
+      #services section.services div article.transform {
+        transform: translateX(-111%);
       }
     }
   }

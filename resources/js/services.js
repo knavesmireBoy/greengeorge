@@ -147,10 +147,10 @@ function play(callback) {
     arts = serv.getElementsByTagName("article");
 
   return function (e) {
-    function tick(action, state, f = () => true) {
+    function tick(action, state, init = () => true) {
       return function (t, r, i, k) {
         let j = 0;
-        f();//this would be insertB4 if going back, needs to run BEFORE, transform/transit classes are applied
+        init();//this would be insertB4 if going back, needs to run BEFORE, transform/transit classes are applied
         while (arts[j]) {
           state.exec(arts[j]);
           j++;
@@ -172,21 +172,16 @@ function play(callback) {
     }
 
     const tgt = e.target,
-      mover = (i, rev) => {
-        appendTo();//runs AFTER transform
-        i--;
-        return [i, rev];
-      },
-      mova = (i, rev) => {
-        i--;
-        return [i, rev];
+      ticker = (cb) => (i, rev) => {
+        cb();
+        return [i-=1, rev];
       };
 
     let reqst = 0,
       offset = 0,
       dur = 600,
       rev = 0,
-      mytimer = tick(mover, transformer);
+      mytimer = tick(ticker(appendTo), transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (livespans[reqst] !== tgt) {
@@ -198,7 +193,7 @@ function play(callback) {
       }
 
       if (reqst < offset) {
-        mytimer = tick(mova, transformerRev, insertB4);
+        mytimer = tick(ticker(meta.identity), transformerRev, insertB4);
         rev = 1;
       }
       reqst -= offset;
