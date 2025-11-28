@@ -29,6 +29,7 @@ const meta = greenGeorge.meta,
   log = console.log,
   identity = meta.identity,
   ptL = meta.doPartial(),
+  getRes = meta.getResult(),
   defer = meta.doPartial(true),
   compose = meta.compose,
   compduo = (f1, f2) => compose(f2, f1),
@@ -116,12 +117,15 @@ const meta = greenGeorge.meta,
   container = meta.byTagScope(section)("div"),
   appender = ptL(invk, container, "appendChild"),
   inserter = defer(invok, container, "insertBefore"),
+  getRef = defer(utils.getNextElement, container.firstChild),
+  getLast = defer(utils.getPrevElement, container.lastChild),
+  booby = compose(ptL(composer, getRef), ptL(composer, getLast, inserter)),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
     cu2((a, b) => a === b)(1)
   ),
-  shifter = compose(
+  spanshifter = compose(
     ptL(invk, control, "appendChild"),
     defer(utils.getNextElement, control.firstChild)
   ),
@@ -172,24 +176,19 @@ function play(callback) {
   return function (e) {
     function tick(action, kls) {
       return function (t, r, i, k) {
-        let j = 0,
-          unit = 109;
-
-        k = Math.max((k + 1) % 6, 1);
-        unit *= k;
+        let j = 0;
 
         while (arts[j]) {
-         transit.exec(arts[j]);
-          transformer.exec(arts[j])
+          transit.exec(arts[j]);
+          transformer.exec(arts[j]);
           j++;
-         
         }
 
         setTimeout(function () {
           let j = 0;
           while (arts[j]) {
             transit.undo(arts[j]);
-            transformer.undo(arts[j])
+            transformer.undo(arts[j]);
             j++;
           }
         }, t);
@@ -229,7 +228,7 @@ function play(callback) {
       if (req < k) {
         mytimer = tick(mover, "rv");
         dur = 300 * Math.abs(req - k);
-        dur = 100;
+        dur = 300;
       }
 
       req -= k;
@@ -238,11 +237,12 @@ function play(callback) {
       }
 
       async function func(f, t, ...args) {
-        const result = await f(t, ...args);
-        let [r, i, o] = result;
+        const result = await f(t, ...args),
+          [r, i, o] = result,
+          next = meta.pApply(func, f, t, r, i, o);
         callback(articles[i]);
         if (r > 0) {
-          return func(f, t, r, i, o);
+          setTimeout(next, (t *= 0.5));
         }
       }
       func(mytimer, dur, req, 0, k);
@@ -290,6 +290,8 @@ function controller(e) {
 
 ////document.addEventListener("DOMContentLoaded", init);
 cb(el);
-meta.$("control").addEventListener("click", play(foo(5, shifter)));
+meta.$("control").addEventListener("click", play(foo(5, spanshifter)));
 
+
+log(booby()())
 //control.addEventListener("click", controller);
