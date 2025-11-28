@@ -1315,7 +1315,7 @@ html.js #services section.services div article.transform {
     font-size: 1.6225em;
   }
   html.js #services section.services div article.transform {
-    transform: translateX(-100%);
+    transform: translateX(-109%);
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -1382,7 +1382,7 @@ html.js #services section.services div article.transform {
     animation: span24 29s linear 0s infinite normal forwards;
   }
   html.js #services section.services div article.transform {
-    transform: translateX(-111%);
+    transform: translateX(-109.5%);
   }
 }
 html #about nav.eco {

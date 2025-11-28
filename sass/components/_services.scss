@@ -149,8 +149,10 @@ html {
       }
     }
     &.js {
-      #services section.services div article.transform {
-        transform: translateX(-100%);
+      #services {
+        section.services div article.transform {
+          transform: translateX(-109%);
+        }
       }
     }
   }
@@ -242,10 +244,11 @@ html {
         }
       }
     }
-
     &.js {
-      #services section.services div article.transform {
-        transform: translateX(-111%);
+      #services {
+        section.services div article.transform {
+          transform: translateX(-109.5%);
+        }
       }
     }
   }
