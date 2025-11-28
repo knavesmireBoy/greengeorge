@@ -67,9 +67,19 @@ const meta = greenGeorge.meta,
     return cb(arg);
   },
   hifactory = prepSubMethod("classList", "hi"),
+  transformfactory = prepSubMethod("classList", "transform"),
+  transitfactory = prepSubMethod("classList", "transit"),
   highlighter = {
     exec: cu2(hifactory)("add"),
     undo: cu2(hifactory)("remove"),
+  },
+  transformer = {
+    exec: cu2(transformfactory)("add"),
+    undo: cu2(transformfactory)("remove"),
+  },
+  transit = {
+    exec: cu2(transitfactory)("add"),
+    undo: cu2(transitfactory)("remove"),
   },
   mover = (t, flag = false) => {
     if (flag) {
@@ -169,14 +179,17 @@ function play(callback) {
         unit *= k;
 
         while (arts[j]) {
-          arts[j]["style"]["transform"] = `translateX(${-unit}%)`;
+         transit.exec(arts[j]);
+          transformer.exec(arts[j])
           j++;
+         
         }
 
         setTimeout(function () {
           let j = 0;
           while (arts[j]) {
-            arts[j]["style"]["transform"] = "none";
+            transit.undo(arts[j]);
+            transformer.undo(arts[j])
             j++;
           }
         }, t);

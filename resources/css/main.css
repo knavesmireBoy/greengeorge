@@ -1214,9 +1214,6 @@ html #services section.services {
   background: #143f1f;
   background: linear-gradient(0deg, rgb(25, 78, 39) 0%, #0d2714, 75%, rgb(25, 78, 39) 100%);
 }
-html #services section.services article {
-  transition: all 0.6s ease-in;
-}
 html #services section.services article aside {
   background-position: center;
   background-size: cover;
@@ -1234,6 +1231,9 @@ html #services section.services article figure img {
   display: block;
   object-fit: cover;
   object-position: center top;
+}
+html #services section.services article.transit {
+  transition: transform 0.6s ease-in;
 }
 html #services .mission {
   padding: 1rem;
@@ -1372,10 +1372,10 @@ html.js #services #control span.hi {
     -webkit-animation: span24 29s linear 0s infinite normal forwards;
     animation: span24 29s linear 0s infinite normal forwards;
   }
-  html.js #services section.services.mv div {
+  html.js #services section.services div {
     outline: solid 1px white;
   }
-  html.js #services section.services.mv div article {
+  html.js #services section.services div article.transform {
     transform: translateX(-109.5%);
   }
 }
