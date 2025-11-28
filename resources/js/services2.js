@@ -29,7 +29,7 @@ const meta = greenGeorge.meta,
   log = console.log,
   identity = meta.identity,
   ptL = meta.doPartial(),
-  getRes = meta.getResult(),
+  getRes = meta.getResult,
   defer = meta.doPartial(true),
   compose = meta.compose,
   compduo = (f1, f2) => compose(f2, f1),
@@ -69,6 +69,7 @@ const meta = greenGeorge.meta,
   },
   hifactory = prepSubMethod("classList", "hi"),
   transformfactory = prepSubMethod("classList", "transform"),
+  transformAltfactory = prepSubMethod("classList", "transrev"),
   transitfactory = prepSubMethod("classList", "transit"),
   highlighter = {
     exec: cu2(hifactory)("add"),
@@ -77,6 +78,10 @@ const meta = greenGeorge.meta,
   transformer = {
     exec: cu2(transformfactory)("add"),
     undo: cu2(transformfactory)("remove"),
+  },
+  transformerAlt = {
+    exec: cu2(transformAltfactory)("add"),
+    undo: cu2(transformAltfactory)("remove"),
   },
   transit = {
     exec: cu2(transitfactory)("add"),
@@ -119,7 +124,11 @@ const meta = greenGeorge.meta,
   inserter = defer(invok, container, "insertBefore"),
   getRef = defer(utils.getNextElement, container.firstChild),
   getLast = defer(utils.getPrevElement, container.lastChild),
-  booby = compose(ptL(composer, getRef), ptL(composer, getLast, inserter)),
+  insertBefore = compose(
+    getRes,
+    ptL(composer, getRef),
+    ptL(composer, getLast, inserter)
+  ),
   doremove = mayremove(container),
   doappend = append(container),
   validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
@@ -209,10 +218,17 @@ function play(callback) {
         i++;
         r--;
         return [r, i, k];
+      },
+      mova = (r, i, k) => {
+        insertBefore();
+        i++;
+        r--;
+        return [r, i, k];
       };
 
     let req = 0,
       k = 0,
+      j = 0,
       dur = 600,
       mytimer = tick(mover, "mv");
 
@@ -226,6 +242,28 @@ function play(callback) {
       }
 
       if (req < k) {
+        insertBefore();
+
+        while(arts[j]){
+          transformer.exec(arts[j]);
+          //transit.exec(arts[j]);
+          j++;
+        }
+
+        j = 0;
+      
+
+        setTimeout(function () {
+
+          while(arts[j]){
+            transformer.undo(arts[j]);
+            transit.exec(arts[j]);
+           // transit.undo(arts[j]);
+            j++;
+          }
+        }, dur);
+
+        return;
         mytimer = tick(mover, "rv");
         dur = 300 * Math.abs(req - k);
         dur = 300;
@@ -292,6 +330,4 @@ function controller(e) {
 cb(el);
 meta.$("control").addEventListener("click", play(foo(5, spanshifter)));
 
-
-log(booby()())
 //control.addEventListener("click", controller);

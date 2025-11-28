@@ -252,8 +252,12 @@ html {
           div {
             outline: solid 1px white;
             article {
-              &.transform {
+              //transform: translateX(-109.5%);
+                &.transform {
                 transform: translateX(-109.5%);
+              }
+              &.transrev {
+                transform: translateX(109.5%);
               }
             }
           }
