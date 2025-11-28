@@ -55,7 +55,7 @@ const meta = greenGeorge.meta,
   subMethod = (o, p, m, v) => o[p][m](v),
   subKlas = (p, v) => o[p][m](v),
   prepair = (m, k) => (o, v) => o[m](k, v),
-  prepSubMethod = (p, v) => (o, m) => o[p][m](v),
+  prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
   curry4 = meta.curryRight(4),
   curry44 = meta.curryRight(4, true),
   cu1 = meta.curryRight(1, true),
@@ -73,9 +73,9 @@ const meta = greenGeorge.meta,
     return cb(arg);
   },
   hifactory = prepSubMethod("classList", "hi"),
-  transformfactory = prepSubMethod("classList", "transform"),
-  transformAltfactory = prepSubMethod("classList", "transrev"),
-  transitfactory = prepSubMethod("classList", "transit"),
+  transformfactory = prepSubMethod("classList", ["transform", "transit"]),
+  transformAltfactory = prepSubMethod("classList", ["transform"]),
+  transitfactory = prepSubMethod("classList", ["transit"]),
   highlighter = {
     exec: cu2(hifactory)("add"),
     undo: cu2(hifactory)("remove"),
@@ -85,8 +85,8 @@ const meta = greenGeorge.meta,
     undo: cu2(transformfactory)("remove"),
   },
   transformerAlt = {
-    exec: cu2(transformAltfactory)("add"),
-    undo: cu2(transformAltfactory)("remove"),
+    exec: compose(cu2(transformAltfactory)("add"), pass(cu2(transitfactory)("remove"))),
+    undo: compose(cu2(transitfactory)("add"), pass(cu2(transformAltfactory)("remove"))),
   },
   transit = {
     exec: cu2(transitfactory)("add"),
@@ -130,8 +130,21 @@ const meta = greenGeorge.meta,
   inserter2 = ptL(lazyVal, container, "insertBefore"),
   getRef = defer(utils.getNextElement, container.firstChild),
   getLast = defer(utils.getPrevElement, container.lastChild),
-
-  
+  getRefNode = ptL(
+    composer,
+    defer(getprop, container, "firstChild"),
+    defer(utils.getNextElement)
+  ),
+  getLastNode = defer(
+    composer,
+    defer(getprop, container, "lastChild"),
+    defer(utils.getPrevElement)
+  ),
+  insertB4 = compose(
+    ptL(composer, getRefNode),
+    cu2(composer)(inserter),
+    getLastNode
+  ),
   insertBefore = compose(
     getRes,
     ptL(composer, getRef),
@@ -191,21 +204,20 @@ function play(callback) {
     arts = serv.getElementsByTagName("article");
 
   return function (e) {
-    function tick(action, kls) {
+    function tick(action, o, f = () => true) {
       return function (t, r, i, k) {
         let j = 0;
-
+        f();
+        log('tick');
         while (arts[j]) {
-          transit.exec(arts[j]);
-          transformer.exec(arts[j]);
+          o.exec(arts[j]);
           j++;
         }
 
         setTimeout(function () {
           let j = 0;
           while (arts[j]) {
-            transit.undo(arts[j]);
-            transformer.undo(arts[j]);
+            o.undo(arts[j]);
             j++;
           }
         }, t);
@@ -228,9 +240,10 @@ function play(callback) {
         return [r, i, k];
       },
       mova = (r, i, k) => {
-        insertBefore();
+        //insertB4();
         i++;
         r--;
+        log(r);
         return [r, i, k];
       };
 
@@ -238,7 +251,7 @@ function play(callback) {
       k = 0,
       j = 0,
       dur = 600,
-      mytimer = tick(mover, "mv");
+      mytimer = tick(mover, transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       while (spans[req] !== tgt) {
@@ -250,51 +263,19 @@ function play(callback) {
       }
 
       if (req < k) {
-
-let c = defer(getprop, container, 'firstChild'),
-c2 = defer(getprop, container, 'lastChild'),
-getRefNode = defer(composer, c, defer(utils.getNextElement)),
-getLastNode = defer(composer, c2, defer(utils.getPrevElement)),
-foo = compose(cu2(invokeArg)(container.firstChild), cu2(composer)(inserter), getLastNode);
-
-
-foo();
-
-
-        //inserter(container.lastElementChild, container.firstElementChild);
-    
-        while (arts[j]) {
-          transformer.exec(arts[j]);
-          //transit.exec(arts[j]);
-          j++;
-        }
-        setTimeout(function () {
-          let j = 0;
-          while (arts[j]) {
-            transit.exec(arts[j]);
-            transformer.undo(arts[j]);
-            j++;
-          }
-        }, dur);
-
-        setTimeout(function () {
-          let j = 0;
-          while (arts[j]) {
-            transit.undo(arts[j]);
-            j++;
-          }
-        }, dur * 2);
-
-        return;
-        mytimer = tick(mover, "rv");
-        dur = 300 * Math.abs(req - k);
-        dur = 300;
+        mytimer = tick(mova, transformerAlt, insertB4);
+       // dur = 300 * Math.abs(req - k);
+       // dur = 300;
       }
 
       req -= k;
+
+
       if (req < 0) {
-        req = len + req;
+      //  req = len + req;
       }
+
+      req = Math.abs(req);
 
       async function func(f, t, ...args) {
         const result = await f(t, ...args),
@@ -302,7 +283,7 @@ foo();
           next = meta.pApply(func, f, t, r, i, o);
         callback(articles[i]);
         if (r > 0) {
-          setTimeout(next, (t *= 0.5));
+          setTimeout(next, t);
         }
       }
       func(mytimer, dur, req, 0, k);
