@@ -1214,9 +1214,6 @@ html #services section.services {
   background: #143f1f;
   background: linear-gradient(0deg, rgb(25, 78, 39) 0%, #0d2714, 75%, rgb(25, 78, 39) 100%);
 }
-html #services section.services div {
-  border: solid 1px orange;
-}
 html #services section.services div article aside {
   background-position: center;
   background-size: cover;
