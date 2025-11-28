@@ -166,20 +166,3 @@ function builder() {
 document.addEventListener("DOMContentLoaded", builder);
 animator.addEventListener("animationstart", testi, false);
 //animator.addEventListener("animationiteration", testi, false);
-
-//testi();
-//1574.04
-
-//6441.8
-
-//1614 (873)
-
-//727.61
-
-//741 I
-//873 BTI
-
-//1200...
-
-//0 I
-//414 BTI

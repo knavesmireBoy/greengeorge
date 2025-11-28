@@ -75,52 +75,19 @@ function paint(node, val) {
   node.style.backgroundColor = val;
 }
 
-let inc = 0,
-  t = 500,
-  margins = [100, 52, 34.333],
-  request,
-  requester,
-  start,
-  starter;
+let margins = [100, 52, 34.333];
 
 const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
-  getProp = (o, p) => o[p],
-  comp = meta.compose,
   sub = (o, p, m, v) => o[p][m](v),
   prevoke = (p, v) => (o, m) => sub(o, p, m, v),
   curry2 = meta.curryRight(2),
   curry22 = meta.curryRight(2, true),
-  getTarget = curry2(getProp)("currentTarget"),
   preActive = prevoke("classList", "pause"),
   preMove = prevoke("classList", "mv"),
   activate = curry2(preActive)("add"),
   deactivate = curry2(preActive)("remove"),
-  doActive = comp(activate, getTarget),
-  undoActive = comp(deactivate, getTarget),
-  doAlt = meta.doAlternate(),
-  finder = (nodes) => (node) => {
-    let i = 0,
-      l = nodes.length;
-    while (i < l) {
-      if (nodes[i] === node) {
-        break;
-      }
-      i++;
-    }
-    return i;
-  },
-  spotify = (nodes, values, cb) => (j) => {
-    let i = nodes.length,
-      [dflt, current] = values;
-    while (i--) {
-      if (i === j) {
-        cb(nodes[i], current);
-      } else {
-        cb(nodes[i], dflt);
-      }
-    }
-  },
+
   resize = (margins, factor = 2.5) => {
     let width = window.innerWidth > 0 ? window.innerWidth : screen.width,
       int = 0;
@@ -134,18 +101,10 @@ const meta = greenGeorge.meta,
     }
     return [margins[int], factor];
   },
-  service = document.querySelector(".services"),
-  control = document.getElementById("control"),
-  player = document.getElementById("player"),
+
   aside = player.querySelector("aside"),
   figures = aside.querySelectorAll("figure"),
-  liveArticles = (service && service.getElementsByTagName("article")) || [],
-  articles = (service && service.querySelectorAll("article")) || [],
-  i = articles.length,
-  el = articles[0],
-  next = el,
-  validate = () => true,
-  validator = (a) => (b) => a !== b,
+
   move = (node, val) => (node.style.marginLeft = val),
   slideshow = myslider(aside, meta.toArray(figures), 2, 4000);
 
