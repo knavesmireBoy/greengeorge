@@ -45,154 +45,39 @@ function getAnimationState(t, flag = false) {
     return 0;
   }
 }
-let inc = 0,
-  t = 500,
-  margins = [100, 52, 34.333],
-  request,
-  requester,
-  start,
-  starter;
-
-//note meta etc.. avoid binding clashes from previous script
-const meta = greenGeorge.meta,
-  utils = greenGeorge.utils,
-  log = console.log,
-  ptL = meta.doPartial(),
-  pApply = meta.pApply,
-  negate = meta.negator,
-  defer = meta.doPartial(true),
-  compose = meta.compose,
-  compduo = (f1, f2) => compose(f2, f1),
-  composer = (f1, f2) => compose(f2, f1)(),
-  getprop = (o, p) => o[p],
-  pass = (f) => (arg) => {
-    f(arg);
-    return arg;
-  },
-  invk = (o, m, v) => o[m](v),
-  prevoke = (m) => (o, v) => o[m](v),
-  invok = (o, m, k, v) => o[m](k, v),
-  prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
-  cu2 = meta.curryRight(2),
-  service = document.querySelector(".services"),
-  control = document.getElementById("control"),
-  livespans = control.getElementsByTagName("span"),
-  section = meta.$Q(".services"),
-  container = meta.byTagScope(section)("div"),
-  appender = ptL(invk, container, "appendChild"),
-  inserter = ptL(invok, container, "insertBefore"),
-  inserterControl = ptL(invok, control, "insertBefore"),
-  equals = (a, b) => a === b,
-
-  getRefNodeFactory = () => {
-
-    return null;
-
-  },
-  getRefNode = ptL(
-    composer,
-    defer(getprop, container, "firstChild"),
-    defer(utils.getNextElement)
-  ),
-  getControlRefNode = ptL(
-    composer,
-    defer(getprop, control, "firstChild"),
-    defer(utils.getNextElement)
-  ),
-  getLastNode = defer(
-    composer,
-    defer(getprop, container, "lastChild"),
-    defer(utils.getPrevElement)
-  ),
-  getControlLastNode = defer(
-    composer,
-    defer(getprop, control, "lastChild"),
-    defer(utils.getPrevElement)
-  ),
-  appendTo = defer(composer, getRefNode, appender),
-  insertB4 = compose(
-    ptL(composer, getRefNode),
-    cu2(composer)(inserter),
-    getLastNode
-  ),
-  spotshifter = compose(
-    ptL(invk, control, "appendChild"),
-    defer(utils.getNextElement, control.firstChild)
-  ),
-  spotshifterbak = compose(
-    ptL(composer, getControlRefNode),
-    cu2(composer)(inserterControl),
-    getControlLastNode
-  ),
-  hifactory = prepSubMethod("classList", ["hi"]),
-  transformfactory = prepSubMethod("classList", ["transform", "transit"]),
-  transformRevfactory = prepSubMethod("classList", ["transform"]),
-  transitfactory = prepSubMethod("classList", ["transit"]),
-  highlighter = {
-    exec: cu2(hifactory)("add"),
-    undo: cu2(hifactory)("remove"),
-  },
-  transformer = {
-    exec: cu2(transformfactory)("add"),
-    undo: cu2(transformfactory)("remove"),
-    enter: meta.identity,
-  },
-  transformerRev = {
-    exec: compose(
-      cu2(transformRevfactory)("add"),
-      pass(cu2(transitfactory)("remove"))
-    ),
-    undo: compose(
-      cu2(transitfactory)("add"),
-      pass(cu2(transformRevfactory)("remove"))
-    ),
-    enter: insertB4,
-  },
-  transit = {
-    exec: cu2(transitfactory)("add"),
-    undo: cu2(transitfactory)("remove"),
-  },
-  domino =
-    (n, fns) =>
-    (x = 0) => {
-      let i = n,
-        fn = fns[x];
-      while (n--) {
-        fn();
-      }
-      n = i;
-    };
 
 function play(callback) {
-  var contains = cu2(hifactory)("contains"),
-    serv = meta.$Q(".services"),
-    arts = serv.getElementsByTagName("article"),
-    findtarget = negate(pApply(equals)),
-    findcurrent = negate(pApply(contains));
+  var serv = meta.$Q(".services"),
+    arts = serv && serv.getElementsByTagName("article"),
+    findtarget = negate(pApply((a, b) => a === b)),
+    findcurrent = negate(pApply(cu2(hifactory)("contains")));
+
+  if (!serv) {
+    return identity;
+  }
 
   return function (e) {
-    function tick(action, state) {
-      return function (t, r, i, k) {
-        let j = 0;
-        //init();//this would be insertB4 if going back, needs to run BEFORE, transform/transit classes are applied
 
+    function tick(action, state) {
+      return function (timer, req, count, rev) {
+        let j = 0;
         state.enter();
         while (arts[j]) {
           state.exec(arts[j]);
           j++;
         }
-        setTimeout(function () {
+        setTimeout((i) => {
           let j = 0;
           while (arts[j]) {
             state.undo(arts[j]);
             j++;
           }
-        }, t);
+        }, timer);
 
         return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve(action(r, i, k));
-          }, t);
+          setTimeout((i) => {
+            resolve(action(req, count, rev));
+          }, timer);
         });
       };
     }
@@ -216,7 +101,7 @@ function play(callback) {
         return;
       }
       if (reqst < offset) {
-        mytimer = tick(ticker(meta.identity), transformerRev);
+        mytimer = tick(ticker(identity), transformerRev);
         rev = 1;
       }
       reqst = Math.abs((reqst -= offset));
@@ -234,7 +119,127 @@ function play(callback) {
   };
 }
 
+let inc = 0,
+  t = 500,
+  margins = [100, 52, 34.333],
+  request,
+  requester,
+  start,
+  starter;
+
+//note meta etc.. avoid binding clashes from previous script
+const meta = greenGeorge.meta,
+  utils = greenGeorge.utils,
+  log = console.log,
+  identity = meta.identity,
+  ptL = meta.doPartial(),
+  pApply = meta.pApply,
+  negate = meta.negator,
+  defer = meta.doPartial(true),
+  compose = meta.compose,
+  compduo = (f1, f2) => compose(f2, f1),
+  composer = (f1, f2) => compose(f2, f1)(),
+  getprop = (o, p) => o[p],
+  pass = (f) => (arg) => {
+    f(arg);
+    return arg;
+  },
+  invk = (o, m, v) => o[m](v),
+  prevoke = (m) => (o, v) => o[m](v),
+  invok = (o, m, k, v) => o[m](k, v),
+  prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
+  cu2 = meta.curryRight(2),
+  service = document.querySelector(".services"),
+  control = document.getElementById("control"),
+  livespans = control && control.getElementsByTagName("span"),
+  section = meta.$Q(".services"),
+  container = section && meta.byTagScope(section)("div"),
+  appender = container && ptL(invk, container, "appendChild"),
+  inserter = container ? ptL(invok, container, "insertBefore") : identity,
+  inserterControl = control ? ptL(invok, control, "insertBefore") : identity,
+  getRefNodeFactory = (node) => {
+    if (node) {
+      return ptL(
+        composer,
+        defer(getprop, node, "firstChild"),
+        defer(utils.getNextElement)
+      );
+    }
+    return identity;
+  },
+  getLastNodeFactory = (node) => {
+    if (node) {
+      return defer(
+        composer,
+        defer(getprop, node, "lastChild"),
+        defer(utils.getPrevElement)
+      );
+    }
+    return identity;
+  },
+  getRefNode = getRefNodeFactory(container),
+  getControlRefNode = getRefNodeFactory(control),
+  getLastNode = getLastNodeFactory(container),
+  getControlLastNode = getLastNodeFactory(control),
+  appendTo = defer(composer, getRefNode, appender),
+  insertNode = compose(
+    ptL(composer, getRefNode),
+    cu2(composer)(inserter),
+    getLastNode
+  ),
+  spotshifter = control
+    ? compose(
+        ptL(invk, control, "appendChild"),
+        defer(utils.getNextElement, control.firstChild)
+      )
+    : identity,
+  spotshifterbak = control
+    ? compose(
+        ptL(composer, getControlRefNode),
+        cu2(composer)(inserterControl),
+        getControlLastNode
+      )
+    : identity,
+  hifactory = prepSubMethod("classList", ["hi"]),
+  transformfactory = prepSubMethod("classList", ["transform", "transit"]),
+  transformRevfactory = prepSubMethod("classList", ["transform"]),
+  transitfactory = prepSubMethod("classList", ["transit"]),
+  highlighter = {
+    exec: cu2(hifactory)("add"),
+    undo: cu2(hifactory)("remove"),
+  },
+  transformer = {
+    exec: cu2(transformfactory)("add"),
+    undo: cu2(transformfactory)("remove"),
+    enter: identity,
+  },
+  transformerRev = {
+    exec: compose(
+      cu2(transformRevfactory)("add"),
+      pass(cu2(transitfactory)("remove"))
+    ),
+    undo: compose(
+      cu2(transitfactory)("add"),
+      pass(cu2(transformRevfactory)("remove"))
+    ),
+    enter: insertNode,
+  },
+  transit = {
+    exec: cu2(transitfactory)("add"),
+    undo: cu2(transitfactory)("remove"),
+  },
+  domino =
+    (n, fns) =>
+    (x = 0) => {
+      let i = n,
+        fn = fns[x];
+      while (n--) {
+        fn();
+      }
+      n = i;
+    };
+
 highlighter.exec(livespans[0]);
 meta
   .$("control")
-  .addEventListener("click", play(domino(5, [spotshifter, spotshifterbak])));
+  .addEventListener("click", play(domino(livespans.length - 1, [spotshifter, spotshifterbak])));
