@@ -506,6 +506,8 @@ greenGeorge.meta = (function () {
         byTag(str, flag),
     byTagScope: byTagScope,
     compose: compose,
+    composed: (f1, f2) => compose(f2, f1),
+    composer: (f1, f2) => compose(f2, f1)(),
     getResult: getResult,
     tagTester: tagTester,
     doWhen: doWhen,

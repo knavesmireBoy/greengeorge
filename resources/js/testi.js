@@ -75,13 +75,15 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(j, frame_length = 7) {
+function play(ran, frame_length = 7) {
   const section = mmeta.$Q(".testimonials"),
     fade = curry44(subMethod)("fade")("add")("classList")(section);
 
   setTimeout(fade, 4444);
 
   return function player(e, t = 0) {
+
+
     const container = mmeta.byTagScope(section)("div"),
       activate = curry4(subMethod)("animed")("add")("classList"),
       doremove = mayremove(container),
@@ -97,12 +99,17 @@ function play(j, frame_length = 7) {
       mod = frame_length * articles.length,
       appender = defer(invk, container, "appendChild"),
       inserter = defer(invok, container, "insertBefore", articles[i]);
+
+
+
     if (e.target.nodeName === "P") {
       forward = e.target.id === "forward";
-      if (j) {
+      if (ran) {
         cb = forward ? inserter : appender;
         setTimeout(cb(container.firstChild));
       } else {
+
+        uutils.bolt();
         let now = Date.now() - elapsed,
           t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
           k = mover(t, forward),
@@ -115,7 +122,7 @@ function play(j, frame_length = 7) {
           first = cu2(getprop)("firstChild"),
           last = cu2(getprop)("lastChild"),
           getElement = forward ? last : first;
-        j++;
+        ran++;
         while ((node = getElement(container))) {
           maypush(node);
         }
@@ -123,7 +130,6 @@ function play(j, frame_length = 7) {
           doappend(hold[y++]);
         }
         articles = mmeta.byTagScope(container)("article", true);
-
         while (k) {
           container.insertBefore(articles[i], container.firstChild);
           i--;

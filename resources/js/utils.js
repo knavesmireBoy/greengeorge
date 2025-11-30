@@ -688,7 +688,28 @@ greenGeorge.utils = (function () {
         curry2(meta.invoke)(doEl),
         ptL(meta.invokeEach, "forEach"),
         doAttrs
-      )();
+      )(),
+
+      getFirstNodeFactory = (container) => {
+        if (container) {
+          return ptL(
+            composer,
+            meta.defer(getprop, container, "firstChild"),
+            meta.defer(this.getNextElement)
+          );
+        }
+        return meta.identity;
+      },
+      getLastNodeFactory = (container) => {
+        if (container) {
+          return defer(
+            meta.composer,
+            meta.defer(getprop, container, "lastChild"),
+            meta.defer(this.getPrevElement)
+          );
+        }
+        return meta.identity;
+      };
 
   return {
     applyClass: applyClass,
@@ -715,6 +736,8 @@ greenGeorge.utils = (function () {
     getNextElement: getNextElement,
     getPrevElement: getPrevElement,
     getTargetNode: getTargetNode,
+    getFirstNodeFactory: getFirstNodeFactory,
+    getLastNodeFactory: getLastNodeFactory,
     getElementHeight: (el) => {
       return el.getBoundingClientRect().height || el.offsetHeight;
     },
@@ -1005,6 +1028,9 @@ greenGeorge.utils = (function () {
       };
     },
     checkIfImageExists: checkIfImageExists,
+    bolt: function() {
+      console.log(this);
+    },
     isJPEG: function (cb, onfail) {
       //onfail is a relocator
       //conditional free functional programming...
