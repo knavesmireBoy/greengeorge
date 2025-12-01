@@ -87,10 +87,10 @@ function play(frame_length = 7) {
     const container = mmeta.byTagScope(section)("div"),
       activate = curry4(subMethod)("animed")("add")("classList"),
       appender = container && ptL(invk, container, "appendChild"),
-      appendTo = defer(composer, getRefNode, appender),
       inserter = container ? ptL(invok, container, "insertBefore") : identity,
       getRefNode = uutils.getFirstNodeFactory(container),
       getLastNode = uutils.getLastNodeFactory(container),
+      appendTo = defer(composer, getRefNode, appender),
       insertNode = compose(
         ptL(composer, getRefNode),
         cu2(composer)(inserter),
@@ -122,6 +122,7 @@ function play(frame_length = 7) {
       articles = mmeta.byTagScope(container)("article", true),
       mod = frame_length * articles.length,
       now = Date.now() - elapsed,
+      timer = 1000,
       t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
       k = mover(t, forward);
 
@@ -129,20 +130,30 @@ function play(frame_length = 7) {
       forward = e.target.id === "forward";
 
       if (forward) {
-        exec = defer(invk, transformer, "exec", container);
-        undo = compose(ptL(invk, transformer, "undo"), getParent, appendTo);
+        (exec = cu22(transformfactory)("add")(container)),
+          (undo = compose(
+            cu2(transformfactory)("remove"),
+            getParent,
+            appendTo
+          ));
       } else {
         exec = compose(
-          ptL(invk, transformerRev, "exec"),
+          cu2(transformRevfactory)("add"),
+          pass(cu2(transitfactory)("remove")),
           getParent,
           insertNode
         );
-        undo = defer(invk, transformerRev, "undo", container);
+        undo = compose(
+          cu2(transitfactory)("add"),
+          pass(cu2(transformRevfactory)("remove")),
+          mmeta.always(container)
+        );
+        timer = 1;
       }
 
       activate(section);
       exec();
-      setTimeout(undo, 1000);
+      setTimeout(undo, timer);
     }
   };
 }
