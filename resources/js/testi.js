@@ -69,15 +69,18 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(frame_length = 7) {
+function play(ran = 0, frame_length = 7) {
   const section = mmeta.$Q(".testimonials"),
     fade = curry44(subMethod)("fade")("add")("classList")(section);
+    
+
+  let i;
 
   setTimeout(fade, 4444);
 
   return function player(e) {
     const container = mmeta.byTagScope(section)("div"),
-      articles = mmeta.byTagScope(container)("article", true),
+    articles = mmeta.byTagScope(container)("article", true),
       activate = curry4(subMethod)("animed")("add")("classList"),
       appender = container && ptL(invk, container, "appendChild"),
       inserter = container ? ptL(invok, container, "insertBefore") : identity,
@@ -94,13 +97,18 @@ function play(frame_length = 7) {
       transitfactory = prepSubMethod("classList", ["transit"]);
 
     let forward = false,
-      mod = frame_length * articles.length,
+      exec,
+      undo,
       now = Date.now() - elapsed,
       timer = 1000,
-      t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
-      k = mover(t, forward),
-      exec,
-      undo;
+      mod = frame_length * articles.length;
+      t = `${Math.floor(now / 1000)}` % mod; //modulo by duration of the animation
+      i = mover(t, forward);
+
+      if(!ran && i){
+        ran++;
+        return player(e);
+      }
 
     if (e.target.nodeName === "P") {
       forward = e.target.id === "forward";
@@ -122,7 +130,6 @@ function play(frame_length = 7) {
         );
         timer = 1;
       }
-
       activate(section);
       exec();
       setTimeout(undo, timer);
