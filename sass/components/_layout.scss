@@ -190,13 +190,11 @@ html {
           padding: 0 4em;
           flex-direction: column;
           @include justify(center);
-          &:first-child {
-            @include prefix(
+          @include prefix(
               animation,
-              testi 28s linear 100ms infinite normal forwards,
+              testo 28s linear 100ms infinite normal forwards,
               o moz webkit
             );
-          }
         }
       }
     }
@@ -222,10 +220,7 @@ html {
       &.animed {
         div {
           article {
-            
-            &:first-child {
-              @include prefix(animation, none, o moz webkit);
-            }
+            @include prefix(animation, none, o moz webkit);
           }
           &.transform article {
             transform: translateX(-100%);

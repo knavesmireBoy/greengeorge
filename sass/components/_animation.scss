@@ -454,30 +454,27 @@
     }
   }
 
-  @keyframes testi {
+  @keyframes testo {
     22% {
-      margin-left: -0%;
+      transform: translateX(0);
     }
     25% {
-      margin-left: -100%;
-      opacity: 1;
+      transform: translateX(-100%);
     }
     47% {
-      margin-left: -100%;
+      transform: translateX(-100%);
     }
     50% {
-      margin-left: -200%;
-      opacity: .5;
+      transform: translateX(-200%);
     }
     72% {
-      margin-left: -200%;
+      transform: translateX(-200%);
     }
     75% {
-      opacity: 0;
-      margin-left: -300%;
+      transform: translateX(-300%);
     }
     100% {
-      margin-left: -300%;
+      transform: translateX(-300%);
     }
   }
 
