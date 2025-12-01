@@ -86,11 +86,8 @@ function play(frame_length = 7) {
   return function player(e, t = 0) {
     const container = mmeta.byTagScope(section)("div"),
       activate = curry4(subMethod)("animed")("add")("classList"),
-      doremove = mayremove(container),
-      doappend = append(container),
-      validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
-        cu2((a, b) => a === b)(1)
-      ),
+      appender = container && ptL(invk, container, "appendChild"),
+      appendTo = defer(composer, getRefNode, appender),
       inserter = container ? ptL(invok, container, "insertBefore") : identity,
       getRefNode = uutils.getFirstNodeFactory(container),
       getLastNode = uutils.getLastNodeFactory(container),
@@ -117,23 +114,13 @@ function play(frame_length = 7) {
           pass(cu2(transformRevfactory)("remove"))
         ),
         enter: insertNode,
-      },
-      transit = {
-        exec: cu2(transitfactory)("add"),
-        undo: cu2(transitfactory)("remove"),
       };
 
-    var cb = identity,
-      forward = false,
-      ob,
+    var forward = false,
       exec,
       undo,
       articles = mmeta.byTagScope(container)("article", true),
-      i = articles.length - 1,
       mod = frame_length * articles.length,
-      appender = defer(invk, container, "appendChild"),
-      appender = container && ptL(invk, container, "appendChild"),
-      appendTo = defer(composer, getRefNode, appender),
       now = Date.now() - elapsed,
       t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
       k = mover(t, forward);
