@@ -57,7 +57,6 @@ function play(callback) {
   }
 
   return function (e) {
-
     function tick(action, state) {
       return function (timer, req, count, rev) {
         let j = 0;
@@ -242,4 +241,7 @@ const meta = greenGeorge.meta,
 highlighter.exec(livespans[0]);
 meta
   .$("control")
-  .addEventListener("click", play(domino(livespans.length - 1, [spotshifter, spotshifterbak])));
+  .addEventListener(
+    "click",
+    play(domino(livespans.length - 1, [spotshifter, spotshifterbak]))
+  );

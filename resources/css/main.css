@@ -635,7 +635,6 @@ html body > div > main section.testimonials div article {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  transition: margin-left 500ms linear 222ms;
 }
 html body > div > main section.testimonials div article:first-child {
   -o-animation: testi 28s linear 100ms infinite normal forwards;
@@ -677,18 +676,17 @@ html.js main section.testimonials > p {
   opacity: 1;
   transition: opacity 2s linear 0.5s;
 }
-html.js main section.testimonials.animed div article {
-  margin-left: -100%;
-}
 html.js main section.testimonials.animed div article:first-child {
-  color: red;
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
 }
-html.js main section.testimonials.animed div article:last-child {
-  margin-left: 0;
+html.js main section.testimonials.animed div.transform article {
+  transform: translateX(-100%);
+}
+html.js main section.testimonials.animed div.transit article {
+  transition: transform 1s linear;
 }
 html.js main section.testimonials.fade > p {
   opacity: 0;

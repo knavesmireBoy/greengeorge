@@ -689,27 +689,29 @@ greenGeorge.utils = (function () {
         ptL(meta.invokeEach, "forEach"),
         doAttrs
       )(),
-
-      getFirstNodeFactory = (container) => {
-        if (container) {
-          return ptL(
-            composer,
-            meta.defer(getprop, container, "firstChild"),
-            meta.defer(this.getNextElement)
-          );
-        }
-        return meta.identity;
-      },
-      getLastNodeFactory = (container) => {
-        if (container) {
-          return defer(
-            meta.composer,
-            meta.defer(getprop, container, "lastChild"),
-            meta.defer(this.getPrevElement)
-          );
-        }
-        return meta.identity;
-      };
+    getFirstNodeFactory = (container) => {
+      let ptL = meta.doPartial(),
+        defer = meta.doPartial(true);
+      if (container) {
+        return ptL(
+          meta.composer,
+          defer(meta.getprop, container, "firstChild"),
+          defer(this.getNextElement)
+        );
+      }
+      return meta.identity;
+    },
+    getLastNodeFactory = (container) => {
+      let defer = meta.doPartial(true);
+      if (container) {
+        return defer(
+          meta.composer,
+          defer(meta.getprop, container, "lastChild"),
+          defer(this.getPrevElement)
+        );
+      }
+      return meta.identity;
+    };
 
   return {
     applyClass: applyClass,
@@ -1028,9 +1030,6 @@ greenGeorge.utils = (function () {
       };
     },
     checkIfImageExists: checkIfImageExists,
-    bolt: function() {
-      console.log(this);
-    },
     isJPEG: function (cb, onfail) {
       //onfail is a relocator
       //conditional free functional programming...

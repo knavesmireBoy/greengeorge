@@ -676,6 +676,7 @@ greenGeorge.meta = (function () {
     getter: (o, p) => {
       return getResult(o)[p];
     },
+    getprop: (o,p) => o[p],
     getTgt: (str) => byIdDefer(str),
     getDiff: (a, b) => {
       let curry2 = curryRight(2),

@@ -190,7 +190,6 @@ html {
           padding: 0 4em;
           flex-direction: column;
           @include justify(center);
-          transition: margin-left 500ms linear 222ms;
           &:first-child {
             @include prefix(
               animation,
@@ -223,14 +222,16 @@ html {
       &.animed {
         div {
           article {
-            margin-left: -100%;
+            
             &:first-child {
-              color: red;
               @include prefix(animation, none, o moz webkit);
             }
-            &:last-child {
-              margin-left: 0;
-            }
+          }
+          &.transform article {
+            transform: translateX(-100%);
+          }
+          &.transit article {
+            transition: transform 1s linear;
           }
         }
       }

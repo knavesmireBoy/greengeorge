@@ -35,6 +35,8 @@ const mmeta = greenGeorge.meta,
   cu22 = mmeta.curryRight(2, true),
   cu13 = mmeta.curryLeft(3),
   compvoke = (f1, f2, seed) => compose(f2, f1)(seed),
+  prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
+  getParent = cu2(getprop)("parentNode"),
   append = ptL(pprevoke("appendChild")),
   remove = ptL(pprevoke("removeChild")),
   mayremove = ptL(pprevoke("removeChild")),
@@ -75,79 +77,94 @@ function testi() {
   elapsed = Date.now();
 }
 
-function play(ran, frame_length = 7) {
+function play(frame_length = 7) {
   const section = mmeta.$Q(".testimonials"),
     fade = curry44(subMethod)("fade")("add")("classList")(section);
 
   setTimeout(fade, 4444);
 
   return function player(e, t = 0) {
-
-
     const container = mmeta.byTagScope(section)("div"),
       activate = curry4(subMethod)("animed")("add")("classList"),
       doremove = mayremove(container),
       doappend = append(container),
       validateNode = cu13(compvoke)(cu2(getprop)("nodeType"))(
         cu2((a, b) => a === b)(1)
-      );
+      ),
+      inserter = container ? ptL(invok, container, "insertBefore") : identity,
+      getRefNode = uutils.getFirstNodeFactory(container),
+      getLastNode = uutils.getLastNodeFactory(container),
+      insertNode = compose(
+        ptL(composer, getRefNode),
+        cu2(composer)(inserter),
+        getLastNode
+      ),
+      transformfactory = prepSubMethod("classList", ["transform", "transit"]),
+      transformRevfactory = prepSubMethod("classList", ["transform"]),
+      transitfactory = prepSubMethod("classList", ["transit"]),
+      transformer = {
+        exec: cu2(transformfactory)("add"),
+        undo: cu2(transformfactory)("remove"),
+        enter: identity,
+      },
+      transformerRev = {
+        exec: compose(
+          cu2(transformRevfactory)("add"),
+          pass(cu2(transitfactory)("remove"))
+        ),
+        undo: compose(
+          cu2(transitfactory)("add"),
+          pass(cu2(transformRevfactory)("remove"))
+        ),
+        enter: insertNode,
+      },
+      transit = {
+        exec: cu2(transitfactory)("add"),
+        undo: cu2(transitfactory)("remove"),
+      };
 
     var cb = identity,
       forward = false,
+      ob,
+      exec,
+      undo,
       articles = mmeta.byTagScope(container)("article", true),
       i = articles.length - 1,
       mod = frame_length * articles.length,
       appender = defer(invk, container, "appendChild"),
-      inserter = defer(invok, container, "insertBefore", articles[i]);
-
-
+      appender = container && ptL(invk, container, "appendChild"),
+      appendTo = defer(composer, getRefNode, appender),
+      now = Date.now() - elapsed,
+      t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
+      k = mover(t, forward);
 
     if (e.target.nodeName === "P") {
       forward = e.target.id === "forward";
-      if (ran) {
-        cb = forward ? inserter : appender;
-        setTimeout(cb(container.firstChild));
-      } else {
 
-        uutils.bolt();
-        let now = Date.now() - elapsed,
-          t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
-          k = mover(t, forward),
-          y = 0,
-          node,
-          hold = [],
-          dopush = pusher(hold),
-          thenpush = compose(dopush, doremove),
-          maypush = ptL(getbest, validateNode, [thenpush, doremove]),
-          first = cu2(getprop)("firstChild"),
-          last = cu2(getprop)("lastChild"),
-          getElement = forward ? last : first;
-        ran++;
-        while ((node = getElement(container))) {
-          maypush(node);
-        }
-        while (hold[y]) {
-          doappend(hold[y++]);
-        }
-        articles = mmeta.byTagScope(container)("article", true);
-        while (k) {
-          container.insertBefore(articles[i], container.firstChild);
-          i--;
-          k--;
-        }
-        activate(section);
-        setTimeout(defer(player, e), 1000);
+      if (forward) {
+        exec = defer(invk, transformer, "exec", container);
+        undo = compose(ptL(invk, transformer, "undo"), getParent, appendTo);
+      } else {
+        exec = compose(
+          ptL(invk, transformerRev, "exec"),
+          getParent,
+          insertNode
+        );
+        undo = defer(invk, transformerRev, "undo", container);
       }
+
+      activate(section);
+      exec();
+      setTimeout(undo, 1000);
     }
   };
 }
 // x * % = 1300 62.43
 function builder() {
-  const getParent = cu2(getprop)("parentNode"),
-    climb = compose(getParent, invoke),
+  const climb = compose(getParent, invoke),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),
-    listen = curry4(invok)(play(0))("click")("addEventListener"),
+    listen = curry4(invok)(play())("click")("addEventListener"),
     settingId = compose(pass, cu2(prepair("setAttribute", "id"))),
     textFooter = compose(
       listen,
