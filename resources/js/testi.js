@@ -37,15 +37,7 @@ const mmeta = greenGeorge.meta,
   compvoke = (f1, f2, seed) => compose(f2, f1)(seed),
   prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
   getParent = cu2(getprop)("parentNode"),
-  append = ptL(pprevoke("appendChild")),
-  remove = ptL(pprevoke("removeChild")),
-  mayremove = ptL(pprevoke("removeChild")),
-  pusher = ptL(pprevoke("push")),
   make = uutils.doMakeDefer,
-  getbest = (fn, coll, arg) => {
-    let cb = coll.reduce((a, b) => (fn(arg) ? a : b));
-    return cb(arg);
-  },
   mover = (t, flag = false) => {
     if (flag) {
       if (t < 7) {
@@ -83,8 +75,9 @@ function play(frame_length = 7) {
 
   setTimeout(fade, 4444);
 
-  return function player(e, t = 0) {
+  return function player(e) {
     const container = mmeta.byTagScope(section)("div"),
+      articles = mmeta.byTagScope(container)("article", true),
       activate = curry4(subMethod)("animed")("add")("classList"),
       appender = container && ptL(invk, container, "appendChild"),
       inserter = container ? ptL(invok, container, "insertBefore") : identity,
@@ -98,44 +91,23 @@ function play(frame_length = 7) {
       ),
       transformfactory = prepSubMethod("classList", ["transform", "transit"]),
       transformRevfactory = prepSubMethod("classList", ["transform"]),
-      transitfactory = prepSubMethod("classList", ["transit"]),
-      transformer = {
-        exec: cu2(transformfactory)("add"),
-        undo: cu2(transformfactory)("remove"),
-        enter: identity,
-      },
-      transformerRev = {
-        exec: compose(
-          cu2(transformRevfactory)("add"),
-          pass(cu2(transitfactory)("remove"))
-        ),
-        undo: compose(
-          cu2(transitfactory)("add"),
-          pass(cu2(transformRevfactory)("remove"))
-        ),
-        enter: insertNode,
-      };
+      transitfactory = prepSubMethod("classList", ["transit"]);
 
-    var forward = false,
-      exec,
-      undo,
-      articles = mmeta.byTagScope(container)("article", true),
+    let forward = false,
       mod = frame_length * articles.length,
       now = Date.now() - elapsed,
       timer = 1000,
       t = `${Math.floor(now / 1000)}` % mod, //modulo by duration of the animation
-      k = mover(t, forward);
+      k = mover(t, forward),
+      exec,
+      undo;
 
     if (e.target.nodeName === "P") {
       forward = e.target.id === "forward";
 
       if (forward) {
-        (exec = cu22(transformfactory)("add")(container)),
-          (undo = compose(
-            cu2(transformfactory)("remove"),
-            getParent,
-            appendTo
-          ));
+        exec = cu22(transformfactory)("add")(container);
+        undo = compose(cu2(transformfactory)("remove"), getParent, appendTo);
       } else {
         exec = compose(
           cu2(transformRevfactory)("add"),
