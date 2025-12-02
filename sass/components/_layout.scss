@@ -220,6 +220,7 @@ html {
       &.animed {
         div {
           article {
+            transform: none;
             @include prefix(animation, none, o moz webkit);
           }
           &.transform article {

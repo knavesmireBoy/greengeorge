@@ -38,7 +38,7 @@ const mmeta = greenGeorge.meta,
   prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
   getParent = cu2(getprop)("parentNode"),
   make = uutils.doMakeDefer,
-  mover = (t, flag = false) => {
+  mover1 = (t, flag = false) => {
     if (t < 7) {
       return 1;
     }
@@ -49,6 +49,31 @@ const mmeta = greenGeorge.meta,
       return 3;
     }
     return 4;
+  },
+  mover = (t, flag = false) => {
+    if (flag) {
+      if (t < 7) {
+        return 1;
+      }
+      if (t >= 7 && t < 14) {
+        return 2;
+      }
+      if (t >= 14 && t < 21) {
+        return 3;
+      }
+      return 4;
+    } else {
+      if (t < 7) {
+        return 1;
+      }
+      if (t >= 7 && t < 14) {
+        return 0;
+      }
+      if (t >= 14 && t < 21) {
+        return 3;
+      }
+      return 2;
+    }
   },
   animator = document.querySelector(".testimonials article");
 
@@ -114,13 +139,13 @@ function play(ran = 0, frame_length = 7) {
 
       if (!ran) {
         activate(section);
-        i = mover(t);
+        i = mover(t, forward);
         ran++;
+        exec = forward ? appendTo : insertNode;
         while (i--) {
-          appendTo();
+          exec();
         }
-      }
-      else {
+      } else {
         exec();
         setTimeout(undo, timer);
       }
