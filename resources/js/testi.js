@@ -40,15 +40,15 @@ const mmeta = greenGeorge.meta,
   make = uutils.doMakeDefer,
   mover = (t, flag = false) => {
     if (t < 7) {
-      return 0;
-    }
-    if (t >= 7 && t < 14) {
       return 1;
     }
-    if (t >= 14 && t < 21) {
+    if (t >= 7 && t < 14) {
       return 2;
     }
-    return 3;
+    if (t >= 14 && t < 21) {
+      return 3;
+    }
+    return 4;
   },
   animator = document.querySelector(".testimonials article");
 
