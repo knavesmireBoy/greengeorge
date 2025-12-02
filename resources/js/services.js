@@ -57,6 +57,7 @@ function play(callback) {
   }
 
   return function (e) {
+
     function tick(action, state) {
       return function (timer, req, count, rev) {
         let j = 0;
@@ -91,7 +92,7 @@ function play(callback) {
       offset = 0,
       dur = 600,
       rev = 0,
-      mytimer = tick(ticker(appendTo), transformer);
+      my_promise = tick(ticker(appendTo), transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
       reqst = looper(findtarget, livespans, tgt);
@@ -100,20 +101,21 @@ function play(callback) {
         return;
       }
       if (reqst < offset) {
-        mytimer = tick(ticker(identity), transformerRev);
+        my_promise = tick(ticker(identity), transformerRev);
         rev = 1;
       }
       reqst = Math.abs((reqst -= offset));
-      async function player(timerfunc, duration, ...args) {
-        const result = await timerfunc(duration, ...args),
+
+      async function player(mypromise, duration, ...args) {
+        const result = await mypromise(duration, ...args),
           [i, rev] = result,
-          next = pApply(player, timerfunc, duration, i, rev);
+          next = pApply(player, mypromise, duration, i, rev);
         callback(rev);
         if (i > 0) {
           setTimeout(next, duration);
         }
       }
-      player(mytimer, dur, reqst, rev);
+      player(my_promise, dur, reqst, rev);
     }
   };
 }

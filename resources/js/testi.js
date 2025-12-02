@@ -38,7 +38,7 @@ const mmeta = greenGeorge.meta,
   prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
   getParent = cu2(getprop)("parentNode"),
   make = uutils.doMakeDefer,
-  mover = (t, flag = false) => {
+  mover1 = (t, flag = false) => {
     if (flag) {
       if (t < 7) {
         return 0;
@@ -52,16 +52,29 @@ const mmeta = greenGeorge.meta,
       return 3;
     } else {
       if (t < 7) {
-        return 3;
+        return 0;
       }
       if (t >= 7 && t < 14) {
-        return 2;
+        return 1;
       }
       if (t >= 14 && t < 21) {
-        return 1;
+        return 0;
       }
       return 0;
     }
+  },
+
+  mover = (t, flag = false) => {
+    if (t < 7) {
+      return 0;
+    }
+    if (t >= 7 && t < 14) {
+      return 1;
+    }
+    if (t >= 14 && t < 21) {
+      return 2;
+    }
+    return 3;
   },
   animator = document.querySelector(".testimonials article");
 
@@ -106,16 +119,6 @@ function play(ran = 0, frame_length = 7) {
 
     if (e.target.nodeName === "P") {
       forward = e.target.id === "forward";
-      /*
-      if (!ran) {
-        i = mover(t, forward);
-        ran++;
-
-        while (i--) {
-          player(e);
-        }
-      }
-        */
 
       if (forward) {
         exec = cu22(transformfactory)("add")(container);
@@ -134,9 +137,22 @@ function play(ran = 0, frame_length = 7) {
         );
         timer = 1;
       }
-      activate(section);
-      exec();
-      setTimeout(undo, timer);
+
+      if (!ran) {
+        activate(section);
+        i = mover(t, forward);
+        exec = forward ? appendTo : insertNode;
+        ran++;
+   
+        while (i--) {
+          appendTo();
+        }
+      }
+      else {
+        exec();
+        setTimeout(undo, timer);
+      }
+    
     }
   };
 }
