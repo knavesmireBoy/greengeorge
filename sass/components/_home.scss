@@ -1,5 +1,20 @@
 html {
   #home {
+    details {
+      width: 200px;
+      position: relative;
+      z-index: 1;
+      margin: 3px;
+      &:open {
+        background-color: khaki;
+      }
+      summary {
+        cursor: pointer;
+        > * {
+          display: inline;
+        }
+      }
+    }
     section:first-child {
       padding: 1rem;
       line-height: 1.6;
@@ -99,7 +114,6 @@ html {
       }
     }
 
-
     .mission {
       padding: 1rem;
       article p:first-child {
@@ -167,7 +181,6 @@ html {
         }
       }
     }
-
   }
 }
 
@@ -256,20 +269,19 @@ html {
   }
 }
 @media only screen and (min-width: 769px) {
+  #home main > section:first-child {
+    font-size: 1.005rem;
 
-    #home main > section:first-child {
-      font-size: 1.005rem;
-
-      article {
-        h1 {
-          font-size: 3.88em;
-        }
-        h4 {
-          font-size: 1.6225em;
-        }
+    article {
+      h1 {
+        font-size: 3.88em;
       }
-    } //h
-  }
+      h4 {
+        font-size: 1.6225em;
+      }
+    }
+  } //h
+}
 
 @media only screen and (min-width: 820px) {
   html {
@@ -291,6 +303,3 @@ html {
     }
   }
 }
-
-
-

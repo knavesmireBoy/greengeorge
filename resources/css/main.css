@@ -1405,6 +1405,21 @@ section.services + div span {
     flex: 1 0 31.333%;
   }
 }
+html #home details {
+  width: 200px;
+  position: relative;
+  z-index: 1;
+  margin: 3px;
+}
+html #home details:open {
+  background-color: khaki;
+}
+html #home details summary {
+  cursor: pointer;
+}
+html #home details summary > * {
+  display: inline;
+}
 html #home section:first-child {
   padding: 1rem;
   line-height: 1.6;

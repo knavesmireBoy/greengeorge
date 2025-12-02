@@ -38,32 +38,6 @@ const mmeta = greenGeorge.meta,
   prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
   getParent = cu2(getprop)("parentNode"),
   make = uutils.doMakeDefer,
-  mover1 = (t, flag = false) => {
-    if (flag) {
-      if (t < 7) {
-        return 0;
-      }
-      if (t >= 7 && t < 14) {
-        return 1;
-      }
-      if (t >= 14 && t < 21) {
-        return 2;
-      }
-      return 3;
-    } else {
-      if (t < 7) {
-        return 0;
-      }
-      if (t >= 7 && t < 14) {
-        return 1;
-      }
-      if (t >= 14 && t < 21) {
-        return 0;
-      }
-      return 0;
-    }
-  },
-
   mover = (t, flag = false) => {
     if (t < 7) {
       return 0;
@@ -140,10 +114,8 @@ function play(ran = 0, frame_length = 7) {
 
       if (!ran) {
         activate(section);
-        i = mover(t, forward);
-        exec = forward ? appendTo : insertNode;
+        i = mover(t);
         ran++;
-   
         while (i--) {
           appendTo();
         }
@@ -152,7 +124,6 @@ function play(ran = 0, frame_length = 7) {
         exec();
         setTimeout(undo, timer);
       }
-    
     }
   };
 }
