@@ -2,6 +2,10 @@ function insert(hook, node) {
   return uutils.insertAfter(node, hook);
 }
 
+function testi() {
+  elapsed = Date.now();
+}
+
 var elapsed;
 //note mmeta etc.. avoid binding clashes from previous script
 const mmeta = greenGeorge.meta,
@@ -38,18 +42,6 @@ const mmeta = greenGeorge.meta,
   prepSubMethod = (p, v) => (o, m) => o[p][m](...v),
   getParent = cu2(getprop)("parentNode"),
   make = uutils.doMakeDefer,
-  mover1 = (t, flag = false) => {
-    if (t < 7) {
-      return 1;
-    }
-    if (t >= 7 && t < 14) {
-      return 2;
-    }
-    if (t >= 14 && t < 21) {
-      return 3;
-    }
-    return 4;
-  },
   mover = (t, flag = false) => {
     if (flag) {
       if (t < 7) {
@@ -76,10 +68,6 @@ const mmeta = greenGeorge.meta,
     }
   },
   animator = document.querySelector(".testimonials article");
-
-function testi() {
-  elapsed = Date.now();
-}
 
 function play(ran = 0, frame_length = 7) {
   const section = mmeta.$Q(".testimonials"),
@@ -154,7 +142,8 @@ function play(ran = 0, frame_length = 7) {
 }
 // x * % = 1300 62.43
 function builder() {
-  const climb = compose(getParent, invoke),
+  const insert = (hook, node) => uutils.insertAfter(node, hook),
+    climb = compose(getParent, invoke),
     append = ptL(pprevoke("appendChild")),
     forward = defer(invk, document, "createTextNode", ">"),
     back = defer(invk, document, "createTextNode", "<"),
