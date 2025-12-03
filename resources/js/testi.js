@@ -61,7 +61,7 @@ const mmeta = greenGeorge.meta,
       if (t >= 14 && t < 21) {
         return 3;
       }
-      return 4;
+      return 0;
     } else {
       if (t < 7) {
         return 1;
