@@ -2485,14 +2485,8 @@ html #about .testimonials article p {
 }
 
 @keyframes bond {
-  0% {
-    z-index: 1;
-  }
   50% {
     opacity: 1;
-  }
-  99% {
-    z-index: 1;
   }
   100% {
     opacity: 0;
@@ -2529,11 +2523,11 @@ html #about .testimonials article p {
   animation-fill-mode: forwards;
 }
 #bond p:nth-child(1) {
-  animation-delay: calc(var(--dur) * 2.5);
+  animation-delay: calc(var(--dur) * 3.5);
   background-image: url("../assets/yolt.jpg");
 }
 #bond p:nth-child(2) {
-  animation-delay: calc(var(--dur) * 2);
+  animation-delay: calc(var(--dur) * 2.5);
   background-image: url("../assets/tb.jpeg");
 }
 #bond p:nth-child(3) {
