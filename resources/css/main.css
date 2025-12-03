@@ -2484,4 +2484,44 @@ html #about .testimonials article p {
   color: rgb(25, 78, 39);
 }
 
+@keyframes bond {
+  0% {
+    background-color: red;
+    z-index: 1;
+  }
+  50% {
+    background-color: red;
+    color: black;
+  }
+  100% {
+    background-color: blue;
+    color: orange;
+    z-index: 1;
+  }
+}
+#bond {
+  width: 50%;
+  height: 1.375em;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  font-size: 2rem;
+  --dur: 5s;
+}
+#bond p {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  animation-name: bond;
+  animation-duration: var(--dur);
+  animation-timing-function: ease;
+}
+#bond p:nth-child(1) {
+  animation-duration: 20s;
+  animation-fill-mode: forwards;
+}
+#bond p:nth-child(2) {
+  animation-duration: 10s;
+}
+
 /*# sourceMappingURL=main.css.map */
