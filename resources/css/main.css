@@ -2488,10 +2488,10 @@ html #about .testimonials article p {
   0% {
     opacity: 1;
   }
-  11% {
+  6% {
     opacity: 1;
   }
-  13% {
+  7% {
     opacity: 0;
   }
   100% {
@@ -2506,7 +2506,7 @@ html #about .testimonials article p {
   text-align: center;
   position: relative;
   font-size: 2rem;
-  --dur: 72s;
+  --dur: 85s;
   padding: 5em 0;
 }
 #bond p {
@@ -2515,40 +2515,71 @@ html #about .testimonials article p {
   top: 0;
   width: 100%;
   height: 100%;
-  animation: bond var(--dur) ease infinite;
   background: url("../assets/drno.jpg") no-repeat top center/cover;
 }
 #bond p:nth-child(1) {
-  animation-delay: calc(var(--dur) * 0.88);
+  animation-delay: calc(var(--dur) * 0.96);
   background-image: url("../assets/mwtgg.jpeg");
 }
 #bond p:nth-child(2) {
-  animation-delay: calc(var(--dur) * 0.77);
+  animation-delay: calc(var(--dur) * 0.9);
   background-image: url("../assets/lald.jpeg");
 }
 #bond p:nth-child(3) {
-  animation-delay: calc(var(--dur) * 0.66);
+  animation-delay: calc(var(--dur) * 0.84);
   background-image: url("../assets/diamonds.jpeg");
 }
 #bond p:nth-child(4) {
-  animation-delay: calc(var(--dur) * 0.55);
+  animation-delay: calc(var(--dur) * 0.78);
   background-image: url("../assets/ohmss.jpeg");
 }
 #bond p:nth-child(5) {
-  animation-delay: calc(var(--dur) * 0.44);
+  animation-delay: calc(var(--dur) * 0.72);
   background-image: url("../assets/yolt.jpg");
 }
 #bond p:nth-child(6) {
-  animation-delay: calc(var(--dur) * 0.33);
+  animation-delay: calc(var(--dur) * 0.66);
   background-image: url("../assets/tb.jpeg");
 }
 #bond p:nth-child(7) {
-  animation-delay: calc(var(--dur) * 0.22);
+  animation-delay: calc(var(--dur) * 0.6);
   background-image: url("../assets/goldfinger.jpg");
 }
 #bond p:nth-child(8) {
-  animation-delay: calc(var(--dur) * 0.11);
+  animation-delay: calc(var(--dur) * 0.54);
   background-image: url("../assets/frwl.jpeg");
+}
+#bond p:nth-child(9) {
+  animation-delay: calc(var(--dur) * 0.48);
+  background-image: url("../assets/tb.jpeg");
+}
+#bond p:nth-child(10) {
+  animation-delay: calc(var(--dur) * 0.42);
+  background-image: url("../assets/goldfinger.jpg");
+}
+#bond p:nth-child(11) {
+  animation-delay: calc(var(--dur) * 0.36);
+  background-image: url("../assets/IMG_1478.jpg");
+}
+#bond p:nth-child(12) {
+  animation-delay: calc(var(--dur) * 0.3);
+  background-image: url("../assets/tidy.jpeg");
+}
+#bond p:nth-child(13) {
+  animation-delay: calc(var(--dur) * 0.24);
+  background-image: url("../assets/lawn.jpeg");
+}
+#bond p:nth-child(14) {
+  animation-delay: calc(var(--dur) * 0.18);
+  background-image: url("../assets/hedge.jpeg");
+}
+#bond p:nth-child(15) {
+  animation-delay: calc(var(--dur) * 0.12);
+  background-image: url("../assets/pruning.jpeg");
+}
+#bond p:nth-child(16) {
+  animation-delay: calc(var(--dur) * 0.06);
+  background-image: url("../assets/weeding.jpeg");
 }
 
 /*# sourceMappingURL=main.css.map */
