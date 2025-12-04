@@ -2506,7 +2506,7 @@ html #about .testimonials article p {
   text-align: center;
   position: relative;
   font-size: 2rem;
-  --dur: 20s;
+  --dur: 17s;
   padding: 5em 0;
   background-size: cover;
   background-position: top/center;
@@ -2525,6 +2525,7 @@ html #about .testimonials article p {
   background-position: top/center;
   background-repeat: no-repeat;
   background-image: url("../assets/frwl.jpeg");
+  animation-fill-mode: backwards;
   animation-iteration-count: infinite;
 }
 #bond p:nth-child(1) {
