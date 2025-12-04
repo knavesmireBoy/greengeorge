@@ -2485,8 +2485,14 @@ html #about .testimonials article p {
 }
 
 @keyframes bond {
-  50% {
+  0% {
     opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
   }
   100% {
     opacity: 0;
@@ -2500,9 +2506,8 @@ html #about .testimonials article p {
   text-align: center;
   position: relative;
   font-size: 2rem;
-  --dur: 4s;
+  --dur: 20s;
   padding: 5em 0;
-  background-image: url("../assets/yolt.jpg");
   background-size: cover;
   background-position: top/center;
   background-repeat: no-repeat;
@@ -2520,18 +2525,18 @@ html #about .testimonials article p {
   background-position: top/center;
   background-repeat: no-repeat;
   background-image: url("../assets/frwl.jpeg");
-  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
 #bond p:nth-child(1) {
-  animation-delay: calc(var(--dur) * 3.5);
+  animation-delay: 12s;
   background-image: url("../assets/yolt.jpg");
 }
 #bond p:nth-child(2) {
-  animation-delay: calc(var(--dur) * 2.5);
+  animation-delay: 8s;
   background-image: url("../assets/tb.jpeg");
 }
 #bond p:nth-child(3) {
-  animation-delay: calc(var(--dur) * 1.5);
+  animation-delay: 4s;
   background-image: url("../assets/goldfinger.jpg");
 }
 
