@@ -3,10 +3,10 @@
   --h: 9;
   --w: 16;
   --z: 100; /* z-index begin */
-  --animdur: 18000ms; /* 3 times the duration */
+  --animdur: 1000ms; /* 3 times the duration */
   --animtf: ease-out;
   --dist: clamp(0.75rem, 10vw, 1.5rem);
-  --slides: 20;
+  --slides: 9;
   font-size: 1rem;
   position: relative;
 }
@@ -20,6 +20,7 @@
   --l: var(--dist);
   --r: initial;
   --t: initial;
+
   bottom: var(--b);
   color: rgba(255, 255, 255, 0.9);
   font-family: "Bebas Neue", sans-serif;
@@ -58,41 +59,114 @@
   --img-animps: paused;
   --index: 0;
   animation: autoplay var(--animdur) infinite;
-  animation-delay: calc((var(--index) * var(--animdur)) / 3);
+  animation-delay: calc((var(--index) * var(--animdur)) / 1);
   animation-play-state: var(--animps);
-  position: absolute;
   box-sizing: border-box;
   height: 100%;
   margin: 0;
   opacity: 0;
   overflow: hidden;
   padding: 0;
-  top: 0;
-  width: 100%;
-}
-//https://css-tricks.com/author/jeffbridgforth/
-.c-mm__frame:nth-last-child(10):first-child,
-.c-mm__frame:nth-last-child(10):first-child ~ .c-mm__frame {
-  animation-duration: calc((10 / 3) * var(--animdur));
-}
- 
-.c-mm__img {
-  animation-direction: alternate;
-  animation-duration: calc(var(--animdur) / 1.5);
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
-  animation-name: var(--animn);
-  animation-play-state: var(--img-animps);
-  animation-timing-function: var(--animtf);
-  height: 100%;
-  object-fit: cover;
-  object-position: var(--x, 50%) var(--y, 50%);
   position: absolute;
   top: 0;
   width: 100%;
-  will-change: transform;
-  background: no-repeat url("../images/hedge-1.jpeg") center/cover;
 }
+
+/* Alas, we cannot use var() in nth-selector :-(, so we need code for 3-20 items */
+
+.c-mm__frame {
+    div {
+      animation-direction: alternate;
+      animation-duration: calc(var(--animdur) / 1.5);
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      animation-name: var(--animn);
+      animation-play-state: var(--img-animps);
+      animation-timing-function: var(--animtf);
+      height: 100%;
+      width: 100%;
+      background: no-repeat url("../assets/mwtgg.jpeg") center/cover;
+    }
+  }
+
+.c-mm__frame:nth-last-child(1):first-child {
+    & div {
+        background-image: url("../assets/mwtgg.jpeg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: var(--animdur);
+    }
+}
+
+.c-mm__frame:nth-last-child(2):first-child {
+    & div {
+        background-image: url("../assets/lald.jpeg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(2 * var(--animdur));
+    }
+}
+
+.c-mm__frame:nth-last-child(3):first-child {
+    & div {
+        background-image: url("../assets/diamonds.jpeg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(3 * var(--animdur));
+    }
+}
+.c-mm__frame:nth-last-child(4):first-child {
+    & div {
+        background-image: url("../assets/ohmss.jpeg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(4 * var(--animdur));
+    }
+}
+.c-mm__frame:nth-last-child(5):first-child {
+    & div {
+        background-image: url("../assets/yolt.jpg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(5 * var(--animdur));
+    }
+}
+
+.c-mm__frame:nth-last-child(6):first-child {
+    & div {
+        background-image: url("../assets/tb.jpeg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(6 * var(--animdur));
+    }
+}
+
+.c-mm__frame:nth-last-child(7):first-child {
+    & div {
+        background-image: url("../assets/goldfinger.jpg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(7 * var(--animdur));
+    }
+}
+.c-mm__frame:nth-last-child(8):first-child {
+    & div {
+        background-image: url("../assets/frwl.jpeg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(8 * var(--animdur));
+    }
+}
+
+.c-mm__frame:nth-last-child(9):first-child {
+    & div {
+        background-image: url("../assets/drno.jpg") ;
+    }
+    &, & ~ .c-mm__frame {
+        animation-duration: calc(9 * var(--animdur));
+    }
+}
+
 
 .c-mm__inner {
   height: 100%;
@@ -150,12 +224,12 @@
   );
 }
 
-/* DETAILS STATE 
+/* DETAILS STATE */
 details[open] ~ .c-mm__inner .c-mm__frame {
   --animps: running;
   --img-animps: running;
 }
-details:not([open])  ~ .c-mm__inner .c-mm__frame {
+details:not([open]) ~ .c-mm__inner .c-mm__frame {
   --animps: paused;
   --img-animps: paused !important;
 }
@@ -163,15 +237,30 @@ details:not([open]) ~ .c-mm__inner .c-mm__frame:first-of-type {
   opacity: 1;
 }
 details[open] summary [data-css-icon*="play"] i::after {
-  --cpa: polygon(40% 0%,0% 0%,0% 100%,40% 100%,40% 0%,60% 0%,100% 0%,100% 100%,60% 100%,60% 0%);
+  --cpa: polygon(
+    40% 0%,
+    0% 0%,
+    0% 100%,
+    40% 100%,
+    40% 0%,
+    60% 0%,
+    100% 0%,
+    100% 100%,
+    60% 100%,
+    60% 0%
+  );
 }
-summary::marker { display: none; }
-summary::-webkit-details-marker { display: none; }
-*/
+summary::marker {
+  display: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
 @keyframes autoplay {
-  0.1% {
+  1% {
     --img-animps: running;
-    opacity: .5;
+    opacity: 0;
     z-index: calc(var(--z) + var(--slides));
   }
   5% {

@@ -2552,52 +2552,18 @@ html #about .testimonials article p {
   animation: autoplay var(--animdur) infinite;
   animation-delay: calc(var(--index) * var(--animdur) / 3);
   animation-play-state: var(--animps);
+  position: absolute;
   box-sizing: border-box;
   height: 100%;
   margin: 0;
   opacity: 0;
   overflow: hidden;
   padding: 0;
-  position: absolute;
   top: 0;
   width: 100%;
 }
 
-/* Alas, we cannot use var() in nth-selector :-(, so we need code for 3-20 items */
-.c-mm__frame:nth-last-child(3):first-child,
-.c-mm__frame:nth-last-child(3):first-child ~ .c-mm__frame {
-  animation-duration: var(--animdur);
-}
-
-.c-mm__frame:nth-last-child(4):first-child,
-.c-mm__frame:nth-last-child(4):first-child ~ .c-mm__frame {
-  animation-duration: calc(1.3333333333 * var(--animdur));
-}
-
-.c-mm__frame:nth-last-child(5):first-child,
-.c-mm__frame:nth-last-child(5):first-child ~ .c-mm__frame {
-  animation-duration: calc(1.6666666667 * var(--animdur));
-}
-
-.c-mm__frame:nth-last-child(6):first-child,
-.c-mm__frame:nth-last-child(6):first-child ~ .c-mm__frame {
-  animation-duration: calc(2 * var(--animdur));
-}
-
-.c-mm__frame:nth-last-child(7):first-child,
-.c-mm__frame:nth-last-child(7):first-child ~ .c-mm__frame {
-  animation-duration: calc(2.3333333333 * var(--animdur));
-}
-
-.c-mm__frame:nth-last-child(8):first-child,
-.c-mm__frame:nth-last-child(8):first-child ~ .c-mm__frame {
-  animation-duration: calc(2.6666666667 * var(--animdur));
-}
-
-.c-mm__frame:nth-last-child(9):first-child ~ .c-mm__frame {
-  animation-duration: calc(3 * var(--animdur));
-}
-
+.c-mm__frame:nth-last-child(10):first-child,
 .c-mm__frame:nth-last-child(10):first-child ~ .c-mm__frame {
   animation-duration: calc(3.3333333333 * var(--animdur));
 }
@@ -2617,6 +2583,7 @@ html #about .testimonials article p {
   top: 0;
   width: 100%;
   will-change: transform;
+  background: no-repeat url("../images/hedge-1.jpeg") center/cover;
 }
 
 .c-mm__inner {
@@ -2677,48 +2644,28 @@ html #about .testimonials article p {
   );
 }
 
-/* DETAILS STATE */
+/* DETAILS STATE 
 details[open] ~ .c-mm__inner .c-mm__frame {
   --animps: running;
   --img-animps: running;
 }
-
-details:not([open]) ~ .c-mm__inner .c-mm__frame {
+details:not([open])  ~ .c-mm__inner .c-mm__frame {
   --animps: paused;
   --img-animps: paused !important;
 }
-
 details:not([open]) ~ .c-mm__inner .c-mm__frame:first-of-type {
   opacity: 1;
 }
-
-details[open] summary [data-css-icon*=play] i::after {
-  --cpa: polygon(
-    40% 0%,
-    0% 0%,
-    0% 100%,
-    40% 100%,
-    40% 0%,
-    60% 0%,
-    100% 0%,
-    100% 100%,
-    60% 100%,
-    60% 0%
-  );
+details[open] summary [data-css-icon*="play"] i::after {
+  --cpa: polygon(40% 0%,0% 0%,0% 100%,40% 100%,40% 0%,60% 0%,100% 0%,100% 100%,60% 100%,60% 0%);
 }
-
-summary::marker {
-  display: none;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
+summary::marker { display: none; }
+summary::-webkit-details-marker { display: none; }
+*/
 @keyframes autoplay {
   0.1% {
     --img-animps: running;
-    opacity: 0;
+    opacity: 0.5;
     z-index: calc(var(--z) + var(--slides));
   }
   5% {
