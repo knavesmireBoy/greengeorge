@@ -1410,6 +1410,29 @@ html #home section:first-child {
   padding: 1rem;
   line-height: 1.6;
 }
+html #home section:first-child #anim1:checked ~ label[for=anim1] {
+  opacity: 0.5;
+}
+html #home section:first-child #anim1:checked ~ label[for=anim1]:hover {
+  color: white;
+  opacity: 1;
+}
+html #home section:first-child label[for=anim1] {
+  position: absolute;
+  right: 0;
+  top: auto;
+  z-index: 3;
+  color: yellow;
+  display: block;
+  padding: 0 1em;
+  font-size: 2em;
+  border: solid 0 sandybrown;
+  cursor: pointer;
+  text-shadow: 2px 2px 2px black;
+}
+html #home section:first-child label[for=anim1]:hover {
+  color: white;
+}
 html #home section:first-child aside {
   display: -webkit-box;
   display: -moz-box;
@@ -1503,10 +1526,10 @@ html #home section:first-child article h4 {
   margin: 0.5em 0;
 }
 html #home section:first-child aside figure {
-  -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
-  -moz-animation: main 90s ease-in-out 500ms infinite reverse backwards;
-  -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
-  animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  -o-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+  -moz-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+  -webkit-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+  animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
 }
 html #home .mission {
   padding: 1rem;
@@ -1518,10 +1541,10 @@ html #home .mission article p:first-child {
   font-size: 1.3em;
 }
 html #player aside figure {
-  -o-animation: main 90s ease-in-out 500ms infinite reverse backwards;
-  -moz-animation: main 90s ease-in-out 500ms infinite reverse backwards;
-  -webkit-animation: main 90s ease-in-out 500ms infinite reverse backwards;
-  animation: main 90s ease-in-out 500ms infinite reverse backwards;
+  -o-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+  -moz-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+  -webkit-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+  animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
 }
 html #player.pause aside figure {
   filter: brightness(50%);
