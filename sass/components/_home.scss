@@ -1,20 +1,6 @@
 html {
   #home {
-    details {
-      width: 200px;
-      position: relative;
-      z-index: 1;
-      margin: 3px;
-      &:open {
-        background-color: khaki;
-      }
-      summary {
-        cursor: pointer;
-        > * {
-          display: inline;
-        }
-      }
-    }
+
     section:first-child {
       padding: 1rem;
       line-height: 1.6;
@@ -28,7 +14,13 @@ html {
           background-size: cover;
           @include flex(0, 0, 100%);
           //@include flexy();
-          height: 10.5em;
+          height: 0;
+          --h: 9;
+          --w: 16;
+          position: relative;
+          display: block;
+          padding-bottom: calc(var(--h) / var(--w) * 100%);
+
           &:first-child {
             background-image: url("../images/IMG_1477.jpg");
           }
@@ -149,16 +141,6 @@ html {
     }
   }
 
-  &.no-js {
-    //background-color: khaki;
-    section.services article:first-child {
-      @include prefix(
-        animation,
-        services 28s ease-in 1s infinite normal forwards,
-        o moz webkit
-      );
-    }
-  }
 
   &.js #home {
     #player {
@@ -184,56 +166,6 @@ html {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  html {
-    &.no-js #home {
-      #control span {
-        &:first-child {
-          @include prefix(
-            animation,
-            span1 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(2) {
-          @include prefix(
-            animation,
-            span2 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(3) {
-          @include prefix(
-            animation,
-            span3 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(4) {
-          @include prefix(
-            animation,
-            span4 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(5) {
-          @include prefix(
-            animation,
-            span5 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(6) {
-          @include prefix(
-            animation,
-            span6 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-      }
-    }
-  }
-}
 
 @media only screen and (min-width: 769px) {
   html #home main > {
@@ -292,11 +224,13 @@ html {
           @include justify(center);
           @include flex(7, 1, 1em);
         }
-
         aside {
+          
           @include flex(4, 1, 1em);
           figure {
-            height: calc(525px + 155 * ((100vw - 820px) / (1280 - 820)));
+            --h: 24;
+            //padding-bottom: calc(var(--h) / var(--w) * 100%);
+           // height: calc(525px + 155 * ((100vw - 820px) / (1280 - 820)));
           }
         }
       }

@@ -1407,21 +1407,6 @@ section.services + div span {
     flex: 1 0 31.333%;
   }
 }
-html #home details {
-  width: 200px;
-  position: relative;
-  z-index: 1;
-  margin: 3px;
-}
-html #home details:open {
-  background-color: khaki;
-}
-html #home details summary {
-  cursor: pointer;
-}
-html #home details summary > * {
-  display: inline;
-}
 html #home section:first-child {
   padding: 1rem;
   line-height: 1.6;
@@ -1444,7 +1429,12 @@ html #home section:first-child aside figure {
   -webkit-flex: 0 0 100%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  height: 10.5em;
+  height: 0;
+  --h: 9;
+  --w: 16;
+  position: relative;
+  display: block;
+  padding-bottom: calc(var(--h) / var(--w) * 100%);
 }
 html #home section:first-child aside figure:first-child {
   background-image: url("../images/IMG_1477.jpg");
@@ -1544,12 +1534,6 @@ html #player.pause aside figure {
 html #player.pause aside:first-child {
   margin-left: -100%;
 }
-html.no-js section.services article:first-child {
-  -o-animation: services 28s ease-in 1s infinite normal forwards;
-  -moz-animation: services 28s ease-in 1s infinite normal forwards;
-  -webkit-animation: services 28s ease-in 1s infinite normal forwards;
-  animation: services 28s ease-in 1s infinite normal forwards;
-}
 html.js #home #player aside figure {
   -o-animation: none;
   -moz-animation: none;
@@ -1567,44 +1551,6 @@ html.js #home #player aside.pause {
   filter: brightness(0.4);
 }
 
-@media only screen and (max-width: 768px) {
-  html.no-js #home #control span:first-child {
-    -o-animation: span1 29s linear 0s infinite normal forwards;
-    -moz-animation: span1 29s linear 0s infinite normal forwards;
-    -webkit-animation: span1 29s linear 0s infinite normal forwards;
-    animation: span1 29s linear 0s infinite normal forwards;
-  }
-  html.no-js #home #control span:nth-child(2) {
-    -o-animation: span2 29s linear 0s infinite normal forwards;
-    -moz-animation: span2 29s linear 0s infinite normal forwards;
-    -webkit-animation: span2 29s linear 0s infinite normal forwards;
-    animation: span2 29s linear 0s infinite normal forwards;
-  }
-  html.no-js #home #control span:nth-child(3) {
-    -o-animation: span3 29s linear 0s infinite normal forwards;
-    -moz-animation: span3 29s linear 0s infinite normal forwards;
-    -webkit-animation: span3 29s linear 0s infinite normal forwards;
-    animation: span3 29s linear 0s infinite normal forwards;
-  }
-  html.no-js #home #control span:nth-child(4) {
-    -o-animation: span4 29s linear 0s infinite normal forwards;
-    -moz-animation: span4 29s linear 0s infinite normal forwards;
-    -webkit-animation: span4 29s linear 0s infinite normal forwards;
-    animation: span4 29s linear 0s infinite normal forwards;
-  }
-  html.no-js #home #control span:nth-child(5) {
-    -o-animation: span5 29s linear 0s infinite normal forwards;
-    -moz-animation: span5 29s linear 0s infinite normal forwards;
-    -webkit-animation: span5 29s linear 0s infinite normal forwards;
-    animation: span5 29s linear 0s infinite normal forwards;
-  }
-  html.no-js #home #control span:nth-child(6) {
-    -o-animation: span6 29s linear 0s infinite normal forwards;
-    -moz-animation: span6 29s linear 0s infinite normal forwards;
-    -webkit-animation: span6 29s linear 0s infinite normal forwards;
-    animation: span6 29s linear 0s infinite normal forwards;
-  }
-}
 @media only screen and (min-width: 769px) {
   html #home main > section:first-of-type {
     padding: 3rem 1.2rem;
@@ -1690,7 +1636,7 @@ html.js #home #player aside.pause {
     flex: 4 1 1em;
   }
   html #home main > section:first-child aside figure {
-    height: calc(525px + 155 * (100vw - 820px) / 460);
+    --h: 24;
   }
 }
 html #services section.services {
@@ -2492,17 +2438,13 @@ html #about .testimonials article p {
   --animdur: 18000ms; /* 3 times the duration */
   --animtf: ease-out;
   --dist: clamp(0.75rem, 10vw, 1.5rem);
-  --slides: 20;
-  font-size: 1rem;
+  --slides: 17;
   position: relative;
-}
-
-.c-mm::before {
-  content: "";
   display: block;
   padding-bottom: calc(var(--h) / var(--w) * 100%);
 }
 
+/*
 [data-caption] {
   --b: var(--dist);
   --l: var(--dist);
@@ -2518,33 +2460,30 @@ html #about .testimonials article p {
   right: var(--r);
   top: var(--t);
 }
-
 [data-caption] div,
 [data-filter] div {
   font-family: "Castoro", serif;
   font-size: 50%;
 }
 
-[data-caption*=bottom] {
+[data-caption*="bottom"] {
   --b: var(--dist);
   --t: auto;
 }
-
-[data-caption*=left] {
+[data-caption*="left"] {
   --l: var(--dist);
   --r: auto;
 }
-
-[data-caption*=right] {
+[data-caption*="right"] {
   --l: auto;
   --r: var(--dist);
 }
-
-[data-caption*=top] {
+[data-caption*="top"] {
   --b: auto;
   --t: var(--dist);
 }
 
+*/
 .c-mm__frame {
   --animps: paused;
   --img-animps: paused;
@@ -2563,11 +2502,6 @@ html #about .testimonials article p {
   width: 100%;
 }
 
-.c-mm__frame:nth-last-child(10):first-child,
-.c-mm__frame:nth-last-child(10):first-child ~ .c-mm__frame {
-  animation-duration: calc(3.3333333333 * var(--animdur));
-}
-
 .c-mm__img {
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 1.5);
@@ -2578,12 +2512,11 @@ html #about .testimonials article p {
   animation-timing-function: var(--animtf);
   height: 100%;
   object-fit: cover;
-  object-position: var(--x, 50%) var(--y, 50%);
+  object-position: var(--x, 50%) var(--y, 80%);
   position: absolute;
   top: 0;
   width: 100%;
   will-change: transform;
-  background: no-repeat url("../images/hedge-1.jpeg") center/cover;
 }
 
 .c-mm__inner {
@@ -2591,6 +2524,11 @@ html #about .testimonials article p {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.c-mm__frame:nth-last-child(10):first-child,
+.c-mm__frame:nth-last-child(10):first-child ~ .c-mm__frame {
+  animation-duration: calc(3.3333333333 * var(--animdur));
 }
 
 .c-mm__play {
@@ -2817,16 +2755,6 @@ summary::-webkit-details-marker { display: none; }
       top: 2px;
     }
   }
-}
-body {
-  font-family: system-ui, sans-serif;
-  margin: 0 auto;
-  max-width: 54rem;
-  padding: 1rem;
-}
-
-p {
-  color: silver;
 }
 
 /*# sourceMappingURL=main.css.map */

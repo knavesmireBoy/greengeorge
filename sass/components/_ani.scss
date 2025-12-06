@@ -6,15 +6,14 @@
   --animdur: 18000ms; /* 3 times the duration */
   --animtf: ease-out;
   --dist: clamp(0.75rem, 10vw, 1.5rem);
-  --slides: 20;
-  font-size: 1rem;
+  --slides: 17;
   position: relative;
-}
-.c-mm::before {
-  content: "";
   display: block;
   padding-bottom: calc(var(--h) / var(--w) * 100%);
 }
+
+
+/*
 [data-caption] {
   --b: var(--dist);
   --l: var(--dist);
@@ -53,6 +52,8 @@
   --t: var(--dist);
 }
 
+*/
+
 .c-mm__frame {
   --animps: paused;
   --img-animps: paused;
@@ -70,12 +71,6 @@
   top: 0;
   width: 100%;
 }
-//https://css-tricks.com/author/jeffbridgforth/
-.c-mm__frame:nth-last-child(10):first-child,
-.c-mm__frame:nth-last-child(10):first-child ~ .c-mm__frame {
-  animation-duration: calc((10 / 3) * var(--animdur));
-}
- 
 .c-mm__img {
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 1.5);
@@ -86,12 +81,11 @@
   animation-timing-function: var(--animtf);
   height: 100%;
   object-fit: cover;
-  object-position: var(--x, 50%) var(--y, 50%);
+  object-position: var(--x, 50%) var(--y, 80%);
   position: absolute;
   top: 0;
   width: 100%;
   will-change: transform;
-  background: no-repeat url("../images/hedge-1.jpeg") center/cover;
 }
 
 .c-mm__inner {
@@ -100,6 +94,13 @@
   top: 0;
   width: 100%;
 }
+
+//https://css-tricks.com/author/jeffbridgforth/
+.c-mm__frame:nth-last-child(10):first-child,
+.c-mm__frame:nth-last-child(10):first-child ~ .c-mm__frame {
+  animation-duration: calc((10 / 3) * var(--animdur));
+}
+ 
 
 .c-mm__play {
   --size: clamp(3rem, 10vw, 4rem);
@@ -205,6 +206,7 @@ summary::-webkit-details-marker { display: none; }
     transform-origin: top;
   }
 }
+
 @keyframes kenburns-top-right {
   0% {
     transform: scale(1) translate(0, 0);
@@ -322,13 +324,4 @@ summary::-webkit-details-marker { display: none; }
       top: 2px;
     }
   }
-}
-body {
-  font-family: system-ui, sans-serif;
-  margin: 0 auto;
-  max-width: 54rem;
-  padding: 1rem;
-}
-p {
-  color: silver;
 }
