@@ -26,6 +26,7 @@ function myslider(hook, gang, i, delay, duration = 500) {
 
   let k = 0,
     t = 1;
+
   while (i < n) {
     hook.removeChild(gang[i++]);
   }
