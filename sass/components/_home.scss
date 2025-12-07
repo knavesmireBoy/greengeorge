@@ -6,6 +6,11 @@ html {
 
       #anim1:checked ~ label[for="anim1"] {
         opacity: .5;
+        color: limegreen;
+        &:after {
+          content: "||";
+        }
+
         &:hover {
           color: white;
           opacity: 1;
@@ -21,11 +26,14 @@ html {
         display: block;
         padding: 0 1em;
         font-size: 2em;
-        border: solid 0 sandybrown;
+        border: solid 1px sandybrown;
         cursor: pointer;
         text-shadow: 2px 2px 2px black;
         &:hover {
           color: white;
+        }
+        &:after {
+          content: ">";
         }
       }
 

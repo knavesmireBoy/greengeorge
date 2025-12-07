@@ -1412,6 +1412,10 @@ html #home section:first-child {
 }
 html #home section:first-child #anim1:checked ~ label[for=anim1] {
   opacity: 0.5;
+  color: limegreen;
+}
+html #home section:first-child #anim1:checked ~ label[for=anim1]:after {
+  content: "||";
 }
 html #home section:first-child #anim1:checked ~ label[for=anim1]:hover {
   color: white;
@@ -1426,12 +1430,15 @@ html #home section:first-child label[for=anim1] {
   display: block;
   padding: 0 1em;
   font-size: 2em;
-  border: solid 0 sandybrown;
+  border: solid 1px sandybrown;
   cursor: pointer;
   text-shadow: 2px 2px 2px black;
 }
 html #home section:first-child label[for=anim1]:hover {
   color: white;
+}
+html #home section:first-child label[for=anim1]:after {
+  content: ">";
 }
 html #home section:first-child aside {
   display: -webkit-box;
