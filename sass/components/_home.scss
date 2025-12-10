@@ -73,7 +73,6 @@ html {
         --h: 9;
         --w: 16;
         --z: 100;
-        --animdur: 18000ms;
         --animtf: ease-out;
         --dist: clamp(0.75rem, 10vw, 1.5rem);
         --slides: 17;
@@ -88,20 +87,14 @@ html {
 
         .c-mm__frame {
           position: absolute;
-          //--animps: paused;
-          //--img-animps: paused;
-          --animps: running;
-          --img-animps: running;
           --index: 0;
-          /*
-          animation: autoplay var(--animdur) infinite;
-          animation-delay: calc((var(--index) * var(--animdur)) / 3);
+          --animps: paused;
+          --img-animps: paused;
+          --slides: 17;
+          --animtf: ease-out;
+          animation: autoplay $animdur infinite;
+          animation-delay: calc((var(--index) * $animdur) / 3);
           animation-play-state: var(--animps);
-          */
-
-          animation: autoplay 18s infinite;
-          animation-delay: calc(var(--index) * 18s / 3);
-          animation-play-state: running;
 
           box-sizing: border-box;
           margin: 0;
@@ -109,16 +102,9 @@ html {
           overflow: hidden;
           padding: 0;
           top: 0;
-          //--h: 1800;
-          //--w: 1018;
-          //padding-bottom: calc(var(--h) / var(--w) * 100%);
-          //height: 100%;
-          //border: 1px saddlebrown solid;
-          //width: 100%;
         }
 
         .c-mm__img {
-          //position: absolute;
           top: 0;
           animation-direction: alternate;
           animation-duration: calc(var(--animdur) / 1.5);
@@ -128,8 +114,7 @@ html {
           animation-play-state: var(--img-animps);
           animation-timing-function: var(--animtf);
           object-fit: cover;
-          //object-position: var(--x, 0) var(--y, 0);
-          object-position: 50% 50%;
+          object-position: 50% 100%;
           width: 100%;
           height: 100%;
           will-change: transform;
@@ -145,6 +130,14 @@ html {
           font-size: 1.29em;
           margin: 0.5em 0;
         }
+      }
+      #anim1:checked ~ aside .c-mm__frame {
+        --animps: running;
+        --img-animps: running;
+      }
+
+      #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
+        opacity: 1;
       }
     }
 
