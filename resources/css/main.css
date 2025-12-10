@@ -640,11 +640,11 @@ Test if `$value` is a valid direction
 }
 @keyframes kenburns-bottom-left {
   0% {
-    transform: scale(1) translate(0, 0);
+    transform: scale(1.1) translate(-20px, 0);
     transform-origin: 16% 84%;
   }
   100% {
-    transform: scale(1.25) translate(-20px, 15px);
+    transform: scale(1.5) translate(-50px, 15px);
     transform-origin: left bottom;
   }
 }
@@ -668,14 +668,63 @@ Test if `$value` is a valid direction
     transform-origin: top left;
   }
 }
+@keyframes kenburns-frog {
+  0% {
+    transform: scale(1.5) translate(30px, -50px);
+    transform-origin: center;
+  }
+  100% {
+    transform: scale(0.7) translate(-20px, 0);
+    transform-origin: top left;
+  }
+}
 @keyframes kenburns-fox {
   0% {
-    transform: scale(1.25);
+    transform: scale(0.6) translate(-20px, 0);
     transform-origin: right bottom;
   }
   100% {
+    transform: scale(1.5) translate(0, -50px);
+  }
+}
+@keyframes kenburns-pigeon {
+  0% {
+    transform: scale(1.15) translate(-50px, 0);
+    transform-origin: 16% 84%;
+  }
+  100% {
+    transform: scale(1.5) translate(-50px, 15px);
+    transform-origin: left bottom;
+  }
+}
+@keyframes kenburns-lscp {
+  0% {
     transform: scale(1);
-    transform-origin: top left;
+    transform-origin: 50%;
+  }
+  100% {
+    transform: scale(1.5);
+    transform-origin: 50%;
+  }
+}
+@keyframes kenburns-portrait {
+  0% {
+    transform: scale(1) translateY(0);
+    transform-origin: top;
+  }
+  100% {
+    transform: scale(1) translateY(-25px);
+    transform-origin: top;
+  }
+}
+@keyframes kenburns-spike {
+  0% {
+    transform: scale(1) translate(0, -1rem);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scale(1.5) translate(0, 0);
+    transform-origin: bottom;
   }
 }
 @font-face {
@@ -1504,8 +1553,8 @@ section.services + div span {
 }
 @keyframes autoplay {
   .1% {
-    --img-animps: running;
-    opacity: 0.5;
+    --img-animps: paused;
+    opacity: 0;
     z-index: calc(var(--z) + var(--slides));
   }
   5% {
@@ -1581,18 +1630,15 @@ html #home section:first-child aside {
 }
 html #home section:first-child aside .c-mm__frame {
   --index: 0;
+  --animdur: 9000ms;
   --animps: paused;
   --img-animps: paused;
-  --slides: 17;
+  --slides: 16;
   --animtf: ease-out;
-  --h: 9;
-  --w: 16;
   --z: 100;
-  --animtf: ease-out;
   --dist: clamp(0.75rem, 10vw, 1.5rem);
-  --slides: 17;
-  animation: autoplay 18000ms infinite;
-  animation-delay: calc(var(--index) * 18000ms / 3);
+  animation: autoplay var(--animdur) infinite;
+  animation-delay: calc(var(--index) * var(--animdur) / 3);
   animation-play-state: var(--animps);
   position: absolute;
   box-sizing: border-box;
@@ -1605,14 +1651,13 @@ html #home section:first-child aside .c-mm__frame {
 html #home section:first-child aside .c-mm__frame .c-mm__img {
   top: 0;
   animation-direction: alternate;
-  animation-duration: 12000ms;
+  animation-duration: calc(var(--animdur) / 1.5);
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   animation-name: var(--animn);
   animation-play-state: var(--img-animps);
   animation-timing-function: var(--animtf);
   object-fit: cover;
-  object-position: var(--x, 50%) var(--y, 50%);
   width: 100%;
   height: 100%;
   will-change: transform;
@@ -1632,6 +1677,7 @@ html #home section:first-child #anim1:checked ~ aside .c-mm__frame {
 }
 html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
   opacity: 1;
+  --animps: paused;
 }
 html #home section:first-child aside figure {
   -o-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
@@ -1763,7 +1809,7 @@ html.js #home #player aside.pause {
     padding: 3rem 1.5rem;
   }
   html #home main > section:first-child article {
-    margin: 5rem 0;
+    margin: 8.8rem 0;
   }
 }
 html #services section.services {

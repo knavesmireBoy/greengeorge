@@ -1,7 +1,8 @@
 @keyframes autoplay {
   .1% {
-    --img-animps: running;
-    opacity: 0.5;
+    //--img-animps: running;
+    --img-animps: paused;
+    opacity: 0;
     z-index: calc(var(--z) + var(--slides));
   }
   5% {
@@ -35,7 +36,7 @@ html {
       min-height: 100%;
       line-height: 1.6;
       position: relative;
-      //padding-bottom: calc(var(--h) / var(--w) * 100%);
+    
 
       @include flexy();
       #anim1:checked ~ label[for="anim1"] {
@@ -77,22 +78,19 @@ html {
         position: relative;
 
         .c-mm__frame {
+
+
           --index: 0;
+          --animdur: 9000ms;
           --animps: paused;
           --img-animps: paused;
-          --slides: 17;
+          --slides: 16;
           --animtf: ease-out;
-
-
-          --h: 9;
-          --w: 16;
           --z: 100;
-          --animtf: ease-out;
           --dist: clamp(0.75rem, 10vw, 1.5rem);
-          --slides: 17;
 
-          animation: autoplay $animdur infinite;
-          animation-delay: calc((var(--index) * $animdur) / 3);
+          animation: autoplay var(--animdur) infinite;
+          animation-delay: calc((var(--index) * var(--animdur)) / 3);
           animation-play-state: var(--animps);
           position: absolute;
           box-sizing: border-box;
@@ -105,14 +103,14 @@ html {
           .c-mm__img {
             top: 0;
             animation-direction: alternate;
-            animation-duration: calc($animdur / 1.5);
+            animation-duration: calc(var(--animdur) / 1.5);
             animation-fill-mode: both;
             animation-iteration-count: infinite;
             animation-name: var(--animn);
             animation-play-state: var(--img-animps);
             animation-timing-function: var(--animtf);
             object-fit: cover;
-            object-position: var(--x, 50%) var(--y, 50%);
+            //object-position: var(--x, 50%) var(--y, 50%);
             width: 100%;
             height: 100%;
             will-change: transform;
@@ -129,6 +127,7 @@ html {
           font-size: 1.29em;
           margin: 0.5em 0;
         }
+
       }
       #anim1:checked ~ aside .c-mm__frame {
         --animps: running;
@@ -137,6 +136,7 @@ html {
 
       #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
         opacity: 1;
+        --animps: paused;
       }
     }
 
@@ -288,7 +288,7 @@ html {
       section:first-child {
         padding: 3rem 1.5rem;
         article {
-          margin: 5rem 0;
+          margin: 8.8rem 0;
         }
       }
     }
