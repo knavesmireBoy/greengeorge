@@ -668,6 +668,16 @@ Test if `$value` is a valid direction
     transform-origin: top left;
   }
 }
+@keyframes kenburns-fox {
+  0% {
+    transform: scale(1.25);
+    transform-origin: right bottom;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: top left;
+  }
+}
 @font-face {
   font-family: "Crimson";
   src: url("../font/Crimson-Bold.woff2") format("woff2"), url("../font/Crimson-Bold.woff") format("woff");
@@ -1527,13 +1537,6 @@ html #home section:first-child {
   min-height: 100%;
   line-height: 1.6;
   position: relative;
-  --h: 9;
-  --w: 16;
-  --z: 100;
-  --animtf: ease-out;
-  --dist: clamp(0.75rem, 10vw, 1.5rem);
-  --slides: 17;
-  display: block;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1556,7 +1559,7 @@ html #home section:first-child label[for=anim1] {
   position: absolute;
   right: 0;
   top: auto;
-  z-index: 3;
+  z-index: 123;
   color: yellow;
   display: block;
   padding: 0 1em;
@@ -1582,6 +1585,12 @@ html #home section:first-child aside .c-mm__frame {
   --img-animps: paused;
   --slides: 17;
   --animtf: ease-out;
+  --h: 9;
+  --w: 16;
+  --z: 100;
+  --animtf: ease-out;
+  --dist: clamp(0.75rem, 10vw, 1.5rem);
+  --slides: 17;
   animation: autoplay 18000ms infinite;
   animation-delay: calc(var(--index) * 18000ms / 3);
   animation-play-state: var(--animps);
@@ -1596,14 +1605,14 @@ html #home section:first-child aside .c-mm__frame {
 html #home section:first-child aside .c-mm__frame .c-mm__img {
   top: 0;
   animation-direction: alternate;
-  animation-duration: calc(var(--animdur) / 1.5);
+  animation-duration: 12000ms;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   animation-name: var(--animn);
   animation-play-state: var(--img-animps);
   animation-timing-function: var(--animtf);
   object-fit: cover;
-  object-position: center bottom;
+  object-position: var(--x, 50%) var(--y, 50%);
   width: 100%;
   height: 100%;
   will-change: transform;
