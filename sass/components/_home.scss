@@ -81,7 +81,7 @@ html {
 
 
           --index: 0;
-          --animdur: 9000ms;
+          --animdur: 64000ms;
           --animps: paused;
           --img-animps: paused;
           --slides: 16;
@@ -90,7 +90,7 @@ html {
           --dist: clamp(0.75rem, 10vw, 1.5rem);
 
           animation: autoplay var(--animdur) infinite;
-          animation-delay: calc((var(--index) * var(--animdur)) / 3);
+          animation-delay: calc((var(--index) * var(--animdur)) / 16);
           animation-play-state: var(--animps);
           position: absolute;
           box-sizing: border-box;
