@@ -1493,7 +1493,7 @@ section.services + div span {
   }
 }
 @keyframes autoplay {
-  1% {
+  .1% {
     --img-animps: running;
     opacity: 0.5;
     z-index: calc(var(--z) + var(--slides));
@@ -1603,7 +1603,7 @@ html #home section:first-child aside .c-mm__frame .c-mm__img {
   animation-play-state: var(--img-animps);
   animation-timing-function: var(--animtf);
   object-fit: cover;
-  object-position: 50% 100%;
+  object-position: center bottom;
   width: 100%;
   height: 100%;
   will-change: transform;
