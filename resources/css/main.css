@@ -1426,6 +1426,16 @@ section.services + div span {
     z-index: var(--z);
   }
 }
+html #home {
+  /*
+  .c-mm__inner {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+    */
+}
 html #home section:first-child {
   padding: 1rem;
   min-height: 100%;
@@ -1489,6 +1499,7 @@ html #home section:first-child aside {
   position: relative;
 }
 html #home section:first-child aside .c-mm__frame {
+  position: absolute;
   --animps: paused;
   --img-animps: paused;
   --index: 0;
@@ -1499,20 +1510,19 @@ html #home section:first-child aside .c-mm__frame {
   overflow: hidden;
   padding: 0;
   top: 0;
-  --h: 1800;
-  --w: 1018;
-  width: 100%;
 }
 html #home section:first-child aside .c-mm__img {
+  top: 0;
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 1.5);
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   animation-play-state: var(--img-animps);
   animation-timing-function: var(--animtf);
-  object-position: var(--x, 0) var(--y, 0);
-  top: 0;
+  object-fit: cover;
+  object-position: 50% 50%;
   width: 100%;
+  height: 100%;
   will-change: transform;
   display: block;
 }
@@ -1573,7 +1583,7 @@ html.js #home #player aside.pause {
 
 @media only screen and (min-width: 769px) {
   html #home main > section:first-of-type {
-    padding: 3rem 1.2rem;
+    padding: 3rem;
     column-gap: 2rem;
     display: grid;
     grid-template-columns: 62% 1fr;
@@ -1650,6 +1660,14 @@ html.js #home #player aside.pause {
     -webkit-flex: 4 1 1em;
     -ms-flex: 4 1 1em;
     flex: 4 1 1em;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  html #home main > section:first-child {
+    padding: 3rem 1.5rem;
+  }
+  html #home main > section:first-child article {
+    margin: 5rem 0;
   }
 }
 html #services section.services {

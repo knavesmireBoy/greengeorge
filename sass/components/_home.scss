@@ -21,12 +21,14 @@
 
 html {
   #home {
+    /*
     .c-mm__inner {
-     // height: 100%;
-      //position: absolute;
-      //top: 0;
-      //width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
     }
+      */
     
     section:first-child {
       padding: 1rem;
@@ -34,6 +36,7 @@ html {
       line-height: 1.6;
       position: relative;
         @include flexy();
+        //align-items: start;
 
       #anim1:checked ~ label[for="anim1"] {
         opacity: .5;
@@ -90,29 +93,32 @@ html {
         position: relative;
 
         .c-mm__frame {
+          position: absolute;
           --animps: paused;
           --img-animps: paused;
           --index: 0;
           //animation: autoplay var(--animdur) infinite;
           animation-delay: calc((var(--index) * var(--animdur)) / 3);
           animation-play-state: var(--animps);
-          //position: absolute;
+          
           box-sizing: border-box;
           margin: 0;
           //opacity: 0;
           overflow: hidden;
           padding: 0;
           top: 0;
-          --h: 1800;
-          --w: 1018;
+          //--h: 1800;
+          //--w: 1018;
           //padding-bottom: calc(var(--h) / var(--w) * 100%);
-          //height: 0;
+          //height: 100%;
           //border: 1px saddlebrown solid;
-          width: 100%;
+          //width: 100%;
         }
 
 
         .c-mm__img {
+          //position: absolute;
+          top: 0;
           animation-direction: alternate;
           animation-duration: calc(var(--animdur) / 1.5);
           animation-fill-mode: both;
@@ -120,11 +126,11 @@ html {
           //animation-name: var(--animn);
           animation-play-state: var(--img-animps);
           animation-timing-function: var(--animtf);
-          //object-fit: cover;
-          object-position: var(--x, 0) var(--y, 0);
-          //position: absolute;
-          top: 0;
+          object-fit: cover;
+          //object-position: var(--x, 0) var(--y, 0);
+          object-position: 50% 50%;
           width: 100%;
+          height: 100%;
           will-change: transform;
           display: block;
         }
@@ -215,7 +221,7 @@ html {
 @media only screen and (min-width: 769px) {
   html #home main > {
     section:first-of-type {
-      padding: 3rem 1.2rem;
+      padding: 3rem;
       column-gap: 2rem;
       display: grid;
       grid-template-columns: (62% 1fr);
@@ -223,7 +229,7 @@ html {
         order: 2;
         grid-column: 2/3;
         figure {
-        //  min-height: 100%;
+        // min-height: 100%;
          // width: 100%;
         }
       }
@@ -248,7 +254,6 @@ html {
 @media only screen and (min-width: 769px) {
   #home main > section:first-child {
     font-size: 1.005rem;
-
     article {
       h1 {
         font-size: 3.88em;
@@ -280,4 +285,18 @@ html {
       }
     }
   }
+}
+
+@media only screen and (min-width: 1024px) {
+  html {
+    #home main > {
+      section:first-child {
+        padding: 3rem 1.5rem;
+        article {
+          margin: 5rem 0;
+        }
+      }
+    }
+  }
+
 }
