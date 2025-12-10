@@ -35,6 +35,16 @@ html {
       min-height: 100%;
       line-height: 1.6;
       position: relative;
+
+      --h: 9;
+      --w: 16;
+      --z: 100;
+      --animtf: ease-out;
+      --dist: clamp(0.75rem, 10vw, 1.5rem);
+      --slides: 17;
+      display: block;
+      //padding-bottom: calc(var(--h) / var(--w) * 100%);
+
       @include flexy();
       #anim1:checked ~ label[for="anim1"] {
         opacity: 0.5;
@@ -69,24 +79,12 @@ html {
         }
       }
 
-      .c-mm {
-        --h: 9;
-        --w: 16;
-        --z: 100;
-        --animtf: ease-out;
-        --dist: clamp(0.75rem, 10vw, 1.5rem);
-        --slides: 17;
-        display: block;
-        // padding-bottom: calc(var(--h) / var(--w) * 100%);
-      }
-
       aside {
         border: solid 0 red;
         overflow: hidden;
         position: relative;
 
         .c-mm__frame {
-          position: absolute;
           --index: 0;
           --animps: paused;
           --img-animps: paused;
@@ -95,30 +93,30 @@ html {
           animation: autoplay $animdur infinite;
           animation-delay: calc((var(--index) * $animdur) / 3);
           animation-play-state: var(--animps);
-
+          position: absolute;
           box-sizing: border-box;
           margin: 0;
           opacity: 0;
           overflow: hidden;
           padding: 0;
           top: 0;
-        }
 
-        .c-mm__img {
-          top: 0;
-          animation-direction: alternate;
-          animation-duration: calc(var(--animdur) / 1.5);
-          animation-fill-mode: both;
-          animation-iteration-count: infinite;
-          animation-name: var(--animn);
-          animation-play-state: var(--img-animps);
-          animation-timing-function: var(--animtf);
-          object-fit: cover;
-          object-position: 50% 100%;
-          width: 100%;
-          height: 100%;
-          will-change: transform;
-          display: block;
+          .c-mm__img {
+            top: 0;
+            animation-direction: alternate;
+            animation-duration: calc(var(--animdur) / 1.5);
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-name: var(--animn);
+            animation-play-state: var(--img-animps);
+            animation-timing-function: var(--animtf);
+            object-fit: cover;
+            object-position: 50% 100%;
+            width: 100%;
+            height: 100%;
+            will-change: transform;
+            display: block;
+          }
         }
       }
       article {

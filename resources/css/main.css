@@ -1527,6 +1527,13 @@ html #home section:first-child {
   min-height: 100%;
   line-height: 1.6;
   position: relative;
+  --h: 9;
+  --w: 16;
+  --z: 100;
+  --animtf: ease-out;
+  --dist: clamp(0.75rem, 10vw, 1.5rem);
+  --slides: 17;
+  display: block;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1564,22 +1571,12 @@ html #home section:first-child label[for=anim1]:hover {
 html #home section:first-child label[for=anim1]:after {
   content: ">";
 }
-html #home section:first-child .c-mm {
-  --h: 9;
-  --w: 16;
-  --z: 100;
-  --animtf: ease-out;
-  --dist: clamp(0.75rem, 10vw, 1.5rem);
-  --slides: 17;
-  display: block;
-}
 html #home section:first-child aside {
   border: solid 0 red;
   overflow: hidden;
   position: relative;
 }
 html #home section:first-child aside .c-mm__frame {
-  position: absolute;
   --index: 0;
   --animps: paused;
   --img-animps: paused;
@@ -1588,6 +1585,7 @@ html #home section:first-child aside .c-mm__frame {
   animation: autoplay 18000ms infinite;
   animation-delay: calc(var(--index) * 18000ms / 3);
   animation-play-state: var(--animps);
+  position: absolute;
   box-sizing: border-box;
   margin: 0;
   opacity: 0;
@@ -1595,7 +1593,7 @@ html #home section:first-child aside .c-mm__frame {
   padding: 0;
   top: 0;
 }
-html #home section:first-child aside .c-mm__img {
+html #home section:first-child aside .c-mm__frame .c-mm__img {
   top: 0;
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 1.5);
