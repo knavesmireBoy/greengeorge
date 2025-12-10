@@ -496,7 +496,7 @@
  * See http://animista.net/license for more info. 
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
-@keyframes kenburns-top {
+ @keyframes kenburns-top {
   0% {
     transform: scale(1) translateY(0);
     transform-origin: 50% 16%;
@@ -549,11 +549,11 @@
 }
 @keyframes kenburns-bottom-left {
   0% {
-    transform: scale(1.1) translate(-20px, 0);
+    transform: scale(1) translate(0, 0);
     transform-origin: 16% 84%;
   }
   100% {
-    transform: scale(1.5) translate(-50px, 15px);
+    transform: scale(1.5) translate(-20px, 15px);
     transform-origin: left bottom;
   }
 }
@@ -577,8 +577,6 @@
     transform-origin: top left;
   }
 }
-
-
 
 @keyframes kenburns-frog {
   0% {

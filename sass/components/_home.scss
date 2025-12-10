@@ -1,7 +1,6 @@
 @keyframes autoplay {
   .1% {
-    //--img-animps: running;
-    --img-animps: paused;
+    --img-animps: running;
     opacity: 0;
     z-index: calc(var(--z) + var(--slides));
   }
@@ -10,9 +9,11 @@
   }
   50% {
     opacity: 1;
+
   }
   51% {
     --img-animps: paused;
+
   }
   100% {
     opacity: 0;
@@ -36,7 +37,16 @@ html {
       min-height: 100%;
       line-height: 1.6;
       position: relative;
+
     
+      --index: 0;
+      --animdur: 32000ms;
+      --animps: paused;
+      --img-animps: paused;
+      --slides: 16;
+      --animtf: ease-out;
+      --z: 100;
+      --dist: clamp(0.75rem, 10vw, 1.5rem);
 
       @include flexy();
       #anim1:checked ~ label[for="anim1"] {
@@ -73,22 +83,10 @@ html {
       }
 
       aside {
-        border: solid 0 red;
         overflow: hidden;
         position: relative;
 
         .c-mm__frame {
-
-
-          --index: 0;
-          --animdur: 64000ms;
-          --animps: paused;
-          --img-animps: paused;
-          --slides: 16;
-          --animtf: ease-out;
-          --z: 100;
-          --dist: clamp(0.75rem, 10vw, 1.5rem);
-
           animation: autoplay var(--animdur) infinite;
           animation-delay: calc((var(--index) * var(--animdur)) / 16);
           animation-play-state: var(--animps);

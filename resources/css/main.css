@@ -640,11 +640,11 @@ Test if `$value` is a valid direction
 }
 @keyframes kenburns-bottom-left {
   0% {
-    transform: scale(1.1) translate(-20px, 0);
+    transform: scale(1) translate(0, 0);
     transform-origin: 16% 84%;
   }
   100% {
-    transform: scale(1.5) translate(-50px, 15px);
+    transform: scale(1.5) translate(-20px, 15px);
     transform-origin: left bottom;
   }
 }
@@ -1553,7 +1553,7 @@ section.services + div span {
 }
 @keyframes autoplay {
   .1% {
-    --img-animps: paused;
+    --img-animps: running;
     opacity: 0;
     z-index: calc(var(--z) + var(--slides));
   }
@@ -1586,6 +1586,14 @@ html #home section:first-child {
   min-height: 100%;
   line-height: 1.6;
   position: relative;
+  --index: 0;
+  --animdur: 32000ms;
+  --animps: paused;
+  --img-animps: paused;
+  --slides: 16;
+  --animtf: ease-out;
+  --z: 100;
+  --dist: clamp(0.75rem, 10vw, 1.5rem);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1624,19 +1632,10 @@ html #home section:first-child label[for=anim1]:after {
   content: ">";
 }
 html #home section:first-child aside {
-  border: solid 0 red;
   overflow: hidden;
   position: relative;
 }
 html #home section:first-child aside .c-mm__frame {
-  --index: 0;
-  --animdur: 64000ms;
-  --animps: paused;
-  --img-animps: paused;
-  --slides: 16;
-  --animtf: ease-out;
-  --z: 100;
-  --dist: clamp(0.75rem, 10vw, 1.5rem);
   animation: autoplay var(--animdur) infinite;
   animation-delay: calc(var(--index) * var(--animdur) / 16);
   animation-play-state: var(--animps);
