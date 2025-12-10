@@ -1,7 +1,7 @@
 @keyframes autoplay {
-  0.1% {
+  1% {
     --img-animps: running;
-    opacity: .5;
+    opacity: 0.5;
     z-index: calc(var(--z) + var(--slides));
   }
   5% {
@@ -29,17 +29,15 @@ html {
       width: 100%;
     }
       */
-    
+
     section:first-child {
       padding: 1rem;
       min-height: 100%;
       line-height: 1.6;
       position: relative;
-        @include flexy();
-        //align-items: start;
-
+      @include flexy();
       #anim1:checked ~ label[for="anim1"] {
-        opacity: .5;
+        opacity: 0.5;
         color: limegreen;
         &:after {
           content: "||";
@@ -71,21 +69,17 @@ html {
         }
       }
 
-      /*
-          .c-mm {
-      --h: 9;
-      --w: 16;
-      --z: 100;
-      --animdur: 18000ms; 
-      --animtf: ease-out;
-      --dist: clamp(0.75rem, 10vw, 1.5rem);
-      --slides: 17;
-     
-      display: block;
-      padding-bottom: calc(var(--h) / var(--w) * 100%);
-    }
-    
-    */
+      .c-mm {
+        --h: 9;
+        --w: 16;
+        --z: 100;
+        --animdur: 18000ms;
+        --animtf: ease-out;
+        --dist: clamp(0.75rem, 10vw, 1.5rem);
+        --slides: 17;
+        display: block;
+        // padding-bottom: calc(var(--h) / var(--w) * 100%);
+      }
 
       aside {
         border: solid 0 red;
@@ -94,16 +88,24 @@ html {
 
         .c-mm__frame {
           position: absolute;
-          --animps: paused;
-          --img-animps: paused;
+          //--animps: paused;
+          //--img-animps: paused;
+          --animps: running;
+          --img-animps: running;
           --index: 0;
-          //animation: autoplay var(--animdur) infinite;
+          /*
+          animation: autoplay var(--animdur) infinite;
           animation-delay: calc((var(--index) * var(--animdur)) / 3);
           animation-play-state: var(--animps);
-          
+          */
+
+          animation: autoplay 18s infinite;
+          animation-delay: calc(var(--index) * 18s / 3);
+          animation-play-state: running;
+
           box-sizing: border-box;
           margin: 0;
-          //opacity: 0;
+          opacity: 0;
           overflow: hidden;
           padding: 0;
           top: 0;
@@ -115,7 +117,6 @@ html {
           //width: 100%;
         }
 
-
         .c-mm__img {
           //position: absolute;
           top: 0;
@@ -123,7 +124,7 @@ html {
           animation-duration: calc(var(--animdur) / 1.5);
           animation-fill-mode: both;
           animation-iteration-count: infinite;
-          //animation-name: var(--animn);
+          animation-name: var(--animn);
           animation-play-state: var(--img-animps);
           animation-timing-function: var(--animtf);
           object-fit: cover;
@@ -173,11 +174,13 @@ html {
   #player {
     aside {
       figure {
+        /*
         @include prefix(
           animation,
           mainy 90s ease-in-out 500ms infinite reverse backwards,
           o moz webkit
         );
+        */
       }
     }
 
@@ -198,7 +201,7 @@ html {
     #player {
       aside {
         figure {
-          @include prefix(animation, none, o moz webkit);
+          // @include prefix(animation, none, o moz webkit);
 
           &:first-child {
             //margin-left: -100%;
@@ -229,8 +232,8 @@ html {
         order: 2;
         grid-column: 2/3;
         figure {
-        // min-height: 100%;
-         // width: 100%;
+          // min-height: 100%;
+          // width: 100%;
         }
       }
       article {
@@ -298,5 +301,4 @@ html {
       }
     }
   }
-
 }
