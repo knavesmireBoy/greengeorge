@@ -54,12 +54,8 @@ function play(callback, frame_length = 6, ran = 0) {
   return function (e) {
     let now = Date.now() - elapsed,
       mod = frame_length * arts.length,
-      t = `${Math.floor(now / tmr)}` % mod; //modulo by duration of the animation
-
-    if (!ran) {
-      ran++;
-    }
-    z = getAnimationState(t);
+      t = `${Math.floor(now / tmr)}` % mod,//modulo by duration of the animation
+      z;
 
     function tick(action, state) {
       return function (timer, req, count, rev) {
@@ -98,10 +94,20 @@ function play(callback, frame_length = 6, ran = 0) {
       my_promise = tick(ticker(appendTo), transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
+
+      if (!ran) {
+        ran++;
+        z = getAnimationState(t);
+        runner.exec(meta.$Q("#services"));
+        highlighter.exec(livespans[z]);
+      }
+
       reqst = looper(findtarget, livespans, tgt);
       offset = looper(findcurrent, livespans);
+
+
       if (reqst === offset) {
-        return;
+        if(!z) { return; }
       }
       if (reqst < offset) {
         my_promise = tick(ticker(identity), transformerRev);
@@ -109,11 +115,13 @@ function play(callback, frame_length = 6, ran = 0) {
       }
       reqst = Math.abs((reqst -= offset));
 
+
       async function player(mypromise, duration, ...args) {
         const result = await mypromise(duration, ...args),
           [i, rev] = result,
           next = pApply(player, mypromise, duration, i, rev);
         callback(rev);
+        log(i);
         if (i > 0) {
           setTimeout(next, duration);
         }
@@ -131,7 +139,6 @@ let inc = 0,
   start,
   starter;
 
-//note meta etc.. avoid binding clashes from previous script
 const meta = greenGeorge.meta,
   utils = greenGeorge.utils,
   log = console.log,
@@ -206,12 +213,17 @@ const meta = greenGeorge.meta,
       )
     : identity,
   hifactory = prepSubMethod("classList", ["hi"]),
+  ranfactory = prepSubMethod("classList", ["ran"]),
   transformfactory = prepSubMethod("classList", ["transform", "transit"]),
   transformRevfactory = prepSubMethod("classList", ["transform"]),
   transitfactory = prepSubMethod("classList", ["transit"]),
   highlighter = {
     exec: cu2(hifactory)("add"),
     undo: cu2(hifactory)("remove"),
+  },
+  runner = {
+    exec: cu2(ranfactory)("add"),
+    undo: cu2(ranfactory)("remove"),
   },
   transformer = {
     exec: cu2(transformfactory)("add"),

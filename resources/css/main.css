@@ -1696,6 +1696,9 @@ html #home.pause aside:first-child {
     margin: 8rem 0;
   }
 }
+html #services {
+  --animps: running;
+}
 html #services section.services {
   background: #143f1f;
   background: linear-gradient(0deg, rgb(25, 78, 39) 0%, #0d2714, 75%, rgb(25, 78, 39) 100%);
@@ -1710,6 +1713,7 @@ html #services section.services > div {
   overflow: hidden;
 }
 html #services section.services > div article {
+  animation-play-state: var(--animps);
   -webkit-box: 0;
   -moz-box: 0;
   -webkit-flex: 0 0 100%;
@@ -1779,10 +1783,25 @@ html #services .mission article p:first-child {
   color: rgb(25, 78, 39);
   font-size: 1.3em;
 }
-html.js #services #control span.hi {
-  background-color: white;
+html #services.ran section.services article:nth-child(-n+6) {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
 }
-html.js #services section.services div article.transform {
+html #services.ran #control span:nth-child(-n+6) {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html.js #services #control span {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+html.js #services #control span.hi {
+  background-color: white !important;
+}
+html.js #services #control span section.services div article.transform {
   transform: translateX(-100%);
 }
 

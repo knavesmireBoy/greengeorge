@@ -1,5 +1,6 @@
 html {
   #services {
+    --animps: running;
     section.services {
       background: darken($main, 4%);
       background: linear-gradient(
@@ -13,6 +14,7 @@ html {
         @include flexy();
         overflow: hidden;
         article {
+          animation-play-state: var(--animps);
           @include flex(0, 0, 100%);
           aside {
             background-position: center;
@@ -56,7 +58,7 @@ html {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.2);
+          background-color: $lo;
         }
       }
     }
@@ -71,15 +73,26 @@ html {
         //font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
       }
     }
-  }
+    &.ran {
+      section.services article:nth-child(-n + 6) {
+        @include prefix(animation, none, o moz webkit);
+      }
+      #control span:nth-child(-n + 6) {
+        @include prefix(animation, none, o moz webkit);
+      }
+    }
+  } ///
 
   &.js {
     #services {
-      #control span.hi {
-        background-color: white;
-      }
-      section.services div article.transform {
-        transform: translateX(-100%);
+      #control span {
+        background-color: $lo;
+        &.hi {
+          background-color: $hi !important;
+        }
+        section.services div article.transform {
+          transform: translateX(-100%);
+        }
       }
     }
   }
@@ -134,7 +147,7 @@ html {
           }
         }
       }
-    }
+    } //
   }
 }
 

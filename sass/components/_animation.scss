@@ -1,8 +1,8 @@
 .spandef {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: $lo;
 }
 .spanhi {
-  background-color: white;
+  background-color: $hi;
 }
 
 @keyframes services {
@@ -46,100 +46,100 @@
 
   @keyframes span1 {
     0% {
-      background-color: white;
+      background-color: $hi;
     }
     17% {
-      background-color: white;
+      background-color: $hi;
     }
     18% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span2 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     17% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     18% {
-      background-color: white;
+      background-color: $hi;
     }
     34% {
-      background-color: white;
+      background-color: $hi;
     }
     35% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span3 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     34% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     35% {
-      background-color: white;
+      background-color: $hi;
     }
     51% {
-      background-color: white;
+      background-color: $hi;
     }
     52% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span4 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     51% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     52% {
-      background-color: white;
+      background-color: $hi;
     }
     68% {
-      background-color: white;
+      background-color: $hi;
     }
     71% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span5 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     70% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     71% {
-      background-color: white;
+      background-color: $hi;
     }
     87% {
-      background-color: white;
+      background-color: $hi;
     }
     88% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span6 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     86% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     87% {
-      background-color: white;
+      background-color: $hi;
     }
     100% {
-      background-color: white;
+      background-color: $hi;
     }
   }
 
@@ -178,85 +178,85 @@
 
   @keyframes span11 {
     0% {
-      background-color: white;
+      background-color: $hi;
     }
     19% {
-      background-color: white;
+      background-color: $hi;
     }
     20% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span12 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     19% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     20% {
-      background-color: white;
+      background-color: $hi;
     }
     39% {
-      background-color: white;
+      background-color: $hi;
     }
     40% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span13 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     39% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     40% {
-      background-color: white;
+      background-color: $hi;
     }
     59% {
-      background-color: white;
+      background-color: $hi;
     }
     60% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span14 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     59% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     60% {
-      background-color: white;
+      background-color: $hi;
     }
     79% {
-      background-color: white;
+      background-color: $hi;
     }
     80% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span15 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     79% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     80% {
-      background-color: white;
+      background-color: $hi;
     }
     99% {
-      background-color: white;
+      background-color: $hi;
     }
     100% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
@@ -289,66 +289,66 @@
 
   @keyframes span21 {
     0% {
-      background-color: white;
+      background-color: $hi;
     }
     24% {
-      background-color: white;
+      background-color: $hi;
     }
     25% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span22 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     25% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     26% {
-      background-color: white;
+      background-color: $hi;
     }
     49% {
-      background-color: white;
+      background-color: $hi;
     }
     50% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
   @keyframes span23 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     50% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     51% {
-      background-color: white;
+      background-color: $hi;
     }
     74% {
-      background-color: white;
+      background-color: $hi;
     }
     75% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
   @keyframes span24 {
     0% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     75% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
     76% {
-      background-color: white;
+      background-color: $hi;
     }
     99% {
-      background-color: white;
+      background-color: $hi;
     }
     100% {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: $lo;
     }
   }
 
