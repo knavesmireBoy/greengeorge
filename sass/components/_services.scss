@@ -21,12 +21,14 @@ html {
             background-size: cover;
           }
           figure {
-            @include flex(1, 1, 1em);
+            //@include flex(1, 1, 1em);
+
             img {
               width: 100%;
               max-height: 12em;
               display: block;
               object-fit: cover;
+              height: 100%;
               object-position: center top;
             }
           }

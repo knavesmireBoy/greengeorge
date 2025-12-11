@@ -1724,18 +1724,12 @@ html #services section.services > div article aside {
   background-position: center;
   background-size: cover;
 }
-html #services section.services > div article figure {
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 1 1em;
-  -ms-flex: 1 1 1em;
-  flex: 1 1 1em;
-}
 html #services section.services > div article figure img {
   width: 100%;
   max-height: 12em;
   display: block;
   object-fit: cover;
+  height: 100%;
   object-position: center top;
 }
 html #services section.services > div article.transit {
