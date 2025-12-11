@@ -21,29 +21,11 @@
 
 html {
   #home {
-    /*
-    .c-mm__inner {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-      */
-
     section:first-child {
       padding: 1rem;
       min-height: 100%;
       line-height: 1.6;
       position: relative;
-
-      --index: 0;
-      --animdur: 32000ms;
-      --animps: paused;
-      --img-animps: paused;
-      --slides: 16;
-      --animtf: ease-out;
-      --z: 100;
-      --dist: clamp(0.75rem, 10vw, 1.5rem);
 
       @include flexy();
       #anim1:checked ~ label[for="anim1"] {
@@ -53,8 +35,6 @@ html {
         border-width: 18px;
         border-style: double;
         border-width: 0px 0 0px 24px;
-        &:hover {
-        }
       }
 
       label[for="anim1"] {
@@ -124,15 +104,31 @@ html {
       }
       #anim1:checked ~ aside .c-mm__frame {
         --animps: running;
-        --img-animps: running;
+        --img-animps: paused;
+        --animn: none;
+        border: solid 1px blue;
       }
 
       #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
         opacity: 1;
-        --animps: paused;
       }
-    }
+      #anim1:not(:checked) ~ aside .c-mm__frame {
+        --animps: paused;
+        --img-animps: paused;
+        border: solid 1px red;
+      }
 
+      &.c-mm {
+        --index: 0;
+        --animdur: 32000ms;
+        --animps: paused;
+        --img-animps: paused;
+        --slides: 16;
+        --animtf: ease-out;
+        --z: 100;
+      }
+    }//
+    /*
     section:first-child {
       aside {
         figure {
@@ -144,6 +140,7 @@ html {
         }
       }
     }
+    */
 
     .mission {
       padding: 1rem;
@@ -264,11 +261,6 @@ html {
         }
         aside {
           @include flex(4, 1, 1em);
-          figure {
-            //--h: 24;
-            //padding-bottom: calc(var(--h) / var(--w) * 100%);
-            // height: calc(525px + 155 * ((100vw - 820px) / (1280 - 820)));
-          }
         }
       }
     }
@@ -281,7 +273,7 @@ html {
       section:first-child {
         padding: 3rem 1.5rem;
         article {
-          margin: 8.8rem 0;
+          margin: 8rem 0;
         }
       }
     }

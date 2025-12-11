@@ -1573,27 +1573,24 @@ section.services + div span {
 }
 html #home {
   /*
-  .c-mm__inner {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  section:first-child {
+    aside {
+      figure {
+        @include prefix(
+          animation,
+          mainy 90s ease-in-out 500ms infinite reverse backwards,
+          o moz webkit
+        );
+      }
+    }
   }
-    */
+  */
 }
 html #home section:first-child {
   padding: 1rem;
   min-height: 100%;
   line-height: 1.6;
   position: relative;
-  --index: 0;
-  --animdur: 32000ms;
-  --animps: paused;
-  --img-animps: paused;
-  --slides: 16;
-  --animtf: ease-out;
-  --z: 100;
-  --dist: clamp(0.75rem, 10vw, 1.5rem);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1668,17 +1665,26 @@ html #home section:first-child article h4 {
 }
 html #home section:first-child #anim1:checked ~ aside .c-mm__frame {
   --animps: running;
-  --img-animps: running;
+  --img-animps: paused;
+  --animn: none;
+  border: solid 1px blue;
 }
 html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
   opacity: 1;
-  --animps: paused;
 }
-html #home section:first-child aside figure {
-  -o-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
-  -moz-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
-  -webkit-animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
-  animation: mainy 90s ease-in-out 500ms infinite reverse backwards;
+html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame {
+  --animps: paused;
+  --img-animps: paused;
+  border: solid 1px red;
+}
+html #home section:first-child.c-mm {
+  --index: 0;
+  --animdur: 32000ms;
+  --animps: paused;
+  --img-animps: paused;
+  --slides: 16;
+  --animtf: ease-out;
+  --z: 100;
 }
 html #home .mission {
   padding: 1rem;
@@ -1804,7 +1810,7 @@ html.js #home #player aside.pause {
     padding: 3rem 1.5rem;
   }
   html #home main > section:first-child article {
-    margin: 8.8rem 0;
+    margin: 8rem 0;
   }
 }
 html #services section.services {
