@@ -54,7 +54,7 @@ function play(callback, frame_length = 6, ran = 0) {
   return function (e) {
     let now = Date.now() - elapsed,
       mod = frame_length * arts.length,
-      t = `${Math.floor(now / tmr)}` % mod,//modulo by duration of the animation
+      t = `${Math.floor(now / tmr)}` % mod, //modulo by duration of the animation
       z;
 
     function tick(action, state) {
@@ -94,20 +94,24 @@ function play(callback, frame_length = 6, ran = 0) {
       my_promise = tick(ticker(appendTo), transformer);
 
     if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
-
+      //set document up for js so animation state is translated to positioning of articles;
+      //ie run appendTo until we're in sync then respond to the request as normal
       if (!ran) {
         ran++;
         z = getAnimationState(t);
         runner.exec(meta.$Q("#services"));
         highlighter.exec(livespans[z]);
+        while (z > 0) {
+          appendTo();
+          z--;
+        }
       }
 
       reqst = looper(findtarget, livespans, tgt);
       offset = looper(findcurrent, livespans);
 
-
       if (reqst === offset) {
-        if(!z) { return; }
+        return;
       }
       if (reqst < offset) {
         my_promise = tick(ticker(identity), transformerRev);
@@ -115,13 +119,11 @@ function play(callback, frame_length = 6, ran = 0) {
       }
       reqst = Math.abs((reqst -= offset));
 
-
       async function player(mypromise, duration, ...args) {
         const result = await mypromise(duration, ...args),
           [i, rev] = result,
           next = pApply(player, mypromise, duration, i, rev);
         callback(rev);
-        log(i);
         if (i > 0) {
           setTimeout(next, duration);
         }
@@ -263,4 +265,4 @@ meta
     "click",
     play(domino(livespans.length - 1, [spotshifter, spotshifterbak]))
   );
-  animator.addEventListener("animationstart", testi, false);
+animator.addEventListener("animationstart", testi, false);
