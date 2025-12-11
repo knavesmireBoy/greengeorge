@@ -243,35 +243,6 @@ html {
   }
 }
 
-section.services {
-  > div {
-    @include flexy();
-    overflow: hidden;
-    article {
-      @include flex(0, 0, 100%);
-    }
-  }
-
-  & + div {
-    font-size: 4em;
-    color: white;
-    background-color: $main;
-    text-align: center;
-    @include flexy();
-    @include justify(space-around);
-    padding: 0.2em 1.5em;
-    padding-left: calc(100px + 500 * ((100vw - 320px) / (1280 - 320)));
-    padding-right: calc(100px + 500 * ((100vw - 320px) / (1280 - 320)));
-    margin-top: -1px;
-    span {
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-  }
-}
 
 @media only screen and (min-width: 769px) {
   body > div > header > a {
@@ -300,21 +271,6 @@ section.services {
       }
     }
 
-    section.services {
-      font-size: 1.2rem;
-      div {
-        @include flexy();
-        column-gap: 4%;
-        overflow: hidden;
-
-        article {
-          @include flex(1, 0, 48%);
-          p {
-            padding: 0 2em;
-          }
-        }
-      }
-    }
 
     section:first-child {
       @include flexy(wrap);
@@ -417,19 +373,4 @@ section.services {
     }
   }
 
-  main {
-    section.services {
-      h2 {
-        font-size: 3.125em;
-      }
-      div {
-        @include flexy();
-        column-gap: 3%;
-        overflow: hidden;
-        article {
-          @include flex(1, 0, 31.333%);
-        }
-      }
-    }
-  }
 }

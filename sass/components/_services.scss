@@ -9,8 +9,11 @@ html {
         75%,
         $main 100%
       );
-      div {
+      > div {
+        @include flexy();
+        overflow: hidden;
         article {
+          @include flex(0, 0, 100%);
           aside {
             background-position: center;
             background-size: cover;
@@ -31,10 +34,29 @@ html {
           &:first-child {
             @include prefix(
               animation,
-              services 28s ease-in 1s infinite normal forwards,
+              services 36s ease-in 1s infinite normal forwards,
               o moz webkit
             );
           }
+        }
+      }
+      & + div {
+        font-size: 4em;
+        color: white;
+        background-color: $main;
+        text-align: center;
+        @include flexy();
+        @include justify(space-around);
+        padding: 0.2em 1.5em;
+        padding-left: calc(100px + 500 * ((100vw - 320px) / (1280 - 320)));
+        padding-right: calc(100px + 500 * ((100vw - 320px) / (1280 - 320)));
+        margin-top: -1px;
+        span {
+          display: block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.2);
         }
       }
     }
@@ -71,42 +93,42 @@ html {
           &:first-child {
             @include prefix(
               animation,
-              span1 29s linear 0s infinite normal forwards,
+              span1 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
           &:nth-child(2) {
             @include prefix(
               animation,
-              span2 29s linear 0s infinite normal forwards,
+              span2 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
           &:nth-child(3) {
             @include prefix(
               animation,
-              span3 29s linear 0s infinite normal forwards,
+              span3 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
           &:nth-child(4) {
             @include prefix(
               animation,
-              span4 29s linear 0s infinite normal forwards,
+              span4 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
           &:nth-child(5) {
             @include prefix(
               animation,
-              span5 29s linear 0s infinite normal forwards,
+              span5 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
           &:nth-child(6) {
             @include prefix(
               animation,
-              span6 29s linear 0s infinite normal forwards,
+              span6 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
@@ -118,15 +140,27 @@ html {
 
 @media only screen and (min-width: 769px) {
   html {
-    section {
-      &.services div {
-        article {
-          &:first-child {
-            @include prefix(
-              animation,
-              services_mid 28s ease-in 1s infinite normal forwards,
-              o moz webkit
-            );
+    #services {
+      section {
+        &.services {
+          font-size: 1.2rem;
+          div {
+            @include flexy();
+            column-gap: 4%;
+            overflow: hidden;
+            article {
+              @include flex(1, 0, 48%);
+              &:first-child {
+                @include prefix(
+                  animation,
+                  services_mid 36s ease-in 1s infinite normal forwards,
+                  o moz webkit
+                );
+              }
+              p {
+                padding: 0 2em;
+              }
+            }
           }
         }
       }
@@ -160,84 +194,94 @@ html {
     &:first-child {
       @include prefix(
         animation,
-        span11 29s linear 0s infinite normal forwards,
+        span11 37s linear 0s infinite normal forwards,
         o moz webkit
       );
     }
     &:nth-child(2) {
       @include prefix(
         animation,
-        span12 29s linear 0s infinite normal forwards,
+        span12 37s linear 0s infinite normal forwards,
         o moz webkit
       );
     }
     &:nth-child(3) {
       @include prefix(
         animation,
-        span13 29s linear 0s infinite normal forwards,
+        span13 37s linear 0s infinite normal forwards,
         o moz webkit
       );
     }
     &:nth-child(4) {
       @include prefix(
         animation,
-        span14 29s linear 0s infinite normal forwards,
+        span14 37s linear 0s infinite normal forwards,
         o moz webkit
       );
     }
     &:nth-child(5) {
       @include prefix(
         animation,
-        span15 29s linear 0s infinite normal forwards,
+        span15 37s linear 0s infinite normal forwards,
         o moz webkit
       );
     }
   }
 }
+
 @media only screen and (min-width: 1025px) {
   html {
     #services {
-      section.services div {
-        article {
+      h2 {
+        font-size: 3.125em;
+      }
+      section.services {
+        div {
+          @include flexy();
+          column-gap: 3%;
+          overflow: hidden;
+          article {
+            @include flex(1, 0, 31.333%);
+            &:first-child {
+              @include prefix(
+                animation,
+                services_max 36s ease-in 1s infinite normal forwards,
+                o moz webkit
+              );
+            }
+          }
+        }
+
+        #control span {
           &:first-child {
             @include prefix(
               animation,
-              services_max 28s ease-in 1s infinite normal forwards,
+              span21 37s linear 0s infinite normal forwards,
               o moz webkit
             );
           }
-        }
-      }
+          &:nth-child(2) {
+            @include prefix(
+              animation,
+              span22 37s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
+          &:nth-child(3) {
+            @include prefix(
+              animation,
+              span23 37s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
 
-      #control span {
-        &:first-child {
-          @include prefix(
-            animation,
-            span21 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(2) {
-          @include prefix(
-            animation,
-            span22 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(3) {
-          @include prefix(
-            animation,
-            span23 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-
-        &:nth-child(4) {
-          @include prefix(
-            animation,
-            span24 29s linear 0s infinite normal forwards,
-            o moz webkit
-          );
+          &:nth-child(4) {
+            @include prefix(
+              animation,
+              span24 37s linear 0s infinite normal forwards,
+              o moz webkit
+            );
+          }
         }
       }
     }

@@ -20,43 +20,46 @@ function looper(f, collection, ...args) {
   return i;
 }
 
-function getAnimationState(t, flag = false) {
-  if (flag) {
-    if (t < 7) {
-      return 0;
-    }
-    if (t >= 7 && t < 14) {
-      return 1;
-    }
-    if (t >= 14 && t < 21) {
-      return 2;
-    }
-    return 3;
-  } else {
-    if (t < 7) {
-      return 3;
-    }
-    if (t >= 7 && t < 14) {
-      return 2;
-    }
-    if (t >= 14 && t < 21) {
-      return 1;
-    }
+//note animation duration set to 36s in CSS
+function getAnimationState(t) {
+  if (t < 6) {
     return 0;
   }
+  if (t < 12) {
+    return 1;
+  }
+  if (t < 18) {
+    return 2;
+  }
+  if (t < 24) {
+    return 3;
+  }
+  if (t < 30) {
+    return 4;
+  }
+  return 5;
 }
 
-function play(callback) {
+function play(callback, frame_length = 6, ran = 0) {
   var serv = meta.$Q(".services"),
     arts = serv && serv.getElementsByTagName("article"),
     findtarget = negate(pApply((a, b) => a === b)),
-    findcurrent = negate(pApply(cu2(hifactory)("contains")));
+    findcurrent = negate(pApply(cu2(hifactory)("contains"))),
+    tmr = 1000;
 
   if (!serv) {
     return identity;
   }
 
   return function (e) {
+    let now = Date.now() - elapsed,
+      mod = frame_length * arts.length,
+      t = `${Math.floor(now / tmr)}` % mod; //modulo by duration of the animation
+
+    if (!ran) {
+      ran++;
+    }
+    z = getAnimationState(t);
 
     function tick(action, state) {
       return function (timer, req, count, rev) {
@@ -158,6 +161,7 @@ const meta = greenGeorge.meta,
   appender = container && ptL(invk, container, "appendChild"),
   inserter = container ? ptL(invok, container, "insertBefore") : identity,
   inserterControl = control ? ptL(invok, control, "insertBefore") : identity,
+  animator = document.querySelector(".services article"),
   getRefNodeFactory = (node) => {
     if (node) {
       return ptL(
@@ -240,10 +244,11 @@ const meta = greenGeorge.meta,
       n = i;
     };
 
-highlighter.exec(livespans[0]);
+//highlighter.exec(livespans[0]);
 meta
   .$("control")
   .addEventListener(
     "click",
     play(domino(livespans.length - 1, [spotshifter, spotshifterbak]))
   );
+  animator.addEventListener("animationstart", testi, false);
