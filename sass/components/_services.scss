@@ -1,5 +1,3 @@
-
-
 html {
   #services {
     section.services {
@@ -30,6 +28,13 @@ html {
           &.transit {
             transition: transform 0.6s ease-in;
           }
+          &:first-child {
+            @include prefix(
+              animation,
+              services 28s ease-in 1s infinite normal forwards,
+              o moz webkit
+            );
+          }
         }
       }
     }
@@ -46,15 +51,6 @@ html {
     }
   }
 
-  &.no-js {
-    section.services article:first-child {
-      @include prefix(
-        animation,
-        services 28s ease-in 1s infinite normal forwards,
-        o moz webkit
-      );
-    }
-  }
   &.js {
     #services {
       #control span.hi {
@@ -69,7 +65,7 @@ html {
 
 @media only screen and (max-width: 768px) {
   html {
-    &.no-js #services {
+    #services {
       #control {
         span {
           &:first-child {
@@ -122,21 +118,20 @@ html {
 
 @media only screen and (min-width: 769px) {
   html {
-    &.no-js {
-      section {
-        &.services div {
-          article {
-            &:first-child {
-              @include prefix(
-                animation,
-                services_mid 28s ease-in 1s infinite normal forwards,
-                o moz webkit
-              );
-            }
+    section {
+      &.services div {
+        article {
+          &:first-child {
+            @include prefix(
+              animation,
+              services_mid 28s ease-in 1s infinite normal forwards,
+              o moz webkit
+            );
           }
         }
       }
     }
+
     #services main > section:first-child {
       font-size: 1.005rem;
 
@@ -149,6 +144,7 @@ html {
         }
       }
     }
+
     &.js {
       #services {
         section.services div article.transform {
@@ -160,7 +156,7 @@ html {
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  html.no-js #control span {
+  html #services #control span {
     &:first-child {
       @include prefix(
         animation,
@@ -200,7 +196,7 @@ html {
 }
 @media only screen and (min-width: 1025px) {
   html {
-    &.no-js {
+    #services {
       section.services div {
         article {
           &:first-child {
@@ -245,6 +241,7 @@ html {
         }
       }
     }
+
     &.js {
       #services {
         section.services div article.transform {
