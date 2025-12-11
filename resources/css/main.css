@@ -668,65 +668,6 @@ Test if `$value` is a valid direction
     transform-origin: top left;
   }
 }
-@keyframes kenburns-frog {
-  0% {
-    transform: scale(1.5) translate(30px, -50px);
-    transform-origin: center;
-  }
-  100% {
-    transform: scale(0.7) translate(-20px, 0);
-    transform-origin: top left;
-  }
-}
-@keyframes kenburns-fox {
-  0% {
-    transform: scale(0.6) translate(-20px, 0);
-    transform-origin: right bottom;
-  }
-  100% {
-    transform: scale(1.5) translate(0, -50px);
-  }
-}
-@keyframes kenburns-pigeon {
-  0% {
-    transform: scale(1.15) translate(-50px, 0);
-    transform-origin: 16% 84%;
-  }
-  100% {
-    transform: scale(1.5) translate(-50px, 15px);
-    transform-origin: left bottom;
-  }
-}
-@keyframes kenburns-lscp {
-  0% {
-    transform: scale(1);
-    transform-origin: 50%;
-  }
-  100% {
-    transform: scale(1.5);
-    transform-origin: 50%;
-  }
-}
-@keyframes kenburns-portrait {
-  0% {
-    transform: scale(1) translateY(0);
-    transform-origin: top;
-  }
-  100% {
-    transform: scale(1) translateY(-25px);
-    transform-origin: top;
-  }
-}
-@keyframes kenburns-spike {
-  0% {
-    transform: scale(1) translate(0, -1rem);
-    transform-origin: bottom;
-  }
-  100% {
-    transform: scale(1.5) translate(0, 0);
-    transform-origin: bottom;
-  }
-}
 @font-face {
   font-family: "Crimson";
   src: url("../font/Crimson-Bold.woff2") format("woff2"), url("../font/Crimson-Bold.woff") format("woff");
