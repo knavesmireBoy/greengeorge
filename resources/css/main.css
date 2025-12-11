@@ -1602,34 +1602,30 @@ html #home section:first-child {
   flex-wrap: nowrap;
 }
 html #home section:first-child #anim1:checked ~ label[for=anim1] {
-  opacity: 0.5;
-  color: limegreen;
+  width: 36px;
+  height: 36px;
+  border-style: solid;
+  border-width: 18px;
+  border-style: double;
+  border-width: 0px 0 0px 24px;
 }
-html #home section:first-child #anim1:checked ~ label[for=anim1]:after {
-  content: "||";
+html #home section:first-child label[for=anim1] {
+  z-index: 123;
+  display: block;
+  cursor: pointer;
 }
-html #home section:first-child #anim1:checked ~ label[for=anim1]:hover {
-  color: white;
-  opacity: 1;
+html #home section:first-child label[for=anim1]:hover {
+  border-color: transparent transparent transparent rgb(255, 255, 255);
 }
 html #home section:first-child label[for=anim1] {
   position: absolute;
-  right: 0;
-  top: auto;
-  z-index: 123;
-  color: yellow;
-  display: block;
-  padding: 0 1em;
-  font-size: 2em;
-  border: solid 1px sandybrown;
-  cursor: pointer;
-  text-shadow: 2px 2px 2px black;
-}
-html #home section:first-child label[for=anim1]:hover {
-  color: white;
-}
-html #home section:first-child label[for=anim1]:after {
-  content: ">";
+  right: 2rem;
+  top: 3.6rem;
+  border-style: solid;
+  border-color: #202020;
+  line-height: normal;
+  border-width: 18px 0px 18px 36px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
 }
 html #home section:first-child aside {
   overflow: hidden;
