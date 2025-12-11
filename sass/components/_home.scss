@@ -59,7 +59,7 @@ html {
         position: relative;
         height: 10rem;
 
-        .c-mm__frame {
+       > figure {
           animation: autoplay var(--animdur) infinite;
           animation-delay: calc((var(--index) * var(--animdur)) / 16);
           animation-play-state: var(--animps);
@@ -101,16 +101,16 @@ html {
           margin: 0.5em 0;
         }
       }
-      #anim1:checked ~ aside .c-mm__frame {
+      #anim1:checked ~ aside figure {
         --animps: running;
         --img-animps: paused;
         --animn: none;
       }
 
-      #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
+      #anim1:not(:checked) ~ aside figure:first-child {
         opacity: 1;
       }
-      #anim1:not(:checked) ~ aside .c-mm__frame {
+      #anim1:not(:checked) ~ aside figure {
         --animps: paused;
         //override inline style
         --img-animps: paused !important;

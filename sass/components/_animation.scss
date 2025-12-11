@@ -496,7 +496,7 @@
  * See http://animista.net/license for more info. 
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
- @keyframes kenburns-top {
+ @keyframes kb-t {
   0% {
     transform: scale(1) translateY(0);
     transform-origin: 50% 16%;
@@ -507,7 +507,7 @@
   }
 }
 
-@keyframes kenburns-top-right {
+@keyframes kb-tr {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 84% 16%;
@@ -517,7 +517,7 @@
     transform-origin: right top;
   }
 }
-@keyframes kenburns-right {
+@keyframes kb-r {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 84% 50%;
@@ -527,7 +527,7 @@
     transform-origin: right;
   }
 }
-@keyframes kenburns-bottom-right {
+@keyframes kb-br {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 84% 84%;
@@ -537,7 +537,7 @@
     transform-origin: right bottom;
   }
 }
-@keyframes kenburns-bottom {
+@keyframes kb-b {
   0% {
     transform: scale(1) translateY(0);
     transform-origin: 50% 84%;
@@ -547,7 +547,7 @@
     transform-origin: bottom;
   }
 }
-@keyframes kenburns-bottom-left {
+@keyframes kb-bl {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 84%;
@@ -557,7 +557,7 @@
     transform-origin: left bottom;
   }
 }
-@keyframes kenburns-left {
+@keyframes kb-l {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 50%;
@@ -567,7 +567,7 @@
     transform-origin: left;
   }
 }
-@keyframes kenburns-top-left {
+@keyframes kb-tl {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 16%;

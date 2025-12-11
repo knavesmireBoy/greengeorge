@@ -588,7 +588,7 @@ Test if `$value` is a valid direction
  * See http://animista.net/license for more info. 
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
-@keyframes kenburns-top {
+@keyframes kb-t {
   0% {
     transform: scale(1) translateY(0);
     transform-origin: 50% 16%;
@@ -598,7 +598,7 @@ Test if `$value` is a valid direction
     transform-origin: top;
   }
 }
-@keyframes kenburns-top-right {
+@keyframes kb-tr {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 84% 16%;
@@ -608,7 +608,7 @@ Test if `$value` is a valid direction
     transform-origin: right top;
   }
 }
-@keyframes kenburns-right {
+@keyframes kb-r {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 84% 50%;
@@ -618,7 +618,7 @@ Test if `$value` is a valid direction
     transform-origin: right;
   }
 }
-@keyframes kenburns-bottom-right {
+@keyframes kb-br {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 84% 84%;
@@ -628,7 +628,7 @@ Test if `$value` is a valid direction
     transform-origin: right bottom;
   }
 }
-@keyframes kenburns-bottom {
+@keyframes kb-b {
   0% {
     transform: scale(1) translateY(0);
     transform-origin: 50% 84%;
@@ -638,7 +638,7 @@ Test if `$value` is a valid direction
     transform-origin: bottom;
   }
 }
-@keyframes kenburns-bottom-left {
+@keyframes kb-bl {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 84%;
@@ -648,7 +648,7 @@ Test if `$value` is a valid direction
     transform-origin: left bottom;
   }
 }
-@keyframes kenburns-left {
+@keyframes kb-l {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 50%;
@@ -658,7 +658,7 @@ Test if `$value` is a valid direction
     transform-origin: left;
   }
 }
-@keyframes kenburns-top-left {
+@keyframes kb-tl {
   0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 16%;
@@ -1460,7 +1460,7 @@ html #home section:first-child aside {
   position: relative;
   height: 10rem;
 }
-html #home section:first-child aside .c-mm__frame {
+html #home section:first-child aside > figure {
   animation: autoplay var(--animdur) infinite;
   animation-delay: calc(var(--index) * var(--animdur) / 16);
   animation-play-state: var(--animps);
@@ -1474,7 +1474,7 @@ html #home section:first-child aside .c-mm__frame {
   width: 100%;
   height: auto;
 }
-html #home section:first-child aside .c-mm__frame img {
+html #home section:first-child aside > figure img {
   top: 0;
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 1.5);
@@ -1498,15 +1498,15 @@ html #home section:first-child article h4 {
   font-size: 1.29em;
   margin: 0.5em 0;
 }
-html #home section:first-child #anim1:checked ~ aside .c-mm__frame {
+html #home section:first-child #anim1:checked ~ aside figure {
   --animps: running;
   --img-animps: paused;
   --animn: none;
 }
-html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
+html #home section:first-child #anim1:not(:checked) ~ aside figure:first-child {
   opacity: 1;
 }
-html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame {
+html #home section:first-child #anim1:not(:checked) ~ aside figure {
   --animps: paused;
   --img-animps: paused !important;
 }
