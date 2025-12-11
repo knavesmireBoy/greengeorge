@@ -1,6 +1,7 @@
 html {
   #services {
     --animps: running;
+    --aniklas: $lo;
     section.services {
       background: darken($main, 4%);
       background: linear-gradient(
@@ -21,8 +22,6 @@ html {
             background-size: cover;
           }
           figure {
-            //@include flex(1, 1, 1em);
-
             img {
               width: 100%;
               max-height: 12em;

@@ -1533,7 +1533,7 @@ html #home section:first-child aside .c-mm__frame {
   width: 100%;
   height: auto;
 }
-html #home section:first-child aside .c-mm__frame .c-mm__img {
+html #home section:first-child aside .c-mm__frame img {
   top: 0;
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 1.5);
@@ -1698,6 +1698,7 @@ html #home.pause aside:first-child {
 }
 html #services {
   --animps: running;
+  --aniklas: $lo;
 }
 html #services section.services {
   background: #143f1f;
@@ -2207,7 +2208,7 @@ html #about .testimonials article p {
     display: block;
   }
 }
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 102px) {
   #gallery main > section:first-of-type > div {
     display: grid;
     row-gap: 0.7%;
