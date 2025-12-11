@@ -1571,32 +1571,11 @@ section.services + div span {
     z-index: var(--z);
   }
 }
-html #home {
-  /*
-  section:first-child {
-    aside {
-      figure {
-        @include prefix(
-          animation,
-          mainy 90s ease-in-out 500ms infinite reverse backwards,
-          o moz webkit
-        );
-      }
-    }
-  }
-  */
-}
 html #home section:first-child {
   padding: 1rem;
   min-height: 100%;
   line-height: 1.6;
   position: relative;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: nowrap;
 }
 html #home section:first-child #anim1:checked ~ label[for=anim1] {
   width: 36px;
@@ -1616,17 +1595,16 @@ html #home section:first-child label[for=anim1]:hover {
 }
 html #home section:first-child label[for=anim1] {
   position: absolute;
-  right: 2rem;
-  top: 3.6rem;
+  right: 1.4rem;
+  top: 1.4rem;
   border-style: solid;
-  border-color: #202020;
-  line-height: normal;
   border-width: 18px 0px 18px 36px;
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
 }
 html #home section:first-child aside {
   overflow: hidden;
   position: relative;
+  height: 10rem;
 }
 html #home section:first-child aside .c-mm__frame {
   animation: autoplay var(--animdur) infinite;
@@ -1639,6 +1617,8 @@ html #home section:first-child aside .c-mm__frame {
   overflow: hidden;
   padding: 0;
   top: 0;
+  width: 100%;
+  height: auto;
 }
 html #home section:first-child aside .c-mm__frame .c-mm__img {
   top: 0;
@@ -1650,6 +1630,7 @@ html #home section:first-child aside .c-mm__frame .c-mm__img {
   animation-play-state: var(--img-animps);
   animation-timing-function: var(--animtf);
   object-fit: cover;
+  object-position: var(--x, 50%) var(--y, 50%);
   width: 100%;
   height: 100%;
   will-change: transform;
@@ -1667,19 +1648,17 @@ html #home section:first-child #anim1:checked ~ aside .c-mm__frame {
   --animps: running;
   --img-animps: paused;
   --animn: none;
-  border: solid 1px blue;
 }
 html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
   opacity: 1;
 }
 html #home section:first-child #anim1:not(:checked) ~ aside .c-mm__frame {
   --animps: paused;
-  --img-animps: paused;
-  border: solid 1px red;
+  --img-animps: paused !important;
 }
 html #home section:first-child.c-mm {
   --index: 0;
-  --animdur: 32000ms;
+  --animdur: 34000ms;
   --animps: paused;
   --img-animps: paused;
   --slides: 16;
@@ -1695,49 +1674,37 @@ html #home .mission article p:first-child {
   color: rgb(25, 78, 39);
   font-size: 1.3em;
 }
-html #player aside figure {
-  /*
-  @include prefix(
-    animation,
-    mainy 90s ease-in-out 500ms infinite reverse backwards,
-    o moz webkit
-  );
-  */
-}
-html #player.pause aside figure {
+html #home.pause aside figure {
   filter: brightness(50%);
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
 }
-html #player.pause aside:first-child {
+html #home.pause aside:first-child {
   margin-left: -100%;
-}
-html.js #home #player aside figure:first-child {
-  transition: margin 500ms ease-in-out 3.5s;
-}
-html.js #home #player aside.mv figure:first-child {
-  margin-left: 0%;
-}
-html.js #home #player aside.pause {
-  filter: brightness(0.4);
 }
 
 @media only screen and (min-width: 769px) {
   html #home main > section:first-of-type {
     padding: 3rem;
     column-gap: 2rem;
-    display: grid;
-    grid-template-columns: 62% 1fr;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  html #home main > section:first-of-type label[for=anim1] {
+    right: 3.6rem;
+    top: 3.6rem;
   }
   html #home main > section:first-of-type aside {
-    order: 2;
-    grid-column: 2/3;
+    height: auto;
   }
   html #home main > section:first-of-type article {
     margin: 0;
-    grid-column: 1/2;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -1808,6 +1775,9 @@ html.js #home #player aside.pause {
 @media only screen and (min-width: 1024px) {
   html #home main > section:first-child {
     padding: 3rem 1.5rem;
+  }
+  html #home main > section:first-child label[for=anim1] {
+    right: 2rem;
   }
   html #home main > section:first-child article {
     margin: 8rem 0;

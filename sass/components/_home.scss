@@ -26,8 +26,6 @@ html {
       min-height: 100%;
       line-height: 1.6;
       position: relative;
-
-      @include flexy();
       #anim1:checked ~ label[for="anim1"] {
         width: 36px;
         height: 36px;
@@ -48,11 +46,9 @@ html {
       }
       label[for="anim1"] {
         position: absolute;
-        right: 2rem;
-        top: 3.6rem;
+        right: 1.4rem;
+        top: 1.4rem;
         border-style: solid;
-        border-color: #202020;
-        line-height: normal;
         border-width: 18px 0px 18px 36px;
         border-color: transparent transparent transparent
           rgba(255, 255, 255, 0.5);
@@ -61,6 +57,7 @@ html {
       aside {
         overflow: hidden;
         position: relative;
+        height: 10rem;
 
         .c-mm__frame {
           animation: autoplay var(--animdur) infinite;
@@ -73,6 +70,8 @@ html {
           overflow: hidden;
           padding: 0;
           top: 0;
+          width: 100%;
+          height: auto;
 
           .c-mm__img {
             top: 0;
@@ -84,7 +83,7 @@ html {
             animation-play-state: var(--img-animps);
             animation-timing-function: var(--animtf);
             object-fit: cover;
-            //object-position: var(--x, 50%) var(--y, 50%);
+            object-position: var(--x, 50%) var(--y, 50%);
             width: 100%;
             height: 100%;
             will-change: transform;
@@ -106,7 +105,6 @@ html {
         --animps: running;
         --img-animps: paused;
         --animn: none;
-        border: solid 1px blue;
       }
 
       #anim1:not(:checked) ~ aside .c-mm__frame:first-child {
@@ -114,33 +112,20 @@ html {
       }
       #anim1:not(:checked) ~ aside .c-mm__frame {
         --animps: paused;
-        --img-animps: paused;
-        border: solid 1px red;
+        //override inline style
+        --img-animps: paused !important;
       }
 
       &.c-mm {
         --index: 0;
-        --animdur: 32000ms;
+        --animdur: 34000ms;
         --animps: paused;
         --img-animps: paused;
         --slides: 16;
         --animtf: ease-out;
         --z: 100;
       }
-    }//
-    /*
-    section:first-child {
-      aside {
-        figure {
-          @include prefix(
-            animation,
-            mainy 90s ease-in-out 500ms infinite reverse backwards,
-            o moz webkit
-          );
-        }
-      }
-    }
-    */
+    } //
 
     .mission {
       padding: 1rem;
@@ -150,19 +135,6 @@ html {
         color: $main;
         font-size: 1.3em;
         //font-size: calc(16px + 2 * ((100vw - 1025px) / (1280 - 1025)));
-      }
-    }
-  }
-  #player {
-    aside {
-      figure {
-        /*
-        @include prefix(
-          animation,
-          mainy 90s ease-in-out 500ms infinite reverse backwards,
-          o moz webkit
-        );
-        */
       }
     }
 
@@ -178,29 +150,6 @@ html {
       }
     }
   }
-
-  &.js #home {
-    #player {
-      aside {
-        figure {
-          // @include prefix(animation, none, o moz webkit);
-
-          &:first-child {
-            //margin-left: -100%;
-            transition: margin 500ms ease-in-out 3.5s;
-          }
-        }
-        &.mv {
-          figure:first-child {
-            margin-left: 0%;
-          }
-        }
-        &.pause {
-          filter: brightness(0.4);
-        }
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: 769px) {
@@ -208,19 +157,18 @@ html {
     section:first-of-type {
       padding: 3rem;
       column-gap: 2rem;
-      display: grid;
-      grid-template-columns: (62% 1fr);
-      aside {
-        order: 2;
-        grid-column: 2/3;
-        figure {
-          // min-height: 100%;
-          // width: 100%;
-        }
+      @include flexy();
+
+      label[for="anim1"] {
+        right: 3.6rem;
+        top: 3.6rem;
       }
+      aside {
+        height: auto;
+      }
+
       article {
         margin: 0;
-        grid-column: 1/2;
         @include flexy();
         flex-direction: column;
         @include justify();
@@ -272,6 +220,10 @@ html {
     #home main > {
       section:first-child {
         padding: 3rem 1.5rem;
+
+        label[for="anim1"] {
+          right: 2rem;
+        }
         article {
           margin: 8rem 0;
         }
