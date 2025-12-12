@@ -105,50 +105,26 @@ html {
       #control {
         span {
           &:first-child {
-            @include prefix(
-              animation,
-              span1 37s linear 0s infinite normal forwards,
-              o moz webkit
-            );
+            @include span-ani(span1);
           }
           &:nth-child(2) {
-            @include prefix(
-              animation,
-              span2 37s linear 0s infinite normal forwards,
-              o moz webkit
-            );
+            @include span-ani(span2);
           }
           &:nth-child(3) {
-            @include prefix(
-              animation,
-              span3 37s linear 0s infinite normal forwards,
-              o moz webkit
-            );
+            @include span-ani(span3);
           }
           &:nth-child(4) {
-            @include prefix(
-              animation,
-              span4 37s linear 0s infinite normal forwards,
-              o moz webkit
-            );
+            @include span-ani(span4);
           }
           &:nth-child(5) {
-            @include prefix(
-              animation,
-              span5 37s linear 0s infinite normal forwards,
-              o moz webkit
-            );
+            @include span-ani(span5);
           }
           &:nth-child(6) {
-            @include prefix(
-              animation,
-              span6 37s linear 0s infinite normal forwards,
-              o moz webkit
-            );
+            @include span-ani(span6);
           }
         }
       }
-    } //
+    }
   }
 }
 
@@ -204,106 +180,93 @@ html {
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  html #services #control span {
-    &:first-child {
-      @include prefix(
-        animation,
-        span11 37s linear 0s infinite normal forwards,
-        o moz webkit
-      );
-    }
-    &:nth-child(2) {
-      @include prefix(
-        animation,
-        span12 37s linear 0s infinite normal forwards,
-        o moz webkit
-      );
-    }
-    &:nth-child(3) {
-      @include prefix(
-        animation,
-        span13 37s linear 0s infinite normal forwards,
-        o moz webkit
-      );
-    }
-    &:nth-child(4) {
-      @include prefix(
-        animation,
-        span14 37s linear 0s infinite normal forwards,
-        o moz webkit
-      );
-    }
-    &:nth-child(5) {
-      @include prefix(
-        animation,
-        span15 37s linear 0s infinite normal forwards,
-        o moz webkit
-      );
+  html {
+    #services {
+      #control span {
+        &:first-child {
+          @include span-ani(span11);
+        }
+        &:nth-child(2) {
+          @include span-ani(span12);
+        }
+        &:nth-child(3) {
+          @include span-ani(span13);
+        }
+        &:nth-child(4) {
+          @include span-ani(span14);
+        }
+        &:nth-child(5) {
+          @include span-ani(span15);
+        }
+        &:nth-child(6) {
+          @include hide;
+          @include span-ani(span16);
+        }
+      }
+      &.ran {
+        #control span:nth-child(6) {
+          @include show;
+        }
+      }
     }
   }
 }
 //html #services #control span
 @media only screen and (min-width: 1025px) {
   html {
-    #services main {
-      section.services {
-        h2 {
-          font-size: 3.125em;
-        }
-        div {
-          @include flexy();
-          column-gap: 3%;
-          overflow: hidden;
-          article {
-            @include flex(1, 0, 31.333%);
-            &:first-child {
-              @include prefix(
-                animation,
-                services_max 36s ease-in 1s infinite normal forwards,
-                o moz webkit
-              );
+    #services {
+      main {
+        section.services {
+          h2 {
+            font-size: 3.125em;
+          }
+          div {
+            @include flexy();
+            column-gap: 3%;
+            overflow: hidden;
+            article {
+              @include flex(1, 0, 31.333%);
+              &:first-child {
+                @include prefix(
+                  animation,
+                  services_max 36s ease-in 1s infinite normal forwards,
+                  o moz webkit
+                );
+              }
             }
           }
         }
-      }
 
-      #control span {
-        &:first-child {
-          @include prefix(
-            animation,
-            span21 37s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(2) {
-          @include prefix(
-            animation,
-            span22 37s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-        &:nth-child(3) {
-          @include prefix(
-            animation,
-            span23 37s linear 0s infinite normal forwards,
-            o moz webkit
-          );
-        }
-
-        &:nth-child(4) {
-          @include prefix(
-            animation,
-            span24 37s linear 0s infinite normal forwards,
-            o moz webkit
-          );
+        #control span {
+          &:first-child {
+            @include span-ani(span21);
+          }
+          &:nth-child(2) {
+            @include span-ani(span22);
+          }
+          &:nth-child(3) {
+            @include span-ani(span23);
+          }
+          &:nth-child(4) {
+            @include span-ani(span24);
+          }
+          &:nth-last-child(-n + 2) {
+            @include hide;
+          }
         }
       }
-    }
+      &.ran main {
+        #control span:nth-last-child(-n + 2) {
+          color: khaki;
+          @include show;
+        }
+      }
 
-    &.js {
-      #services {
-        section.services div article.transform {
-          transform: translateX(-109.5%);
+      &.js {
+        #services {
+          section.services div article.transform {
+            transform: translateX(-109.5%);
+          }
         }
       }
     }

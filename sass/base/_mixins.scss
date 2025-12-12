@@ -78,3 +78,11 @@ Test if `$value` is a valid direction
   display: ms-grid;
   display: grid;
 }
+
+@mixin span-ani($ani-nm) {
+  @include prefix(
+    animation,
+    $ani-nm 36s linear 0s infinite normal forwards,
+    o moz webkit
+  );
+}

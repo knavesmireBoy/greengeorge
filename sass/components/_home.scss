@@ -64,29 +64,24 @@ html {
           animation-delay: calc((var(--index) * var(--animdur)) / 16);
           animation-play-state: var(--animps);
           position: absolute;
-          box-sizing: border-box;
-          margin: 0;
           opacity: 0;
-          overflow: hidden;
-          padding: 0;
-          top: 0;
           width: 100%;
-          height: auto;
+          //height: auto;
           img {
-            top: 0;
             animation-direction: alternate;
-            animation-duration: calc(var(--animdur) / 1.5);
+            animation-duration: calc(var(--animdur) / 2);
+            //animation-duration: var(--animdur);
             animation-fill-mode: both;
             animation-iteration-count: infinite;
             animation-name: var(--animn);
             animation-play-state: var(--img-animps);
             animation-timing-function: var(--animtf);
-            object-fit: cover;
-            object-position: var(--x, 50%) var(--y, 50%);
+            display: block;
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            object-position: var(--x, 50%) var(--y, 50%);
             will-change: transform;
-            display: block;
           }
         }
       }
@@ -117,7 +112,7 @@ html {
 
       &.c-mm {
         --index: 0;
-        --animdur: 34000ms;
+        --animdur: 64000ms;
         --animps: paused;
         --img-animps: paused;
         --slides: 16;

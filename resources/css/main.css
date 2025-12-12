@@ -1465,30 +1465,23 @@ html #home section:first-child aside > figure {
   animation-delay: calc(var(--index) * var(--animdur) / 16);
   animation-play-state: var(--animps);
   position: absolute;
-  box-sizing: border-box;
-  margin: 0;
   opacity: 0;
-  overflow: hidden;
-  padding: 0;
-  top: 0;
   width: 100%;
-  height: auto;
 }
 html #home section:first-child aside > figure img {
-  top: 0;
   animation-direction: alternate;
-  animation-duration: calc(var(--animdur) / 1.5);
+  animation-duration: calc(var(--animdur) / 2);
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   animation-name: var(--animn);
   animation-play-state: var(--img-animps);
   animation-timing-function: var(--animtf);
-  object-fit: cover;
-  object-position: var(--x, 50%) var(--y, 50%);
+  display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: var(--x, 50%) var(--y, 50%);
   will-change: transform;
-  display: block;
 }
 html #home section:first-child article h1 {
   font-size: 2.6em;
@@ -1512,7 +1505,7 @@ html #home section:first-child #anim1:not(:checked) ~ aside figure {
 }
 html #home section:first-child.c-mm {
   --index: 0;
-  --animdur: 34000ms;
+  --animdur: 64000ms;
   --animps: paused;
   --img-animps: paused;
   --slides: 16;
@@ -1743,40 +1736,40 @@ html.js #services #control span section.services div article.transform {
 
 @media only screen and (max-width: 768px) {
   html #services #control span:first-child {
-    -o-animation: span1 37s linear 0s infinite normal forwards;
-    -moz-animation: span1 37s linear 0s infinite normal forwards;
-    -webkit-animation: span1 37s linear 0s infinite normal forwards;
-    animation: span1 37s linear 0s infinite normal forwards;
+    -o-animation: span1 36s linear 0s infinite normal forwards;
+    -moz-animation: span1 36s linear 0s infinite normal forwards;
+    -webkit-animation: span1 36s linear 0s infinite normal forwards;
+    animation: span1 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(2) {
-    -o-animation: span2 37s linear 0s infinite normal forwards;
-    -moz-animation: span2 37s linear 0s infinite normal forwards;
-    -webkit-animation: span2 37s linear 0s infinite normal forwards;
-    animation: span2 37s linear 0s infinite normal forwards;
+    -o-animation: span2 36s linear 0s infinite normal forwards;
+    -moz-animation: span2 36s linear 0s infinite normal forwards;
+    -webkit-animation: span2 36s linear 0s infinite normal forwards;
+    animation: span2 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(3) {
-    -o-animation: span3 37s linear 0s infinite normal forwards;
-    -moz-animation: span3 37s linear 0s infinite normal forwards;
-    -webkit-animation: span3 37s linear 0s infinite normal forwards;
-    animation: span3 37s linear 0s infinite normal forwards;
+    -o-animation: span3 36s linear 0s infinite normal forwards;
+    -moz-animation: span3 36s linear 0s infinite normal forwards;
+    -webkit-animation: span3 36s linear 0s infinite normal forwards;
+    animation: span3 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(4) {
-    -o-animation: span4 37s linear 0s infinite normal forwards;
-    -moz-animation: span4 37s linear 0s infinite normal forwards;
-    -webkit-animation: span4 37s linear 0s infinite normal forwards;
-    animation: span4 37s linear 0s infinite normal forwards;
+    -o-animation: span4 36s linear 0s infinite normal forwards;
+    -moz-animation: span4 36s linear 0s infinite normal forwards;
+    -webkit-animation: span4 36s linear 0s infinite normal forwards;
+    animation: span4 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(5) {
-    -o-animation: span5 37s linear 0s infinite normal forwards;
-    -moz-animation: span5 37s linear 0s infinite normal forwards;
-    -webkit-animation: span5 37s linear 0s infinite normal forwards;
-    animation: span5 37s linear 0s infinite normal forwards;
+    -o-animation: span5 36s linear 0s infinite normal forwards;
+    -moz-animation: span5 36s linear 0s infinite normal forwards;
+    -webkit-animation: span5 36s linear 0s infinite normal forwards;
+    animation: span5 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(6) {
-    -o-animation: span6 37s linear 0s infinite normal forwards;
-    -moz-animation: span6 37s linear 0s infinite normal forwards;
-    -webkit-animation: span6 37s linear 0s infinite normal forwards;
-    animation: span6 37s linear 0s infinite normal forwards;
+    -o-animation: span6 36s linear 0s infinite normal forwards;
+    -moz-animation: span6 36s linear 0s infinite normal forwards;
+    -webkit-animation: span6 36s linear 0s infinite normal forwards;
+    animation: span6 36s linear 0s infinite normal forwards;
   }
 }
 @media only screen and (min-width: 769px) {
@@ -1824,34 +1817,48 @@ html.js #services #control span section.services div article.transform {
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   html #services #control span:first-child {
-    -o-animation: span11 37s linear 0s infinite normal forwards;
-    -moz-animation: span11 37s linear 0s infinite normal forwards;
-    -webkit-animation: span11 37s linear 0s infinite normal forwards;
-    animation: span11 37s linear 0s infinite normal forwards;
+    -o-animation: span11 36s linear 0s infinite normal forwards;
+    -moz-animation: span11 36s linear 0s infinite normal forwards;
+    -webkit-animation: span11 36s linear 0s infinite normal forwards;
+    animation: span11 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(2) {
-    -o-animation: span12 37s linear 0s infinite normal forwards;
-    -moz-animation: span12 37s linear 0s infinite normal forwards;
-    -webkit-animation: span12 37s linear 0s infinite normal forwards;
-    animation: span12 37s linear 0s infinite normal forwards;
+    -o-animation: span12 36s linear 0s infinite normal forwards;
+    -moz-animation: span12 36s linear 0s infinite normal forwards;
+    -webkit-animation: span12 36s linear 0s infinite normal forwards;
+    animation: span12 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(3) {
-    -o-animation: span13 37s linear 0s infinite normal forwards;
-    -moz-animation: span13 37s linear 0s infinite normal forwards;
-    -webkit-animation: span13 37s linear 0s infinite normal forwards;
-    animation: span13 37s linear 0s infinite normal forwards;
+    -o-animation: span13 36s linear 0s infinite normal forwards;
+    -moz-animation: span13 36s linear 0s infinite normal forwards;
+    -webkit-animation: span13 36s linear 0s infinite normal forwards;
+    animation: span13 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(4) {
-    -o-animation: span14 37s linear 0s infinite normal forwards;
-    -moz-animation: span14 37s linear 0s infinite normal forwards;
-    -webkit-animation: span14 37s linear 0s infinite normal forwards;
-    animation: span14 37s linear 0s infinite normal forwards;
+    -o-animation: span14 36s linear 0s infinite normal forwards;
+    -moz-animation: span14 36s linear 0s infinite normal forwards;
+    -webkit-animation: span14 36s linear 0s infinite normal forwards;
+    animation: span14 36s linear 0s infinite normal forwards;
   }
   html #services #control span:nth-child(5) {
-    -o-animation: span15 37s linear 0s infinite normal forwards;
-    -moz-animation: span15 37s linear 0s infinite normal forwards;
-    -webkit-animation: span15 37s linear 0s infinite normal forwards;
-    animation: span15 37s linear 0s infinite normal forwards;
+    -o-animation: span15 36s linear 0s infinite normal forwards;
+    -moz-animation: span15 36s linear 0s infinite normal forwards;
+    -webkit-animation: span15 36s linear 0s infinite normal forwards;
+    animation: span15 36s linear 0s infinite normal forwards;
+  }
+  html #services #control span:nth-child(6) {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    -o-animation: span16 36s linear 0s infinite normal forwards;
+    -moz-animation: span16 36s linear 0s infinite normal forwards;
+    -webkit-animation: span16 36s linear 0s infinite normal forwards;
+    animation: span16 36s linear 0s infinite normal forwards;
+  }
+  html #services.ran #control span:nth-child(6) {
+    position: relative;
+    left: 0;
+    top: 0;
   }
 }
 @media only screen and (min-width: 1025px) {
@@ -1882,30 +1889,41 @@ html.js #services #control span section.services div article.transform {
     animation: services_max 36s ease-in 1s infinite normal forwards;
   }
   html #services main #control span:first-child {
-    -o-animation: span21 37s linear 0s infinite normal forwards;
-    -moz-animation: span21 37s linear 0s infinite normal forwards;
-    -webkit-animation: span21 37s linear 0s infinite normal forwards;
-    animation: span21 37s linear 0s infinite normal forwards;
+    -o-animation: span21 36s linear 0s infinite normal forwards;
+    -moz-animation: span21 36s linear 0s infinite normal forwards;
+    -webkit-animation: span21 36s linear 0s infinite normal forwards;
+    animation: span21 36s linear 0s infinite normal forwards;
   }
   html #services main #control span:nth-child(2) {
-    -o-animation: span22 37s linear 0s infinite normal forwards;
-    -moz-animation: span22 37s linear 0s infinite normal forwards;
-    -webkit-animation: span22 37s linear 0s infinite normal forwards;
-    animation: span22 37s linear 0s infinite normal forwards;
+    -o-animation: span22 36s linear 0s infinite normal forwards;
+    -moz-animation: span22 36s linear 0s infinite normal forwards;
+    -webkit-animation: span22 36s linear 0s infinite normal forwards;
+    animation: span22 36s linear 0s infinite normal forwards;
   }
   html #services main #control span:nth-child(3) {
-    -o-animation: span23 37s linear 0s infinite normal forwards;
-    -moz-animation: span23 37s linear 0s infinite normal forwards;
-    -webkit-animation: span23 37s linear 0s infinite normal forwards;
-    animation: span23 37s linear 0s infinite normal forwards;
+    -o-animation: span23 36s linear 0s infinite normal forwards;
+    -moz-animation: span23 36s linear 0s infinite normal forwards;
+    -webkit-animation: span23 36s linear 0s infinite normal forwards;
+    animation: span23 36s linear 0s infinite normal forwards;
   }
   html #services main #control span:nth-child(4) {
-    -o-animation: span24 37s linear 0s infinite normal forwards;
-    -moz-animation: span24 37s linear 0s infinite normal forwards;
-    -webkit-animation: span24 37s linear 0s infinite normal forwards;
-    animation: span24 37s linear 0s infinite normal forwards;
+    -o-animation: span24 36s linear 0s infinite normal forwards;
+    -moz-animation: span24 36s linear 0s infinite normal forwards;
+    -webkit-animation: span24 36s linear 0s infinite normal forwards;
+    animation: span24 36s linear 0s infinite normal forwards;
   }
-  html.js #services section.services div article.transform {
+  html #services main #control span:nth-last-child(-n+2) {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+  }
+  html #services.ran main #control span:nth-last-child(-n+2) {
+    color: khaki;
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  html #services.js #services section.services div article.transform {
     transform: translateX(-109.5%);
   }
 }

@@ -322,8 +322,8 @@ const meta = greenGeorge.meta,
   },
   scroller = (el, els, i, cb, e) => (ev) => {
     //el is the NEXT element primed for receiving the active class
-    //not we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
-    let x = el.offsetHeight || el.getBoundingClientRect().height;
+    //note we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
+    let x = el && el.offsetHeight || el && el.getBoundingClientRect().height;
     //if loading page half scrolled reveal all
     if (!lastKnownScrollPosition && window.scrollY > x) {
       while (els[i]) {
