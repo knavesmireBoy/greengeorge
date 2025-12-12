@@ -1,3 +1,24 @@
+@keyframes auto {
+  .1% {
+    --img-animps: running;
+    opacity: 0;
+    z-index: calc(var(--z) + var(--slides));
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    --img-animps: paused;
+  }
+  100% {
+    opacity: 0;
+    z-index: var(--z);
+  }
+}
+
 #gallery {
   main > section:first-of-type {
     h1 {
@@ -366,5 +387,51 @@
 @media only screen and (max-width: 667px) {
   #gallery #lightbox main p {
     background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+#gallery {
+  #lightbox {
+    main.c-mm {
+      --index: 0;
+      --animdur: 32000ms;
+      --animps: paused;
+      --img-animps: paused;
+      --slides: 17;
+      --animtf: ease-out;
+      --z: 100;
+      //width: 80%;
+      position: relative;
+      min-height: 100%;
+      margin: 0 5vw;
+      > a {
+        animation: auto var(--animdur) infinite 2s;
+        animation-delay: calc((var(--index) * var(--animdur)) / 17);
+        animation-play-state: var(--animps);
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        --animps: running;
+        overflow: hidden;
+        img {
+          animation-direction: alternate;
+          animation-duration: calc(var(--animdur) / 1.5);
+          animation-fill-mode: both;
+          animation-iteration-count: infinite;
+          animation-name: var(--animn);
+          animation-play-state: var(--img-animps);
+          animation-timing-function: var(--animtf);
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: var(--x, 50%) var(--y, 50%);
+          will-change: transform;
+        }
+      } 
+      + footer p{
+        color: black;
+      }
+    }
+    
   }
 }

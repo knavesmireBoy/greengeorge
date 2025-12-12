@@ -113,6 +113,7 @@ function slider(current) {
     swap = false;
   return function shuffle(e) {
     var img;
+    e.preventDefault();
     if (e.target.nodeName !== "P") {
       if (e.target.nodeName !== "IMG") {
         return;
@@ -287,6 +288,28 @@ const meta = greenGeorge.meta,
   },
   toggler = toggle([]),
   zoom = (cb, store, n = 150) => {
+    function exitBigTime() {
+      document
+        .exitFullscreen?.()
+        .then(() => console.log("Document Exited from Full screen mode"))
+        .catch((err) => console.error(`${err}!`));
+    }
+
+    function exit(cb, elem) {
+      return function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        //e.currentTarget.classList.remove("c-mm");
+        /*
+        unzoomy(e.currentTarget.parentNode);
+        cb(e.currentTarget);
+        exitBigTime();
+        quit(e.currentTarget.parentNode);
+        
+        */
+      };
+    }
+
     return function (e) {
       const el = document.createElement("p"),
         esc = document.getElementById("esc"),
@@ -296,11 +319,12 @@ const meta = greenGeorge.meta,
         fn = (el) => {
           while (el.hasChildNodes()) {
             el.removeChild(el.firstChild);
-           }
+          }
           while (store[0]) {
             el.appendChild(store.shift());
           }
-        };
+        },
+        escaper = exit(fn, elem);
 
       if (box.requestFullscreen) {
         box.requestFullscreen();
@@ -317,18 +341,17 @@ const meta = greenGeorge.meta,
         while (elem.hasChildNodes()) {
           store.push(elem.removeChild(elem.firstChild));
         }
+       // elem = box.removeChild(elem);
+        //elem = box.insertBefore(elem, box.firstChild);
         elem.classList.add("c-mm");
         while (elems[i]) {
           elem.appendChild(elems[i++].cloneNode(true));
         }
+        //elem.addEventListener("click", escaper);
       }
       if (isFullScreen()) {
-        unzoomy(box);
-        fn(elem);
-        document
-          .exitFullscreen?.()
-          .then(() => console.log("Document Exited from Full screen mode"))
-          .catch((err) => console.error(`${err}!`));
+        escaper();
+        elem.removeEventListener("click", escaper);
       }
     };
   },
