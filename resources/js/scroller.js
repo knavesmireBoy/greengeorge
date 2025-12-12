@@ -75,7 +75,7 @@ function direct(e) {
       return quit(box);
     }
     if (el.id === "zoom") {
-      return zoom(fade);
+      return zoomer();
     }
   }
 }
@@ -286,32 +286,53 @@ const meta = greenGeorge.meta,
     }
   },
   toggler = toggle([]),
-  zoom = (cb, n = 150) => {
-    const el = document.createElement("p"),
-      esc = document.getElementById("esc"),
-      box = document.getElementById("lightbox");
+  zoom = (cb, store, n = 150) => {
+    return function (e) {
+      const el = document.createElement("p"),
+        esc = document.getElementById("esc"),
+        box = document.getElementById("lightbox"),
+        elem = box.querySelector("main"),
+        elems = document.querySelectorAll("#gal > div a"),
+        fn = (el) => {
+          while (el.hasChildNodes()) {
+            el.removeChild(el.firstChild);
+           }
+          while (store[0]) {
+            el.appendChild(store.shift());
+          }
+        };
 
-    if (box.requestFullscreen) {
-      box.requestFullscreen();
-      zoomy(box);
-    } else {
-      return;
-    }
+      if (box.requestFullscreen) {
+        box.requestFullscreen();
+        zoomy(box);
+      } else {
+        return;
+      }
 
-    if (!esc) {
-      el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
-      el.id = "esc";
-      box.insertBefore(el, box.firstElementChild);
-      cb(n);
-    }
-    if (isFullScreen()) {
-      unzoomy(box);
-      document
-        .exitFullscreen?.()
-        .then(() => console.log("Document Exited from Full screen mode"))
-        .catch((err) => console.error(`${err}!`));
-    }
+      if (!esc) {
+        el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
+        el.id = "esc";
+        box.insertBefore(el, box.firstElementChild);
+        cb(n);
+        while (elem.hasChildNodes()) {
+          store.push(elem.removeChild(elem.firstChild));
+        }
+        elem.classList.add("c-mm");
+        while (elems[i]) {
+          elem.appendChild(elems[i++].cloneNode(true));
+        }
+      }
+      if (isFullScreen()) {
+        unzoomy(box);
+        fn(elem);
+        document
+          .exitFullscreen?.()
+          .then(() => console.log("Document Exited from Full screen mode"))
+          .catch((err) => console.error(`${err}!`));
+      }
+    };
   },
+  zoomer = zoom(fade, []),
   query = (n, flag = false) => {
     if (flag) {
       return n <= 768 ? 768 : 1024;
@@ -323,7 +344,8 @@ const meta = greenGeorge.meta,
   scroller = (el, els, i, cb, e) => (ev) => {
     //el is the NEXT element primed for receiving the active class
     //note we are only revealing on scroll, not hiding and if we're starting at desktop there would be no need to query
-    let x = el && el.offsetHeight || el && el.getBoundingClientRect().height;
+    let x =
+      (el && el.offsetHeight) || (el && el.getBoundingClientRect().height);
     //if loading page half scrolled reveal all
     if (!lastKnownScrollPosition && window.scrollY > x) {
       while (els[i]) {

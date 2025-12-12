@@ -171,4 +171,5 @@ function builder() {
 
 document.addEventListener("DOMContentLoaded", builder);
 animator.addEventListener("animationstart", testi, false);
+
 //animator.addEventListener("animationiteration", testi, false);
