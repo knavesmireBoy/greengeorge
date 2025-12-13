@@ -2554,6 +2554,7 @@ html #about .testimonials article p {
   position: relative;
   min-height: 100%;
   margin: 0 5vw;
+  overflow: hidden;
 }
 #gallery #lightbox main.c-mm > a {
   animation: auto var(--animdur) infinite 2s;

@@ -403,6 +403,7 @@
       position: relative;
       min-height: 100%;
       margin: 0 5vw;
+      overflow: hidden;
       > a {
         animation: auto var(--animdur) infinite 2s;
         animation-delay: calc((var(--index) * var(--animdur)) / 17);
