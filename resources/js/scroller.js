@@ -557,9 +557,11 @@ function builder(e) {
   cb();
 }
 gallery.addEventListener("click", builder);
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    console.log("Escape key was pressed!");
-    // Close modal, cancel action, etc.
+document.addEventListener("keyup", function (e) {
+  const mode = document.querySelector(".c-mm");
+  if (e.key === "Escape") {
+    if (mode) {
+      quit(mode.parentNode);
+    }
   }
 });
