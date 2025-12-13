@@ -11,7 +11,7 @@ function throttle(callback, time) {
 
 function exitBigTime() {
   document
-    .exitFullscreen?.()
+    ?.exitFullscreen?.()
     .then(() => console.log("Document Exited from Full screen mode"))
     .catch((err) => console.error(`${err}!`));
 }
@@ -265,6 +265,8 @@ const meta = greenGeorge.meta,
   activate = curry4(subMethod)("active")("add")("classList"),
   zoomy = curry4(subMethod)("zoom")("add")("classList"),
   unzoomy = curry4(subMethod)("zoom")("remove")("classList"),
+  aniexec = curry4(subMethod)("c-mm")("add")("classList"),
+  aniundo = curry4(subMethod)("c-mm")("remove")("classList"),
   mag = curry4(subMethod)("mag")("add")("classList"),
   unmag = curry4(subMethod)("mag")("remove")("classList"),
   thenactivate = curry44(subMethod)("active")("add")("classList"),
@@ -308,11 +310,12 @@ const meta = greenGeorge.meta,
   toggler = toggle([]),
   zoom = (cb, store, n = 150) => {
     function exit(cb, el) {
-      return alert(el);
-      unzoomy(el);
-      cb(el);
-      quit(el);
-      exitBigTime();
+      if (el) {
+        unzoomy(el.parentNode);
+        aniundo(el);
+        cb(el);
+        quit(el.parentNode);      
+      }
     }
 
     return function (e) {
@@ -320,6 +323,7 @@ const meta = greenGeorge.meta,
         esc = document.getElementById("esc"),
         box = document.getElementById("lightbox"),
         elem = box.querySelector("main"),
+        mode = elem.classList.contains('c-mm'),
         elems = document.querySelectorAll("#gal > div a"),
         fn = (el) => {
           while (el.hasChildNodes()) {
@@ -328,8 +332,7 @@ const meta = greenGeorge.meta,
           while (store[0]) {
             el.appendChild(store.shift());
           }
-        },
-        escaper = exit(fn, elem);
+        };
 
       let i = 0;
 
@@ -339,7 +342,7 @@ const meta = greenGeorge.meta,
       } else {
         return;
       }
-      if (!esc) {
+      if (!esc && !mode) {
         el.innerHTML = "to exit fullscreen, press <kbd>esc</kbd";
         el.id = "esc";
         box.insertBefore(el, box.firstElementChild);
@@ -354,10 +357,11 @@ const meta = greenGeorge.meta,
         while (elems[i]) {
           elem.appendChild(elems[i++].cloneNode(true));
         }
-        elem.classList.add("c-mm");
+        aniexec(elem);
       }
-      if (isFullScreen()) {
-        exit(elem);
+      //#esc will be removed after fading DON'T run exit until
+      if (isFullScreen() && !esc) {
+        exit(fn, elem);
       }
     };
   },
