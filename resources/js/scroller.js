@@ -132,7 +132,7 @@ function slider(current) {
     }
     let el = e.target,
       main = utils.getTargetNode(el, /main/i, "parentNode"),
-      mode = document.querySelector('.c-mm'),
+      mode = document.querySelector(".c-mm"),
       figures = main.querySelectorAll("figure"),
       currentfig = figures[1],
       nextfig = figures[0],
@@ -157,10 +157,9 @@ function slider(current) {
       },
       j;
 
-      
-      if(mode){
-       return quit(mode.parentNode);
-      }
+    if (mode) {
+      return quit(mode.parentNode);
+    }
     main.classList.remove("lscp");
 
     if (el.innerHTML === "&gt;" || img) {
@@ -308,18 +307,12 @@ const meta = greenGeorge.meta,
   },
   toggler = toggle([]),
   zoom = (cb, store, n = 150) => {
-    function exit(cb, elem) {
-      return function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        //e.currentTarget.classList.remove("c-mm");
-        /*
-        unzoomy(e.currentTarget.parentNode);
-        cb(e.currentTarget);
-        exitBigTime();
-        quit(e.currentTarget.parentNode);
-        */
-      };
+    function exit(cb, el) {
+      return alert(el);
+      unzoomy(el);
+      cb(el);
+      quit(el);
+      exitBigTime();
     }
 
     return function (e) {
@@ -358,20 +351,13 @@ const meta = greenGeorge.meta,
         while (elem.hasChildNodes()) {
           store.push(elem.removeChild(elem.firstChild));
         }
-        // elem = box.removeChild(elem);
-        //elem = box.insertBefore(elem, box.firstChild);
-        elem.classList.add("c-mm");
-
         while (elems[i]) {
           elem.appendChild(elems[i++].cloneNode(true));
         }
-        //elem.addEventListener("click", escaper);
+        elem.classList.add("c-mm");
       }
       if (isFullScreen()) {
-        elem.classList.remove("c-mm");
-        //escaper();
-        exitBigTime();
-        // elem.removeEventListener("click", escaper);
+        exit(elem);
       }
     };
   },
