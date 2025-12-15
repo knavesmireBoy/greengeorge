@@ -391,6 +391,55 @@
 }
 #gallery {
   #lightbox {
+    #anim1 {
+      //display: none;
+      &:checked ~ label[for="anim1"] {
+      width: 36px;
+      height: 36px;
+      border-style: solid;
+      border-width: 18px;
+      border-style: double;
+      border-width: 0px 0 0px 24px;
+    }
+  }
+
+    label[for="anim1"] {
+      z-index: 123;
+      display: block;
+      cursor: pointer;
+      &:hover {
+        border-color: transparent transparent transparent
+          rgba(255, 255, 255, 1);
+      }
+    }
+    label[for="anim1"] {
+      position: absolute;
+      z-index: 123;
+      right: 1.4rem;
+      top: 1.4rem;
+      border-style: solid;
+      border-width: 18px 0px 18px 36px;
+      border-color: transparent transparent transparent
+        rgba(255, 255, 255, 0.5);
+    }
+
+    #anim1:checked ~ main a {
+      --animps: running;
+      --img-animps: paused;
+      --animn: none;
+    }
+
+    #anim1:not(:checked) ~ main a:first-of-type {
+      opacity: 1;
+    }
+    #anim1:not(:checked) ~ main a {
+      --animps: paused;
+      //override inline style
+      --img-animps: paused !important;
+    }
+
+   
+
     main.c-mm {
       --index: 0;
       --animdur: 32000ms;
@@ -404,6 +453,7 @@
       min-height: 100%;
       margin: 0 5vw;
       overflow: hidden;
+
       > a {
         animation: auto var(--animdur) infinite 2s;
         animation-delay: calc((var(--index) * var(--animdur)) / 17);
@@ -411,7 +461,8 @@
         position: absolute;
         opacity: 0;
         width: 100%;
-        --animps: running;
+       // --animps: running;
+        --animps: paused;
         overflow: hidden;
         img {
           animation-direction: alternate;
@@ -432,6 +483,7 @@
       + footer p{
         color: black;
       }
+
     }
     
   }
