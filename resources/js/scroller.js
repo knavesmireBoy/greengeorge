@@ -308,13 +308,13 @@ const meta = greenGeorge.meta,
     }
   },
   toggler = toggle([]),
-  zoom = (cb, store, n = 150) => {
+  zoom = (cb, navstore, n = 150) => {
     function exit(cb, el) {
       if (el) {
         unzoomy(el.parentNode);
         aniundo(el);
         cb(el);
-        quit(el.parentNode);      
+        quit(el.parentNode);
       }
     }
 
@@ -323,19 +323,20 @@ const meta = greenGeorge.meta,
         esc = document.getElementById("esc"),
         box = document.getElementById("lightbox"),
         elem = box.querySelector("main"),
-        mode = elem.classList.contains('c-mm'),
-        elems = document.querySelectorAll("#gal > div a"),
-        fn = (el) => {
+        mode = elem.classList.contains("c-mm"),
+        current = document.querySelector("#lightbox img"),
+        src = current.getAttribute("src"),
+        undo = (el) => {
           while (el.hasChildNodes()) {
             el.removeChild(el.firstChild);
           }
-          while (store[0]) {
-            el.appendChild(store.shift());
+          while (navstore[0]) {
+            el.appendChild(navstore.shift());
           }
         };
 
-      let i = 0;
-
+      let i = 0,
+        elems = document.querySelectorAll("#gal > div a");
       if (box.requestFullscreen) {
         box.requestFullscreen();
         zoomy(box);
@@ -347,21 +348,38 @@ const meta = greenGeorge.meta,
         el.id = "esc";
         box.insertBefore(el, box.firstElementChild);
         cb(n);
-        if (store[0]) {
-          store = [];
+        if (navstore[0]) {
+          navstore = [];
         }
-
+        //store elements for back and forth navigation
         while (elem.hasChildNodes()) {
-          store.push(elem.removeChild(elem.firstChild));
+          navstore.push(elem.removeChild(elem.firstChild));
         }
+        //get all gallery elements and clone to lightbox
+        elems = document.querySelectorAll("#gal > div a");
         while (elems[i]) {
           elem.appendChild(elems[i++].cloneNode(true));
         }
+        i = 0;
+        elems = elem.querySelectorAll("a");
+        //reorder so initial entry selection is first
+        while (src !== elems[i].getAttribute("href")) {
+          elem.appendChild(elems[i++]);
+        }
+        //reset vars
+        i = 0;
+        elems = elem.querySelectorAll("a");
+        //update index of CLONED elements
+        while (elems[i]) {
+          elems[i].style.setProperty("--index", i);
+          i++;
+        }
         aniexec(elem);
       }
+
       //#esc will be removed after fading DON'T run exit until
       if (isFullScreen() && !esc) {
-        exit(fn, elem);
+        exit(undo, elem);
       }
     };
   },
