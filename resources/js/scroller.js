@@ -9,19 +9,14 @@ function throttle(callback, time) {
   }, time);
 }
 
-function fubar(hook) {
-  let append = ptL(prevoke("appendChild")),
-    before = prevoker("insertBefore"),
-    doBefore = ptL(before, hook),
-    make = utils.doMakeDefer,
-    input = make("input"),
-    label = make("label"),
+function makeTrigger(hook) {
+  let make = utils.doMakeDefer,
     setId = curry4(invok)("anim1")("id")("setAttribute"),
     setType = curry4(invok)("checkbox")("type")("setAttribute"),
     setName = curry4(invok)("slideshow")("name")("setAttribute"),
     setHidden = curry4(invok)("hidden")("hidden")("setAttribute"),
     setFor = curry4(invok)("anim1")("for")("setAttribute"),
-    // setKlas = curry4(invok)("c-mm__play")("class")("setAttribute"),
+    hooker = ptL(insert, hook),
     makeInput = compose(
       pass(setHidden),
       pass(setName),
@@ -29,17 +24,8 @@ function fubar(hook) {
       pass(setId),
       make("input")
     ),
-    makeLabel = compose(pass(setFor), make("label")),
-    perform = compose(
-      ptL(insert, hook),
-      makeInput,
-      ptL(insert, hook),
-      makeLabel
-    );
-
-  perform();
-
-  //  doBefore(input, hook.firstElementChild);
+    makeLabel = compose(pass(setFor), make("label"));
+  compose(hooker, makeInput, hooker, makeLabel)();
 }
 
 function exitBigTime() {
@@ -407,8 +393,7 @@ const meta = greenGeorge.meta,
           elems[i].style.setProperty("--index", i);
           i++;
         }
-
-        fubar(elem.parentNode);
+        makeTrigger(elem.parentNode);
         aniexec(elem);
       }
 
