@@ -2555,18 +2555,16 @@ html #about .testimonials article p {
   z-index: 123;
   display: block;
   cursor: pointer;
-}
-#gallery #lightbox label[for=anim1]:hover {
-  border-color: transparent transparent transparent rgb(255, 255, 255);
-}
-#gallery #lightbox label[for=anim1] {
   position: absolute;
-  z-index: 123;
   left: calc(50% - 18px);
-  top: 6rem;
+  transform: translateY(0);
+  transition: transform 1s;
   border-style: solid;
   border-width: 18px 0px 18px 36px;
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
+}
+#gallery #lightbox label[for=anim1]:hover {
+  border-color: transparent transparent transparent rgb(255, 255, 255);
 }
 #gallery #lightbox #anim1:checked ~ main a {
   --animps: running;
@@ -2620,6 +2618,9 @@ html #about .testimonials article p {
 }
 #gallery #lightbox main.c-mm + footer p {
   color: black;
+}
+#gallery #lightbox.zoom label[for=anim1] {
+  transform: translateY(6em);
 }
 
 #contact main > section:first-child {
