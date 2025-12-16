@@ -382,6 +382,10 @@ const meta = greenGeorge.meta,
         i = 0;
         elems = elem.querySelectorAll("a");
         //reorder so initial entry selection is first
+        /*!NOTE an image had a missing extension but the browser still displayed it:
+An image can be displayed in a web browser without a file extension because the browser primarily determines the file type from the Content-Type HTTP header provided by the web server, not the file name's extension., but it messed up the code below as src would never match
+in that edge case a regexp would be preferred...
+*/
         while (src !== elems[i].getAttribute("href")) {
           elem.appendChild(elems[i++]);
         }
