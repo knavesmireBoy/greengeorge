@@ -675,10 +675,12 @@ Test if `$value` is a valid direction
   font-style: normal;
   font-display: swap;
 }
+/*
 @font-face {
   font-family: "Handwritten";
   src: url("../fonts/AlexBrush-Regular.ttf") format("truetype");
 }
+  */
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-family: "Hanken Grotesk", sans-serif;
@@ -1557,7 +1559,7 @@ html #home .mission {
   padding: 1rem;
 }
 html #home .mission article p:first-child {
-  font-family: "Handwritten", cursive;
+  font-family: "Trebuchet", cursive;
   text-align: center;
   color: rgb(25, 78, 39);
   font-size: 1.3em;
@@ -1748,7 +1750,7 @@ html #services .mission {
   padding: 1rem;
 }
 html #services .mission article p:first-child {
-  font-family: "Handwritten", cursive;
+  font-family: "Trebuchet", cursive;
   text-align: center;
   color: rgb(25, 78, 39);
   font-size: 1.3em;
