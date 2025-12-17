@@ -2122,7 +2122,7 @@ html.js #services #control span section.services div article.transform {
     padding: 0 4em;
   }
 }
-@keyframes auto {
+@keyframes autoplay {
   .1% {
     --img-animps: running;
     opacity: 0;
@@ -2540,9 +2540,13 @@ html.js #services #control span section.services div article.transform {
 }
 #gallery #lightbox.zoom figure {
   max-width: 16em;
+  min-height: 100%;
+  max-height: 100%;
 }
 #gallery #lightbox.zoom .lscp figure {
   max-width: 26em;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .js #gal a {
@@ -2601,9 +2605,8 @@ html.js #services #control span section.services div article.transform {
   border-color: transparent transparent transparent rgb(255, 255, 255);
 }
 #gallery #lightbox #anim1:checked ~ main a {
-  --animps: running;
+  --animps: running !important;
   --img-animps: paused;
-  --animn: none;
 }
 #gallery #lightbox #anim1:not(:checked) ~ main a:first-of-type {
   opacity: 1;
@@ -2613,6 +2616,10 @@ html.js #services #control span section.services div article.transform {
   --img-animps: paused !important;
 }
 #gallery #lightbox main.c-mm {
+  position: relative;
+  min-height: 100%;
+  margin: 0 5vw;
+  overflow: hidden;
   --index: 0;
   --animdur: 32000ms;
   --animps: paused;
@@ -2620,13 +2627,9 @@ html.js #services #control span section.services div article.transform {
   --slides: 17;
   --animtf: ease-out;
   --z: 100;
-  position: relative;
-  min-height: 100%;
-  margin: 0 5vw;
-  overflow: hidden;
 }
 #gallery #lightbox main.c-mm > a {
-  animation: auto var(--animdur) infinite 2s;
+  animation: autoplay var(--animdur) infinite 2s;
   animation-delay: calc(var(--index) * var(--animdur) / 17);
   animation-play-state: var(--animps);
   position: absolute;
@@ -2634,6 +2637,8 @@ html.js #services #control span section.services div article.transform {
   width: 100%;
   --animps: paused;
   overflow: hidden;
+  min-height: 100%;
+  min-width: 100%;
 }
 #gallery #lightbox main.c-mm > a img {
   animation-direction: alternate;
