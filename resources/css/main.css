@@ -906,6 +906,11 @@ body > div > footer ul a:active {
   color: white;
 }
 
+@media only screen and (max-width: 480px) {
+  .testimonials article:nth-child(3) p {
+    line-height: 1;
+  }
+}
 @media only screen and (min-width: 769px) {
   .eco {
     font-size: calc(18px + 4 * (100vw - 769px) / 511);
@@ -1962,10 +1967,12 @@ html.js #services #control span section.services div article.transform {
     transform: translateX(-109.5%);
   }
 }
-html #about nav.eco {
-  padding: 0.7em 3em;
+#about nav.eco {
+  padding: 0.7em;
+  padding-left: clamp(1em, 2vw, 2em);
+  padding-right: clamp(1em, 2vw, 2em);
 }
-html #about nav.eco ul {
+#about nav.eco ul {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1975,7 +1982,7 @@ html #about nav.eco ul {
   gap: 0.7em;
   font-size: 1.25em;
 }
-html #about nav.eco ul li {
+#about nav.eco ul li {
   position: relative;
   -webkit-box: 0;
   -moz-box: 0;
@@ -1986,7 +1993,7 @@ html #about nav.eco ul li {
   background-size: 12%;
   background-position: left center;
 }
-html #about nav.eco ul li:nth-child(2) {
+#about nav.eco ul li:nth-child(2) {
   -webkit-box: 1;
   -moz-box: 1;
   -webkit-flex: 1 1 100%;
@@ -1996,10 +2003,10 @@ html #about nav.eco ul li:nth-child(2) {
   background-size: contain;
   background-position: center;
 }
-html #about nav.eco ul li:first-child {
+#about nav.eco ul li:first-child {
   margin-left: auto;
 }
-html #about main > section:first-of-type {
+#about main > section:first-of-type {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2009,7 +2016,7 @@ html #about main > section:first-of-type {
   font-size: 1.125rem;
   padding: 3.25em 1.5em 2em;
 }
-html #about main > section:first-of-type a {
+#about main > section:first-of-type a {
   -webkit-box: 14;
   -moz-box: 14;
   -webkit-flex: 14 1 1em;
@@ -2020,42 +2027,32 @@ html #about main > section:first-of-type a {
   left: -9999px;
   top: auto;
 }
-html #about main > section:first-of-type a img {
+#about main > section:first-of-type a img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-html #about main > section:first-of-type article {
+#about main > section:first-of-type article {
   -webkit-box: 8;
   -moz-box: 8;
   -webkit-flex: 8 1 1em;
   -ms-flex: 8 1 1em;
   flex: 8 1 1em;
 }
-html #about main > section:first-of-type article h2 {
+#about main > section:first-of-type article h2 {
   font-size: 4em;
   line-height: 1;
 }
-html #about main > section:first-of-type article > p {
+#about main > section:first-of-type article > p {
   font-size: 1em;
 }
-html #about main > section:first-of-type article > p:first-of-type {
+#about main > section:first-of-type article > p:first-of-type {
   color: rgb(25, 78, 39);
   font-size: 1.33em;
   margin: 0 0 1em;
 }
-html #about main > section:first-of-type article ul {
-  font-size: 1em;
-}
-html #about .testimonials {
-  font-size: 1.125rem;
-}
-html #about .testimonials h2 {
-  font-size: 3.3em;
-  margin: 0;
-}
-html #about .testimonials article p {
+#about main > section:first-of-type article ul {
   font-size: 1em;
 }
 
