@@ -556,22 +556,22 @@ Test if `$value` is a valid direction
     transform: translateX(0);
   }
   25% {
-    transform: translateX(-105%);
+    transform: translateX(-100%);
   }
   47% {
-    transform: translateX(-105%);
+    transform: translateX(-100%);
   }
   50% {
-    transform: translateX(-210%);
+    transform: translateX(-200%);
   }
   72% {
-    transform: translateX(-210%);
+    transform: translateX(-200%);
   }
   75% {
-    transform: translateX(-315%);
+    transform: translateX(-300%);
   }
   100% {
-    transform: translateX(-315%);
+    transform: translateX(-300%);
   }
 }
 @keyframes gallery {
@@ -1212,8 +1212,8 @@ html body > div > main section.testimonials div article {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin: 0 0.5rem;
-  padding: 0 0.5rem;
+  margin: 0;
+  padding: 0;
   -o-animation: testo 28s linear 100ms infinite normal forwards;
   -moz-animation: testo 28s linear 100ms infinite normal forwards;
   -webkit-animation: testo 28s linear 100ms infinite normal forwards;
@@ -1225,6 +1225,12 @@ html body > div > main section.testimonials > p {
   -webkit-flex: 0 0 0.5em;
   -ms-flex: 0 0 0.5em;
   flex: 0 0 0.5em;
+}
+html body > div > main section.testimonials > p:first-of-type {
+  margin-right: 1%;
+}
+html body > div > main section.testimonials > p:last-of-type {
+  margin-left: 1%;
 }
 html.js main section.testimonials {
   display: -webkit-box;
@@ -1442,10 +1448,10 @@ html.js main section.testimonials:hover > p {
   5% {
     opacity: 1;
   }
-  50% {
+  70% {
     opacity: 1;
   }
-  51% {
+  71% {
     --img-animps: paused;
   }
   100% {

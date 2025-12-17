@@ -194,8 +194,8 @@ html {
           @include flexy();
           flex-direction: column;
           @include justify(center);
-          margin: 0 0.5rem;
-          padding: 0 0.5rem;
+          margin: 0;
+          padding: 0;
           @include prefix(
             animation,
             testo 28s linear 100ms infinite normal forwards,
@@ -205,6 +205,13 @@ html {
       }
       > p {
         @include flex(0, 0, 0.5em);
+        &:first-of-type {
+          margin-right: 1%;
+        }
+        &:last-of-type {
+          margin-left: 1%;
+
+        }
       }
     }
   } //main
