@@ -51,13 +51,13 @@ html {
         @include flexy();
         @include justify(space-around);
         padding: 0.2em 1.5em;
-        padding-left: calc(100px + 440 * ((100vw - 320px) / (1280 - 320)));
-        padding-right: calc(100px + 440 * ((100vw - 320px) / (1280 - 320)));
+        padding-left: calc(10px + 540 * ((100vw - 320px) / (1280 - 320)));
+        padding-right: calc(10px + 540 * ((100vw - 320px) / (1280 - 320)));
         margin-top: -1px;
         span {
           display: block;
-          width: 7px;
-          height: 7px;
+          width: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
+          height: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
           border-radius: 50%;
           background-color: $lo;
         }
@@ -257,7 +257,6 @@ html {
       }
       &.ran main {
         #control span:nth-last-child(-n + 2) {
-          color: khaki;
           @include show;
         }
       }

@@ -45,11 +45,11 @@ body > div {
     }
     input:checked ~ nav ul {
       position: absolute;
-      z-index: 1;
+      z-index: 200;
       left: calc(100% - 6em);
       background-color: rgba(255, 255, 255, 0.8);
       box-shadow: 1px 1px 4px $main;
-      max-height: 11.9em;
+      max-height: 16em;
     }
   }
   > footer {
@@ -178,24 +178,33 @@ html {
     }
     section.testimonials {
       text-align: center;
-      padding: 2em;
-
+      padding: 0 0.5rem 1rem;
+      @include flexy(wrap);
+      h2 {
+        @include flex(0, 0, 100%);
+      }
       div {
         @include flexy();
+        @include flex(9, 1, 10em);
+        min-width: 80%;
         overflow-x: hidden;
         position: relative;
         article {
           @include flex(0, 0, 100%);
           @include flexy();
-          padding: 0 4em;
           flex-direction: column;
           @include justify(center);
+          margin: 0 0.5rem;
+          padding: 0 0.5rem;
           @include prefix(
-              animation,
-              testo 28s linear 100ms infinite normal forwards,
-              o moz webkit
-            );
+            animation,
+            testo 28s linear 100ms infinite normal forwards,
+            o moz webkit
+          );
         }
+      }
+      > p {
+        @include flex(0, 0, 0.5em);
       }
     }
   } //main
@@ -207,15 +216,14 @@ html {
         @include flex(1, 1, 100%);
       }
       div {
-        @include flex(1, 1, 90%);
+        @include flex(9, 1, 10em);
       }
       > p {
-        @include flex(1, 1, 1em);
         font-size: 2em;
         margin: auto;
         cursor: pointer;
         opacity: 1;
-        transition: opacity 2s linear .5s;
+        transition: opacity 2s linear 0.5s;
       }
       &.animed {
         div {
@@ -243,12 +251,31 @@ html {
   }
 }
 
-
 @media only screen and (min-width: 769px) {
-  body > div > header > a {
-    width: 158px;
-    height: 167px;
-    display: block;
+  body > div > header {
+    align-items: end;
+    padding: 1rem 1rem 2rem;
+    nav:first-of-type ul:first-child {
+      position: relative;
+      box-shadow: none;
+      height: auto;
+      max-height: fit-content;
+      left: 0;
+      @include flexy();
+      @include justify();
+      @include show();
+      max-height: 100%;
+    }
+
+    > label {
+      @include hide;
+    }
+
+    > a {
+      width: 158px;
+      height: 167px;
+      display: block;
+    }
   }
 
   main {
@@ -270,7 +297,6 @@ html {
         }
       }
     }
-
 
     section:first-child {
       @include flexy(wrap);
@@ -357,20 +383,4 @@ html {
 }
 
 @media only screen and (min-width: 1025px) {
-  body > div > header {
-    align-items: end;
-    padding: 1rem 1rem 2rem;
-    label {
-      @include hide;
-    }
-    nav {
-      ul {
-        @include flexy();
-        @include justify();
-        @include show();
-        max-height: 100%;
-      }
-    }
-  }
-
 }

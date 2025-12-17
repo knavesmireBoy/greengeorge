@@ -21,7 +21,7 @@
 
 html {
   #home {
-    section:first-child {
+    #player {
       padding: 1rem;
       min-height: 100%;
       line-height: 1.6;
@@ -33,18 +33,13 @@ html {
         border-width: 18px;
         border-style: double;
         border-width: 0px 0 0px 24px;
+        opacity: .5;
       }
 
       label[for="anim1"] {
         z-index: 123;
         display: block;
         cursor: pointer;
-        &:hover {
-          border-color: transparent transparent transparent
-            rgba(255, 255, 255, 1);
-        }
-      }
-      label[for="anim1"] {
         position: absolute;
         right: 1.4rem;
         top: 1.4rem;
@@ -52,6 +47,10 @@ html {
         border-width: 18px 0px 18px 36px;
         border-color: transparent transparent transparent
           rgba(255, 255, 255, 0.5);
+        &:hover {
+          border-color: transparent transparent transparent
+            rgba(255, 255, 255, 1);
+        }
       }
 
       aside {
@@ -59,14 +58,13 @@ html {
         position: relative;
         height: 10rem;
 
-       > figure {
+        > figure {
           animation: autoplay var(--animdur) infinite;
           animation-delay: calc((var(--index) * var(--animdur)) / 16);
           animation-play-state: var(--animps);
           position: absolute;
           opacity: 0;
           width: 100%;
-          //height: auto;
           img {
             animation-direction: alternate;
             animation-duration: calc(var(--animdur) / 2);
@@ -119,7 +117,13 @@ html {
         --animtf: ease-out;
         --z: 100;
       }
-    } //
+
+      &:hover {
+        #anim1:checked ~ label[for="anim1"] {
+          opacity: 1;
+        }
+      }
+    }
 
     .mission {
       padding: 1rem;
@@ -148,7 +152,7 @@ html {
 
 @media only screen and (min-width: 769px) {
   html #home main > {
-    section:first-of-type {
+    #player {
       padding: 3rem;
       column-gap: 2rem;
       @include flexy();
@@ -179,7 +183,7 @@ html {
   }
 }
 @media only screen and (min-width: 769px) {
-  #home main > section:first-child {
+  #home main > #player {
     font-size: 1.005rem;
     article {
       h1 {
@@ -195,7 +199,7 @@ html {
 @media only screen and (min-width: 820px) {
   html {
     #home main > {
-      section:first-child {
+      #player {
         @include flexy();
         article {
           @include justify(center);
@@ -212,7 +216,7 @@ html {
 @media only screen and (min-width: 1024px) {
   html {
     #home main > {
-      section:first-child {
+      #player {
         padding: 3rem 1.5rem;
 
         label[for="anim1"] {

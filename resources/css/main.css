@@ -556,22 +556,22 @@ Test if `$value` is a valid direction
     transform: translateX(0);
   }
   25% {
-    transform: translateX(-100%);
+    transform: translateX(-105%);
   }
   47% {
-    transform: translateX(-100%);
+    transform: translateX(-105%);
   }
   50% {
-    transform: translateX(-200%);
+    transform: translateX(-210%);
   }
   72% {
-    transform: translateX(-200%);
+    transform: translateX(-210%);
   }
   75% {
-    transform: translateX(-300%);
+    transform: translateX(-315%);
   }
   100% {
-    transform: translateX(-300%);
+    transform: translateX(-315%);
   }
 }
 @keyframes gallery {
@@ -776,8 +776,8 @@ main > section.testimonials {
   background-image: url("../assets/Speechmarks-green10.png");
   background-color: rgb(252, 246, 228);
   background-repeat: no-repeat;
-  background-size: 55%;
-  background-position: 50% 65%;
+  background-size: contain;
+  background-position: 50% 60%;
 }
 main > section.testimonials h2 {
   font-size: 2.5em;
@@ -793,6 +793,9 @@ main > footer {
   padding: 1em;
   color: white;
   font-size: 0.875rem;
+}
+main > footer a:link {
+  color: white;
 }
 main > footer section.payment div {
   width: 3em;
@@ -907,11 +910,6 @@ body > div > footer ul a:active {
   .eco {
     font-size: calc(18px + 4 * (100vw - 769px) / 511);
   }
-}
-@media only screen and (min-width: 1025px) {
-  .mission article p:first-child {
-    font-size: calc(24px + 2 * (100vw - 1025px) / 255);
-  }
   header nav ul li a {
     padding: 0 1.6em;
     font-size: 1.125rem;
@@ -924,7 +922,12 @@ body > div > footer ul a:active {
     transform: scale(125%);
   }
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 1025px) {
+  .mission article p:first-child {
+    font-size: calc(24px + 2 * (100vw - 1025px) / 255);
+  }
+}
+@media only screen and (max-width: 768px) {
   #home header > nav > ul > li:nth-child(1) > a:link,
 #home header > nav > ul > li:nth-child(1) > a:visited {
     color: white;
@@ -1014,11 +1017,11 @@ body > div > header label {
 }
 body > div > header input:checked ~ nav ul {
   position: absolute;
-  z-index: 1;
+  z-index: 200;
   left: calc(100% - 6em);
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 1px 1px 4px rgb(25, 78, 39);
-  max-height: 11.9em;
+  max-height: 16em;
 }
 body > div > footer {
   -webkit-box: 1;
@@ -1161,7 +1164,20 @@ html body > div > main + footer ul li {
 }
 html body > div > main section.testimonials {
   text-align: center;
-  padding: 2em;
+  padding: 0 0.5rem 1rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+html body > div > main section.testimonials h2 {
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
 }
 html body > div > main section.testimonials div {
   display: -webkit-box;
@@ -1170,6 +1186,12 @@ html body > div > main section.testimonials div {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
+  -webkit-box: 9;
+  -moz-box: 9;
+  -webkit-flex: 9 1 10em;
+  -ms-flex: 9 1 10em;
+  flex: 9 1 10em;
+  min-width: 80%;
   overflow-x: hidden;
   position: relative;
 }
@@ -1185,16 +1207,24 @@ html body > div > main section.testimonials div article {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
-  padding: 0 4em;
   flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  margin: 0 0.5rem;
+  padding: 0 0.5rem;
   -o-animation: testo 28s linear 100ms infinite normal forwards;
   -moz-animation: testo 28s linear 100ms infinite normal forwards;
   -webkit-animation: testo 28s linear 100ms infinite normal forwards;
   animation: testo 28s linear 100ms infinite normal forwards;
+}
+html body > div > main section.testimonials > p {
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 0.5em;
+  -ms-flex: 0 0 0.5em;
+  flex: 0 0 0.5em;
 }
 html.js main section.testimonials {
   display: -webkit-box;
@@ -1212,18 +1242,13 @@ html.js main section.testimonials h2 {
   flex: 1 1 100%;
 }
 html.js main section.testimonials div {
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 1 90%;
-  -ms-flex: 1 1 90%;
-  flex: 1 1 90%;
+  -webkit-box: 9;
+  -moz-box: 9;
+  -webkit-flex: 9 1 10em;
+  -ms-flex: 9 1 10em;
+  flex: 9 1 10em;
 }
 html.js main section.testimonials > p {
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 1 1em;
-  -ms-flex: 1 1 1em;
-  flex: 1 1 1em;
   font-size: 2em;
   margin: auto;
   cursor: pointer;
@@ -1251,6 +1276,36 @@ html.js main section.testimonials:hover > p {
 }
 
 @media only screen and (min-width: 769px) {
+  body > div > header {
+    align-items: end;
+    padding: 1rem 1rem 2rem;
+  }
+  body > div > header nav:first-of-type ul:first-child {
+    position: relative;
+    box-shadow: none;
+    height: auto;
+    max-height: fit-content;
+    left: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: center;
+    justify-content: space-between;
+    position: relative;
+    left: 0;
+    top: 0;
+    max-height: 100%;
+  }
+  body > div > header > label {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+  }
   body > div > header > a {
     width: 158px;
     height: 167px;
@@ -1378,33 +1433,6 @@ html.js main section.testimonials:hover > p {
     font-size: 3.3em;
   }
 }
-@media only screen and (min-width: 1025px) {
-  body > div > header {
-    align-items: end;
-    padding: 1rem 1rem 2rem;
-  }
-  body > div > header label {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-  }
-  body > div > header nav ul {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: nowrap;
-    -webkit-box-pack: space-between;
-    -ms-flex-pack: space-between;
-    -webkit-justify-content: center;
-    justify-content: space-between;
-    position: relative;
-    left: 0;
-    top: 0;
-    max-height: 100%;
-  }
-}
 @keyframes autoplay {
   .1% {
     --img-animps: running;
@@ -1425,29 +1453,25 @@ html.js main section.testimonials:hover > p {
     z-index: var(--z);
   }
 }
-html #home section:first-child {
+html #home #player {
   padding: 1rem;
   min-height: 100%;
   line-height: 1.6;
   position: relative;
 }
-html #home section:first-child #anim1:checked ~ label[for=anim1] {
+html #home #player #anim1:checked ~ label[for=anim1] {
   width: 36px;
   height: 36px;
   border-style: solid;
   border-width: 18px;
   border-style: double;
   border-width: 0px 0 0px 24px;
+  opacity: 0.5;
 }
-html #home section:first-child label[for=anim1] {
+html #home #player label[for=anim1] {
   z-index: 123;
   display: block;
   cursor: pointer;
-}
-html #home section:first-child label[for=anim1]:hover {
-  border-color: transparent transparent transparent rgb(255, 255, 255);
-}
-html #home section:first-child label[for=anim1] {
   position: absolute;
   right: 1.4rem;
   top: 1.4rem;
@@ -1455,12 +1479,15 @@ html #home section:first-child label[for=anim1] {
   border-width: 18px 0px 18px 36px;
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
 }
-html #home section:first-child aside {
+html #home #player label[for=anim1]:hover {
+  border-color: transparent transparent transparent rgb(255, 255, 255);
+}
+html #home #player aside {
   overflow: hidden;
   position: relative;
   height: 10rem;
 }
-html #home section:first-child aside > figure {
+html #home #player aside > figure {
   animation: autoplay var(--animdur) infinite;
   animation-delay: calc(var(--index) * var(--animdur) / 16);
   animation-play-state: var(--animps);
@@ -1468,7 +1495,7 @@ html #home section:first-child aside > figure {
   opacity: 0;
   width: 100%;
 }
-html #home section:first-child aside > figure img {
+html #home #player aside > figure img {
   animation-direction: alternate;
   animation-duration: calc(var(--animdur) / 2);
   animation-fill-mode: both;
@@ -1483,27 +1510,27 @@ html #home section:first-child aside > figure img {
   object-position: var(--x, 50%) var(--y, 50%);
   will-change: transform;
 }
-html #home section:first-child article h1 {
+html #home #player article h1 {
   font-size: 2.6em;
   line-height: 1;
 }
-html #home section:first-child article h4 {
+html #home #player article h4 {
   font-size: 1.29em;
   margin: 0.5em 0;
 }
-html #home section:first-child #anim1:checked ~ aside figure {
+html #home #player #anim1:checked ~ aside figure {
   --animps: running;
   --img-animps: paused;
   --animn: none;
 }
-html #home section:first-child #anim1:not(:checked) ~ aside figure:first-child {
+html #home #player #anim1:not(:checked) ~ aside figure:first-child {
   opacity: 1;
 }
-html #home section:first-child #anim1:not(:checked) ~ aside figure {
+html #home #player #anim1:not(:checked) ~ aside figure {
   --animps: paused;
   --img-animps: paused !important;
 }
-html #home section:first-child.c-mm {
+html #home #player.c-mm {
   --index: 0;
   --animdur: 64000ms;
   --animps: paused;
@@ -1511,6 +1538,9 @@ html #home section:first-child.c-mm {
   --slides: 16;
   --animtf: ease-out;
   --z: 100;
+}
+html #home #player:hover #anim1:checked ~ label[for=anim1] {
+  opacity: 1;
 }
 html #home .mission {
   padding: 1rem;
@@ -1533,7 +1563,7 @@ html #home.pause aside:first-child {
 }
 
 @media only screen and (min-width: 769px) {
-  html #home main > section:first-of-type {
+  html #home main > #player {
     padding: 3rem;
     column-gap: 2rem;
     display: -webkit-box;
@@ -1543,14 +1573,14 @@ html #home.pause aside:first-child {
     display: flex;
     flex-wrap: nowrap;
   }
-  html #home main > section:first-of-type label[for=anim1] {
+  html #home main > #player label[for=anim1] {
     right: 3.6rem;
     top: 3.6rem;
   }
-  html #home main > section:first-of-type aside {
+  html #home main > #player aside {
     height: auto;
   }
-  html #home main > section:first-of-type article {
+  html #home main > #player article {
     margin: 0;
     display: -webkit-box;
     display: -moz-box;
@@ -1564,7 +1594,7 @@ html #home.pause aside:first-child {
     -webkit-justify-content: center;
     justify-content: space-between;
   }
-  html #home main > section:first-of-type article > * {
+  html #home main > #player article > * {
     -webkit-box: 0;
     -moz-box: 0;
     -webkit-flex: 0 0 auto;
@@ -1575,24 +1605,24 @@ html #home.pause aside:first-child {
     -webkit-justify-content: center;
     justify-content: start;
   }
-  html #home main > section:first-of-type article button {
+  html #home main > #player article button {
     align-self: start;
     margin: 1.5em 0 0;
   }
 }
 @media only screen and (min-width: 769px) {
-  #home main > section:first-child {
+  #home main > #player {
     font-size: 1.005rem;
   }
-  #home main > section:first-child article h1 {
+  #home main > #player article h1 {
     font-size: 3.88em;
   }
-  #home main > section:first-child article h4 {
+  #home main > #player article h4 {
     font-size: 1.6225em;
   }
 }
 @media only screen and (min-width: 820px) {
-  html #home main > section:first-child {
+  html #home main > #player {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -1600,7 +1630,7 @@ html #home.pause aside:first-child {
     display: flex;
     flex-wrap: nowrap;
   }
-  html #home main > section:first-child article {
+  html #home main > #player article {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     -webkit-justify-content: center;
@@ -1611,7 +1641,7 @@ html #home.pause aside:first-child {
     -ms-flex: 7 1 1em;
     flex: 7 1 1em;
   }
-  html #home main > section:first-child aside {
+  html #home main > #player aside {
     -webkit-box: 4;
     -moz-box: 4;
     -webkit-flex: 4 1 1em;
@@ -1620,13 +1650,13 @@ html #home.pause aside:first-child {
   }
 }
 @media only screen and (min-width: 1024px) {
-  html #home main > section:first-child {
+  html #home main > #player {
     padding: 3rem 1.5rem;
   }
-  html #home main > section:first-child label[for=anim1] {
+  html #home main > #player label[for=anim1] {
     right: 2rem;
   }
-  html #home main > section:first-child article {
+  html #home main > #player article {
     margin: 8rem 0;
   }
 }
@@ -1692,14 +1722,14 @@ html #services section.services + div {
   -webkit-justify-content: center;
   justify-content: space-around;
   padding: 0.2em 1.5em;
-  padding-left: calc(100px + 440 * (100vw - 320px) / 960);
-  padding-right: calc(100px + 440 * (100vw - 320px) / 960);
+  padding-left: calc(10px + 540 * (100vw - 320px) / 960);
+  padding-right: calc(10px + 540 * (100vw - 320px) / 960);
   margin-top: -1px;
 }
 html #services section.services + div span {
   display: block;
-  width: 7px;
-  height: 7px;
+  width: calc(16px - 8 * (100vw - 320px) / 960);
+  height: calc(16px - 8 * (100vw - 320px) / 960);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -1918,7 +1948,6 @@ html.js #services #control span section.services div article.transform {
     top: auto;
   }
   html #services.ran main #control span:nth-last-child(-n+2) {
-    color: khaki;
     position: relative;
     left: 0;
     top: 0;
@@ -2634,6 +2663,7 @@ html #about .testimonials article p {
 }
 #contact main > section:first-child h2 {
   font-size: 4em;
+  line-height: 1;
 }
 #contact main > section:first-child p {
   line-height: 2;

@@ -117,8 +117,8 @@ main > section {
     background-image: url("../assets/Speechmarks-green10.png");
     background-color: $bg;
     background-repeat: no-repeat;
-    background-size: 55%;
-    background-position: 50% 65%;
+    background-size: contain;
+    background-position: 50% 60%;
     p {
       margin: 0;
       font-style: italic;
@@ -131,6 +131,9 @@ main > footer {
   padding: 1em;
   color: white;
   font-size: 0.875rem;
+  a:link {
+    color: white;
+  }
 
   section.payment {
     div {
@@ -246,12 +249,6 @@ body > div > footer {
   .eco {
     font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
   }
-}
-
-@media only screen and (min-width: 1025px) {
-  .mission article p:first-child {
-    font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
-  }
   header nav ul li a {
     padding: 0 1.6em;
     font-size: 1.125rem;
@@ -265,7 +262,13 @@ body > div > footer {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 1025px) {
+  .mission article p:first-child {
+    font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
+  }
+}
+
+@media only screen and (max-width: 768px) {
   @for $i from 1 through length($navlist) {
     $l: nth($navlist, $i);
     #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
