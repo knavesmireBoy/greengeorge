@@ -68,7 +68,7 @@ function getScrollThreshold(el, percent) {
     elementHeight = el.offsetHeight || el.getBoundingClientRect().height;
   ({ top } = getElementOffset(el));
 
-  return top * percent + elementHeight - window.innerHeight;
+  return (top * percent) + (elementHeight - window.innerHeight);
 }
 
 function insert(hook, node) {
@@ -433,7 +433,7 @@ in that edge case a regexp would be preferred...
 
     lastKnownScrollPosition = window.scrollY;
     let n = window.innerWidth,
-      j = getScrollThreshold(el, 1),
+      j = getScrollThreshold(el, .9),
       k = 0,
       inc = query(n);
     if (e === "resize") {
@@ -465,7 +465,8 @@ let throttled,
   el = els[0],
   predicate = gtThan(query(window.innerWidth, true)),
   lastKnownScrollPosition = 0,
-  prevWidth = window.innerWidth;
+  prevWidth = window.innerWidth,
+  myscroller = scroller(el, els, i, activate, "scroll");
 
 while (j < inc) {
   el = els[i + j];
@@ -476,7 +477,7 @@ i = j;
 
 document.addEventListener(
   "scroll",
-  curry222(throttle)(22)(scroller(el, els, i, activate, "scroll"))
+  curry222(throttle)(22)(myscroller)
 );
 
 function builder(e) {
@@ -597,3 +598,5 @@ document.addEventListener("keyup", function (e) {
     }
   }
 });
+
+document.addEventListener("DOMContentLoaded", myscroller);

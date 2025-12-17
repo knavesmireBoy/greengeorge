@@ -2237,7 +2237,7 @@ html.js #services #control span section.services div article.transform {
     display: block;
   }
 }
-@media only screen and (min-width: 102px) {
+@media only screen and (min-width: 1025px) {
   #gallery main > section:first-of-type > div {
     display: grid;
     row-gap: 0.7%;
