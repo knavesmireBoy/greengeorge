@@ -44,7 +44,7 @@ html {
             rgba(255, 255, 255, 1);
         }
       }
-
+      //default state is to play, checked pauses
       #anim1:checked {
         ~ label[for="anim1"] {
           width: auto;
@@ -123,6 +123,7 @@ html {
           opacity: 1;
         }
       }
+      //default state but extra specificity
       #anim1:not(:checked) ~ aside figure {
         --animps: running;
         --img-animps: running;
