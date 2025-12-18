@@ -913,27 +913,6 @@ body > div > footer ul a:active {
     line-height: 1;
   }
 }
-@media only screen and (min-width: 769px) {
-  .eco {
-    font-size: calc(18px + 4 * (100vw - 769px) / 511);
-  }
-  header nav ul li a {
-    padding: 0 1.6em;
-    font-size: 1.125rem;
-    color: rgb(25, 78, 39);
-    transition: transform 0.2s ease-out;
-  }
-  header nav ul li a:hover {
-    color: rgb(25, 78, 39);
-    background-color: transparent !important;
-    transform: scale(125%);
-  }
-}
-@media only screen and (min-width: 1025px) {
-  .mission article p:first-child {
-    font-size: calc(24px + 2 * (100vw - 1025px) / 255);
-  }
-}
 @media only screen and (max-width: 768px) {
   #home header > nav > ul > li:nth-child(1) > a:link,
 #home header > nav > ul > li:nth-child(1) > a:visited {
@@ -954,6 +933,43 @@ body > div > footer ul a:active {
 #contact header > nav > ul > li:nth-child(4) > a:visited {
     color: white;
     background-color: hsl(0deg, 0%, 33%);
+  }
+}
+@media only screen and (min-width: 769px) {
+  .eco {
+    font-size: calc(18px + 4 * (100vw - 769px) / 511);
+  }
+  header nav ul li a {
+    padding: 0 1.6em;
+    font-size: 1.125rem;
+    color: hsl(0deg, 0%, 44%);
+    transition: transform 0.2s ease-out;
+  }
+  header nav ul li a:hover {
+    color: rgb(25, 78, 39);
+    background-color: transparent !important;
+    transform: scale(125%);
+  }
+  #home header > nav > ul > li:nth-child(1) > a:link,
+#home header > nav > ul > li:nth-child(1) > a:visited {
+    color: rgb(25, 78, 39);
+  }
+  #about header > nav > ul > li:nth-child(2) > a:link,
+#about header > nav > ul > li:nth-child(2) > a:visited {
+    color: rgb(25, 78, 39);
+  }
+  #gallery header > nav > ul > li:nth-child(3) > a:link,
+#gallery header > nav > ul > li:nth-child(3) > a:visited {
+    color: rgb(25, 78, 39);
+  }
+  #contact header > nav > ul > li:nth-child(4) > a:link,
+#contact header > nav > ul > li:nth-child(4) > a:visited {
+    color: rgb(25, 78, 39);
+  }
+}
+@media only screen and (min-width: 1025px) {
+  .mission article p:first-child {
+    font-size: calc(24px + 2 * (100vw - 1025px) / 255);
   }
 }
 body > div {

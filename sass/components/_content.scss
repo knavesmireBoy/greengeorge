@@ -254,29 +254,6 @@ body > div > footer {
   }
 }
 
-@media only screen and (min-width: 769px) {
-  .eco {
-    font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
-  }
-  header nav ul li a {
-    padding: 0 1.6em;
-    font-size: 1.125rem;
-    color: $main;
-    transition: transform 0.2s ease-out;
-    &:hover {
-      color: $main;
-      background-color: transparent !important;
-      transform: scale(125%);
-    }
-  }
-}
-
-@media only screen and (min-width: 1025px) {
-  .mission article p:first-child {
-    font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
-  }
-}
-
 @media only screen and (max-width: 768px) {
   @for $i from 1 through length($navlist) {
     $l: nth($navlist, $i);
@@ -287,3 +264,35 @@ body > div > footer {
     }
   }
 }
+
+
+@media only screen and (min-width: 769px) {
+  .eco {
+    font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
+  }
+  header nav ul li a {
+    padding: 0 1.6em;
+    font-size: 1.125rem;
+    color: hsl(0, 0%, 44%);
+    transition: transform 0.2s ease-out;
+    &:hover {
+      color: $main;
+      background-color: transparent !important;
+      transform: scale(125%);
+    }
+  }
+  @for $i from 1 through length($navlist) {
+    $l: nth($navlist, $i);
+    #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
+    #{$l} header > nav > ul > li:nth-child(#{$i}) > a:visited {
+      color: $main;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .mission article p:first-child {
+    font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
+  }
+}
+
