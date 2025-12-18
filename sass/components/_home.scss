@@ -38,7 +38,7 @@ html {
         height: 36px;
         border-style: double;
         border-width: 0 0 0 24px;
-        border-color:  rgba(255, 255, 255, 0.5);
+        border-color: rgba(255, 255, 255, 0.5);
         &:hover {
           border-color: transparent transparent transparent
             rgba(255, 255, 255, 1);
@@ -58,10 +58,9 @@ html {
               rgba(255, 255, 255, 1);
           }
         }
-
         ~ aside figure {
           --animps: paused;
-          --img-animps: paused;
+          --img-animps: paused !important;
         }
       }
       aside {
@@ -76,9 +75,6 @@ html {
           position: absolute;
           opacity: 0;
           width: 100%;
-          --animps: running;
-          --img-animps: paused !important;
-
           &:first-child {
             opacity: 1;
           }
@@ -126,6 +122,10 @@ html {
         #anim1:checked ~ label[for="anim1"] {
           opacity: 1;
         }
+      }
+      #anim1:not(:checked) ~ aside figure {
+        --animps: running;
+        --img-animps: running;
       }
     }
 

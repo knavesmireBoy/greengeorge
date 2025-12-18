@@ -1500,7 +1500,7 @@ html #home #player #anim1:checked ~ label[for=anim1]:hover {
 }
 html #home #player #anim1:checked ~ aside figure {
   --animps: paused;
-  --img-animps: paused;
+  --img-animps: paused !important;
 }
 html #home #player aside {
   overflow: hidden;
@@ -1514,8 +1514,6 @@ html #home #player aside > figure {
   position: absolute;
   opacity: 0;
   width: 100%;
-  --animps: running;
-  --img-animps: paused !important;
 }
 html #home #player aside > figure:first-child {
   opacity: 1;
@@ -1554,6 +1552,10 @@ html #home #player.c-mm {
 }
 html #home #player:hover #anim1:checked ~ label[for=anim1] {
   opacity: 1;
+}
+html #home #player #anim1:not(:checked) ~ aside figure {
+  --animps: running;
+  --img-animps: running;
 }
 html #home .mission {
   padding: 1rem;
