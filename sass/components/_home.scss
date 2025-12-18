@@ -26,15 +26,6 @@ html {
       min-height: 100%;
       line-height: 1.6;
       position: relative;
-      #anim1:checked ~ label[for="anim1"] {
-        width: 36px;
-        height: 36px;
-        border-style: solid;
-        border-width: 18px;
-        border-style: double;
-        border-width: 0px 0 0px 24px;
-        opacity: .5;
-      }
 
       label[for="anim1"] {
         z-index: 123;
@@ -43,16 +34,36 @@ html {
         position: absolute;
         right: 1.4rem;
         top: 1.4rem;
-        border-style: solid;
-        border-width: 18px 0px 18px 36px;
-        border-color: transparent transparent transparent
-          rgba(255, 255, 255, 0.5);
+        width: 36px;
+        height: 36px;
+        border-style: double;
+        border-width: 0 0 0 24px;
+        border-color:  rgba(255, 255, 255, 0.5);
         &:hover {
           border-color: transparent transparent transparent
             rgba(255, 255, 255, 1);
         }
       }
 
+      #anim1:checked {
+        ~ label[for="anim1"] {
+          width: auto;
+          height: auto;
+          border-style: solid;
+          border-width: 18px 0px 18px 36px;
+          border-color: transparent transparent transparent
+            rgba(255, 255, 255, 0.5);
+          &:hover {
+            border-color: transparent transparent transparent
+              rgba(255, 255, 255, 1);
+          }
+        }
+
+        ~ aside figure {
+          --animps: paused;
+          --img-animps: paused;
+        }
+      }
       aside {
         overflow: hidden;
         position: relative;
@@ -65,6 +76,13 @@ html {
           position: absolute;
           opacity: 0;
           width: 100%;
+          --animps: running;
+          --img-animps: paused !important;
+
+          &:first-child {
+            opacity: 1;
+          }
+
           img {
             animation-direction: alternate;
             animation-duration: calc(var(--animdur) / 2);
@@ -92,20 +110,6 @@ html {
           font-size: 1.29em;
           margin: 0.5em 0;
         }
-      }
-      #anim1:checked ~ aside figure {
-        --animps: running;
-        --img-animps: paused;
-        //--animn: none;
-      }
-
-      #anim1:not(:checked) ~ aside figure:first-child {
-        opacity: 1;
-      }
-      #anim1:not(:checked) ~ aside figure {
-        --animps: paused;
-        //override inline style
-        --img-animps: paused !important;
       }
 
       &.c-mm {

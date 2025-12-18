@@ -1472,15 +1472,6 @@ html #home #player {
   line-height: 1.6;
   position: relative;
 }
-html #home #player #anim1:checked ~ label[for=anim1] {
-  width: 36px;
-  height: 36px;
-  border-style: solid;
-  border-width: 18px;
-  border-style: double;
-  border-width: 0px 0 0px 24px;
-  opacity: 0.5;
-}
 html #home #player label[for=anim1] {
   z-index: 123;
   display: block;
@@ -1488,12 +1479,28 @@ html #home #player label[for=anim1] {
   position: absolute;
   right: 1.4rem;
   top: 1.4rem;
+  width: 36px;
+  height: 36px;
+  border-style: double;
+  border-width: 0 0 0 24px;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+html #home #player label[for=anim1]:hover {
+  border-color: transparent transparent transparent rgb(255, 255, 255);
+}
+html #home #player #anim1:checked ~ label[for=anim1] {
+  width: auto;
+  height: auto;
   border-style: solid;
   border-width: 18px 0px 18px 36px;
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
 }
-html #home #player label[for=anim1]:hover {
+html #home #player #anim1:checked ~ label[for=anim1]:hover {
   border-color: transparent transparent transparent rgb(255, 255, 255);
+}
+html #home #player #anim1:checked ~ aside figure {
+  --animps: paused;
+  --img-animps: paused;
 }
 html #home #player aside {
   overflow: hidden;
@@ -1507,6 +1514,11 @@ html #home #player aside > figure {
   position: absolute;
   opacity: 0;
   width: 100%;
+  --animps: running;
+  --img-animps: paused !important;
+}
+html #home #player aside > figure:first-child {
+  opacity: 1;
 }
 html #home #player aside > figure img {
   animation-direction: alternate;
@@ -1530,17 +1542,6 @@ html #home #player article h1 {
 html #home #player article h4 {
   font-size: 1.29em;
   margin: 0.5em 0;
-}
-html #home #player #anim1:checked ~ aside figure {
-  --animps: running;
-  --img-animps: paused;
-}
-html #home #player #anim1:not(:checked) ~ aside figure:first-child {
-  opacity: 1;
-}
-html #home #player #anim1:not(:checked) ~ aside figure {
-  --animps: paused;
-  --img-animps: paused !important;
 }
 html #home #player.c-mm {
   --index: 0;
