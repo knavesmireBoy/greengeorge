@@ -96,7 +96,7 @@ html {
       #anim1:checked ~ aside figure {
         --animps: running;
         --img-animps: paused;
-        --animn: none;
+        //--animn: none;
       }
 
       #anim1:not(:checked) ~ aside figure:first-child {

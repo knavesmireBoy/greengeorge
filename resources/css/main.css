@@ -1534,7 +1534,6 @@ html #home #player article h4 {
 html #home #player #anim1:checked ~ aside figure {
   --animps: running;
   --img-animps: paused;
-  --animn: none;
 }
 html #home #player #anim1:not(:checked) ~ aside figure:first-child {
   opacity: 1;
