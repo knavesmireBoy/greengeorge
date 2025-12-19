@@ -1271,17 +1271,25 @@ html body > div > main section.testimonials div article {
   animation: testo 28s linear 100ms infinite normal forwards;
 }
 html body > div > main section.testimonials > p {
-  -webkit-box: 0;
-  -moz-box: 0;
-  -webkit-flex: 0 0 0.5em;
-  -ms-flex: 0 0 0.5em;
-  flex: 0 0 0.5em;
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 0.5em;
+  -ms-flex: 1 1 0.5em;
+  flex: 1 1 0.5em;
 }
 html body > div > main section.testimonials > p:first-of-type {
   margin-right: 1%;
 }
 html body > div > main section.testimonials > p:last-of-type {
   margin-left: 1%;
+}
+@media (pointer: coarse) {
+  html body > div > main section.testimonials > div {
+    min-width: 70%;
+  }
+  html body > div > main section.testimonials > p {
+    font-size: 3rem !important;
+  }
 }
 html.js main section.testimonials {
   display: -webkit-box;
@@ -1299,11 +1307,11 @@ html.js main section.testimonials h2 {
   flex: 1 1 100%;
 }
 html.js main section.testimonials div {
-  -webkit-box: 9;
-  -moz-box: 9;
-  -webkit-flex: 9 1 10em;
-  -ms-flex: 9 1 10em;
-  flex: 9 1 10em;
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 50vw;
+  -ms-flex: 0 0 50vw;
+  flex: 0 0 50vw;
 }
 html.js main section.testimonials > p {
   font-size: 2em;
@@ -1325,11 +1333,13 @@ html.js main section.testimonials.animed div.transform article {
 html.js main section.testimonials.animed div.transit article {
   transition: transform 1s linear;
 }
-html.js main section.testimonials.fade > p {
-  opacity: 0;
-}
-html.js main section.testimonials:hover > p {
-  opacity: 1;
+@media (pointer: fine) {
+  html.js main section.testimonials.fade > p {
+    opacity: 0;
+  }
+  html.js main section.testimonials:hover > p {
+    opacity: 1;
+  }
 }
 html.no-js body > div > main section.testimonials > label {
   display: block;
@@ -1815,8 +1825,8 @@ html #services section.services + div {
 }
 html #services section.services + div span {
   display: block;
-  width: calc(16px - 8 * (100vw - 320px) / 960);
-  height: calc(16px - 8 * (100vw - 320px) / 960);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -2041,6 +2051,12 @@ html.js #services #control span section.services div article.transform {
   }
   html #services.js #services section.services div article.transform {
     transform: translateX(-109.5%);
+  }
+}
+@media (pointer: coarse) {
+  div#services #control span {
+    width: calc(16px - 8 * (100vw - 320px) / 960);
+    height: calc(16px - 8 * (100vw - 320px) / 960);
   }
 }
 #about nav.eco {

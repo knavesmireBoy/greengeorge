@@ -56,8 +56,8 @@ html {
         margin-top: -1px;
         span {
           display: block;
-          width: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
-          height: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
           background-color: $lo;
         }
@@ -267,6 +267,17 @@ html {
             transform: translateX(-109.5%);
           }
         }
+      }
+    }
+  }
+}
+
+@media (pointer: coarse) {
+  div#services {
+    #control {
+      span {
+        width: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
+        height: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
       }
     }
   }

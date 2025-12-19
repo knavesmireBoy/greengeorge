@@ -119,7 +119,6 @@ main > footer {
     margin: 0;
     padding: 0.5em 0;
     div {
-      //@include flex(0,0,auto);
       min-width: 2.8em;
       height: 2.15em;
       width: 2.9em;
@@ -207,12 +206,21 @@ html {
         }
       }
       > p {
-        @include flex(0, 0, 0.5em);
+        @include flex(1, 1, 0.5em);
         &:first-of-type {
           margin-right: 1%;
         }
         &:last-of-type {
           margin-left: 1%;
+        }
+      }
+
+      @media (pointer: coarse) {
+        > div {
+          min-width: 70%;
+        }
+        > p {
+          font-size: 3rem !important;
         }
       }
     }
@@ -225,7 +233,7 @@ html {
         @include flex(1, 1, 100%);
       }
       div {
-        @include flex(9, 1, 10em);
+        @include flex(0, 0, 50vw);
       }
       > p {
         font-size: 2em;
@@ -248,13 +256,15 @@ html {
           }
         }
       }
-      &.fade {
-        > p {
-          opacity: 0;
+      @media (pointer: fine) {
+        &.fade {
+          > p {
+            opacity: 0;
+          }
         }
-      }
-      &:hover > p {
-        opacity: 1;
+        &:hover > p {
+          opacity: 1;
+        }
       }
     }
   }
