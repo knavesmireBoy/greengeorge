@@ -20,7 +20,8 @@ body > div {
     }
     > a {
       width: 120px;
-      height: 126.7px;
+      //height: 126.7px;
+      //height: auto;
       display: block;
       svg path {
         fill: hsl(136, 51%, 20%) !important;
@@ -180,12 +181,14 @@ html {
       text-align: center;
       padding: 0 0.5rem 1rem;
       @include flexy(wrap);
+      justify-content: space-between;
+      column-gap: 1vw;
       h2 {
         @include flex(0, 0, 100%);
       }
       div {
         @include flexy();
-        @include flex(9, 1, 10em);
+        @include flex(0, 0, 92vw);
         min-width: 80%;
         overflow-x: hidden;
         position: relative;
@@ -210,7 +213,6 @@ html {
         }
         &:last-of-type {
           margin-left: 1%;
-
         }
       }
     }
@@ -256,7 +258,39 @@ html {
       }
     }
   }
-}
+  &.no-js {
+    body > div > main section.testimonials {
+      > label {
+        display: block;
+        min-height: 100%;
+        margin: auto;
+        z-index: 5;
+        cursor: pointer;
+        font-size: 2rem;
+        opacity: 0;
+        transition: opacity 1s linear;
+        &:after {
+          content: "<";
+        }
+        &[for="forth"] {
+          order: 3;
+          &:after {
+            content: ">";
+          }
+        }
+      }
+      > input:checked ~ div article {
+        @include prefix(animation, none, o moz webkit);
+      }
+
+      &:hover {
+        label {
+          opacity: 1;
+        }
+      }
+    }
+  }
+} //
 
 @media only screen and (min-width: 769px) {
   body > div > header {
@@ -280,7 +314,7 @@ html {
 
     > a {
       width: 158px;
-      height: 167px;
+      //height: 167px;
       display: block;
     }
   }

@@ -479,6 +479,30 @@
     }
   }
 
+  @keyframes testnojs {
+    22% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(calc(-100% + 3rem));
+    }
+    47% {
+      transform: translateX(calc(-100% + 3rem));
+    }
+    50% {
+      transform: translateX(-200%);
+    }
+    72% {
+      transform: translateX(-200%);
+    }
+    75% {
+      transform: translateX(-300%);
+    }
+    100% {
+      transform: translateX(-300%);
+    }
+  }
+
   @keyframes gallery {
     0% {
       transform: scale(80%);

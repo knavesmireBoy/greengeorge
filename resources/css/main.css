@@ -574,6 +574,29 @@ Test if `$value` is a valid direction
     transform: translateX(-300%);
   }
 }
+@keyframes testnojs {
+  22% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(calc(-100% + 3rem));
+  }
+  47% {
+    transform: translateX(calc(-100% + 3rem));
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  72% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
 @keyframes gallery {
   0% {
     transform: scale(80%);
@@ -681,6 +704,10 @@ Test if `$value` is a valid direction
   src: url("../fonts/AlexBrush-Regular.ttf") format("truetype");
 }
   */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-family: "Hanken Grotesk", sans-serif;
@@ -1016,7 +1043,6 @@ body > div > header h1 {
 }
 body > div > header > a {
   width: 120px;
-  height: 126.7px;
   display: block;
 }
 body > div > header > a svg path {
@@ -1194,6 +1220,8 @@ html body > div > main section.testimonials {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 1vw;
 }
 html body > div > main section.testimonials h2 {
   -webkit-box: 0;
@@ -1209,11 +1237,11 @@ html body > div > main section.testimonials div {
   display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
-  -webkit-box: 9;
-  -moz-box: 9;
-  -webkit-flex: 9 1 10em;
-  -ms-flex: 9 1 10em;
-  flex: 9 1 10em;
+  -webkit-box: 0;
+  -moz-box: 0;
+  -webkit-flex: 0 0 92vw;
+  -ms-flex: 0 0 92vw;
+  flex: 0 0 92vw;
   min-width: 80%;
   overflow-x: hidden;
   position: relative;
@@ -1303,6 +1331,34 @@ html.js main section.testimonials.fade > p {
 html.js main section.testimonials:hover > p {
   opacity: 1;
 }
+html.no-js body > div > main section.testimonials > label {
+  display: block;
+  min-height: 100%;
+  margin: auto;
+  z-index: 5;
+  cursor: pointer;
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+html.no-js body > div > main section.testimonials > label:after {
+  content: "<";
+}
+html.no-js body > div > main section.testimonials > label[for=forth] {
+  order: 3;
+}
+html.no-js body > div > main section.testimonials > label[for=forth]:after {
+  content: ">";
+}
+html.no-js body > div > main section.testimonials > input:checked ~ div article {
+  -o-animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+html.no-js body > div > main section.testimonials:hover label {
+  opacity: 1;
+}
 
 @media only screen and (min-width: 769px) {
   body > div > header {
@@ -1337,7 +1393,6 @@ html.js main section.testimonials:hover > p {
   }
   body > div > header > a {
     width: 158px;
-    height: 167px;
     display: block;
   }
   main .eco {
@@ -1530,6 +1585,7 @@ html #home #player aside > figure {
   position: absolute;
   opacity: 0;
   width: 100%;
+  will-change: opacity;
 }
 html #home #player aside > figure:first-child {
   opacity: 1;
@@ -2134,10 +2190,6 @@ html.js #services #control span section.services div article.transform {
   }
   #about main .testimonials {
     background-size: 50%;
-    padding: 1em 2em;
-  }
-  #about main .testimonials div article {
-    padding: 0 4em;
   }
 }
 @keyframes autoplay {

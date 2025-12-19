@@ -75,6 +75,7 @@ html {
           position: absolute;
           opacity: 0;
           width: 100%;
+          will-change: opacity;
           &:first-child {
             opacity: 1;
           }

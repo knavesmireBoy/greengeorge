@@ -12,7 +12,9 @@
   src: url("../fonts/AlexBrush-Regular.ttf") format("truetype");
 }
   */
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -265,7 +267,6 @@ body > div > footer {
   }
 }
 
-
 @media only screen and (min-width: 769px) {
   .eco {
     font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
@@ -295,4 +296,3 @@ body > div > footer {
     font-size: calc(24px + 2 * ((100vw - 1025px) / (1280 - 1025)));
   }
 }
-
