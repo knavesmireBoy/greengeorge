@@ -193,6 +193,7 @@ html {
         position: relative;
         article {
           @include flex(0, 0, 100%);
+          //vertical centering
           @include flexy();
           flex-direction: column;
           @include justify(center);
