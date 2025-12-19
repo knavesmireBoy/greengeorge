@@ -274,7 +274,7 @@ body > div > footer {
   header nav ul li a {
     padding: 0 1.6em;
     font-size: 1.125rem;
-    color: hsl(0, 0%, 44%);
+    color: $main;
     transition: transform 0.2s ease-out;
     &:hover {
       color: $main;
@@ -286,7 +286,7 @@ body > div > footer {
     $l: nth($navlist, $i);
     #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
     #{$l} header > nav > ul > li:nth-child(#{$i}) > a:visited {
-      color: $main;
+      color: lighten($main, 20%);
     }
   }
 }
