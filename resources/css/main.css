@@ -946,18 +946,23 @@ body > div > footer ul a:active {
     color: white;
     background-color: hsl(0deg, 0%, 33%);
   }
-  #about header > nav > ul > li:nth-child(2) > a:link,
-#about header > nav > ul > li:nth-child(2) > a:visited {
+  #services header > nav > ul > li:nth-child(2) > a:link,
+#services header > nav > ul > li:nth-child(2) > a:visited {
     color: white;
     background-color: hsl(0deg, 0%, 33%);
   }
-  #gallery header > nav > ul > li:nth-child(3) > a:link,
-#gallery header > nav > ul > li:nth-child(3) > a:visited {
+  #about header > nav > ul > li:nth-child(3) > a:link,
+#about header > nav > ul > li:nth-child(3) > a:visited {
     color: white;
     background-color: hsl(0deg, 0%, 33%);
   }
-  #contact header > nav > ul > li:nth-child(4) > a:link,
-#contact header > nav > ul > li:nth-child(4) > a:visited {
+  #gallery header > nav > ul > li:nth-child(4) > a:link,
+#gallery header > nav > ul > li:nth-child(4) > a:visited {
+    color: white;
+    background-color: hsl(0deg, 0%, 33%);
+  }
+  #contact header > nav > ul > li:nth-child(5) > a:link,
+#contact header > nav > ul > li:nth-child(5) > a:visited {
     color: white;
     background-color: hsl(0deg, 0%, 33%);
   }
@@ -969,7 +974,7 @@ body > div > footer ul a:active {
   header nav ul li a {
     padding: 0 1.6em;
     font-size: 1.125rem;
-    color: hsl(0deg, 0%, 44%);
+    color: rgb(25, 78, 39);
     transition: transform 0.2s ease-out;
   }
   header nav ul li a:hover {
@@ -979,19 +984,23 @@ body > div > footer ul a:active {
   }
   #home header > nav > ul > li:nth-child(1) > a:link,
 #home header > nav > ul > li:nth-child(1) > a:visited {
-    color: rgb(25, 78, 39);
+    color: #329b4e;
   }
-  #about header > nav > ul > li:nth-child(2) > a:link,
-#about header > nav > ul > li:nth-child(2) > a:visited {
-    color: rgb(25, 78, 39);
+  #services header > nav > ul > li:nth-child(2) > a:link,
+#services header > nav > ul > li:nth-child(2) > a:visited {
+    color: #329b4e;
   }
-  #gallery header > nav > ul > li:nth-child(3) > a:link,
-#gallery header > nav > ul > li:nth-child(3) > a:visited {
-    color: rgb(25, 78, 39);
+  #about header > nav > ul > li:nth-child(3) > a:link,
+#about header > nav > ul > li:nth-child(3) > a:visited {
+    color: #329b4e;
   }
-  #contact header > nav > ul > li:nth-child(4) > a:link,
-#contact header > nav > ul > li:nth-child(4) > a:visited {
-    color: rgb(25, 78, 39);
+  #gallery header > nav > ul > li:nth-child(4) > a:link,
+#gallery header > nav > ul > li:nth-child(4) > a:visited {
+    color: #329b4e;
+  }
+  #contact header > nav > ul > li:nth-child(5) > a:link,
+#contact header > nav > ul > li:nth-child(5) > a:visited {
+    color: #329b4e;
   }
 }
 @media only screen and (min-width: 1025px) {
