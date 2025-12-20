@@ -994,8 +994,8 @@ body > div > footer ul a:active {
     min-width: 6rem;
     min-height: 4rem;
     border: solid 0 white;
-    background: rgb(25, 78, 39) no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
-    background-image: url("../assets/blackbird_sq.png"), radial-gradient(#27783c 10%, black);
+    background: rgb(25, 78, 39) no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    background-image: url("../assets/blackbird_eat.png"), radial-gradient(#27783c 10%, black);
     transition: transform 0.2s ease-out;
   }
   header nav ul li a:hover {
@@ -1003,27 +1003,27 @@ body > div > footer ul a:active {
   }
   #home header > nav > ul > li:nth-child(1) a:link,
 #home header > nav > ul > li:nth-child(1) a:visited {
-    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    background: black no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
     color: black;
   }
   #services header > nav > ul > li:nth-child(2) a:link,
 #services header > nav > ul > li:nth-child(2) a:visited {
-    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    background: black no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
     color: black;
   }
   #about header > nav > ul > li:nth-child(3) a:link,
 #about header > nav > ul > li:nth-child(3) a:visited {
-    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    background: black no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
     color: black;
   }
   #gallery header > nav > ul > li:nth-child(4) a:link,
 #gallery header > nav > ul > li:nth-child(4) a:visited {
-    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    background: black no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
     color: black;
   }
   #contact header > nav > ul > li:nth-child(5) a:link,
 #contact header > nav > ul > li:nth-child(5) a:visited {
-    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    background: black no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
     color: black;
   }
 }

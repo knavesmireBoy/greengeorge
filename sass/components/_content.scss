@@ -289,8 +289,8 @@ body > div > footer {
           min-width: 6rem;
           min-height: 4rem;
           border: solid 0 white;
-          background: $main no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
-          background-image: url("../assets/blackbird_sq.png"), radial-gradient(lighten($main, 11%) 10%, black);
+          background: $main no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+          background-image: url("../assets/blackbird_eat.png"), radial-gradient(lighten($main, 11%) 10%, black);
           transition: transform 0.2s ease-out;
           &:hover {
             color: $main;
@@ -304,7 +304,7 @@ body > div > footer {
     $l: nth($navlist, $i);
       #{$l} header > nav > ul > li:nth-child(#{$i}) a:link,
       #{$l} header > nav > ul > li:nth-child(#{$i}) a:visited {
-        background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+        background: black no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
         color: black;
       
     }
