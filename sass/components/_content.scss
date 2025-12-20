@@ -278,40 +278,35 @@ body > div > footer {
         text-align: center;
        // margin: 0 -1px 0 0;
         a {
-          padding: 4rem 0 0;
+          padding: 4.5rem 0 .25rem;
           @include flexy();
           flex-flow: column;
           justify-content: end;
           font-size: 1.125rem;
           text-align: center;
-          border: solid 1px white;
-          color: white;
+          color: $main;
           max-width: 6rem;
           min-width: 6rem;
           min-height: 4rem;
-          background: $main no-repeat url("../assets/blackbird.png") 50% 10%/contain;
-          border-radius: 8px 8px 0 0;
-          border-width: 1px 0 1px 1px;
+          border: solid 0 white;
+          background: $main no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
+          background-image: url("../assets/blackbird_sq.png"), radial-gradient(lighten($main, 11%) 10%, black);
           transition: transform 0.2s ease-out;
           &:hover {
-            background-color: none;
+            color: $main;
+            //background-color: white !important;
           }
-        }
-        &:nth-of-type(5) a {
-           border-width: 1px 1px 0 1px;
         }
       }
     }
   }
   @for $i from 1 through length($navlist) {
     $l: nth($navlist, $i);
-    @if $i > 1 {
       #{$l} header > nav > ul > li:nth-child(#{$i}) a:link,
       #{$l} header > nav > ul > li:nth-child(#{$i}) a:visited {
-        color: yellow;
-        border-color: $main;
-        border-left: solid 1px white;
-      }
+        background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+        color: black;
+      
     }
   }
 }

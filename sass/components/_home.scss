@@ -202,25 +202,6 @@ html {
       }
     }
   }
-
-  #home {
-    header nav {
-      ul {
-        li {
-          a {
-            border: solid 1px white;
-            color: $main;
-            background-color: $bg;
-           
-          }
-          &:first-child a {
-            color: saddlebrown;
-            border-color: $bg;
-          }
-        }
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: 820px) {

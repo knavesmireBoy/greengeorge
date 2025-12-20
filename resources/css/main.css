@@ -978,7 +978,7 @@ body > div > footer ul a:active {
     text-align: center;
   }
   header nav ul li a {
-    padding: 4rem 0 0;
+    padding: 4.5rem 0 0.25rem;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -989,45 +989,42 @@ body > div > footer ul a:active {
     justify-content: end;
     font-size: 1.125rem;
     text-align: center;
-    border: solid 1px white;
-    color: white;
+    color: rgb(25, 78, 39);
     max-width: 6rem;
     min-width: 6rem;
     min-height: 4rem;
-    background: rgb(25, 78, 39) no-repeat url("../assets/blackbird.png") 50% 10%/contain;
-    border-radius: 8px 8px 0 0;
-    border-width: 1px 0 1px 1px;
+    border: solid 0 white;
+    background: rgb(25, 78, 39) no-repeat url("../assets/blackbird_sq.png") 50% 20%/cover;
+    background-image: url("../assets/blackbird_sq.png"), radial-gradient(#27783c 10%, black);
     transition: transform 0.2s ease-out;
   }
   header nav ul li a:hover {
-    background-color: none;
+    color: rgb(25, 78, 39);
   }
-  header nav ul li:nth-of-type(5) a {
-    border-width: 1px 1px 0 1px;
+  #home header > nav > ul > li:nth-child(1) a:link,
+#home header > nav > ul > li:nth-child(1) a:visited {
+    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    color: black;
   }
   #services header > nav > ul > li:nth-child(2) a:link,
 #services header > nav > ul > li:nth-child(2) a:visited {
-    color: yellow;
-    border-color: rgb(25, 78, 39);
-    border-left: solid 1px white;
+    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    color: black;
   }
   #about header > nav > ul > li:nth-child(3) a:link,
 #about header > nav > ul > li:nth-child(3) a:visited {
-    color: yellow;
-    border-color: rgb(25, 78, 39);
-    border-left: solid 1px white;
+    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    color: black;
   }
   #gallery header > nav > ul > li:nth-child(4) a:link,
 #gallery header > nav > ul > li:nth-child(4) a:visited {
-    color: yellow;
-    border-color: rgb(25, 78, 39);
-    border-left: solid 1px white;
+    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    color: black;
   }
   #contact header > nav > ul > li:nth-child(5) a:link,
 #contact header > nav > ul > li:nth-child(5) a:visited {
-    color: yellow;
-    border-color: rgb(25, 78, 39);
-    border-left: solid 1px white;
+    background: black no-repeat url("../assets/blackbird_eat.png") 50% 20%/cover;
+    color: black;
   }
 }
 @media only screen and (min-width: 1025px) {
@@ -1752,15 +1749,6 @@ html #home.pause aside:first-child {
   }
   #home main > #player article h4 {
     font-size: 1.6225em;
-  }
-  #home header nav ul li a {
-    border: solid 1px white;
-    color: rgb(25, 78, 39);
-    background-color: rgb(252, 246, 228);
-  }
-  #home header nav ul li:first-child a {
-    color: saddlebrown;
-    border-color: rgb(252, 246, 228);
   }
 }
 @media only screen and (min-width: 820px) {
