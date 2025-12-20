@@ -271,22 +271,40 @@ body > div > footer {
   .eco {
     font-size: calc(18px + 4 * ((100vw - 769px) / (1280 - 769)));
   }
-  header nav ul li a {
-    padding: 0 1.6em;
-    font-size: 1.125rem;
-    color: $main;
-    transition: transform 0.2s ease-out;
-    &:hover {
-      color: $main;
-      background-color: transparent !important;
-      transform: scale(125%);
+  header nav {
+    margin: 0 0 -2rem;
+    ul {
+      li {
+       // margin: 0 -1px 0 0;
+        a {
+          padding:  0 1em;
+          font-size: 1.125rem;
+          text-align: center;
+          border: solid 1px white;
+          color: white;
+          background: $main;
+          border-radius: 8px 8px 0 0;
+          border-width: 1px 0 1px 1px;
+          transition: transform 0.2s ease-out;
+          &:hover {
+            background-color: none;
+          }
+        }
+        &:nth-of-type(5) a {
+           border-width: 1px 1px 0 1px;
+        }
+      }
     }
   }
   @for $i from 1 through length($navlist) {
     $l: nth($navlist, $i);
-    #{$l} header > nav > ul > li:nth-child(#{$i}) > a:link,
-    #{$l} header > nav > ul > li:nth-child(#{$i}) > a:visited {
-      color: lighten($main, 20%);
+    @if $i > 1 {
+      #{$l} header > nav > ul > li:nth-child(#{$i}) a:link,
+      #{$l} header > nav > ul > li:nth-child(#{$i}) a:visited {
+        color: yellow;
+        border-color: $main;
+        border-left: solid 1px white;
+      }
     }
   }
 }

@@ -971,36 +971,49 @@ body > div > footer ul a:active {
   .eco {
     font-size: calc(18px + 4 * (100vw - 769px) / 511);
   }
+  header nav {
+    margin: 0 0 -2rem;
+  }
   header nav ul li a {
-    padding: 0 1.6em;
+    padding: 0 1em;
     font-size: 1.125rem;
-    color: rgb(25, 78, 39);
+    text-align: center;
+    border: solid 1px white;
+    color: white;
+    background: rgb(25, 78, 39);
+    border-radius: 8px 8px 0 0;
+    border-width: 1px 0 1px 1px;
     transition: transform 0.2s ease-out;
   }
   header nav ul li a:hover {
-    color: rgb(25, 78, 39);
-    background-color: transparent !important;
-    transform: scale(125%);
+    background-color: none;
   }
-  #home header > nav > ul > li:nth-child(1) > a:link,
-#home header > nav > ul > li:nth-child(1) > a:visited {
-    color: #329b4e;
+  header nav ul li:nth-of-type(5) a {
+    border-width: 1px 1px 0 1px;
   }
-  #services header > nav > ul > li:nth-child(2) > a:link,
-#services header > nav > ul > li:nth-child(2) > a:visited {
-    color: #329b4e;
+  #services header > nav > ul > li:nth-child(2) a:link,
+#services header > nav > ul > li:nth-child(2) a:visited {
+    color: yellow;
+    border-color: rgb(25, 78, 39);
+    border-left: solid 1px white;
   }
-  #about header > nav > ul > li:nth-child(3) > a:link,
-#about header > nav > ul > li:nth-child(3) > a:visited {
-    color: #329b4e;
+  #about header > nav > ul > li:nth-child(3) a:link,
+#about header > nav > ul > li:nth-child(3) a:visited {
+    color: yellow;
+    border-color: rgb(25, 78, 39);
+    border-left: solid 1px white;
   }
-  #gallery header > nav > ul > li:nth-child(4) > a:link,
-#gallery header > nav > ul > li:nth-child(4) > a:visited {
-    color: #329b4e;
+  #gallery header > nav > ul > li:nth-child(4) a:link,
+#gallery header > nav > ul > li:nth-child(4) a:visited {
+    color: yellow;
+    border-color: rgb(25, 78, 39);
+    border-left: solid 1px white;
   }
-  #contact header > nav > ul > li:nth-child(5) > a:link,
-#contact header > nav > ul > li:nth-child(5) > a:visited {
-    color: #329b4e;
+  #contact header > nav > ul > li:nth-child(5) a:link,
+#contact header > nav > ul > li:nth-child(5) a:visited {
+    color: yellow;
+    border-color: rgb(25, 78, 39);
+    border-left: solid 1px white;
   }
 }
 @media only screen and (min-width: 1025px) {
@@ -1725,6 +1738,15 @@ html #home.pause aside:first-child {
   }
   #home main > #player article h4 {
     font-size: 1.6225em;
+  }
+  #home header nav ul li a {
+    border: solid 1px white;
+    color: rgb(25, 78, 39);
+    background-color: rgb(252, 246, 228);
+  }
+  #home header nav ul li:first-child a {
+    color: saddlebrown;
+    border-color: rgb(252, 246, 228);
   }
 }
 @media only screen and (min-width: 820px) {
