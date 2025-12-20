@@ -1000,6 +1000,7 @@ body > div > footer ul a:active {
   }
   header nav ul li a:hover {
     color: rgb(25, 78, 39);
+    background-image: url("../assets/blackbird_eat.png"), radial-gradient(rgb(25, 78, 39) 10%, black);
   }
   #home header > nav > ul > li:nth-child(1) a:link,
 #home header > nav > ul > li:nth-child(1) a:visited {
