@@ -275,14 +275,21 @@ body > div > footer {
     margin: 0 0 -2rem;
     ul {
       li {
+        text-align: center;
        // margin: 0 -1px 0 0;
         a {
-          padding:  0 1em;
+          padding: 4rem 0 0;
+          @include flexy();
+          flex-flow: column;
+          justify-content: end;
           font-size: 1.125rem;
           text-align: center;
           border: solid 1px white;
           color: white;
-          background: $main;
+          max-width: 6rem;
+          min-width: 6rem;
+          min-height: 4rem;
+          background: $main no-repeat url("../assets/blackbird.png") 50% 10%/contain;
           border-radius: 8px 8px 0 0;
           border-width: 1px 0 1px 1px;
           transition: transform 0.2s ease-out;

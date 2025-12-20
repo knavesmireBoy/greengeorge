@@ -974,13 +974,27 @@ body > div > footer ul a:active {
   header nav {
     margin: 0 0 -2rem;
   }
+  header nav ul li {
+    text-align: center;
+  }
   header nav ul li a {
-    padding: 0 1em;
+    padding: 4rem 0 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-flow: column;
+    justify-content: end;
     font-size: 1.125rem;
     text-align: center;
     border: solid 1px white;
     color: white;
-    background: rgb(25, 78, 39);
+    max-width: 6rem;
+    min-width: 6rem;
+    min-height: 4rem;
+    background: rgb(25, 78, 39) no-repeat url("../assets/blackbird.png") 50% 10%/contain;
     border-radius: 8px 8px 0 0;
     border-width: 1px 0 1px 1px;
     transition: transform 0.2s ease-out;
