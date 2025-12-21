@@ -736,7 +736,7 @@ Retrieved 2025-12-21, License - CC BY-SA 4.0
   top: -10%;
   animation: snowflakes-fall 10s linear, snowflakes-shake 3s ease-in-out;
   animation-delay: var(--d);
-  animation-iteration-count: 2;
+  animation-iteration-count: 3;
 }
 
 @font-face {
