@@ -25,6 +25,8 @@ body {
   font-size: 0.875rem;
 }
 
+
+
 h1,
 h2 {
   font-family: "Crimson", "Times New Roman", Times, serif;
@@ -295,8 +297,6 @@ body > div > footer {
           transition: all 0.2s ease-out;
           &:hover {
             color: $main;
-            background-image: url("../assets/blackbird_sq.png"),
-              radial-gradient($main 10%, black);
           }
         }
       }

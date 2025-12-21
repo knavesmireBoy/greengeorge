@@ -601,3 +601,51 @@
     transform-origin: top left;
   }
 }
+@keyframes snowfall {
+  0% {
+    transform: translate3d(var(--left-ini), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--left-end), 110vh, 0);
+  }
+}
+
+/*
+Source - https://stackoverflow.com/a
+Posted by Temani Afif, modified by community. See post 'Timeline' for change history
+Retrieved 2025-12-21, License - CC BY-SA 4.0
+*/
+
+@keyframes snowflakes-fall {
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snowflakes-shake {
+  50% {
+    transform: translateX(80px);
+  }
+}
+.snowflakes {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 9999;
+  pointer-events:none;
+}
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+  flex: 1;
+  position: relative;
+  top: -10%;
+  animation: snowflakes-fall 10s linear, snowflakes-shake 3s ease-in-out;
+  animation-delay: var(--d);
+  animation-iteration-count: 2;
+}
