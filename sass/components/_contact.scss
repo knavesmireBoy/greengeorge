@@ -1,24 +1,32 @@
-#contact main > {
-  section:first-child {
-    color: $bg;
-    background-color: $main;
-    font-size: 1.125rem;
-    h4 {
-      font-size: 1.33em;
-      font-family: "Crimson", "Times New Roman", Times, serif;
-    }
-    h2 {
-      font-size: 4em;
-      line-height: 1;//text wraps in mobile portrait
-    }
+#contact {
+  main > {
+    section:first-child {
+      color: $bg;
+      background-color: $main;
+      font-size: 1.125rem;
+      h4 {
+        font-size: 1.33em;
+        font-family: "Crimson", "Times New Roman", Times, serif;
+      }
+      h2 {
+        font-size: 4em;
+        line-height: 1; //text wraps in mobile portrait
+      }
 
-    p {
-      line-height: 2;
-      &:before {
-        width: 2em;
-        height: 2em;
-        margin: 0 0.7em 0 0;
+      p {
+        line-height: 2;
+        &:before {
+          width: 2em;
+          height: 2em;
+          margin: 0 0.7em 0 0;
+        }
       }
     }
+  }
+}
+@media only screen and (min-width: 769px) {
+  #contact header > nav > ul > li:nth-child(-n + 4) a:first-child:link {
+    background-image: url("../assets/blackbird_flip.png"),
+      radial-gradient(lighten($main, 11%) 10%, black);
   }
 }

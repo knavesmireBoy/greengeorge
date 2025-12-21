@@ -154,6 +154,10 @@ html {
           }
         }
       }
+      header > nav > ul > li:nth-child(1) a:first-child:link {
+        background-image: url("../assets/blackbird_flip.png"),
+          radial-gradient(lighten($main, 11%) 10%, black);
+      }
     }
 
     #services main > section:first-child {

@@ -108,6 +108,11 @@
         }
       }
     }
+
+    header > nav > ul > li:nth-child(-n+3) a:first-child:link {
+      background-image: url("../assets/blackbird_flip.png"),
+        radial-gradient(lighten($main, 11%) 10%, black);
+    }
   }
 }
 
@@ -394,8 +399,6 @@
 }
 #gallery {
   #lightbox {
-
-
     #anim1 {
       //pause state
       &:checked ~ label[for="anim1"] {
