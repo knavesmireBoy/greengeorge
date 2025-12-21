@@ -4,11 +4,8 @@ html {
     --aniklas: $lo;
 
     section.services {
-
-   
-     
-    }
-    section.services {
+      @include flexy();
+      flex-direction: column;
       padding: 0.7em 2em 0.7em;
       background-color: $main;
       text-align: center;
@@ -68,7 +65,7 @@ html {
         padding-left: calc(10px + 540 * ((100vw - 320px) / (1280 - 320)));
         padding-right: calc(10px + 540 * ((100vw - 320px) / (1280 - 320)));
         margin-top: -1px;
-        span {
+        label {
           display: block;
           width: 8px;
           height: 8px;
@@ -113,7 +110,7 @@ html {
       section.services article:nth-child(-n + 6) {
         @include prefix(animation, none, o moz webkit);
       }
-      #control span:nth-child(-n + 6) {
+      #control label:nth-child(-n + 6) {
         @include prefix(animation, none, o moz webkit);
       }
     }
@@ -121,7 +118,7 @@ html {
 
   &.js {
     #services {
-      #control span {
+      #control label {
         background-color: $lo;
         &.hi {
           background-color: $hi !important;
@@ -138,7 +135,7 @@ html {
   html {
     #services {
       #control {
-        span {
+        label {
           &:first-child {
             @include span-ani(span1);
           }
@@ -221,7 +218,7 @@ html {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   html {
     #services {
-      #control span {
+      #control label {
         &:first-child {
           @include span-ani(span11);
         }
@@ -243,14 +240,14 @@ html {
         }
       }
       &.ran {
-        #control span:nth-child(6) {
+        #control label:nth-child(6) {
           @include show;
         }
       }
     }
   }
 }
-//html #services #control span
+//html #services #control label
 @media only screen and (min-width: 1025px) {
   html {
     #services {
@@ -276,7 +273,7 @@ html {
           }
         }
 
-        #control span {
+        #control label {
           &:first-child {
             @include span-ani(span21);
           }
@@ -295,7 +292,7 @@ html {
         }
       }
       &.ran main {
-        #control span:nth-last-child(-n + 2) {
+        #control label:nth-last-child(-n + 2) {
           @include show;
         }
       }
@@ -314,10 +311,31 @@ html {
 @media (pointer: coarse) {
   div#services {
     #control {
-      span {
+      label {
         width: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
         height: calc(16px - 8 * ((100vw - 320px) / (1280 - 320)));
       }
     }
+  }
+}
+#trigger {
+  position: relative;
+  opacity: 0.5;
+  &:after {
+    /*
+    width: 16px;
+    height: 16px;
+    content: "";
+    display: block;
+    background-color: white;
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border-radius: 50%;
+    border: solid 2px $main;
+    */
+  }
+  &:checked ~ h2:first-of-type {
+    color: red;
   }
 }

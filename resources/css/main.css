@@ -1837,6 +1837,13 @@ html #services {
   --aniklas: $lo;
 }
 html #services section.services {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
   padding: 0.7em 2em 0.7em;
   background-color: rgb(25, 78, 39);
   text-align: center;
@@ -1906,7 +1913,7 @@ html #services section.services + div {
   padding-right: calc(10px + 540 * (100vw - 320px) / 960);
   margin-top: -1px;
 }
-html #services section.services + div span {
+html #services section.services + div label {
   display: block;
   width: 8px;
   height: 8px;
@@ -1949,54 +1956,54 @@ html #services.ran section.services article:nth-child(-n+6) {
   -webkit-animation: none;
   animation: none;
 }
-html #services.ran #control span:nth-child(-n+6) {
+html #services.ran #control label:nth-child(-n+6) {
   -o-animation: none;
   -moz-animation: none;
   -webkit-animation: none;
   animation: none;
 }
-html.js #services #control span {
+html.js #services #control label {
   background-color: rgba(255, 255, 255, 0.2);
 }
-html.js #services #control span.hi {
+html.js #services #control label.hi {
   background-color: white !important;
 }
-html.js #services #control span section.services div article.transform {
+html.js #services #control label section.services div article.transform {
   transform: translateX(-100%);
 }
 
 @media only screen and (max-width: 768px) {
-  html #services #control span:first-child {
+  html #services #control label:first-child {
     -o-animation: span1 36s linear 0s infinite normal forwards;
     -moz-animation: span1 36s linear 0s infinite normal forwards;
     -webkit-animation: span1 36s linear 0s infinite normal forwards;
     animation: span1 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(2) {
+  html #services #control label:nth-child(2) {
     -o-animation: span2 36s linear 0s infinite normal forwards;
     -moz-animation: span2 36s linear 0s infinite normal forwards;
     -webkit-animation: span2 36s linear 0s infinite normal forwards;
     animation: span2 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(3) {
+  html #services #control label:nth-child(3) {
     -o-animation: span3 36s linear 0s infinite normal forwards;
     -moz-animation: span3 36s linear 0s infinite normal forwards;
     -webkit-animation: span3 36s linear 0s infinite normal forwards;
     animation: span3 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(4) {
+  html #services #control label:nth-child(4) {
     -o-animation: span4 36s linear 0s infinite normal forwards;
     -moz-animation: span4 36s linear 0s infinite normal forwards;
     -webkit-animation: span4 36s linear 0s infinite normal forwards;
     animation: span4 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(5) {
+  html #services #control label:nth-child(5) {
     -o-animation: span5 36s linear 0s infinite normal forwards;
     -moz-animation: span5 36s linear 0s infinite normal forwards;
     -webkit-animation: span5 36s linear 0s infinite normal forwards;
     animation: span5 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(6) {
+  html #services #control label:nth-child(6) {
     -o-animation: span6 36s linear 0s infinite normal forwards;
     -moz-animation: span6 36s linear 0s infinite normal forwards;
     -webkit-animation: span6 36s linear 0s infinite normal forwards;
@@ -2050,37 +2057,37 @@ html.js #services #control span section.services div article.transform {
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  html #services #control span:first-child {
+  html #services #control label:first-child {
     -o-animation: span11 36s linear 0s infinite normal forwards;
     -moz-animation: span11 36s linear 0s infinite normal forwards;
     -webkit-animation: span11 36s linear 0s infinite normal forwards;
     animation: span11 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(2) {
+  html #services #control label:nth-child(2) {
     -o-animation: span12 36s linear 0s infinite normal forwards;
     -moz-animation: span12 36s linear 0s infinite normal forwards;
     -webkit-animation: span12 36s linear 0s infinite normal forwards;
     animation: span12 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(3) {
+  html #services #control label:nth-child(3) {
     -o-animation: span13 36s linear 0s infinite normal forwards;
     -moz-animation: span13 36s linear 0s infinite normal forwards;
     -webkit-animation: span13 36s linear 0s infinite normal forwards;
     animation: span13 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(4) {
+  html #services #control label:nth-child(4) {
     -o-animation: span14 36s linear 0s infinite normal forwards;
     -moz-animation: span14 36s linear 0s infinite normal forwards;
     -webkit-animation: span14 36s linear 0s infinite normal forwards;
     animation: span14 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(5) {
+  html #services #control label:nth-child(5) {
     -o-animation: span15 36s linear 0s infinite normal forwards;
     -moz-animation: span15 36s linear 0s infinite normal forwards;
     -webkit-animation: span15 36s linear 0s infinite normal forwards;
     animation: span15 36s linear 0s infinite normal forwards;
   }
-  html #services #control span:nth-child(6) {
+  html #services #control label:nth-child(6) {
     position: absolute;
     left: -9999px;
     top: auto;
@@ -2089,7 +2096,7 @@ html.js #services #control span section.services div article.transform {
     -webkit-animation: span16 36s linear 0s infinite normal forwards;
     animation: span16 36s linear 0s infinite normal forwards;
   }
-  html #services.ran #control span:nth-child(6) {
+  html #services.ran #control label:nth-child(6) {
     position: relative;
     left: 0;
     top: 0;
@@ -2122,36 +2129,36 @@ html.js #services #control span section.services div article.transform {
     -webkit-animation: services_max 36s ease-in 1s infinite normal forwards;
     animation: services_max 36s ease-in 1s infinite normal forwards;
   }
-  html #services main #control span:first-child {
+  html #services main #control label:first-child {
     -o-animation: span21 36s linear 0s infinite normal forwards;
     -moz-animation: span21 36s linear 0s infinite normal forwards;
     -webkit-animation: span21 36s linear 0s infinite normal forwards;
     animation: span21 36s linear 0s infinite normal forwards;
   }
-  html #services main #control span:nth-child(2) {
+  html #services main #control label:nth-child(2) {
     -o-animation: span22 36s linear 0s infinite normal forwards;
     -moz-animation: span22 36s linear 0s infinite normal forwards;
     -webkit-animation: span22 36s linear 0s infinite normal forwards;
     animation: span22 36s linear 0s infinite normal forwards;
   }
-  html #services main #control span:nth-child(3) {
+  html #services main #control label:nth-child(3) {
     -o-animation: span23 36s linear 0s infinite normal forwards;
     -moz-animation: span23 36s linear 0s infinite normal forwards;
     -webkit-animation: span23 36s linear 0s infinite normal forwards;
     animation: span23 36s linear 0s infinite normal forwards;
   }
-  html #services main #control span:nth-child(4) {
+  html #services main #control label:nth-child(4) {
     -o-animation: span24 36s linear 0s infinite normal forwards;
     -moz-animation: span24 36s linear 0s infinite normal forwards;
     -webkit-animation: span24 36s linear 0s infinite normal forwards;
     animation: span24 36s linear 0s infinite normal forwards;
   }
-  html #services main #control span:nth-last-child(-n+2) {
+  html #services main #control label:nth-last-child(-n+2) {
     position: absolute;
     left: -9999px;
     top: auto;
   }
-  html #services.ran main #control span:nth-last-child(-n+2) {
+  html #services.ran main #control label:nth-last-child(-n+2) {
     position: relative;
     left: 0;
     top: 0;
@@ -2161,11 +2168,33 @@ html.js #services #control span section.services div article.transform {
   }
 }
 @media (pointer: coarse) {
-  div#services #control span {
+  div#services #control label {
     width: calc(16px - 8 * (100vw - 320px) / 960);
     height: calc(16px - 8 * (100vw - 320px) / 960);
   }
 }
+#trigger {
+  position: relative;
+  opacity: 0.5;
+}
+#trigger:after {
+  /*
+  width: 16px;
+  height: 16px;
+  content: "";
+  display: block;
+  background-color: white;
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border-radius: 50%;
+  border: solid 2px $main;
+  */
+}
+#trigger:checked ~ h2:first-of-type {
+  color: red;
+}
+
 #about nav.eco {
   padding: 0.7em;
   padding-left: clamp(1em, 2vw, 2em);

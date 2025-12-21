@@ -93,7 +93,7 @@ function play(callback, frame_length = 6, ran = 0) {
       rev = 0,
       my_promise = tick(ticker(appendTo), transformer);
 
-    if (this.nodeType === 1 && tgt.nodeName === "SPAN") {
+    if (this.nodeType === 1 && tgt.nodeName === "LABEL") {
       //set document up for js so animation state is translated to positioning of articles;
       //ie run appendTo until we're in sync then respond to the request as normal
       if (!ran) {
@@ -164,7 +164,7 @@ const meta = greenGeorge.meta,
   cu2 = meta.curryRight(2),
   service = document.querySelector(".services"),
   control = document.getElementById("control"),
-  livespans = control && control.getElementsByTagName("span"),
+  livespans = control && control.getElementsByTagName("label"),
   section = meta.$Q(".services"),
   container = section && meta.byTagScope(section)("div"),
   appender = container && ptL(invk, container, "appendChild"),
