@@ -25,8 +25,14 @@
   }
 }
 @media only screen and (min-width: 769px) {
-  #contact header > nav > ul > li:nth-child(-n + 4) a:first-child:link {
-    background-image: url("../assets/blackbird_flip.png"),
-      radial-gradient(lighten($main, 11%) 10%, black);
+  #contact header > nav > ul > li:nth-child(-n + 4) a:first-child {
+    &:link {
+      background-image: url("../assets/blackbird_flip.png"),
+        radial-gradient(lighten($main, 11%) 10%, black);
+    }
+    &:hover {
+      background-image: url("../assets/blackbird_flip.png"),
+        radial-gradient(hsl(25, 79%, 15%) 10%, black);
+    }
   }
 }

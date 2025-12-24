@@ -98,9 +98,15 @@
       }
     }
 
-    header > nav > ul > li:nth-child(-n+2) a:first-child:link {
-      background-image: url("../assets/blackbird_flip.png"),
-        radial-gradient(lighten($main, 11%) 10%, black);
+    header > nav > ul > li:nth-child(-n + 2) a:first-child {
+      &:link {
+        background-image: url("../assets/blackbird_flip.png"),
+          radial-gradient(lighten($main, 11%) 10%, black);
+      }
+      &:hover {
+        background-image: url("../assets/blackbird_flip.png"),
+          radial-gradient(hsl(25, 79%, 15%) 10%, black);
+      }
     }
   }
 }
