@@ -1099,10 +1099,6 @@ body > div > header {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: space-between;
-  -webkit-justify-content: center;
-  justify-content: space-between;
 }
 body > div > header h1 {
   text-indent: 100%;
@@ -1146,6 +1142,9 @@ body > div > header input:checked ~ nav ul {
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 1px 1px 4px rgb(25, 78, 39);
   max-height: 16em;
+}
+body > div > header > nav {
+  margin-left: auto;
 }
 body > div > footer {
   -webkit-box: 1;
@@ -1295,7 +1294,6 @@ html body > div > main section.testimonials {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   column-gap: 1vw;
 }
 html body > div > main section.testimonials h2 {
@@ -1314,9 +1312,9 @@ html body > div > main section.testimonials div {
   flex-wrap: nowrap;
   -webkit-box: 0;
   -moz-box: 0;
-  -webkit-flex: 0 0 92vw;
-  -ms-flex: 0 0 92vw;
-  flex: 0 0 92vw;
+  -webkit-flex: 0 0 88%;
+  -ms-flex: 0 0 88%;
+  flex: 0 0 88%;
   min-width: 80%;
   overflow-x: hidden;
   position: relative;
@@ -1353,10 +1351,10 @@ html body > div > main section.testimonials > p {
   flex: 1 1 0.5em;
 }
 html body > div > main section.testimonials > p:first-of-type {
-  margin-right: 1%;
+  margin-right: auto;
 }
 html body > div > main section.testimonials > p:last-of-type {
-  margin-left: 1%;
+  margin-left: auto;
 }
 @media (pointer: coarse) {
   html body > div > main section.testimonials > div {

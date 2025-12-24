@@ -11,7 +11,7 @@ body > div {
   > header {
     padding: 1rem;
     @include flexy(wrap);
-    @include justify(space-between);
+    //@include justify(space-between);
     h1 {
       text-indent: 100%;
       font-size: 1px;
@@ -53,6 +53,9 @@ body > div {
       background-color: rgba(255, 255, 255, 0.8);
       box-shadow: 1px 1px 4px $main;
       max-height: 16em;
+    }
+    > nav {
+      margin-left: auto;
     }
   }
   > footer {
@@ -182,14 +185,14 @@ html {
       text-align: center;
       padding: 0 0.5rem 1rem;
       @include flexy(wrap);
-      justify-content: space-between;
+      //justify-content: space-between;
       column-gap: 1vw;
       h2 {
         @include flex(0, 0, 100%);
       }
       div {
         @include flexy();
-        @include flex(0, 0, 92vw);
+        @include flex(0, 0, 88%);
         min-width: 80%;
         overflow-x: hidden;
         position: relative;
@@ -211,10 +214,10 @@ html {
       > p {
         @include flex(1, 1, 0.5em);
         &:first-of-type {
-          margin-right: 1%;
+          margin-right: auto;
         }
         &:last-of-type {
-          margin-left: 1%;
+          margin-left: auto;
         }
       }
 
