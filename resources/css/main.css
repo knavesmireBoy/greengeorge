@@ -2898,6 +2898,32 @@ html.js #services #control label section.services div article.transform {
   transform: translateY(6em);
 }
 
+.map > * {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+
+.map #map {
+  position: relative;
+  left: 0;
+  top: 0;
+  text-align: center;
+  margin: 1em 0 0;
+  font-size: 1rem;
+}
+
+.js .map > * {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.js .map #map {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+
 #contact main > section:first-child {
   color: rgb(252, 246, 228);
   background-color: rgb(25, 78, 39);
