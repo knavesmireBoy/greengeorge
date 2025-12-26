@@ -1,4 +1,4 @@
-.map > * {
+/*.map > * {
   @include hide;
 }
 
@@ -17,6 +17,7 @@
     @include hide;
   }
 }
+*/
 
 #contact {
   main > {
@@ -42,6 +43,12 @@
         }
       }
     }
+
+  }
+  #map {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1em 0;
   }
 }
 @media only screen and (min-width: 769px) {

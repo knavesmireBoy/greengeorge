@@ -2898,32 +2898,26 @@ html.js #services #control label section.services div article.transform {
   transform: translateY(6em);
 }
 
-.map > * {
-  position: absolute;
-  left: -9999px;
-  top: auto;
+/*.map > * {
+  @include hide;
 }
 
 .map #map {
-  position: relative;
-  left: 0;
-  top: 0;
+  @include show;
   text-align: center;
   margin: 1em 0 0;
   font-size: 1rem;
 }
 
-.js .map > * {
-  position: relative;
-  left: 0;
-  top: 0;
+.js {
+  .map > * {
+    @include show;
+  }
+  .map #map {
+    @include hide;
+  }
 }
-.js .map #map {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-}
-
+*/
 #contact main > section:first-child {
   color: rgb(252, 246, 228);
   background-color: rgb(25, 78, 39);
@@ -2944,6 +2938,11 @@ html.js #services #control label section.services div article.transform {
   width: 2em;
   height: 2em;
   margin: 0 0.7em 0 0;
+}
+#contact #map {
+  text-align: center;
+  font-size: 1rem;
+  padding: 1em 0;
 }
 
 @media only screen and (min-width: 769px) {
