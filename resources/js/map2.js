@@ -6,6 +6,7 @@ const tagTester = (name) => {
     f(arg);
     return arg;
   },
+  log = pass(console.log),
   invoke = f => f(),
   invokeV = (o, m, v) => o[m](v),
   invokeKV = (o, m, k, v) => o[m](k, v),
@@ -43,20 +44,21 @@ const tagTester = (name) => {
   query = doDoc("querySelector"),
   create = doDoc("createElement"),
   doText = doDocDefer("createTextNode"),
-  map = query(".map"),
+  hook = query(".map"),
   para = query("#map"),
   link = create("a"),
-  log = pass(console.log),
+  setAttrs = ptL(prevoker, 'setAttribute'),
   setHref = prevoker('setAttribute', 'href'),
-  setSrc = prevoker('setAttribute', 'src'),
   setWidth = curry2(prevoker('setAttribute', 'width'))(425),
   setHeight = curry2(prevoker('setAttribute', 'height'))(350),
   setTarget = curry2(prevoker('setAttribute', 'target'))('_blank'),
   setSource = curry2(prevoker('setAttribute', 'src'))("https://www.openstreetmap.org/export/embed.html?bbox=-0.08222579956054689%2C51.540383176643516%2C-0.046992301940917976%2C51.55831649890036&amp;layer=mapnik"),
   prependLink = curry3(invokeV)(link)('appendChild'),
   setLinkHref = curry2(setHref)("https://www.openstreetmap.org/?#map=15/51.54935/-0.06461"),
-  append = ptL(invokeV, map, 'appendChild'),
+  appendToSection = ptL(invokeV, hook, 'appendChild'),
   prepend = prevoke('appendChild'), 
-  makeIframe = compose(setTarget, curry2(getta)('parentNode'), invoke, ptL(composer, doText("View Larger Map")), ptL(prepend), pass(setLinkHref), prependLink, curry2(getta)('parentNode'), append, pass(setSource), pass(setWidth), pass(setHeight), create);
+  makeIframe = compose(setTarget, curry2(getta)('parentNode'), invoke, ptL(composer, doText("View Larger Map")), ptL(prepend), pass(setLinkHref), prependLink, curry2(getta)('parentNode'), appendToSection, pass(setSource), pass(setWidth), pass(setHeight), create);
+
+
   makeIframe('iframe');
   para.parentNode.removeChild(para);
