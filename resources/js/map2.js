@@ -42,7 +42,7 @@ const pass = (f) => (arg) => {
   },
   log = pass(console.log),
   invoke = (f) => f(),
-  invokeV = (o, m, v) => o[m](v),
+  invokeMethod = (o, m, v) => o[m](v),
   prevoker = (m, k) => (o, v) => o[m](k, v),
   prevoke = (m) => (o, v) => o[m](v),
   getta = (o, p) => o[p],
@@ -70,8 +70,8 @@ const pass = (f) => (arg) => {
   curry3 = (fn) => (c) => (b) => (a) => fn(a, b, c),
   ptL = doPartial(),
   defer = doPartial(true),
-  doDoc = ptL(invokeV, document),
-  doDocDefer = defer(invokeV, document),
+  doDoc = ptL(invokeMethod, document),
+  doDocDefer = defer(invokeMethod, document),
   query = doDoc("querySelector"),
   create = doDoc("createElement"),
   doText = doDocDefer("createTextNode"),
@@ -85,11 +85,11 @@ const pass = (f) => (arg) => {
   setHeight = curry2(setAttrs("height"))(350),
   setSource = curry2(setAttrs("src"))(mapsrc),
   setTarget = curry2(setAttrs("target"))("_blank"),
-  prependLink = curry3(invokeV)(link)("appendChild"),
+  prependLink = curry3(invokeMethod)(link)("appendChild"),
   setLinkHref = curry2(setAttrs("href"))(
     "https://www.openstreetmap.org/?#map=15/51.54935/-0.06461"
   ),
-  appendToSection = ptL(invokeV, hook, "appendChild"),
+  appendToSection = ptL(invokeMethod, hook, "appendChild"),
   awaitTextNode = prevoke("appendChild"),
   makeIframe = compose(
     invoke,
