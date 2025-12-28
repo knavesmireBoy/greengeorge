@@ -65,6 +65,7 @@ const pass = (f) => (arg) => {
       return (...rest) => p(f, ...args, ...rest);
     };
   },
+  curry1 = (fn) => (a) => () => fn(a),
   curry2 = (fn) => (b) => (a) => fn(a, b),
   curry3 = (fn) => (c) => (b) => (a) => fn(a, b, c),
   ptL = doPartial(),
@@ -103,11 +104,10 @@ const pass = (f) => (arg) => {
     pass(setWidth),
     pass(setHeight),
     create
-  );
+  ),
+  doMakeIframe = curry1(makeIframe)("iframe");
 
-  
 if (para) {
-  makeIframe("iframe");
   para.parentNode.removeChild(para);
+  document.addEventListener("DOMContentLoaded", doMakeIframe);
 }
-  
