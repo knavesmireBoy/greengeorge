@@ -269,6 +269,7 @@ body > div > footer {
             color: $main;
             background-image: url("../assets/blackbird_eat.png"),
             radial-gradient(hsl(25, 79%, 15%) 10%, black);
+            transform: translateY(-1px);
           }
         }
       }
