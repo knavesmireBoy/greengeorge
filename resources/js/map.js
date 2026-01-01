@@ -41,10 +41,22 @@ const pass = (f) => (arg) => {
     return arg;
   },
   log = pass(console.log),
+  invokeMethodFactory = (i, flag = false) => {
+    if (flag) {
+      if (i) {
+        return (m, k) => (o, v) => o[m](k, v);
+      } else {
+        return (m) => (o, v) => o[m](v);
+      }
+    } else if (i) {
+      return (o, m, k, v) => o[m](k, v);
+    }
+    return (o, m, v) => o[m](v);
+  },
   invoke = (f) => f(),
-  invokeMethod = (o, m, v) => o[m](v),
-  prevoker = (m, k) => (o, v) => o[m](k, v),
-  prevoke = (m) => (o, v) => o[m](v),
+  prevoker = invokeMethodFactory(1, true),
+  prevoke = invokeMethodFactory(0, true),
+  invokeMethod = invokeMethodFactory(0),
   getta = (o, p) => o[p],
   compose = (...fns) =>
     fns.reduce(
